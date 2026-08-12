@@ -1,0 +1,13 @@
+# LegalRAG
+
+RAG-based legal document analysis to narrow the access-to-justice gap.
+
+Accepts PDF, scanned, image, and plain-text legal documents and returns
+clause-level risk annotations with plain-language explanations and a
+simplified summary, grounded on relevant statute context.
+
+- **Parse** — Docling (MIT): Markdown + structured export with character spans; native OCR for scanned docs and images
+- **Extract** — fast lane: regex triggers + LegalBERT prototype classifier over a 15-type lease clause taxonomy
+- **Retrieve** — LegalBERT embeddings + FAISS over a curated statute corpus (Model Tenancy Act 2021 + Delhi Rent Act 1958)
+- **Risk** — rule-based engine with hybrid confidence scoring
+- **Simplify** — grammar-constrained Llama-3.2-3B (GGUF) plain-language output as JSON
