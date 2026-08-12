@@ -28,6 +28,8 @@ FULL = {
     "clauses": "leivaditi_full_clauses.jsonl",
 }
 
+LEXDEMOD = "lexdemod_annotated.jsonl"
+
 
 def _printDist(title: str, dist: dict) -> None:
     print(f"  {title}")
@@ -96,6 +98,18 @@ def main(argv: list[str] | None = None) -> int:
         print(f"  clauses: {frep['clauses']['rows']} rows / {frep['clauses']['docs']} docs, "
               f"{frep['clauses']['clause_begin_true']} clause starts")
         report["full_benchmark"] = frep
+
+    lex_path = full / LEXDEMOD
+    if lex_path.exists():
+        lex_rows = eda.loadJsonl(lex_path)
+        lrep = eda.buildLexdemodReport(lex_rows)
+        print("\n== LEXDEMOD ==")
+        print(f"  rows: {lrep['rows']} / {lrep['unique_sources']} sources")
+        print(f"  parties: {lrep['party']}")
+        print(f"  splits: {lrep['split']}")
+        print(f"  deontic types: {lrep['deontic_types']}")
+        print(f"  multi-label rows: {lrep['multi_label_rows']}, spans: {lrep['spans']}")
+        report["lexdemod"] = lrep
 
     if args.json:
         Path(args.json).parent.mkdir(parents=True, exist_ok=True)

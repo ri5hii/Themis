@@ -7,6 +7,7 @@ import pytest
 
 from legalrag.dataset import clean, eda
 from legalrag.dataset import ingest_leivaditi as ing
+from legalrag.dataset import ingest_lexdemod as lexd
 
 
 class TestClean:
@@ -235,6 +236,19 @@ class TestIngestLeivaditi:
 
 
 class TestEdaFullReport:
+    def test_buildLexdemodReport(self):
+        rows = [
+            {"source": "s1", "text": "a", "party": "tenant", "split": "train",
+             "deontic_types": ["obl", "pro"], "spans": {"obl": [[0, 1]]}},
+            {"source": "s1", "text": "b", "party": "landlord", "split": "test",
+             "deontic_types": ["none"], "spans": {}},
+        ]
+        rep = eda.buildLexdemodReport(rows)
+        assert rep["rows"] == 2
+        assert rep["deontic_types"] == {"obl": 1, "pro": 1, "none": 1}
+        assert rep["multi_label_rows"] == 1
+        assert rep["spans"] == 1
+
     def test_buildFullReport_counts(self):
         docs = [
             {"source": "d1", "document_class": "lease agreement", "text": "x" * 5000},
@@ -257,3 +271,63 @@ class TestEdaFullReport:
         assert rep["easy_redflags"]["rows"] == 1
         assert rep["entities"]["rows"] == 1
         assert rep["clauses"]["clause_begin_true"] == 1
+
+
+class TestIngestLexdemod:
+    def test_deontic_labels_order(self):
+        assert lexd.DEONTIC_LABELS == ["obl", "ent", "pro", "per", "oth", "nen", "none"]
+
+    def test_splitPartyText_normalizes_aliases(self):
+        assert lexd.splitPartyText("[tenant] Tenant shall pay.") == ("tenant", "Tenant shall pay.")
+        assert lexd.splitPartyText("[lessee] Lessee may use.") == ("tenant", "Lessee may use.")
+        assert lexd.splitPartyText("[lessor] Lessor must.") == ("landlord", "Lessor must.")
+        assert lexd.splitPartyText("[subtenant] Subtenant may.") == ("tenant", "Subtenant may.")
+        assert lexd.splitPartyText("[sublandlord] Sublandlord must.") == ("landlord", "Sublandlord must.")
+
+    def test_splitPartyText_unknown(self):
+        assert lexd.splitPartyText("plain text") == ("unknown", "plain text")
+
+    def test_contractSource_and_index(self):
+        assert lexd.contractSource(".././LEDGAR/data/2019/QTR1/x/ex10_2.htm-7") == "ex10_2.htm"
+        assert lexd.sentenceIndex(".././LEDGAR/data/2019/QTR1/x/ex10_2.htm-7") == 7
+
+    def test_parseLabel_and_active(self):
+        assert lexd.parseLabel("[1, 0, 0, 0, 0, 0, 0]") == [1, 0, 0, 0, 0, 0, 0]
+        assert lexd.activeDeonticTypes([1, 0, 1, 0, 0, 0, 0]) == ["obl", "pro"]
+
+    def test_parseSpans(self):
+        assert lexd.parseSpans('{"obl": [[8, 9], [52, 53]]}') == {"obl": [[8, 9], [52, 53]]}
+
+    def test_ingestAnnotated(self):
+        rows = [
+            {
+                "id": "0",
+                "cid": ".././LEDGAR/data/2019/QTR1/0001/ex10_2.htm-7",
+                "text": "[tenant] Tenant shall pay.",
+                "label": "[1, 0, 0, 0, 0, 0, 0]",
+                "span": '{"obl": [[8, 9]]}',
+                "split": "train",
+            }
+        ]
+        out = lexd.ingestAnnotated(rows)
+        assert out[0]["source"] == "ex10_2.htm"
+        assert out[0]["sentence_idx"] == 7
+        assert out[0]["party"] == "tenant"
+        assert out[0]["deontic_types"] == ["obl"]
+        assert out[0]["spans"] == {"obl": [[8, 9]]}
+        assert out[0]["split"] == "train"
+
+    def test_ingestAnnotated_drops_none_sentence_text(self):
+        rows = [
+            {
+                "cid": "x.htm-1",
+                "text": "[landlord] Landlord may.",
+                "label": "[0, 0, 0, 0, 0, 0, 1]",
+                "span": '{"none": [[0, 0]]}',
+                "split": "test",
+            }
+        ]
+        out = lexd.ingestAnnotated(rows)
+        assert out[0]["party"] == "landlord"
+        assert out[0]["deontic_types"] == ["none"]
+        assert out[0]["text"] == "Landlord may."

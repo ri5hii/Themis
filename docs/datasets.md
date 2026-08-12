@@ -12,8 +12,30 @@ cleaned to `data/cleaned/` by `scripts/clean_dataset.py`.
   raw CSVs at `data/annotated/leivaditi_full/`, canonical JSONL at
   `data/cleaned/leivaditi_full_*.jsonl` via `scripts/ingest_leivaditi_full.py`
   (see "Ingested corpora" below).
-- **Pending** — LEXDEMOD (party-specific deontic labels), CUAD (commercial
-  clause taxonomy).
+- **DONE** — LEXDEMOD fetched and ingested (v0.0.5): raw annotated CSVs at
+  `data/annotated/lexdemod/`, canonical JSONL at
+  `data/cleaned/lexdemod_annotated.jsonl` via `scripts/ingest_lexdemod.py`
+  (see "LEXDEMOD" below).
+- **Pending** — CUAD (commercial clause taxonomy).
+
+## LEXDEMOD (ingested, v0.0.5)
+
+Agent-specific deontic modality detection (Sancheti et al., EMNLP 2022; MIT).
+`data/cleaned/lexdemod_annotated.jsonl`: 6,389 agent-sentence rows across 23
+contracts (LEDGAR-sourced leases):
+
+| Field | Notes |
+|---|---|
+| party | tenant 3,418 / landlord 2,971 (aliases lessee/subtenant→tenant, lessor/sublandlord→landlord collapsed) |
+| split | train 4,282 / eval 330 / test 1,777 |
+| deontic_types | multi-label; obl 2,257, none 1,688, ent 1,538, per 457, pro 387, oth 359, nen 317 |
+| label | 7-dim multi-hot `[obl, ent, pro, per, oth, nen, none]` |
+| spans | 7,914 trigger spans, all verified within sentence text |
+| sentence_idx | clause index from the `cid` (`<file>-<idx>`) |
+
+549 rows carry multiple deontic types. Maps directly to the simplify /
+`tenant_impact` layer: obligations and prohibitions for the tenant vs.
+entitlements and permissions for the landlord.
 
 ## Ingested corpora (full benchmark)
 
@@ -51,9 +73,11 @@ riders, no_obligation_to_operate.
    - DOI: <https://doi.org/10.21942/uva.19732993>
    - GitHub: <https://github.com/j-rossi-nl/redflag>
    - GitLab: <https://gitlab.com/spyretta.leiv/lease_contract_review>
-2. **LEXDEMOD** — party-specific deontic labels (tenant vs landlord obligation/
-   entitlement/prohibition) to supervise the plain-language layer and enrich
-   `tenant_impact`. Source: <https://github.com/adobe-research/LexDeMod>
+2. **LEXDEMOD** — ✅ **fetched + ingested** (v0.0.5). Party-specific deontic
+   labels (tenant/landlord obligation, entitlement, prohibition, permission,
+   no-entitlement, other) with trigger spans to supervise the plain-language
+   layer and enrich `tenant_impact`. Source:
+   <https://github.com/adobe-research/LexDeMod>
 3. **CUAD v1 clause classification** — broad commercial clause taxonomy for
    zero-shot / pretraining support. Source:
    <https://huggingface.co/datasets/dvgodoy/CUAD_v1_Contract_Understanding_clause_classification>

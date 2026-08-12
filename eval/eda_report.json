@@ -381,5 +381,46 @@
         "annex": 125
       }
     }
+  },
+  "lexdemod": {
+    "rows": 6389,
+    "unique_sources": 23,
+    "rows_per_source": {
+      "min": 3,
+      "p50": 210,
+      "max": 705
+    },
+    "text": {
+      "rows": 6389,
+      "mean": 360.1,
+      "min": 36,
+      "p50": 287,
+      "p90": 695,
+      "p95": 870,
+      "max": 2889
+    },
+    "truncated_at_limit": 871,
+    "truncated_pct": 13.6,
+    "empty_text": 0,
+    "party": {
+      "tenant": 3418,
+      "landlord": 2971
+    },
+    "split": {
+      "train": 4282,
+      "test": 1777,
+      "eval": 330
+    },
+    "deontic_types": {
+      "obl": 2257,
+      "none": 1688,
+      "ent": 1538,
+      "per": 457,
+      "pro": 387,
+      "oth": 359,
+      "nen": 317
+    },
+    "multi_label_rows": 549,
+    "spans": 7914
   }
 }

@@ -114,6 +114,22 @@ def headingFrequency(rows: list[dict[str, Any]], limit: int = 25) -> dict[str, i
     return dict(Counter(r.get("heading") for r in rows).most_common(limit))
 
 
+def buildLexdemodReport(rows: list[dict[str, Any]]) -> dict[str, Any]:
+    """Summary stats for the LEXDEMOD annotated corpus."""
+    deontic = Counter()
+    for row in rows:
+        for t in row.get("deontic_types", []):
+            deontic[t] += 1
+    return {
+        **summarizeRows(rows),
+        "party": columnDistribution(rows, "party"),
+        "split": columnDistribution(rows, "split"),
+        "deontic_types": dict(deontic.most_common()),
+        "multi_label_rows": sum(1 for r in rows if len(r.get("deontic_types", [])) > 1),
+        "spans": sum(len(v) for r in rows for v in r.get("spans", {}).values()),
+    }
+
+
 def buildFullReport(
     docs: list[dict[str, Any]],
     redflags: list[dict[str, Any]],
