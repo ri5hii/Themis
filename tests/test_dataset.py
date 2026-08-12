@@ -6,6 +6,7 @@ import json
 import pytest
 
 from legalrag.dataset import clean, eda
+from legalrag.dataset import ingest_leivaditi as ing
 
 
 class TestClean:
@@ -148,3 +149,111 @@ def _writeSample(tmp_path):
         json.dumps({"source": "a", "type": "m", "redflag_type": "compalsory_reconstraction", "text": " t "}) + "\n"
     )
     return leases, redflags
+
+
+class TestIngestLeivaditi:
+    def test_docId_strips_lease_suffix(self):
+        assert ing.docId("abc123-lease_792") == "abc123"
+
+    def test_ingestRedflags_keeps_none_negatives(self):
+        rows = [
+            {"uuid": "x-lease_1", "text": "t1", "raw_text": "r1", "type": "none", "start": "0", "end": "5"},
+            {"uuid": "y-lease_2", "text": "t2", "raw_text": "r2", "type": "break_option", "start": "3", "end": "9"},
+        ]
+        out = ing.ingestRedflags(rows)
+        assert len(out) == 2
+        assert out[0]["type"] == "none"
+        assert out[1] == {
+            "source": "y",
+            "text": "t2",
+            "raw_text": "r2",
+            "type": "break_option",
+            "start": 3,
+            "end": 9,
+        }
+
+    def test_ingestEasyRedflags_drops_none(self):
+        rows = [
+            {"uuid": "x-lease_1", "part": "s1p1", "text": "t1", "raw_text": "r1", "type": "none", "start": "0", "end": "5"},
+            {"uuid": "y-lease_2", "part": "s1p2", "text": "t2", "raw_text": "r2", "type": "damage", "start": "1", "end": "2"},
+        ]
+        out = ing.ingestEasyRedflags(rows)
+        assert len(out) == 1
+        assert out[0]["source"] == "y"
+        assert out[0]["type"] == "damage"
+
+    def test_ingestDocs(self):
+        rows = [{"uuid": "x-lease_1", "document_class": "lease agreement", "document_full_text": "full"}]
+        assert ing.ingestDocs(rows) == [
+            {"source": "x", "document_class": "lease agreement", "text": "full"}
+        ]
+
+    def test_ingestEntities(self):
+        rows = [
+            {
+                "uuid": "x-lease_1",
+                "part_id": "s1p2",
+                "class_id": "lessor",
+                "full_text": "ft",
+                "entity_text": "ABC Co.",
+                "entity_start": "8",
+                "entity_end": "41",
+            }
+        ]
+        assert ing.ingestEntities(rows) == [
+            {
+                "source": "x",
+                "part": "s1p2",
+                "class_id": "lessor",
+                "entity_text": "ABC Co.",
+                "entity_start": 8,
+                "entity_end": 41,
+            }
+        ]
+
+    def test_ingestClauses(self):
+        rows = [
+            {"uuid": "x-lease_1", "part": "s1p1", "text": "t", "clause_begin": "True", "clause_type": "clause_title"},
+            {"uuid": "x-lease_1", "part": "s1p2", "text": "t2", "clause_begin": "False", "clause_type": "none"},
+        ]
+        out = ing.ingestClauses(rows)
+        assert out[0]["clause_begin"] is True
+        assert out[1]["clause_begin"] is False
+
+    def test_parseCsv_handles_quoted_fields(self, tmp_path):
+        p = tmp_path / "t.csv"
+        p.write_text('a,b\n"x, y",z\n')
+        assert ing.parseCsv(str(p)) == [{"a": "x, y", "b": "z"}]
+
+    def test_redflag_types_known(self):
+        assert "break_option" in ing.REDFLAG_TYPES
+        assert "holdover" in ing.REDFLAG_TYPES
+
+    def test_entity_classes_known(self):
+        assert "lessor" in ing.ENTITY_CLASSES
+        assert "vat" in ing.ENTITY_CLASSES
+
+
+class TestEdaFullReport:
+    def test_buildFullReport_counts(self):
+        docs = [
+            {"source": "d1", "document_class": "lease agreement", "text": "x" * 5000},
+            {"source": "d2", "document_class": "amendment", "text": "y" * 200},
+        ]
+        redflags = [
+            {"source": "d1", "text": "t", "type": "break_option"},
+            {"source": "d1", "text": "t", "type": "none"},
+            {"source": "d2", "text": "t", "type": "damage"},
+        ]
+        easy = [{"source": "d1", "text": "t", "type": "break_option"}]
+        entities = [{"source": "d1", "class_id": "lessor"}]
+        clauses = [{"source": "d1", "clause_begin": True, "clause_type": "clause_title"}]
+        rep = eda.buildFullReport(docs, redflags, easy, entities, clauses)
+        assert rep["docs"]["rows"] == 2
+        assert rep["docs"]["len_chars"] == {"min": 200, "p50": 5000, "max": 5000}
+        assert rep["redflags"]["positive"] == 2
+        assert rep["redflags"]["negative_none"] == 1
+        assert rep["redflags"]["docs_with_positive"] == 2
+        assert rep["easy_redflags"]["rows"] == 1
+        assert rep["entities"]["rows"] == 1
+        assert rep["clauses"]["clause_begin_true"] == 1

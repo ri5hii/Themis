@@ -6,6 +6,32 @@ datasets into the v0.1.x line. Current in-repo corpora (gitignored, on disk):
 `data/annotated/leivaditi_redflags.jsonl` (738 redflag sentences, 112 leases),
 cleaned to `data/cleaned/` by `scripts/clean_dataset.py`.
 
+## Status
+
+- **DONE** — Full Leivaditi redflag benchmark fetched and ingested (v0.0.4):
+  raw CSVs at `data/annotated/leivaditi_full/`, canonical JSONL at
+  `data/cleaned/leivaditi_full_*.jsonl` via `scripts/ingest_leivaditi_full.py`
+  (see "Ingested corpora" below).
+- **Pending** — LEXDEMOD (party-specific deontic labels), CUAD (commercial
+  clause taxonomy).
+
+## Ingested corpora (full benchmark)
+
+| Corpus | Rows | Docs | Notes |
+|---|---|---|---|
+| `leivaditi_full_docs.jsonl` | 171 | 171 | Full-text lease documents, 1.4K–288K chars (no 600-char cap); classes: lease agreement 115, other 42, amendment 9, sublease agreement 5 |
+| `leivaditi_full_redflags.jsonl` | 52,853 | 179 | Paragraph-level, 863 positives across 19 types + 51,990 'none' negatives |
+| `leivaditi_full_easy_redflags.jsonl` | 1,242 | 115 | Sentence-level redflag spans (19 types), each verified present in its doc text |
+| `leivaditi_full_entities.jsonl` | 2,101 | 123 | NER spans, 12 classes (term_of_payment 406, lessor 376, lessee 307, leased_space 190, ...) |
+| `leivaditi_full_clauses.jsonl` | 32,951 | 120 | Clause structure: 8,426 clause starts; clause_title 2,131, sub_clause_title 1,554, clause_number 610, annex 125 |
+
+The 19 redflag types: services_charges, sublease_permitted, break_option,
+reinstatement_clause, landlord_repairs, damage, guarantee_transferable,
+change_of_control, right_of_first_refusal_to_lease, right_of_first_refusal_to_purchase,
+warrantees_of_the_owner, compalsory_reconstraction, expansion, special_stipulations,
+extension_period, additional_remarks, assignment_indeplaatsstelling_permitted,
+riders, no_obligation_to_operate.
+
 ## Summary table
 
 | Dataset | Domain | Size | Labels | License/access | Relevance | Priority |
@@ -19,10 +45,9 @@ cleaned to `data/cleaned/` by `scripts/clean_dataset.py`.
 
 ## Recommended integration (in order)
 
-1. **Leivaditi redflag full benchmark** — replace/augment the extracted subset
-   with the original annotated corpus. Gives full-text leases (no 600-char
-   truncation), 19 red-flag types (vs our 7), entity spans, and ALeaseBERT
-   weights. Sources:
+1. **Leivaditi redflag full benchmark** — ✅ **fetched + ingested** (v0.0.4).
+   Full-text leases (no 600-char truncation), 19 red-flag types, entity spans,
+   clause structure. Sources:
    - DOI: <https://doi.org/10.21942/uva.19732993>
    - GitHub: <https://github.com/j-rossi-nl/redflag>
    - GitLab: <https://gitlab.com/spyretta.leiv/lease_contract_review>

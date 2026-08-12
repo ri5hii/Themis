@@ -114,6 +114,60 @@ def headingFrequency(rows: list[dict[str, Any]], limit: int = 25) -> dict[str, i
     return dict(Counter(r.get("heading") for r in rows).most_common(limit))
 
 
+def buildFullReport(
+    docs: list[dict[str, Any]],
+    redflags: list[dict[str, Any]],
+    easy_redflags: list[dict[str, Any]],
+    entities: list[dict[str, Any]],
+    clauses: list[dict[str, Any]],
+) -> dict[str, Any]:
+    """Summary stats for the full Leivaditi benchmark corpora."""
+    doc_texts = {r["source"]: str(r.get("text", "")) for r in docs}
+    doc_len = [len(t) for t in doc_texts.values()]
+    pos = [r for r in redflags if str(r.get("type", "")) != "none"]
+
+    def _docCount(rows: list[dict[str, Any]]) -> int:
+        return len({r["source"] for r in rows})
+
+    return {
+        "docs": {
+            **summarizeRows(docs),
+            "document_class": columnDistribution(docs, "document_class"),
+            "len_chars": {
+                "min": min(doc_len),
+                "p50": sorted(doc_len)[len(doc_len) // 2],
+                "max": max(doc_len),
+            },
+        },
+        "redflags": {
+            "rows": len(redflags),
+            "docs": _docCount(redflags),
+            "positive": len(pos),
+            "negative_none": len(redflags) - len(pos),
+            "positive_types": len({r.get("type") for r in pos}),
+            "docs_with_positive": _docCount(pos),
+            "type": columnDistribution(redflags, "type"),
+        },
+        "easy_redflags": {
+            "rows": len(easy_redflags),
+            "docs": _docCount(easy_redflags),
+            "types": len({r.get("type") for r in easy_redflags}),
+            "type": columnDistribution(easy_redflags, "type"),
+        },
+        "entities": {
+            "rows": len(entities),
+            "docs": _docCount(entities),
+            "class_id": columnDistribution(entities, "class_id"),
+        },
+        "clauses": {
+            "rows": len(clauses),
+            "docs": _docCount(clauses),
+            "clause_begin_true": sum(1 for r in clauses if r.get("clause_begin")),
+            "clause_type": columnDistribution(clauses, "clause_type"),
+        },
+    }
+
+
 def buildReport(leases: list[dict[str, Any]], redflags: list[dict[str, Any]]) -> dict[str, Any]:
     return {
         "leases": {

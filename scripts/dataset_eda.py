@@ -20,6 +20,14 @@ DEFAULTS = {
     "redflags": "leivaditi_redflags.jsonl",
 }
 
+FULL = {
+    "docs": "leivaditi_full_docs.jsonl",
+    "redflags": "leivaditi_full_redflags.jsonl",
+    "easy_redflags": "leivaditi_full_easy_redflags.jsonl",
+    "entities": "leivaditi_full_entities.jsonl",
+    "clauses": "leivaditi_full_clauses.jsonl",
+}
+
 
 def _printDist(title: str, dist: dict) -> None:
     print(f"  {title}")
@@ -60,6 +68,34 @@ def main(argv: list[str] | None = None) -> int:
         print(f"  {key}: n={info['n']} truncated={info['truncated']} ({info['truncated_pct']}%)")
     print("\n== cross-corpus source overlap ==")
     print(f"  {report['cross_corpus']['source_overlap']}")
+
+    full = Path(args.in_dir).parent / "cleaned"
+    full_corpora: dict[str, list[dict]] = {}
+    for name, fname in FULL.items():
+        path = full / fname
+        if path.exists():
+            full_corpora[name] = eda.loadJsonl(path)
+    if set(full_corpora) == set(FULL):
+        print("\n== full Leivaditi benchmark ==")
+        frep = eda.buildFullReport(
+            full_corpora["docs"],
+            full_corpora["redflags"],
+            full_corpora["easy_redflags"],
+            full_corpora["entities"],
+            full_corpora["clauses"],
+        )
+        d = frep["docs"]
+        print(f"  docs: {d['rows']} ({d['unique_sources']} unique), "
+              f"len_chars {d['len_chars']['min']}/{d['len_chars']['p50']}/{d['len_chars']['max']}")
+        print(f"  doc classes: {d['document_class']}")
+        rf = frep["redflags"]
+        print(f"  redflags: {rf['rows']} rows / {rf['docs']} docs; "
+              f"{rf['positive']} positive ({rf['positive_types']} types) / {rf['negative_none']} 'none'")
+        print(f"  easy_redflags: {frep['easy_redflags']['rows']} spans ({frep['easy_redflags']['types']} types)")
+        print(f"  entities: {frep['entities']['rows']} rows / {frep['entities']['docs']} docs")
+        print(f"  clauses: {frep['clauses']['rows']} rows / {frep['clauses']['docs']} docs, "
+              f"{frep['clauses']['clause_begin_true']} clause starts")
+        report["full_benchmark"] = frep
 
     if args.json:
         Path(args.json).parent.mkdir(parents=True, exist_ok=True)

@@ -260,5 +260,126 @@
       "redflags_only": 112,
       "shared": 0
     }
+  },
+  "full_benchmark": {
+    "docs": {
+      "rows": 171,
+      "unique_sources": 171,
+      "rows_per_source": {
+        "min": 1,
+        "p50": 1,
+        "max": 1
+      },
+      "text": {
+        "rows": 171,
+        "mean": 48222.8,
+        "min": 1441,
+        "p50": 27905,
+        "p90": 111514,
+        "p95": 136187,
+        "max": 287742
+      },
+      "truncated_at_limit": 171,
+      "truncated_pct": 100.0,
+      "empty_text": 0,
+      "document_class": {
+        "lease agreement": 115,
+        "other": 42,
+        "amendment": 9,
+        "sublease agreement": 5
+      },
+      "len_chars": {
+        "min": 1441,
+        "p50": 27905,
+        "max": 287742
+      }
+    },
+    "redflags": {
+      "rows": 52853,
+      "docs": 179,
+      "positive": 863,
+      "negative_none": 51990,
+      "positive_types": 19,
+      "docs_with_positive": 115,
+      "type": {
+        "none": 51990,
+        "services_charges": 145,
+        "sublease_permitted": 118,
+        "break_option": 114,
+        "reinstatement_clause": 110,
+        "landlord_repairs": 84,
+        "damage": 68,
+        "guarantee_transferable": 56,
+        "change_of_control": 47,
+        "right_of_first_refusal_to_lease": 39,
+        "right_of_first_refusal_to_purchase": 26,
+        "warrantees_of_the_owner": 21,
+        "compalsory_reconstraction": 10,
+        "expansion": 8,
+        "special_stipulations": 6,
+        "extension_period": 5,
+        "additional_remarks": 3,
+        "riders": 1,
+        "assignment_indeplaatsstelling_permitted": 1,
+        "no_obligation_to_operate": 1
+      }
+    },
+    "easy_redflags": {
+      "rows": 1242,
+      "docs": 115,
+      "types": 19,
+      "type": {
+        "break_option": 307,
+        "services_charges": 190,
+        "sublease_permitted": 169,
+        "reinstatement_clause": 130,
+        "landlord_repairs": 101,
+        "damage": 83,
+        "guarantee_transferable": 74,
+        "change_of_control": 51,
+        "right_of_first_refusal_to_lease": 41,
+        "warrantees_of_the_owner": 27,
+        "right_of_first_refusal_to_purchase": 26,
+        "expansion": 15,
+        "compalsory_reconstraction": 10,
+        "special_stipulations": 6,
+        "extension_period": 5,
+        "additional_remarks": 3,
+        "assignment_indeplaatsstelling_permitted": 2,
+        "riders": 1,
+        "no_obligation_to_operate": 1
+      }
+    },
+    "entities": {
+      "rows": 2101,
+      "docs": 123,
+      "class_id": {
+        "term_of_payment": 406,
+        "lessor": 376,
+        "lessee": 307,
+        "leased_space": 190,
+        "designated_use": 138,
+        "notice_period": 131,
+        "vat": 124,
+        "signing_date": 112,
+        "end_date": 105,
+        "start_date": 104,
+        "extension_period": 76,
+        "expiration_date_of_lease": 32
+      }
+    },
+    "clauses": {
+      "rows": 32951,
+      "docs": 120,
+      "clause_begin_true": 8426,
+      "clause_type": {
+        "none": 24525,
+        "sub_clause_number": 4006,
+        "clause_title": 2131,
+        "sub_clause_title": 1554,
+        "clause_number": 610,
+        "annex": 125
+      }
+    }
   }
 }
