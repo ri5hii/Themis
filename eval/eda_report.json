@@ -1,0 +1,84 @@
+{
+  "leases": {
+    "rows": 8659,
+    "unique_sources": 335,
+    "rows_per_source": {
+      "min": 1,
+      "p50": 14,
+      "max": 180
+    },
+    "text": {
+      "rows": 8659,
+      "mean": 388.9,
+      "min": 1,
+      "p50": 529,
+      "p90": 600,
+      "p95": 600,
+      "max": 600
+    },
+    "truncated_at_limit": 4115,
+    "truncated_pct": 47.5,
+    "empty_text": 0,
+    "type_fast_lane": {
+      "unknown": 4937,
+      "term": 1603,
+      "maintenance": 430,
+      "termination": 319,
+      "utilities": 288,
+      "registration": 286,
+      "dispute_resolution": 244,
+      "rent": 189,
+      "premises": 107,
+      "subletting": 80,
+      "access": 63,
+      "deposit": 43,
+      "pets": 29,
+      "entire_agreement": 28,
+      "late_fee": 12,
+      "holdover": 1
+    }
+  },
+  "redflags": {
+    "rows": 738,
+    "unique_sources": 112,
+    "rows_per_source": {
+      "min": 1,
+      "p50": 6,
+      "max": 27
+    },
+    "text": {
+      "rows": 738,
+      "mean": 375.1,
+      "min": 20,
+      "p50": 366,
+      "p90": 600,
+      "p95": 600,
+      "max": 600
+    },
+    "truncated_at_limit": 224,
+    "truncated_pct": 30.4,
+    "empty_text": 0,
+    "type": {
+      "maintenance": 191,
+      "utilities": 145,
+      "subletting": 118,
+      "termination": 113,
+      "holdover": 110,
+      "deposit": 56,
+      "term": 5
+    },
+    "redflag_type": {
+      "services_charges": 145,
+      "sublease_permitted": 118,
+      "break_option": 113,
+      "reinstatement_clause": 110,
+      "landlord_repairs": 84,
+      "damage": 68,
+      "guarantee_transferable": 56,
+      "warrantees_of_the_owner": 21,
+      "compalsory_reconstraction": 10,
+      "expansion": 8,
+      "extension_period": 5
+    }
+  }
+}
