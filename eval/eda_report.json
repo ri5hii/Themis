@@ -36,6 +36,115 @@
       "entire_agreement": 28,
       "late_fee": 12,
       "holdover": 1
+    },
+    "truncation_by_type_fast_lane": {
+      "term": {
+        "n": 1603,
+        "truncated": 1406,
+        "truncated_pct": 87.7
+      },
+      "unknown": {
+        "n": 4937,
+        "truncated": 1069,
+        "truncated_pct": 21.7
+      },
+      "maintenance": {
+        "n": 430,
+        "truncated": 341,
+        "truncated_pct": 79.3
+      },
+      "termination": {
+        "n": 319,
+        "truncated": 249,
+        "truncated_pct": 78.1
+      },
+      "utilities": {
+        "n": 288,
+        "truncated": 224,
+        "truncated_pct": 77.8
+      },
+      "registration": {
+        "n": 286,
+        "truncated": 199,
+        "truncated_pct": 69.6
+      },
+      "dispute_resolution": {
+        "n": 244,
+        "truncated": 189,
+        "truncated_pct": 77.5
+      },
+      "rent": {
+        "n": 189,
+        "truncated": 149,
+        "truncated_pct": 78.8
+      },
+      "premises": {
+        "n": 107,
+        "truncated": 96,
+        "truncated_pct": 89.7
+      },
+      "access": {
+        "n": 63,
+        "truncated": 55,
+        "truncated_pct": 87.3
+      },
+      "subletting": {
+        "n": 80,
+        "truncated": 51,
+        "truncated_pct": 63.7
+      },
+      "deposit": {
+        "n": 43,
+        "truncated": 26,
+        "truncated_pct": 60.5
+      },
+      "pets": {
+        "n": 29,
+        "truncated": 26,
+        "truncated_pct": 89.7
+      },
+      "entire_agreement": {
+        "n": 28,
+        "truncated": 22,
+        "truncated_pct": 78.6
+      },
+      "late_fee": {
+        "n": 12,
+        "truncated": 12,
+        "truncated_pct": 100.0
+      },
+      "holdover": {
+        "n": 1,
+        "truncated": 1,
+        "truncated_pct": 100.0
+      }
+    },
+    "top_headings": {
+      "Preamble": 335,
+      "SIGNATURE PAGE TO SERIES G SHARE SUBSCRIPTION AGREEMENT": 96,
+      "LEASE": 91,
+      "RENT": 41,
+      "QUEENSLAND LAND REGISTRY": 41,
+      "RECITALS": 39,
+      "TABLE OF CONTENTS": 38,
+      "DEFINITIONS": 38,
+      "MISCELLANEOUS": 37,
+      "Rent": 31,
+      "LEASE CONTRACT": 30,
+      "AGREEMENT": 30,
+      "EXHIBIT B": 29,
+      "INITIALS INITIALS": 26,
+      "TERM": 24,
+      "INSURANCE": 23,
+      "Bancroft Way Office Lease": 23,
+      "ASSIGNMENT AND SUBLETTING": 22,
+      "NOTICES": 22,
+      "QUIET ENJOYMENT": 21,
+      "EXHIBIT A": 19,
+      "INTERPRETATION": 19,
+      "UTILITIES": 19,
+      "RULES AND REGULATIONS": 18,
+      "CONDEMNATION": 18
     }
   },
   "redflags": {
@@ -79,6 +188,77 @@
       "compalsory_reconstraction": 10,
       "expansion": 8,
       "extension_period": 5
+    },
+    "truncation_by_type": {
+      "maintenance": {
+        "n": 191,
+        "truncated": 56,
+        "truncated_pct": 29.3
+      },
+      "holdover": {
+        "n": 110,
+        "truncated": 46,
+        "truncated_pct": 41.8
+      },
+      "termination": {
+        "n": 113,
+        "truncated": 40,
+        "truncated_pct": 35.4
+      },
+      "utilities": {
+        "n": 145,
+        "truncated": 34,
+        "truncated_pct": 23.4
+      },
+      "subletting": {
+        "n": 118,
+        "truncated": 32,
+        "truncated_pct": 27.1
+      },
+      "deposit": {
+        "n": 56,
+        "truncated": 16,
+        "truncated_pct": 28.6
+      },
+      "term": {
+        "n": 5,
+        "truncated": 0,
+        "truncated_pct": 0.0
+      }
+    },
+    "type_x_redflag_type": {
+      "holdover": {
+        "reinstatement_clause": 110
+      },
+      "deposit": {
+        "guarantee_transferable": 56
+      },
+      "utilities": {
+        "services_charges": 145
+      },
+      "subletting": {
+        "sublease_permitted": 118
+      },
+      "maintenance": {
+        "landlord_repairs": 84,
+        "damage": 68,
+        "warrantees_of_the_owner": 21,
+        "compalsory_reconstraction": 10,
+        "expansion": 8
+      },
+      "termination": {
+        "break_option": 113
+      },
+      "term": {
+        "extension_period": 5
+      }
+    }
+  },
+  "cross_corpus": {
+    "source_overlap": {
+      "leases_only": 335,
+      "redflags_only": 112,
+      "shared": 0
     }
   }
 }

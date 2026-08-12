@@ -100,6 +100,43 @@ class TestEda:
         assert report["leases"]["type_fast_lane"] == {"x": 1}
         assert report["redflags"]["type"] == {"t": 1}
 
+    def test_truncationByColumn(self):
+        rows = [
+            {"k": "a", "text": "x" * 600},
+            {"k": "a", "text": "y"},
+            {"k": "b", "text": "z" * 600},
+        ]
+        info = eda.truncationByColumn(rows, "k")
+        assert info["a"] == {"n": 2, "truncated": 1, "truncated_pct": 50.0}
+        assert info["b"] == {"n": 1, "truncated": 1, "truncated_pct": 100.0}
+
+    def test_sourceOverlap_disjoint(self):
+        leases = [{"source": "s1"}, {"source": "s2"}]
+        red = [{"source": "s3"}]
+        ov = eda.sourceOverlap(leases, red)
+        assert ov == {"leases_only": 2, "redflags_only": 1, "shared": 0}
+
+    def test_sourceOverlap_shared(self):
+        leases = [{"source": "s1"}, {"source": "s2"}]
+        red = [{"source": "s1"}]
+        ov = eda.sourceOverlap(leases, red)
+        assert ov == {"leases_only": 1, "redflags_only": 0, "shared": 1}
+
+    def test_crossTab(self):
+        rows = [
+            {"a": "x", "b": "p"},
+            {"a": "x", "b": "q"},
+            {"a": "y", "b": "p"},
+        ]
+        assert eda.crossTab(rows, "a", "b") == {
+            "x": {"p": 1, "q": 1},
+            "y": {"p": 1},
+        }
+
+    def test_headingFrequency(self):
+        rows = [{"heading": "h1"}, {"heading": "h1"}, {"heading": "h2"}]
+        assert eda.headingFrequency(rows) == {"h1": 2, "h2": 1}
+
 
 def _writeSample(tmp_path):
     leases = tmp_path / "leases.jsonl"

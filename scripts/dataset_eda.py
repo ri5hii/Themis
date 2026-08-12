@@ -52,6 +52,15 @@ def main(argv: list[str] | None = None) -> int:
     _printDist("redflags.type", report["redflags"]["type"])
     _printDist("redflags.redflag_type", report["redflags"]["redflag_type"])
 
+    print("\n== truncation by type_fast_lane ==")
+    for key, info in report["leases"]["truncation_by_type_fast_lane"].items():
+        print(f"  {key}: n={info['n']} truncated={info['truncated']} ({info['truncated_pct']}%)")
+    print("\n== truncation by redflag type ==")
+    for key, info in report["redflags"]["truncation_by_type"].items():
+        print(f"  {key}: n={info['n']} truncated={info['truncated']} ({info['truncated_pct']}%)")
+    print("\n== cross-corpus source overlap ==")
+    print(f"  {report['cross_corpus']['source_overlap']}")
+
     if args.json:
         Path(args.json).parent.mkdir(parents=True, exist_ok=True)
         Path(args.json).write_text(json.dumps(report, indent=2, ensure_ascii=False) + "\n")
