@@ -103,3 +103,16 @@ class TestFeatures:
 
     def test_trigger_groups_stable(self):
         assert list(features.DEONTIC_TRIGGERS) == ["obl", "ent", "pro", "per", "nen", "nobl"]
+
+    def test_partyVector_tenant(self):
+        assert features.partyVector("tenant") == [1]
+
+    def test_partyVector_landlord(self):
+        assert features.partyVector("landlord") == [0]
+
+    def test_partyVector_unknown(self):
+        assert features.partyVector("") == [0]
+        assert features.partyVector(None) == [0]
+
+    def test_partyVector_case_insensitive(self):
+        assert features.partyVector("Tenant") == [1]

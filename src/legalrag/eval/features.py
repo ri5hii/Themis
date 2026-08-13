@@ -111,6 +111,11 @@ def triggerFeatures(texts: Iterable[str]) -> list[list[int]]:
     return [triggerVector(t) for t in texts]
 
 
+def partyVector(party: str) -> list[int]:
+    """Binary party indicator: 1 for tenant, 0 for landlord (unknown -> 0)."""
+    return [1 if str(party).strip().lower() == "tenant" else 0]
+
+
 def deonticGroupCounts(texts: Iterable[str]) -> dict[str, int]:
     """How many texts hit each trigger group (diagnostics)."""
     counts = {g: 0 for g in DEONTIC_TRIGGERS}
