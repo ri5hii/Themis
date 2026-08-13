@@ -92,10 +92,18 @@ _TRIGGER_PATTERNS: dict[str, list[re.Pattern[str]]] = {
 
 
 def triggerVector(text: str) -> list[int]:
-    """One-hot per deontic trigger group: 1 if any trigger in the group matches."""
+    """Per deontic trigger group: 1 if any trigger in the group matches."""
     out: list[int] = []
     for group in DEONTIC_TRIGGERS:
         out.append(1 if any(p.search(text) for p in _TRIGGER_PATTERNS[group]) else 0)
+    return out
+
+
+def triggerCounts(text: str) -> list[int]:
+    """Per group: total matches across all triggers in the group (count > binary)."""
+    out: list[int] = []
+    for group in DEONTIC_TRIGGERS:
+        out.append(sum(len(p.findall(text)) for p in _TRIGGER_PATTERNS[group]))
     return out
 
 
