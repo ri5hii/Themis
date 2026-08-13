@@ -5,7 +5,7 @@ import json
 from pathlib import Path
 
 from legalrag import tasks
-from legalrag.eval import metrics
+from legalrag.eval import features, metrics
 
 
 class TestSplitRows:
@@ -80,3 +80,26 @@ class TestMetrics:
         assert out["micro"]["precision"] == 0.0
         assert out["micro"]["recall"] == 0.0
         assert out["micro"]["f1"] == 0.0
+
+
+class TestFeatures:
+    def test_triggerVector_obl(self):
+        assert features.triggerVector("Tenant shall pay rent.")[0] == 1
+
+    def test_triggerVector_pro(self):
+        vec = features.triggerVector("Tenant shall not assign.")
+        assert vec[2] == 1  # pro
+
+    def test_triggerVector_none_hit(self):
+        assert features.triggerVector("This is a plain sentence.") == [0] * 6
+
+    def test_triggerVector_case_insensitive(self):
+        assert features.triggerVector("LANDLORD SHALL HAVE THE RIGHT TO terminate.")[1] == 1
+
+    def test_deonticGroupCounts(self):
+        counts = features.deonticGroupCounts(["shall pay", "plain", "may"])
+        assert counts["obl"] == 1
+        assert counts["per"] == 1
+
+    def test_trigger_groups_stable(self):
+        assert list(features.DEONTIC_TRIGGERS) == ["obl", "ent", "pro", "per", "nen", "nobl"]

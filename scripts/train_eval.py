@@ -1,12 +1,15 @@
-"""Train + evaluate a lightweight baseline for each supervised task.
+"""Train + evaluate baselines for each supervised task.
 
 Usage:
-    python scripts/train_eval.py [--task redflag_paragraph] [--seed 42]
-                                 [--splits data/splits] [--out eval/artifacts]
+    python scripts/train_eval.py --task redflag_paragraph --model deterministic
+    python scripts/train_eval.py --task deontic_multilabel --model tfidf
 
-Runs a TF-IDF + logistic-regression baseline on the seeded splits, computes
-metrics via legalrag.eval.metrics, and writes a JSON result. The multiclass
-'redflag_paragraph' and multi-label 'deontic_multilabel' tasks are supported.
+Models:
+  tfidf        TF-IDF + logistic regression (v0.1.1 baseline)
+  deterministic TF-IDF + deontic trigger features + balanced class weights
+                (+ optional 'none' downsampling for the multiclass task)
+
+Metrics via legalrag.eval.metrics; JSON result written to eval/artifacts.
 """
 from __future__ import annotations
 
@@ -19,55 +22,73 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "src"))
 
 from legalrag import tasks
-from legalrag.eval import metrics
+from legalrag.eval import features, metrics
 
 TASKS = ("redflag_paragraph", "deontic_multilabel")
+MODELS = ("tfidf", "deterministic")
+MULTILABEL_LABELS = ["obl", "ent", "pro", "per", "oth", "nen", "none"]
 
 
 def _load_split(dir_: Path, name: str, split: str) -> list[dict]:
     return tasks.loadJsonl(str(dir_ / f"{name}.{split}.jsonl"))
 
 
-def _fit_multiclass(rows: list[dict]) -> tuple:
-    from sklearn.feature_extraction.text import TfidfVectorizer
-    from sklearn.linear_model import LogisticRegression
+def _make_x(vec, texts: list[str], use_triggers: bool):
+    import numpy as np
+    from scipy import sparse
 
-    texts = [r["text"] for r in rows]
-    y = [r["type"] for r in rows]
-    vec = TfidfVectorizer(max_features=20000, sublinear_tf=True)
-    X = vec.fit_transform(texts)
-    clf = LogisticRegression(max_iter=1000)
-    clf.fit(X, y)
-    return vec, clf
+    X = vec.transform(texts)
+    if not use_triggers:
+        return X
+    trig = np.asarray(features.triggerFeatures(texts), dtype=float)
+    return sparse.hstack([X, sparse.csr_matrix(trig)]).tocsr()
 
 
-def _fit_multilabel(rows: list[dict]) -> tuple:
+def _fit(rows: list[dict], model: str, downsample_none: bool):
     from sklearn.feature_extraction.text import TfidfVectorizer
     from sklearn.linear_model import LogisticRegression
     from sklearn.multioutput import MultiOutputClassifier
 
+    use_triggers = model == "deterministic"
     texts = [r["text"] for r in rows]
-    Y = [r["label"] for r in rows]
+    if downsample_none and "type" in rows[0]:
+        import random
+
+        rng = random.Random(0)
+        pos = [r for r in rows if r["type"] != "none"]
+        neg = [r for r in rows if r["type"] == "none"]
+        n_keep = min(len(neg), len(pos) * 3)
+        neg = rng.sample(neg, n_keep)
+        rows = pos + neg
+        texts = [r["text"] for r in rows]
     vec = TfidfVectorizer(max_features=20000, sublinear_tf=True)
-    X = vec.fit_transform(texts)
-    clf = MultiOutputClassifier(LogisticRegression(max_iter=1000))
-    clf.fit(X, Y)
+    vec.fit(texts)
+    kwargs = {"class_weight": "balanced"} if model == "deterministic" else {}
+    if "type" in rows[0]:
+        y = [r["type"] for r in rows]
+        X = _make_x(vec, texts, use_triggers)
+        clf = LogisticRegression(max_iter=1000, **kwargs)
+        clf.fit(X, y)
+    else:
+        Y = [r["label"] for r in rows]
+        X = _make_x(vec, texts, use_triggers)
+        clf = MultiOutputClassifier(LogisticRegression(max_iter=1000, **kwargs))
+        clf.fit(X, Y)
     return vec, clf
 
 
-def _predict_multiclass(vec, clf, rows: list[dict]) -> tuple[list[str], list[str]]:
-    X = vec.transform([r["text"] for r in rows])
+def _predict(vec, clf, rows: list[dict], model: str):
+    texts = [r["text"] for r in rows]
+    X = _make_x(vec, texts, model == "deterministic")
     pred = clf.predict(X)
-    return [r["type"] for r in rows], list(pred)
+    return texts, list(pred)
 
 
-def _predict_multilabel(vec, clf, rows: list[dict], labels: list[str]) -> tuple[list[list[int]], list[list[int]]]:
-    X = vec.transform([r["text"] for r in rows])
-    pred = clf.predict(X)
-    return [r["label"] for r in rows], [list(map(int, p)) for p in pred]
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--task", choices=TASKS, default="redflag_paragraph")
+    parser.add_argument("--model", choices=MODELS, default="tfidf")
+    parser.add_argument("--downsample-none", action="store_true", help="cap 'none' rows at 3x positives (multiclass)")
     parser.add_argument("--seed", type=int, default=tasks.DEFAULT_SEED)
     parser.add_argument("--splits", default=str(Path("data/splits")))
     parser.add_argument("--out", default=str(Path("eval/artifacts")))
@@ -80,23 +101,25 @@ def main() -> int:
     train_rows = _load_split(split_dir, args.task, "train")
     test_rows = _load_split(split_dir, args.task, "test")
     t0 = time.time()
+    vec, clf = _fit(train_rows, args.model, args.downsample_none)
+    _, pred = _predict(vec, clf, test_rows, args.model)
+
     if args.task == "redflag_paragraph":
-        vec, clf = _fit_multiclass(train_rows)
-        y_true, y_pred = _predict_multiclass(vec, clf, test_rows)
-        result = metrics.multiclassStats(y_true, y_pred)
+        y_true = [r["type"] for r in test_rows]
+        result = metrics.multiclassStats(y_true, pred)
     else:
-        labels = ["obl", "ent", "pro", "per", "oth", "nen", "none"]
-        vec, clf = _fit_multilabel(train_rows)
-        y_true, y_pred = _predict_multilabel(vec, clf, test_rows, labels)
-        result = metrics.multilabelStats(y_true, y_pred, labels)
+        y_true = [r["label"] for r in test_rows]
+        result = metrics.multilabelStats(y_true, pred, MULTILABEL_LABELS)
     result["task"] = args.task
+    result["model"] = args.model
+    result["downsample_none"] = args.downsample_none
     result["train_n"] = len(train_rows)
     result["test_n"] = len(test_rows)
     result["elapsed_s"] = round(time.time() - t0, 1)
 
-    dst = out / f"{args.task}.baseline.json"
+    dst = out / f"{args.task}.{args.model}{'.ds' if args.downsample_none else ''}.json"
     dst.write_text(json.dumps(result, indent=2) + "\n")
-    print(f"[train_eval] {args.task}: wrote {dst}")
+    print(f"[train_eval] {args.task}/{args.model}: wrote {dst}")
     print(json.dumps({k: v for k, v in result.items() if k not in ("classes", "labels")}, indent=2))
     return 0
 
