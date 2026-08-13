@@ -116,3 +116,25 @@ class TestFeatures:
 
     def test_partyVector_case_insensitive(self):
         assert features.partyVector("Tenant") == [1]
+
+
+class TestTrainEvalHelpers:
+    @staticmethod
+    def _load_train_eval():
+        import importlib.util
+
+        spec = importlib.util.spec_from_file_location(
+            "train_eval", Path(__file__).resolve().parent.parent / "scripts" / "train_eval.py"
+        )
+        mod = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(mod)
+        return mod
+
+    def test_text_prefers_raw_text(self):
+        mod = self._load_train_eval()
+        rows = [{"text": "", "raw_text": "full paragraph"}, {"text": "short", "raw_text": "full"}]
+        assert mod._text(rows) == ["full paragraph", "full"]
+
+    def test_text_falls_back_to_text(self):
+        mod = self._load_train_eval()
+        assert mod._text([{"text": "only text"}]) == ["only text"]

@@ -34,8 +34,8 @@ def _load_split(dir_: Path, name: str, split: str) -> list[dict]:
 
 
 def _text(rows: list[dict]) -> list[str]:
-    """Feature text per row."""
-    return [str(r.get("text", "")) for r in rows]
+    """Feature text per row: prefer raw_text (full paragraph), fall back to text."""
+    return [str(r.get("raw_text") or r.get("text", "")) for r in rows]
 
 
 def _make_x(vec, rows: list[dict], use_triggers: bool, use_party: bool):
