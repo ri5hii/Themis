@@ -6,9 +6,13 @@
 from __future__ import annotations
 
 from .extract import Extraction, extractText, extractPageText
+from .segment import buildRows, splitParagraphs, splitSentences
 
 __all__ = [
     "Extraction",
     "extractText",
     "extractPageText",
+    "buildRows",
+    "splitParagraphs",
+    "splitSentences",
 ]
