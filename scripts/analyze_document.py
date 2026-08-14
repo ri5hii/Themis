@@ -42,17 +42,36 @@ def main() -> int:
         return 1
 
     t0 = time.time()
-    extraction = extractText(str(src))
+    try:
+        extraction = extractText(str(src))
+    except IsADirectoryError:
+        print(f"[analyze] is a directory, not a document: {src}", file=sys.stderr)
+        return 1
+    except ValueError as e:
+        print(f"[analyze] {e}", file=sys.stderr)
+        return 1
+    except Exception as e:  # noqa: BLE001 -- CLI boundary: report, don't traceback
+        print(f"[analyze] extraction failed for {src}: {e}", file=sys.stderr)
+        return 1
+
     rows = buildRows(extraction)
 
     out_dir = Path(args.out) / extraction.source
     out_dir.mkdir(parents=True, exist_ok=True)
+
+    error_pages = [p.page_idx for p in extraction.pages if p.method == "error"]
+    by_method: dict[str, int] = {}
+    for p in extraction.pages:
+        by_method[p.method] = by_method.get(p.method, 0) + 1
 
     manifest = {
         "source": extraction.source,
         "path": str(src),
         "n_pages": extraction.n_pages,
         "methods": sorted(extraction.methods),
+        "pages_by_method": by_method,
+        "n_error_pages": len(error_pages),
+        "error_pages": error_pages,
         "chars": len(extraction.full_text),
         "n_sections": len(rows["sections"]),
         "n_sentences": len(rows["sentences"]),
@@ -63,6 +82,11 @@ def main() -> int:
     n_sentences = write_rows(out_dir / "sentences.jsonl", rows["sentences"])
 
     print(f"[analyze] {extraction.source}: {n_sections} sections, {n_sentences} sentences")
+    if error_pages:
+        print(f"[analyze] warning: {len(error_pages)} page(s) failed: {error_pages}", file=sys.stderr)
+    if not extraction.full_text.strip():
+        print(f"[analyze] warning: no text extracted from {src}", file=sys.stderr)
+        return 2
     print(f"[analyze] wrote {out_dir}")
     return 0
 
