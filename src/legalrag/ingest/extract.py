@@ -99,21 +99,25 @@ def _ocr_instance():
 
 
 def _ocr_text(image_bytes: bytes, engine) -> str:
-    """OCR a rendered page image, joining detected text boxes by line."""
+    """OCR a rendered page image, joining detected text boxes by line.
+
+    Handles both the legacy tuple result (boxes, texts, scores) and the
+    modern rapidocr `RapidOCROutput` object (`.txts`, `.scores`).
+    """
     try:
         result = engine(image_bytes)
     except Exception:  # noqa: BLE001
         return ""
     if not result:
         return ""
-    lines: list[str] = []
-    # result is (boxes, texts, scores)
-    try:
-        _, texts, _ = result
-    except (TypeError, ValueError):
-        return ""
-    for line in texts or []:
-        lines.append(str(line))
+    if hasattr(result, "txts"):
+        texts = result.txts or []
+    else:
+        try:
+            _, texts, _ = result
+        except (TypeError, ValueError):
+            return ""
+    lines = [str(line) for line in texts or []]
     return "\n".join(lines).strip()
 
 

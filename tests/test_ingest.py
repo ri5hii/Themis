@@ -191,6 +191,27 @@ class TestExtractPageText:
         assert method == "ocr"
         assert text == "OCR'd content"
 
+    def test_ocr_output_object_supported(self):
+        """Modern rapidocr returns a RapidOCROutput object, not a tuple."""
+        from legalrag.ingest.extract import _ocr_text
+
+        class FakeOutput:
+            def __init__(self):
+                self.txts = ["line one", "line two"]
+                self.scores = [0.9, 0.8]
+
+        assert _ocr_text(b"", lambda _: FakeOutput()) == "line one\nline two"
+
+    def test_ocr_output_object_empty(self):
+        from legalrag.ingest.extract import _ocr_text
+
+        class FakeOutput:
+            def __init__(self):
+                self.txts = []
+                self.scores = []
+
+        assert _ocr_text(b"", lambda _: FakeOutput()) == ""
+
     def test_ocr_engine_failure_returns_error(self):
         def _fail(_):
             raise RuntimeError("ocr blew up")
