@@ -25,6 +25,7 @@ STEPS: list[tuple[str, list[str]]] = [
     ("ingest leivaditi", [PY, "scripts/ingest_leivaditi_full.py"]),
     ("ingest lexdemod", [PY, "scripts/ingest_lexdemod.py"]),
     ("eda report", [PY, "scripts/dataset_eda.py", "--json", str(REPORT)]),
+    ("build index", [PY, "scripts/build_index.py"]),
 ]
 if SAMPLE.exists():
     STEPS.append(("analyze sample", [PY, "scripts/analyze_document.py", str(SAMPLE)]))

@@ -6,13 +6,19 @@
 from __future__ import annotations
 
 from .extract import Extraction, extractPageText, extractText
+from .index import buildIndex, contentHash, discoverOutputs, loadIndex, lookup
 from .segment import buildRows, splitParagraphs, splitSentences
 
 __all__ = [
     "Extraction",
+    "buildIndex",
     "buildRows",
+    "contentHash",
+    "discoverOutputs",
     "extractPageText",
     "extractText",
+    "loadIndex",
+    "lookup",
     "splitParagraphs",
     "splitSentences",
 ]
