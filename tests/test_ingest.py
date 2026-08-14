@@ -67,7 +67,7 @@ class TestExtractText:
 
 class TestPdfTextLayer:
     def test_text_layer_pdf(self, tmp_path: Path):
-        import reportlab.pdfgen.canvas as canvas
+        from reportlab.pdfgen import canvas
 
         out = tmp_path / "text.pdf"
         c = canvas.Canvas(str(out))
