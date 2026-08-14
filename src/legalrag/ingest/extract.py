@@ -20,7 +20,11 @@ from pathlib import Path
 # A page with fewer than this many text characters is treated as scanned.
 MIN_TEXT_CHARS = 40
 
-# render scale for OCR: 2.0 upscales scanned pages for better detection
+# Render scale for OCR. Empirically tuned against the external corpus
+# (data/raw/external/): 2.0 outperforms 2.5/3.0/4.0 on the 1942 Yates and 1952
+# CIA scanned leases; detection knobs (text_score, box_thresh, unclip_ratio),
+# grayscale, and image preprocessing (autocontrast/sharpen/binarize) all tie
+# or lose to the defaults, so they are intentionally left unset.
 OCR_SCALE = 2.0
 
 TEXT_EXTS = {".txt", ".md"}
