@@ -5,14 +5,14 @@
 # turns extracted text into the section/sentence rows the supervised tasks consume.
 from __future__ import annotations
 
-from .extract import Extraction, extractText, extractPageText
+from .extract import Extraction, extractPageText, extractText
 from .segment import buildRows, splitParagraphs, splitSentences
 
 __all__ = [
     "Extraction",
-    "extractText",
-    "extractPageText",
     "buildRows",
+    "extractPageText",
+    "extractText",
     "splitParagraphs",
     "splitSentences",
 ]
