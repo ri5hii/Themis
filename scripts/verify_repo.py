@@ -28,6 +28,7 @@ STEPS: list[tuple[str, list[str]]] = [
     ("build index", [PY, "scripts/build_index.py"]),
     ("build embeddings", [PY, "scripts/build_embeddings.py"]),
     ("eval fast-lane", [PY, "scripts/eval_fastlane.py"]),
+    ("eval ood", [PY, "scripts/eval_ood.py"]),
 ]
 if SAMPLE.exists():
     STEPS.append(("analyze sample", [PY, "scripts/analyze_document.py", str(SAMPLE)]))

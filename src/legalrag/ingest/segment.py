@@ -36,18 +36,20 @@ def splitParagraphs(text: str) -> list[str]:
     """Split document text into clause/paragraph units.
 
     Blank lines hard-split. Runs of text with no blank lines are broken at
-    numbered clause starts (e.g. "4.2", "43. RIGHT OF", "6-1", "(a)").
+    numbered clause starts anywhere in the block (e.g. "4.2", "43. RIGHT OF",
+    "6-1", "(a)"). Extractor output often uses CRLF line endings; those are
+    normalized first so blank-line and clause splits still fire.
     """
     if not text.strip():
         return []
     paras: list[str] = []
-    for block in text.split("\n\n"):
+    for block in text.replace("\r\n", "\n").replace("\r", "\n").split("\n\n"):
         block = block.strip()
         if not block:
             continue
         # split consecutive numbered clauses within a block
         lines = block.splitlines()
-        if len(lines) == 1 or not _CLAUSE_START.match(lines[0]):
+        if len(lines) == 1:
             paras.append(_collapse(lines))
             continue
         chunks: list[str] = []

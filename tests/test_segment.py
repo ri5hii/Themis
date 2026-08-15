@@ -55,6 +55,26 @@ class TestSplitParagraphs:
         out = splitParagraphs("1. First line.\n2. Second line.\n3. Third line.")
         assert out == ["1. First line.", "2. Second line.", "3. Third line."]
 
+    def test_crlf_blank_line(self):
+        out = splitParagraphs("First clause.\r\n\r\nSecond clause.")
+        assert out == ["First clause.", "Second clause."]
+
+    def test_crlf_numbered_clauses(self):
+        out = splitParagraphs("1. TERM. One.\r\n2. RENT. Two.")
+        assert out == ["1. TERM. One.", "2. RENT. Two."]
+
+    def test_crlf_clause_after_running_text(self):
+        out = splitParagraphs(
+            "Page 2 of 9 Agreement, hereinafter referred to as rent.\r\n"
+            "4. USE. Notwithstanding the foregoing.\r\n"
+            "5. SIGNS. Following consent."
+        )
+        assert out == [
+            "Page 2 of 9 Agreement, hereinafter referred to as rent.",
+            "4. USE. Notwithstanding the foregoing.",
+            "5. SIGNS. Following consent.",
+        ]
+
 
 class TestBuildRows:
     def test_shapes(self):
