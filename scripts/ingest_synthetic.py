@@ -164,24 +164,26 @@ def _write_split(out: Path, name: str, rows: list[dict]) -> None:
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--seed", type=int, default=tasks.DEFAULT_SEED)
+    parser.add_argument("--in", dest="src", default=str(SYNTHETIC), help="source dir (default data/synthetic)")
     parser.add_argument("--out", default=str(DEFAULT_OUT))
     args = parser.parse_args()
 
+    src = Path(args.src)
     out = Path(args.out)
     out.mkdir(parents=True, exist_ok=True)
 
     print("[ingest_synthetic] validating against real schema/vocab...")
 
-    rp = _load(SYNTHETIC / "redflag_paragraph.jsonl")
+    rp = _load(src / "redflag_paragraph.jsonl")
     rp = validate_redflag(rp, _real_vocab("redflag_paragraph"))
     print(f"  redflag_paragraph: {len(rp)} rows OK")
 
-    dm = _load(SYNTHETIC / "deontic_multilabel.jsonl")
+    dm = _load(src / "deontic_multilabel.jsonl")
     validate_multilabel(dm)
     dm = normalize_multilabel(dm)
     print(f"  deontic_multilabel: {len(dm)} rows OK")
 
-    ds = _load(SYNTHETIC / "deontic_span.jsonl")
+    ds = _load(src / "deontic_span.jsonl")
     ds = validate_span(ds, _real_vocab("deontic_span"))
     print(f"  deontic_span: {len(ds)} rows OK")
 
