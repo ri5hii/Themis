@@ -1,6 +1,12 @@
 #!/usr/bin/env python3
 """Deterministic synthetic lease-corpus generator (recreates the Claude spec).
 
+DEPRECATED (experimental, keep for reproduction only): this builds the v0.2
+supervised-training corpus, the line learning.md's "training chain is obsolete"
+decision removed from the shipped product path (deterministic engine +
+grammar-constrained SLM for prose only). Not wired into the engine; do not
+resurrect as the source of fallback training data.
+
 Reproduces the three synthetic datasets the prompt defined — original, varied
 lease language (never reproduces real contracts or the Leivaditi corpus):
 

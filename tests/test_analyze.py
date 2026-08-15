@@ -20,10 +20,11 @@ from legalrag.extract.taxonomy import UNKNOWN
 class StubFallback:
     """Minimal fallback classifier with a canned softmax matrix."""
 
-    def __init__(self, probs: np.ndarray, classes: list[str], threshold: float = 0.4):
+    def __init__(self, probs: np.ndarray, classes: list[str], threshold: float = 0.4, margin: float = 0.0):
         self.model_name = "stub/model"
         self.classes = classes
         self.threshold = threshold
+        self.margin = margin
         self._probs = probs
 
     def predict_proba(self, vectors: np.ndarray) -> np.ndarray:
@@ -49,7 +50,7 @@ class TestAnalyzeSections:
         )
         assert [r["clause_type"] for r in out] == ["term", "deposit"]
         assert [r["method"] for r in out] == [METHOD_FAST_LANE, METHOD_FAST_LANE]
-        assert [r["confidence"] for r in out] == [1, 2]
+        assert [r["confidence"] for r in out] == [0.5, 0.75]
         assert out[0]["id"] == "s"
         assert set(out[0]) == {"id", "text", "clause_type", "method", "confidence"}
 
@@ -80,6 +81,19 @@ class TestAnalyzeSections:
         assert out[0]["clause_type"] == UNKNOWN
         assert out[0]["method"] == METHOD_UNKNOWN
         assert out[0]["confidence"] == pytest.approx(0.3)
+
+    def test_fallback_narrow_margin_refused(self, monkeypatch):
+        """High peak but near-tie top-two collapses to UNKNOWN (refuse path)."""
+
+        def fake_encode(texts, model_name, **kw):
+            return np.zeros((len(texts), 3), dtype="float32")
+
+        monkeypatch.setattr(analyze, "encodeTexts", fake_encode)
+        stub = StubFallback(np.array([[0.6, 0.55, 0.05]]), ["term", "pets", "rent"], margin=0.15)
+        out = _call([_sec("Parties hereby execute this instrument.")], stub)
+        assert out[0]["clause_type"] == UNKNOWN
+        assert out[0]["method"] == METHOD_UNKNOWN
+        assert out[0]["confidence"] == pytest.approx(0.6)
 
     def test_fallback_not_called_when_no_unknowns(self, monkeypatch):
         called = {"n": 0}

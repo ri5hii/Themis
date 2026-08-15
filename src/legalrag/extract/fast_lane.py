@@ -171,6 +171,18 @@ def classifyText(text: str) -> str:
     return classifyClause(text)[0]
 
 
+def confidenceFromCount(count: int) -> float:
+    """Map a fast-lane evidence count to a confidence in [0, 1].
+
+    A single trigger fires at 0.5 and each additional trigger halves the
+    remaining gap, so confidence is monotone, bounded, and comparable with the
+    classifier fallback's max softmax probability (before this mapping,
+    fast-lane "confidence" was the raw evidence count, an incomparable scale).
+    Returns 0.0 for count <= 0.
+    """
+    return 1.0 - 0.5 ** max(int(count), 0)
+
+
 def _guard() -> None:
     """Assert every trigger set is a known taxonomy type (import-time check)."""
     assert _KNOWN_TYPES <= frozenset(TAXONOMY), f"unknown trigger keys: {_KNOWN_TYPES - frozenset(TAXONOMY)}"

@@ -2,19 +2,51 @@
 #
 # A linear softmax head (multinomial logistic regression) fit on frozen
 # LegalBERT mean-pooled embeddings. `TrainedClassifier` wraps the fitted head
-# with the fast-lane threshold contract: predictions below THRESHOLD collapse
-# to UNKNOWN so the engine never overrules a confident fast-lane label.
+# with a refuse contract: predictions whose max softmax probability is below
+# THRESHOLD, or whose top-two probability gap is below MARGIN, collapse to
+# UNKNOWN so the engine never overrules a confident fast-lane label with a
+# low-quality guess (docs/progress.md §6.14).
 from __future__ import annotations
 
 from pathlib import Path
 
 import numpy as np
 
-from .fast_lane import classifyClause
+from .fast_lane import classifyClause, confidenceFromCount
 from .taxonomy import UNKNOWN
 
 # Confidence floor for the fallback: predictions below this become UNKNOWN.
 THRESHOLD = 0.4
+
+# Refuse margin: when the gap between the top two softmax probabilities is
+# below this, the prediction is treated as UNKNOWN. OOD non-clause content
+# (preamble, signatures, boilerplate) gets confidently-wrong softmax peaks;
+# close top-two scores are the low-quality signal the fallback should refuse
+# instead of guessing. Tuned on scripts/eval_ood.py: margin=0.5 lifts OOD
+# hybrid overall accuracy 0.144 -> 0.340 with no clause-only regression.
+MARGIN = 0.5
+
+
+def refuseRow(
+    row: np.ndarray,
+    classes: list[str],
+    threshold: float,
+    margin: float,
+) -> tuple[str, float]:
+    """Argmax label with threshold + margin refusal; returns (label, prob).
+
+    Shared by `TrainedClassifier.predict`/`classifyClause` and the analyze
+    engine's fallback loop so the refusal rules live in one place. A row whose
+    top probability is below `threshold`, or whose top-two gap is below
+    `margin`, collapses to UNKNOWN (the fast-lane refuse signal).
+    """
+    order = np.argsort(row)[::-1]
+    k = int(order[0])
+    prob = float(row[k])
+    second = float(row[order[1]]) if len(row) > 1 else 0.0
+    if prob >= threshold and prob - second >= margin:
+        return classes[k], prob
+    return UNKNOWN, prob
 
 
 class TrainedClassifier:
@@ -27,20 +59,29 @@ class TrainedClassifier:
         weights: np.ndarray,
         intercept: np.ndarray,
         threshold: float = THRESHOLD,
+        margin: float = MARGIN,
     ) -> None:
         self.model_name = model_name
         self.classes = classes
         self.weights = weights
         self.intercept = intercept
         self.threshold = threshold
+        self.margin = margin
         self._class_index = {c: i for i, c in enumerate(classes)}
 
     @classmethod
-    def from_sklearn(cls, model_name: str, clf, classes: list[str], threshold: float = THRESHOLD) -> TrainedClassifier:
+    def from_sklearn(
+        cls,
+        model_name: str,
+        clf,
+        classes: list[str],
+        threshold: float = THRESHOLD,
+        margin: float = MARGIN,
+    ) -> TrainedClassifier:
         """Wrap a fitted sklearn LogisticRegression (multinomial softmax)."""
         weights = np.asarray(clf.coef_, dtype="float32")
         intercept = np.asarray(clf.intercept_, dtype="float32")
-        return cls(model_name, list(classes), weights, intercept, threshold)
+        return cls(model_name, list(classes), weights, intercept, threshold, margin)
 
     def predict_proba(self, vectors: np.ndarray) -> np.ndarray:
         """Softmax over per-class logits for each row; shape (n, n_classes)."""
@@ -50,29 +91,25 @@ class TrainedClassifier:
         return exp / exp.sum(axis=1, keepdims=True)
 
     def predict(self, vectors: np.ndarray) -> list[str]:
-        """Argmax label per row; below threshold collapses to UNKNOWN."""
+        """Argmax label per row; below threshold or narrow top-two margin collapses to UNKNOWN."""
         probs = self.predict_proba(vectors)
-        out: list[str] = []
-        for row in probs:
-            i = int(row.argmax())
-            out.append(self.classes[i] if row[i] >= self.threshold else UNKNOWN)
-        return out
+        return [refuseRow(row, self.classes, self.threshold, self.margin)[0] for row in probs]
 
     def classifyClause(self, text: str) -> tuple[str, float]:
         """Fast-lane first; fall back to this classifier on UNKNOWN.
 
         Returns (clause_type, confidence). Confidence is the fast-lane
-        evidence count when the fast lane fires, else the classifier's max
-        softmax probability.
+        confidence (evidence count mapped to [0, 1] via
+        confidenceFromCount) when the fast lane fires, else the classifier's
+        max softmax probability after threshold/margin refusal.
         """
         fast, count = classifyClause(text)
         if fast != UNKNOWN:
-            return fast, float(count)
+            return fast, confidenceFromCount(count)
 
         vec = encodeTexts([text], self.model_name)
         probs = self.predict_proba(vec)[0]
-        i = int(probs.argmax())
-        return (self.classes[i], float(probs[i]))
+        return refuseRow(probs, self.classes, self.threshold, self.margin)
 
     def save(self, path: Path) -> None:
         """Persist weights + metadata to a .npz (stdlib-compatible load)."""
@@ -84,6 +121,7 @@ class TrainedClassifier:
             classes=np.asarray(self.classes),
             model_name=self.model_name,
             threshold=self.threshold,
+            margin=self.margin,
         )
 
     @classmethod
@@ -95,6 +133,7 @@ class TrainedClassifier:
             weights=data["weights"],
             intercept=data["intercept"],
             threshold=float(data["threshold"]),
+            margin=float(data["margin"]) if "margin" in data else MARGIN,
         )
 
 
@@ -142,9 +181,3 @@ def encodeTexts(
             counts = mask.sum(1).clamp(min=1e-9)
             vecs.append((summed / counts).cpu().numpy())
     return np.vstack(vecs).astype("float32")
-
-
-def _cuda_available() -> bool:
-    import torch
-
-    return bool(torch.cuda.is_available())

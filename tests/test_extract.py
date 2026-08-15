@@ -17,6 +17,17 @@ def test_taxonomy_order_is_stable_spec() -> None:
     assert taxonomyIndex(UNKNOWN) == len(TAXONOMY)  # unknown sorts last
 
 
+def test_confidence_from_count_bounds() -> None:
+    # Evidence-count -> [0, 1] mapping: monotone, 0 for no evidence, one
+    # trigger fires at 0.5 (comparable with classifier softmax probability).
+    assert fast_lane.confidenceFromCount(0) == 0.0
+    assert fast_lane.confidenceFromCount(1) == 0.5
+    assert fast_lane.confidenceFromCount(2) == 0.75
+    assert fast_lane.confidenceFromCount(-3) == 0.0
+    assert fast_lane.confidenceFromCount(10) > fast_lane.confidenceFromCount(3)
+    assert all(0.0 <= fast_lane.confidenceFromCount(n) < 1.0 for n in range(20))
+
+
 # §5.14: a termination clause that says "refund the security deposit" must
 # classify as termination, not deposit (evidence count beats the refund link).
 def test_refund_overmatch_resolved_by_evidence_count() -> None:

@@ -7,7 +7,9 @@ Scores the fast-lane against:
      models/classifier.npz exists, also reports the hybrid (fast-lane first,
      classifier fallback on UNKNOWN).
   2. data/annotated/leivaditi_leases.jsonl    -- 8,659 auto-labeled sections
-     (candidate labels, not gold); reports exact-accuracy + unknown rate.
+     (candidate labels, not gold); reports coverage (fast-lane fire rate) and
+     stored-label agreement, which is self-consistency against the labels the
+     same triggers produced at ingestion time — NOT a correctness metric.
 
 Usage:
     python scripts/eval_fastlane.py
@@ -93,13 +95,18 @@ def main() -> int:
 
     if LEASES.is_file():
         rows = _load(LEASES)
-        gold = [r.get("type_fast_lane", "?") for r in rows]
+        stored = [r.get("type_fast_lane", "?") for r in rows]
         pred = [classifyClause(r["text"])[0] for r in rows]
-        acc = sum(1 for g, p in zip(gold, pred) if g == p) / len(rows)
+        n = len(rows)
+        fired = sum(1 for p in pred if p != UNKNOWN)
+        agree = sum(1 for g, p in zip(stored, pred) if g == p)
+        # The stored labels were written by the same fast-lane triggers at
+        # ingestion time, so exact agreement here is self-consistency (drift
+        # between labeling and scoring), not accuracy. The honest headline is
+        # coverage: how often the fast lane fires instead of deferring.
         print(
-            "[eval_fastlane] auto-labeled sections: rows={} exact_acc={:.3f} unknown={}".format(
-                len(rows), acc, sum(1 for p in pred if p == "unknown")
-            )
+            f"[eval_fastlane] auto-labeled sections: rows={n} fast_lane_fires={fired} ({fired / n:.1%}) "
+            f"unknown={n - fired} stored_label_agreement={agree / n:.3f} (self-consistency only, not accuracy)"
         )
     return 0
 

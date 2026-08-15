@@ -1,5 +1,10 @@
 """Validate synthetic data and build deterministic train/val/test splits.
 
+DEPRECATED (experimental, keep for reproduction only): companion to
+scripts/build_synthetic.py on the obsolete v0.2 supervised-training corpus line
+(see learning.md, "training chain is obsolete"). Not used by the shipped
+deterministic engine path.
+
 Usage:
     python scripts/ingest_synthetic.py [--seed 42] [--out data/synthetic/splits]
 
