@@ -69,6 +69,24 @@ def test_holdover_double_and_twice_rent() -> None:
         assert count >= 1
 
 
+def test_holdover_wins_tie_over_term_on_sufferance_clause() -> None:
+    # claudeTestDocs lease_03: a holdover article with "tenant at sufferance"
+    # and 150% rent also matches term (expiration/the term).  With _TYPE_WEIGHT
+    # (term=0.5, §5.14 fix b), holdover's higher specificity wins the tie
+    # instead of term's taxonomy-index advantage.
+    text = (
+        "Should Lessee remain in possession of the Premises after the expiration "
+        "of the Term without Lessor's written consent, Lessee shall be deemed a "
+        "tenant at sufferance and shall pay Rent equal to one hundred fifty "
+        "percent (150%) of the Base Rent in effect immediately prior to expiration."
+    )
+    counts = fast_lane.evidenceCounts(text)
+    assert counts["holdover"] >= 1
+    assert counts["holdover"] == counts["term"] >= 1
+    t, _ = fast_lane.classifyClause(text)
+    assert t == "holdover"
+
+
 # §5.8: premises must use distinctive phrases, not the generic word "premises".
 def test_premises_distinctive_phrases() -> None:
     for text in (

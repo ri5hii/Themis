@@ -75,6 +75,53 @@ class TestSplitParagraphs:
             "5. SIGNS. Following consent.",
         ]
 
+    def test_prose_headings_split_without_blank_lines(self):
+        # docling-style output: single \n between prose headings and body,
+        # no blank lines and no numbering. Each heading must start a section.
+        text = (
+            "SMALL SUITE LEASE AGREEMENT\n"
+            "This Lease is between Landlord and Tenant.\n"
+            "Premises and Term\n"
+            "The Premises consist of 6,200 square feet.\n"
+            "Rent\n"
+            "Tenant shall pay Base Rent monthly.\n"
+            "Break Option\n"
+            "Tenant has a one-time option to terminate."
+        )
+        out = splitParagraphs(text)
+        assert out[0].startswith("SMALL SUITE LEASE AGREEMENT")
+        assert out[1].startswith("Premises and Term")
+        assert out[2].startswith("Rent")
+        assert out[3].startswith("Break Option")
+        assert len(out) == 4
+
+    def test_wrapped_body_fragment_not_a_heading(self):
+        # A short line that is a wrapped sentence fragment ending in a period
+        # must NOT be treated as a heading.
+        text = (
+            "Tenant shall not be relieved of its obligation to pay Rent but\n"
+            "shall not constitute a breach of this Lease.\n"
+            "Services\n"
+            "Landlord provides janitorial services."
+        )
+        out = splitParagraphs(text)
+        assert len(out) == 2
+        assert out[0].startswith("Tenant shall not")
+        assert out[1].startswith("Services")
+
+    def test_lowercase_line_not_a_heading(self):
+        # Mid-sentence wrapped line (leading lowercase) is not a heading.
+        text = (
+            "Landlord shall provide janitorial services to the Premises five\n"
+            "days per week, the cost of which is included in Operating Expenses.\n"
+            "Insurance and Indemnity\n"
+            "Tenant shall maintain commercial general liability insurance."
+        )
+        out = splitParagraphs(text)
+        assert len(out) == 2
+        assert out[0].startswith("Landlord shall provide")
+        assert out[1].startswith("Insurance and Indemnity")
+
 
 class TestBuildRows:
     def test_shapes(self):

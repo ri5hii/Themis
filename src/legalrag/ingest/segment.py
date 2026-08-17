@@ -30,6 +30,26 @@ def splitSentences(text: str) -> list[str]:
 
 # Numbered clause starts: "1.", "1.2", "6-1", "(a)", "43." at line start.
 _CLAUSE_START = re.compile(r"^\s*(?:\(?\d+(?:\.\d+)*\)?\.?|[A-Z]\d+-\d+|\([a-z]\))\s*[^\n]{2,}")
+# Prose headings: short title-case lines ("Premises and Term", "Rent") with no
+# terminal punctuation, as used by documents without blank lines or numbering.
+_HEADING = re.compile(r"^[A-Z][A-Za-z0-9 ,&'()\-]{1,47}$")
+
+
+def _is_prose_heading(line: str) -> bool:
+    """True for short title-case heading lines like "Premises and Term".
+
+    Only fires for lines that look like standalone headings: short, alphabetic,
+    no terminal punctuation (.!?:;,) and no leading lowercase. This prevents
+    mid-sentence wrapped fragments ("constitute a breach of this Lease.") from
+    being misread as headings while still catching docling's prose-style
+    section titles.
+    """
+    s = line.strip()
+    if not (3 <= len(s) <= 48):
+        return False
+    if s[-1] in ".!?:;,":
+        return False
+    return bool(_HEADING.match(s))
 
 
 def splitParagraphs(text: str) -> list[str]:
@@ -37,8 +57,10 @@ def splitParagraphs(text: str) -> list[str]:
 
     Blank lines hard-split. Runs of text with no blank lines are broken at
     numbered clause starts anywhere in the block (e.g. "4.2", "43. RIGHT OF",
-    "6-1", "(a)"). Extractor output often uses CRLF line endings; those are
-    normalized first so blank-line and clause splits still fire.
+    "6-1", "(a)") and at short prose headings (e.g. "Premises and Term"),
+    which some documents use instead of blank lines or numbering. Extractor
+    output often uses CRLF line endings; those are normalized first so
+    blank-line and clause splits still fire.
     """
     if not text.strip():
         return []
@@ -47,7 +69,7 @@ def splitParagraphs(text: str) -> list[str]:
         block = block.strip()
         if not block:
             continue
-        # split consecutive numbered clauses within a block
+        # split consecutive numbered clauses / headings within a block
         lines = block.splitlines()
         if len(lines) == 1:
             paras.append(_collapse(lines))
@@ -55,7 +77,7 @@ def splitParagraphs(text: str) -> list[str]:
         chunks: list[str] = []
         cur: list[str] = []
         for line in lines:
-            if _CLAUSE_START.match(line) and cur:
+            if cur and (_CLAUSE_START.match(line) or _is_prose_heading(line)):
                 chunks.append(_collapse(cur))
                 cur = [line]
             else:

@@ -140,6 +140,14 @@ _TRIGGERS: dict[str, tuple[re.Pattern[str], ...]] = {
 
 _KNOWN_TYPES = frozenset(_TRIGGERS)
 
+# Per-type weights applied during tie-breaking in classifyClause.  `term` is
+# the most generic type — its triggers ("expiration", "commencement date",
+# "the Term") fire as background context in almost every clause, masking
+# more specific types when evidence counts tie.  Downweighting it lets
+# content-specific types (holdover, utilities, rent) win on equal evidence.
+# §5.14, fix b.
+_TYPE_WEIGHT: dict[str, float] = {"term": 0.5}
+
 
 def evidenceCounts(text: str) -> dict[str, int]:
     """Total trigger matches per type (0 for types with no evidence)."""
@@ -152,17 +160,20 @@ def evidenceCounts(text: str) -> dict[str, int]:
 def classifyClause(text: str) -> tuple[str, int]:
     """Return (best_clause_type, evidence_count) for a section.
 
-    Best type = max evidence count, ties broken in taxonomy order
-    (evidence count desc, taxonomy index asc — a spec, §5.14). Returns
-    (UNKNOWN, 0) when no trigger fires.
+    Best type = max weighted evidence count.  Weights are applied from
+    ``_TYPE_WEIGHT`` (default 1.0); ties after weighting are broken in
+    taxonomy order (evidence count desc, taxonomy index asc — a spec,
+    §5.14).  Returns (UNKNOWN, 0) when no trigger fires.
     """
     counts = evidenceCounts(text)
     best = UNKNOWN
     best_count = 0
+    best_score = 0.0
     for t in TAXONOMY:
         count = counts[t]
-        if count > best_count:
-            best, best_count = t, count
+        score = count * _TYPE_WEIGHT.get(t, 1.0)
+        if score > best_score:
+            best, best_count, best_score = t, count, score
     return best, best_count
 
 
