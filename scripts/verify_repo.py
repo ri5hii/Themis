@@ -30,6 +30,7 @@ STEPS: list[tuple[str, list[str]]] = [
     ("eda report", [PY, "scripts/dataset_eda.py", "--json", str(REPORT)]),
     ("build index", [PY, "scripts/build_index.py"]),
     ("build embeddings", [PY, "scripts/build_embeddings.py"]),
+    ("build statute index", [PY, "scripts/build_statute_index.py"]),
     ("eval fast-lane", [PY, "scripts/eval_fastlane.py"]),
     ("eval ood", [PY, "scripts/eval_ood.py"]),
 ]
