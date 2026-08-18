@@ -174,3 +174,46 @@ class TestDispatch:
         assert ns.func.__module__ == "legalrag.cli.analyze"
         ns2 = parser.parse_args(["annotate", "doc.pdf"])
         assert ns2.func.__module__ == "legalrag.cli.annotate"
+
+    def test_parser_routes_train_subcommand(self, monkeypatch):
+        from legalrag.cli import build_parser, train
+
+        parser = build_parser()
+        ns = parser.parse_args(["train", "classify", "--data", "gold"])
+        assert ns.func is train.main
+        assert ns.subcommand == "classify"
+        assert ns.data == "gold"
+
+        captured = {}
+
+        def fake_run_classify(n):
+            captured["ns"] = n
+            return 7
+
+        monkeypatch.setattr(train, "run_classify", fake_run_classify)
+        assert train.main(ns) == 7
+        assert captured["ns"] is ns
+
+    def test_train_parser_has_three_subcommands(self):
+        from legalrag.cli.train import build_parser
+
+        parser = build_parser()
+        for sub in ("classify", "slm", "ground"):
+            ns = parser.parse_args([sub])
+            assert ns.subcommand == sub
+
+    def test_train_classify_parser_defaults(self):
+        from legalrag.cli.train import build_classify_parser
+
+        ns = build_classify_parser().parse_args([])
+        assert ns.data == "auto"
+        assert ns.test_size == 0.2
+        assert ns.seed == 42
+
+    def test_train_help_notes_non_trainable_stages(self, capsys):
+        from legalrag.cli.train import build_parser
+
+        with pytest.raises(SystemExit):
+            build_parser().parse_args(["--help"])
+        out = capsys.readouterr().out
+        assert "not trainable" in out

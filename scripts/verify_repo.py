@@ -31,6 +31,7 @@ STEPS: list[tuple[str, list[str]]] = [
     ("build index", [PY, "scripts/build_index.py"]),
     ("build embeddings", [PY, "scripts/build_embeddings.py"]),
     ("build statute index", [PY, "scripts/build_statute_index.py"]),
+    ("train smoke", [PY, "scripts/train_smoke.py"]),
     ("eval fast-lane", [PY, "scripts/eval_fastlane.py"]),
     ("eval ood", [PY, "scripts/eval_ood.py"]),
 ]

@@ -2,15 +2,27 @@
 
 Two-stage process per finding:
   1. Lexical anchor scan (deterministic) - rule's anchors must ALL appear
-  2. Dense FAISS tie-break (fallback) - top-1 from retrieve.queryEmbeddings
+  2. Dense FAISS tie-break (fallback) - top-1 from retrieve.queryEmbeddings,
+     gated by the trained relevance head (models/grounding, if present)
   3. Static citation fallback - rule's statute_fallback if both fail
 """
 from __future__ import annotations
 
 import json
+from functools import lru_cache
 from pathlib import Path
 
 from .engine import Finding, RiskRule
+
+GATE_DIR = Path(__file__).resolve().parents[3] / "models" / "grounding"
+
+
+@lru_cache(maxsize=1)
+def _loadGate(gate_dir: Path | None = None) -> object | None:
+    """Cached relevance gate; None when absent/corrupt (ungated behavior)."""
+    from .gate import _loadGate as _load
+
+    return _load(Path(gate_dir) if gate_dir is not None else GATE_DIR)
 
 
 def _normalize(text: str) -> str:
@@ -57,12 +69,16 @@ def groundFinding(
     statute_chunks: list[dict],
     statute_index_dir: Path,
     dense_k: int = 3,
+    gate: object | None = None,
 ) -> Finding:
     """Ground a finding against the statute corpus.
 
     Stage 1: Lexical anchor scan (deterministic)
-    Stage 2: Dense FAISS retrieval (if lexical fails)
+    Stage 2: Dense FAISS retrieval (if lexical fails), gated by the trained
+             relevance head when available
     Stage 3: Static fallback (if both fail)
+
+    ``gate`` overrides the artifact loaded from models/grounding (tests).
     """
     # Stage 1: Lexical anchor scan
     if rule.statute_anchors:
@@ -82,9 +98,11 @@ def groundFinding(
             )
             if hits:
                 best = hits[0]
-                finding.statute = best.get("id", rule.statute_fallback)
-                finding.grounding = best.get("text", "")[:900]
-                return finding
+                gate = gate if gate is not None else _loadGate()
+                if gate is None or gate.score(rule.statute_query, best["text"], best["score"]) >= gate.threshold:
+                    finding.statute = best.get("id", rule.statute_fallback)
+                    finding.grounding = best.get("text", "")[:900]
+                    return finding
         except (OSError, ImportError):
             pass  # Fall through to static fallback
 

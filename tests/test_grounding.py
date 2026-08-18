@@ -65,7 +65,7 @@ def test_ground_finding_stage2_dense(tmp_path, monkeypatch) -> None:
         lambda q, d, k=3: [{"id": "mta_s18", "text": CHUNKS[1]["text"], "score": 0.9}],
     )
     f = _finding()
-    groundFinding(f, rule, CHUNKS, tmp_path)
+    groundFinding(f, rule, CHUNKS, tmp_path, gate=_Gate(0.9))
     assert f.statute == "mta_s18"
 
 
@@ -87,6 +87,42 @@ def test_ground_finding_dense_error_falls_to_static(tmp_path, monkeypatch) -> No
     f = _finding()
     groundFinding(f, rule, CHUNKS, tmp_path)
     assert f.statute == "MTA 2021 general"
+
+
+class _Gate:
+    """Fake relevance gate for gating tests."""
+
+    threshold = 0.5
+
+    def __init__(self, prob: float) -> None:
+        self.prob = prob
+
+    def score(self, query: str, chunk_text: str, dense_score: float) -> float:
+        return self.prob
+
+
+def test_ground_finding_gate_suppresses_irrelevant_hit(tmp_path, monkeypatch) -> None:
+    rule = _rule(statute_anchors=[])
+    monkeypatch.setattr(
+        "legalrag.retrieve.queryEmbeddings",
+        lambda q, d, k=3: [{"id": "mta_s18", "text": CHUNKS[1]["text"], "score": 0.9}],
+    )
+    f = _finding()
+    groundFinding(f, rule, CHUNKS, tmp_path, gate=_Gate(0.1))
+    assert f.statute == "MTA 2021 general"
+    assert f.grounding == ""
+
+
+def test_ground_finding_gate_passes_relevant_hit(tmp_path, monkeypatch) -> None:
+    rule = _rule(statute_anchors=[])
+    monkeypatch.setattr(
+        "legalrag.retrieve.queryEmbeddings",
+        lambda q, d, k=3: [{"id": "mta_s18", "text": CHUNKS[1]["text"], "score": 0.9}],
+    )
+    f = _finding()
+    groundFinding(f, rule, CHUNKS, tmp_path, gate=_Gate(0.9))
+    assert f.statute == "mta_s18"
+    assert f.grounding == CHUNKS[1]["text"]
 
 
 def test_ground_all_mutates_in_place(tmp_path, monkeypatch) -> None:

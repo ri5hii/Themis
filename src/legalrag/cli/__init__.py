@@ -1,4 +1,4 @@
-# Themis CLI: `themis analyze`, `themis annotate`.
+# Themis CLI: `themis analyze`, `themis annotate`, `themis train`.
 from __future__ import annotations
 
 import argparse
@@ -6,7 +6,7 @@ import sys
 
 
 def build_parser() -> argparse.ArgumentParser:
-    from . import analyze, annotate
+    from . import analyze, annotate, train
 
     parser = argparse.ArgumentParser(prog="themis", description="Themis lease-analysis toolkit")
     sub = parser.add_subparsers(dest="command", required=True)
@@ -18,6 +18,10 @@ def build_parser() -> argparse.ArgumentParser:
     sub_annotate = sub.add_parser("annotate", help="Interactive section re-annotation")
     annotate.build_parser(sub_annotate)
     sub_annotate.set_defaults(func=annotate.main)
+
+    sub_train = sub.add_parser("train", help="Train trainable components (classify/slm/ground)")
+    train.build_parser(sub_train)
+    sub_train.set_defaults(func=train.main)
 
     return parser
 
