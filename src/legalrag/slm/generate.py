@@ -77,10 +77,12 @@ def simplifyFinding(
     The SLM only generates plain_explanation and tenant_impact.
     """
     if model_path is None:
-        model_path = str(
-            Path(__file__).resolve().parents[3]
-            / "models/llama-3.2-3b/Llama-3.2-3B-Instruct-Q4_K_M.gguf"
-        )
+        root = Path(__file__).resolve().parents[3]
+        candidates = [
+            root / "models/qwen2.5-1.5b/qwen2.5-1.5b-instruct-tuned-q8_0.gguf",
+            root / "models/llama-3.2-3b/Llama-3.2-3B-Instruct-Q4_K_M.gguf",
+        ]
+        model_path = next((str(c) for c in candidates if c.exists()), str(candidates[0]))
 
     model, grammar = _load_model(model_path, n_ctx, n_threads)
     user_prompt = make_finding_prompt(clause_text, rationale, risk_level, statute, grounding)
@@ -110,7 +112,12 @@ def simplifyFinding(
     return output
 
 
-def simplifyAll(findings: list, model_path: str | None = None) -> list[SLMOutput]:
+def simplifyAll(
+    findings: list,
+    model_path: str | None = None,
+    n_ctx: int = 4096,
+    n_threads: int = 8,
+) -> list[SLMOutput]:
     """Generate plain-language explanations for all findings."""
     outputs = []
     for finding in findings:
@@ -122,6 +129,8 @@ def simplifyAll(findings: list, model_path: str | None = None) -> list[SLMOutput
             grounding=finding.grounding,
             clause_type=finding.clause_type,
             model_path=model_path,
+            n_ctx=n_ctx,
+            n_threads=n_threads,
         )
         outputs.append(out)
     return outputs

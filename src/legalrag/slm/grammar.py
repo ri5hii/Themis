@@ -9,35 +9,28 @@ from __future__ import annotations
 
 # Valid clause types (must match taxonomy.py)
 CLAUSE_TYPES = (
-    '"term"', '"rent"', '"deposit"', '"maintenance"', '"utilities"',
-    '"termination"', '"holdover"', '"subletting"', '"access"', '"late_fee"',
-    '"registration"', '"dispute_resolution"', '"premises"', '"pets"',
-    '"entire_agreement"', '"no_obligation"',
+    '"\\"term\\""', '"\\"rent\\""', '"\\"deposit\\""', '"\\"maintenance\\""', '"\\"utilities\\""',
+    '"\\"termination\\""', '"\\"holdover\\""', '"\\"subletting\\""', '"\\"access\\""', '"\\"late_fee\\""',
+    '"\\"registration\\""', '"\\"dispute_resolution\\""', '"\\"premises\\""', '"\\"pets\\""',
+    '"\\"entire_agreement\\""', '"\\"no_obligation\\""',
 )
 
 # Valid risk levels
-RISK_LEVELS = ('"high"', '"medium"', '"low"', '"info"')
+RISK_LEVELS = ('"\\"high\\""', '"\\"medium\\""', '"\\"low\\""', '"\\"info\\""')
 
 # Build the grammar dynamically from the valid values
 _clause_type_alt = " | ".join(CLAUSE_TYPES)
 _risk_level_alt = " | ".join(RISK_LEVELS)
 
-GRAMMAR = f"""
-root   ::= object
-object ::= "{{" ws
-           "\"clause_type\"" ws ":" ws ctype ws ","
-           ws "\"risk_level\"" ws ":" ws rlevel ws ","
-           ws "\"statute\"" ws ":" ws string ws ","
-           ws "\"plain_explanation\"" ws ":" ws string ws ","
-           ws "\"tenant_impact\"" ws ":" ws string ws
-           "}}"
-ctype  ::= {_clause_type_alt}
-rlevel ::= {_risk_level_alt}
-string ::= "\\"" chars+ "\\""
-chars  ::= [^"\\\\] |\\
-           "\\" (["\\\\/bfnrt] | "u" [0-9a-fA-F] [0-9a-fA-F] [0-9a-fA-F] [0-9a-fA-F])
-ws     ::= [ \\t\\n]*
-"""
+GRAMMAR = "\n".join([
+    "root   ::= object",
+    'object ::= "{" ws "\\"clause_type\\"" ws ":" ws ctype ws "," ws "\\"risk_level\\"" ws ":" ws rlevel ws "," ws "\\"statute\\"" ws ":" ws string ws "," ws "\\"plain_explanation\\"" ws ":" ws string ws "," ws "\\"tenant_impact\\"" ws ":" ws string ws "}"',
+    "ctype  ::= " + _clause_type_alt,
+    "rlevel ::= " + _risk_level_alt,
+    'string ::= "\\"" chars+ "\\""',
+    'chars  ::= [^"\\\\] | "\\\\" (["\\\\/bfnrt] | "u" [0-9a-fA-F] [0-9a-fA-F] [0-9a-fA-F] [0-9a-fA-F])',
+    "ws     ::= [ \\t\\n]*",
+])
 
 SYSTEM_PROMPT = (
     "You review a clause from a lease contract and rewrite it in plain "

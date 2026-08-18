@@ -1,10 +1,12 @@
 """LoRA fine-tuning of the plain-language SLM.
 
-PEFT LoRA on Llama-3.2-1B-Instruct (CPU-feasible proxy for the deployed 3B).
-Trains on aligned finding→explanation pairs with engine-authoritative fields.
+PEFT LoRA on an instruct base model (default Llama-3.2-1B-Instruct; Qwen2.5
+and other chat-templated models work via --model). Trains on aligned
+finding→explanation pairs with engine-authoritative fields.
 
 Usage:
-    python scripts/finetune_slm.py [--epochs 3] [--lr 2e-4] [--r 8] [--alpha 16]
+    python scripts/finetune_slm.py [--model Qwen/Qwen2.5-1.5B-Instruct] \
+        [--epochs 3] [--lr 2e-4] [--r 8] [--alpha 16]
 """
 from __future__ import annotations
 
@@ -32,19 +34,11 @@ def load_jsonl(path: str | Path) -> list[dict]:
     return rows
 
 
-def format_chat(example: dict) -> str:
-    """Format a chat example into a single string for causal LM training."""
-    parts = []
-    for msg in example["messages"]:
-        role = msg["role"]
-        content = msg["content"]
-        if role == "system":
-            parts.append(f"<|begin_of_text|><|start_header_id|>system<|end_header_id|>\n{content}<|eot_id|>")
-        elif role == "user":
-            parts.append(f"<|start_header_id|>user<|end_header_id|>\n{content}<|eot_id|>")
-        elif role == "assistant":
-            parts.append(f"<|start_header_id|>assistant<|end_header_id|>\n{content}<|eot_id|>")
-    return "".join(parts)
+def format_chat(example: dict, tokenizer) -> str:
+    """Format a chat example via the tokenizer's chat template (model-agnostic)."""
+    return tokenizer.apply_chat_template(
+        example["messages"], tokenize=False, add_generation_prompt=False
+    )
 
 
 def main() -> int:
@@ -58,6 +52,7 @@ def main() -> int:
     parser.add_argument("--r", type=int, default=8, help="LoRA rank")
     parser.add_argument("--alpha", type=int, default=16, help="LoRA alpha")
     parser.add_argument("--max-length", type=int, default=1024)
+    parser.add_argument("--load-8bit", action="store_true", help="QLoRA: 8-bit base (needs bitsandbytes, CUDA)")
     parser.add_argument("--batch-size", type=int, default=1)
     parser.add_argument("--grad-accum", type=int, default=8)
     parser.add_argument("--start-epoch", type=int, default=0, help="Resume from epoch")
@@ -94,14 +89,24 @@ def main() -> int:
     if tokenizer.pad_token is None:
         tokenizer.pad_token = tokenizer.eos_token
 
-    model = AutoModelForCausalLM.from_pretrained(
-        args.model,
-        torch_dtype=torch.float32,
-        device_map="auto" if device == "cuda" else None,
-    )
+    if args.load_8bit and device == "cuda":
+        from peft import prepare_model_for_kbit_training
 
-    if device == "cpu":
-        model = model.to(device)
+        model = AutoModelForCausalLM.from_pretrained(
+            args.model,
+            load_in_8bit=True,
+            torch_dtype=torch.float16,
+            device_map="auto",
+        )
+        model = prepare_model_for_kbit_training(model)
+    else:
+        model = AutoModelForCausalLM.from_pretrained(
+            args.model,
+            torch_dtype=torch.float16 if device == "cuda" else torch.float32,
+            device_map="auto" if device == "cuda" else None,
+        )
+        if device == "cpu":
+            model = model.to(device)
 
     # LoRA config
     lora_config = LoraConfig(
@@ -115,13 +120,17 @@ def main() -> int:
     model = get_peft_model(model, lora_config)
     model.print_trainable_parameters()
 
+    if device == "cuda":
+        model.enable_input_require_grads()
+        model.gradient_checkpointing_enable()
+
     if args.eval_only:
         print("[eval-only] skipping training")
         return 0
 
     # Format training data
     print("[train] formatting training examples...")
-    train_texts = [format_chat(ex) for ex in train_data]
+    train_texts = [format_chat(ex, tokenizer) for ex in train_data]
 
     # Simple training loop (no HF Trainer dependency)
     print(f"[train] starting training: {args.epochs} epochs, lr={args.lr}")
