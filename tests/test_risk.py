@@ -524,7 +524,6 @@ class TestRationaleInterpolation:
         for rule in RULES:
             if not rule.triggers:
                 continue
-            probe = rule.triggers[0]
             sample = " ".join(r.pattern for r in rule.triggers)
             if not sample:
                 continue
