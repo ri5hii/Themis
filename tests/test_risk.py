@@ -371,6 +371,37 @@ class TestAnalyzeRisk:
         result = analyzeRisk(sections, RULES)
         assert any(f.rule_id == "deposit.cap_exceeded" for f in result.findings)
 
+    def test_deposit_fires_on_amount_vs_rent_comparison(self):
+        sections = [self._make_section(
+            "Party A may demand a lease security in the amount equaling "
+            "two-month's rent", "deposit"
+        )]
+        result = analyzeRisk(sections, RULES)
+        assert any(f.rule_id == "deposit.cap_exceeded" for f in result.findings)
+
+    def test_deposit_fires_on_guaranty_money(self):
+        sections = [self._make_section(
+            "The Guaranty Money under this lease is Won 84,080,000", "deposit"
+        )]
+        result = analyzeRisk(sections, RULES)
+        assert any(f.rule_id == "deposit.cap_exceeded" for f in result.findings)
+
+    def test_holdover_fires_on_double_rent(self):
+        sections = [self._make_section(
+            "If the lessee does not move out, it should pay to the leaser "
+            "double rent", "holdover"
+        )]
+        result = analyzeRisk(sections, RULES)
+        assert any(f.rule_id == "holdover.punitive_rate" for f in result.findings)
+
+    def test_holdover_no_fire_on_plain_surrender(self):
+        sections = [self._make_section(
+            "Tenant shall return the premises in good condition upon "
+            "expiration of the Term", "holdover"
+        )]
+        result = analyzeRisk(sections, RULES)
+        assert not any(f.rule_id == "holdover.punitive_rate" for f in result.findings)
+
     def test_deposit_no_fire_on_explicit_waiver(self):
         sections = [self._make_section(
             "No Security Deposit is required of Tenant given its investment "

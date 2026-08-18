@@ -70,14 +70,20 @@ RULES: list[RiskRule] = [
     # "Rent and Deposit"), so the rule fires on those types too.
     # Exclusion guard: explicit "No Security Deposit is required" waivers
     # are not deposit risk (false-positive guard, v0.4.3).
+    # v0.4.4 trigger mining from the Leivaditi benchmark sentences
+    # (data/annotated/leivaditi_redflags.jsonl) added the non-"security
+    # deposit" phrasings: "deposit for", "deposit equal to", "as deposit",
+    # "lease security", "guaranty money", and amount-vs-rent comparisons.
     RiskRule(
         rule_id="deposit.cap_exceeded",
         clause_types=("deposit", "rent", "late_fee"),
         triggers=[
             re.compile(
                 r"\bsecurity\s+deposit\b|\bletter\s+of\s+credit\b"
-                r"|\bdeposit\s+(?:of|shall|to|required|payable|held)\b",
-                re.IGNORECASE,
+                r"|\bdeposit\s+(?:of|shall|to|required|payable|held|for|is|equal\s+to|equaling|equal\b)\b"
+                r"|\b(?:as\s+a?\s+deposit|lease\s+security|guaranty\s+money)\b"
+                r"|\bsecurity\b.{0,60}\b(?:twice|double|equal\w*|equivalent\w*)\b.{0,40}\brent\b",
+                re.IGNORECASE | re.DOTALL,
             ),
         ],
         exclusions=[
@@ -182,17 +188,19 @@ RULES: list[RiskRule] = [
 
     # 5. Uncapped operating expense passthrough (MEDIUM)
     # Source: [LEIV2020] red flag "service charges"; [LEASELENS] uncapped
-    # CAM / operating expenses guidance.
+    # CAM / operating expenses guidance. v0.4.4 mining added the utility-
+    # and-expense vocabulary from the Leivaditi benchmark sentences
+    # ("expenses ... undertaken by the lessee" for power-supply increases).
     RiskRule(
         rule_id="rent.uncapped_passthrough",
         clause_types=("rent", "utilities"),
         triggers=[
             re.compile(
-                r"\b(?:operat\w*|cam|common\s+area|maintenance|tax|insurance)\b",
+                r"\b(?:operat\w*|cam|common\s+area|maintenance|tax|insurance|expense\w*|utility\w*|service)\b",
                 re.IGNORECASE,
             ),
             re.compile(
-                r"\b(?:pass[- ]?through|tenant.*share|proportionate|reimburs\w*)\b",
+                r"\b(?:pass[- ]?through|tenant.*share|proportionate|reimburs\w*|undertak\w*|borne\s+by)\b",
                 re.IGNORECASE,
             ),
         ],
@@ -214,14 +222,21 @@ RULES: list[RiskRule] = [
     # Clause type "term" included: the Leivaditi-benchmark regression
     # (progress.md §7 Fix b) showed holdover sections are frequently
     # classified as "term" by the tie-break order.
+    # v0.4.4 trigger mining from the Leivaditi benchmark added
+    # penalty-linked surrender drafting ("fails to return ... double
+    # rent", "move out ... twice"), the dominant international pattern.
     RiskRule(
         rule_id="holdover.punitive_rate",
         clause_types=("holdover", "term"),
         triggers=[
             re.compile(
                 r"\bhold\w*\s+over\b|\btenant\s+at\s+sufferance\b"
-                r"|\bfail\w*\s+to\s+vacate\b|\bremain\w*\s+in\s+possession\b",
-                re.IGNORECASE,
+                r"|\bfail\w*\s+to\s+vacate\b|\bremain\w*\s+in\s+possession\b"
+                r"|\b(?:fails?\s+to\s+return|shall\s+return|move\s+out|does\s+not\s+move\s+out)\b"
+                r".{0,60}\b(?:double|twice|\d+(?:\.\d+)?\s*(?:%|percent))\b"
+                r".{0,30}\b(?:rent|rental|penalty)\b"
+                r"|\bdouble\s+rent\b|\btwice\s+the\s+rent\b",
+                re.IGNORECASE | re.DOTALL,
             ),
         ],
         extractors={
@@ -275,13 +290,15 @@ RULES: list[RiskRule] = [
     # 8. Termination landlord-only (LOW)
     # Source: [LEIV2020] red flag "termination" (keywords: "termination,
     # limit of, finality"); [MASSGOV] §G / [NYCGUIDE] termination rights.
+    # v0.4.4: "lessor" added alongside "landlord" (both appear in
+    # published benchmark drafting).
     RiskRule(
         rule_id="termination.landlord_only",
         clause_types=("termination",),
         triggers=[
             re.compile(
-                r"\blandlord\s+(?:may|shall|can|is\s+entitled\s+to)\s+terminat"
-                r"|\blandlord.*terminat\w*\s+(?:this|the)\s+(?:lease|agreement)\b",
+                r"\b(?:landlord|lessor)\s+(?:may|shall|can|is\s+entitled\s+to)\s+terminat"
+                r"|\b(?:landlord|lessor).*terminat\w*\s+(?:this|the)\s+(?:lease|agreement)\b",
                 re.IGNORECASE,
             ),
         ],
