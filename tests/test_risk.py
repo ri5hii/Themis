@@ -41,7 +41,7 @@ class TestExtractValues:
 
 class TestRiskRules:
     def test_rule_count(self):
-        assert len(RULES) == 18
+        assert len(RULES) == 27
 
     def test_rule_ids_unique(self):
         ids = [r.rule_id for r in RULES]
@@ -50,7 +50,24 @@ class TestRiskRules:
     def test_deposit_cap_rule(self):
         rule = next(r for r in RULES if r.rule_id == "deposit.cap_exceeded")
         assert "deposit" in rule.clause_types
+        assert "rent" in rule.clause_types
         assert rule.risk_level == "medium"
+        assert len(rule.exclusions) == 1
+
+    def test_new_gap_rules_exist(self):
+        expected = {
+            "access.unrestricted_entry",
+            "transaction.registration_costs",
+            "reinstatement.as_is_restoration",
+            "dispute_resolution.mandatory_arbitration",
+            "dispute_resolution.fee_shifting",
+            "termination.no_early_exit",
+            "termination.automatic",
+            "rent.upfront_payment",
+            "insurance.tenant_pays_all",
+        }
+        ids = {r.rule_id for r in RULES}
+        assert expected <= ids
 
     def test_rent_escalation_rule(self):
         rule = next(r for r in RULES if r.rule_id == "rent.excessive_escalation")
@@ -345,3 +362,105 @@ class TestAnalyzeRisk:
         sections = [self._make_section("security deposit", "term")]
         result = analyzeRisk(sections, RULES)
         assert len(result.findings) == 0
+
+    def test_deposit_fires_on_rent_classified_with_letter_of_credit(self):
+        sections = [self._make_section(
+            "Tenant shall provide a Letter of Credit in the amount of $100,000 "
+            "as security for its obligations", "rent"
+        )]
+        result = analyzeRisk(sections, RULES)
+        assert any(f.rule_id == "deposit.cap_exceeded" for f in result.findings)
+
+    def test_deposit_no_fire_on_explicit_waiver(self):
+        sections = [self._make_section(
+            "No Security Deposit is required of Tenant given its investment "
+            "grade credit rating", "rent"
+        )]
+        result = analyzeRisk(sections, RULES)
+        assert not any(f.rule_id == "deposit.cap_exceeded" for f in result.findings)
+
+    def test_access_unrestricted_entry_fires(self):
+        sections = [self._make_section(
+            "Landlord shall have the right to enter the premises at any time "
+            "without notice for inspection", "access"
+        )]
+        result = analyzeRisk(sections, RULES)
+        assert any(f.rule_id == "access.unrestricted_entry" for f in result.findings)
+
+    def test_access_no_fire_on_notice_provision(self):
+        sections = [self._make_section(
+            "Landlord may enter the premises upon 24 hours prior written notice", "access"
+        )]
+        result = analyzeRisk(sections, RULES)
+        assert not any(f.rule_id == "access.unrestricted_entry" for f in result.findings)
+
+    def test_registration_costs_fires(self):
+        sections = [self._make_section(
+            "Tenant shall bear the stamp duty and registration costs of this Lease",
+            "registration",
+        )]
+        result = analyzeRisk(sections, RULES)
+        assert any(f.rule_id == "transaction.registration_costs" for f in result.findings)
+
+    def test_reinstatement_as_is_fires(self):
+        sections = [self._make_section(
+            "Tenant shall restore the premises to its original condition as it "
+            "existed prior to the commencement", "maintenance"
+        )]
+        result = analyzeRisk(sections, RULES)
+        assert any(f.rule_id == "reinstatement.as_is_restoration" for f in result.findings)
+
+    def test_mandatory_arbitration_fires(self):
+        sections = [self._make_section(
+            "all disputes shall be resolved by binding arbitration in favor of "
+            "expedited resolution", "dispute_resolution"
+        )]
+        result = analyzeRisk(sections, RULES)
+        assert any(f.rule_id == "dispute_resolution.mandatory_arbitration" for f in result.findings)
+
+    def test_fee_shifting_fires(self):
+        sections = [self._make_section(
+            "Tenant shall pay all of Landlord's attorney's fees and costs in "
+            "any dispute", "dispute_resolution"
+        )]
+        result = analyzeRisk(sections, RULES)
+        assert any(f.rule_id == "dispute_resolution.fee_shifting" for f in result.findings)
+
+    def test_no_early_exit_fires(self):
+        sections = [self._make_section(
+            "Tenant shall have no right to terminate this Lease prior to the "
+            "expiration of the Term", "termination"
+        )]
+        result = analyzeRisk(sections, RULES)
+        assert any(f.rule_id == "termination.no_early_exit" for f in result.findings)
+
+    def test_automatic_termination_fires(self):
+        sections = [self._make_section(
+            "This Lease shall automatically terminate if Tenant ceases "
+            "business operations", "termination"
+        )]
+        result = analyzeRisk(sections, RULES)
+        assert any(f.rule_id == "termination.automatic" for f in result.findings)
+
+    def test_upfront_payment_fires(self):
+        sections = [self._make_section(
+            "The full annual rent shall be payable in advance at signing", "rent"
+        )]
+        result = analyzeRisk(sections, RULES)
+        assert any(f.rule_id == "rent.upfront_payment" for f in result.findings)
+
+    def test_upfront_payment_due_in_full_fires(self):
+        sections = [self._make_section(
+            "Tenant shall pay a flat License Fee of $6,750 for the full Term, "
+            "due in full prior to commencement", "rent"
+        )]
+        result = analyzeRisk(sections, RULES)
+        assert any(f.rule_id == "rent.upfront_payment" for f in result.findings)
+
+    def test_insurance_tenant_pays_fires(self):
+        sections = [self._make_section(
+            "Tenant shall bear the cost of Landlord's property insurance "
+            "premiums", "maintenance"
+        )]
+        result = analyzeRisk(sections, RULES)
+        assert any(f.rule_id == "insurance.tenant_pays_all" for f in result.findings)

@@ -2,1183 +2,2856 @@
   "lease_01_office_meridian": {
     "n_pages": 3,
     "n_sections": 23,
-    "n_sentences": 37,
+    "n_sentences": 0,
     "sections": [
       {
-        "id": "",
+        "id": "s0",
         "text": "OFFICE LEASE AGREEMENT THIS LEASE AGREEMENT (\"Lease\") is made and entered into as of March 1, 2026, by and between OAKMONT REALTY TRUST, a Delaware statutory trust (\"Landlord\"), and COBALT INDUSTRIES, INC., a Texas corporation (\"Tenant\"). Landlord is the owner of the building located at 220 Ridgeline Plaza, Austin, Texas (the \"Building\"), and Tenant desires to lease a portion thereof for general office use, as more particularly described herein. ARTICLE 1 \u2014 PREMISES AND TERM",
-        "clause_type": "term",
-        "method": "classifier",
-        "confidence": 0.9859753251075745
+        "clause_type": "unknown",
+        "method": "fast_lane",
+        "confidence": 0.0
       },
       {
-        "id": "",
+        "id": "s1",
         "text": "1.1 The Premises consist of approximately 12,400 rentable square feet located on the second floor of the Building, as depicted on Exhibit A attached hereto.",
-        "clause_type": "premises",
-        "method": "classifier",
-        "confidence": 0.9970792531967163
+        "clause_type": "unknown",
+        "method": "fast_lane",
+        "confidence": 0.0
       },
       {
-        "id": "",
+        "id": "s2",
         "text": "1.2 The Term of this Lease shall be ten years, commencing on the Commencement Date and expiring on the last day of the one hundred twentieth full calendar month thereafter. ARTICLE 2 \u2014 RENT",
         "clause_type": "term",
         "method": "fast_lane",
         "confidence": 0.75
       },
       {
-        "id": "",
+        "id": "s3",
         "text": "2.1 Tenant shall pay to Landlord the Base Rent set forth in Schedule 1 on or before the first day of each calendar month, without notice or demand.",
         "clause_type": "rent",
         "method": "fast_lane",
         "confidence": 0.5
       },
       {
-        "id": "",
+        "id": "s4",
         "text": "2.2 Tenant shall reimburse Landlord for its pro rata share of Common Area Maintenance charges within thirty days of invoice.",
         "clause_type": "maintenance",
         "method": "fast_lane",
         "confidence": 0.5
       },
       {
-        "id": "",
+        "id": "s5",
         "text": "2.3 Landlord may adjust the estimated monthly Operating Expense payment once per calendar year based on actual costs incurred in the preceding year. ARTICLE 3 \u2014 MAINTENANCE AND REPAIRS",
         "clause_type": "unknown",
-        "method": "unknown",
-        "confidence": 0.5051550269126892
+        "method": "fast_lane",
+        "confidence": 0.0
       },
       {
-        "id": "",
+        "id": "s6",
         "text": "3.1 Landlord shall be responsible for maintaining and repairing the structural components of the Building, including the roof, foundation, and exterior walls, throughout the Term.",
-        "clause_type": "maintenance",
-        "method": "classifier",
-        "confidence": 0.7718987464904785
+        "clause_type": "unknown",
+        "method": "fast_lane",
+        "confidence": 0.0
       },
       {
-        "id": "",
+        "id": "s7",
         "text": "3.2 Tenant shall maintain the interior of the Premises, including all fixtures and equipment installed by Tenant, in good repair.",
-        "clause_type": "maintenance",
-        "method": "classifier",
-        "confidence": 0.980404794216156
+        "clause_type": "unknown",
+        "method": "fast_lane",
+        "confidence": 0.0
       },
       {
-        "id": "",
+        "id": "s8",
         "text": "3.3 In the event Landlord fails to complete a repair required under this Article within thirty days after notice from Tenant, Tenant may perform the repair and deduct the reasonable cost from Rent. ARTICLE 4 \u2014 USE OF PREMISES",
-        "clause_type": "maintenance",
-        "method": "classifier",
-        "confidence": 0.8988747000694275
+        "clause_type": "unknown",
+        "method": "fast_lane",
+        "confidence": 0.0
       },
       {
-        "id": "",
+        "id": "s9",
         "text": "4.1 Tenant may not use the Premises for any purpose other than general office use as described in this Article.",
         "clause_type": "unknown",
-        "method": "unknown",
-        "confidence": 0.4957645535469055
+        "method": "fast_lane",
+        "confidence": 0.0
       },
       {
-        "id": "",
+        "id": "s10",
         "text": "4.2 Tenant shall not permit the Premises to be used for any illegal purpose under federal, state, or local law. ARTICLE 5 \u2014 ASSIGNMENT AND SUBLETTING",
         "clause_type": "subletting",
         "method": "fast_lane",
         "confidence": 0.5
       },
       {
-        "id": "",
+        "id": "s11",
         "text": "5.1 Tenant shall not assign this Lease or sublet the Premises without the prior written consent of Landlord, which consent shall not be unreasonably withheld, conditioned, or delayed.",
         "clause_type": "subletting",
         "method": "fast_lane",
         "confidence": 0.75
       },
       {
-        "id": "",
+        "id": "s12",
         "text": "5.2 Notwithstanding Section 5.1, Tenant shall be permitted to assign this Lease in connection with a merger, consolidation, or sale of substantially all of its assets without Landlord's consent, provided Tenant gives Landlord written notice within ten days of such assignment.",
         "clause_type": "subletting",
         "method": "fast_lane",
         "confidence": 0.5
       },
       {
-        "id": "",
+        "id": "s13",
         "text": "5.3 Tenant shall have the right to sublease up to twenty-five percent (25%) of the Premises to a single subtenant without Landlord's consent, provided such subtenant's use is consistent with the Permitted Use. ARTICLE 6 \u2014 CASUALTY AND CONDEMNATION",
         "clause_type": "subletting",
         "method": "fast_lane",
         "confidence": 0.5
       },
       {
-        "id": "",
+        "id": "s14",
         "text": "6.1 If the Premises are damaged by fire or other casualty to an extent that renders them wholly untenantable, Rent shall abate entirely until the Premises are restored.",
-        "clause_type": "termination",
-        "method": "classifier",
-        "confidence": 0.7749578952789307
+        "clause_type": "unknown",
+        "method": "fast_lane",
+        "confidence": 0.0
       },
       {
-        "id": "",
+        "id": "s15",
         "text": "6.2 Should the Building be damaged to the extent of more than fifty percent (50%) of its replacement cost, Landlord may elect to terminate this Lease upon sixty days' written notice. ARTICLE 7 \u2014 DEFAULT AND REMEDIES",
         "clause_type": "termination",
         "method": "fast_lane",
         "confidence": 0.75
       },
       {
-        "id": "",
+        "id": "s16",
         "text": "7.1 Tenant shall pay all Additional Rent due under this Lease without deduction, offset, or counterclaim except as expressly permitted herein.",
         "clause_type": "rent",
         "method": "fast_lane",
         "confidence": 0.75
       },
       {
-        "id": "",
+        "id": "s17",
         "text": "7.2 Landlord shall have no duty to mitigate damages upon Tenant's default to any greater extent than required by applicable law. ARTICLE 8 \u2014 RIDERS",
-        "clause_type": "rent",
-        "method": "classifier",
-        "confidence": 0.8852789998054504
+        "clause_type": "unknown",
+        "method": "fast_lane",
+        "confidence": 0.0
       },
       {
-        "id": "",
+        "id": "s18",
         "text": "8.1 Rider No. 1, attached hereto and made a part of this Lease, sets forth additional provisions regarding Tenant's rooftop HVAC unit and shall control over any conflicting provision in the body of this Lease. ARTICLE 9 \u2014 SPECIAL STIPULATIONS",
         "clause_type": "utilities",
         "method": "fast_lane",
         "confidence": 0.5
       },
       {
-        "id": "",
+        "id": "s19",
         "text": "9.1 Special Stipulations: notwithstanding any provision to the contrary in this Lease, Landlord shall not lease any space within five hundred (500) feet of the Premises to a business offering services substantially similar to Tenant's core business. ARTICLE 10 \u2014 GENERAL PROVISIONS",
         "clause_type": "unknown",
-        "method": "unknown",
-        "confidence": 0.335910826921463
+        "method": "fast_lane",
+        "confidence": 0.0
       },
       {
-        "id": "",
+        "id": "s20",
         "text": "10.1 This Lease shall be governed by and construed in accordance with the laws of the State of Delaware, without regard to its conflict of laws principles.",
         "clause_type": "dispute_resolution",
         "method": "fast_lane",
         "confidence": 0.5
       },
       {
-        "id": "",
+        "id": "s21",
         "text": "10.2 Capitalized terms used but not defined in this Lease shall have the meanings ascribed to them in Exhibit A. IN WITNESS WHEREOF, the parties have executed this Lease as of the date first written above.",
-        "clause_type": "term",
-        "method": "classifier",
-        "confidence": 0.5538842678070068
+        "clause_type": "unknown",
+        "method": "fast_lane",
+        "confidence": 0.0
       },
       {
-        "id": "",
+        "id": "s22",
         "text": "LANDLORD: Oakmont Realty Trust By: _____________________ TENANT: Cobalt Industries, Inc. By: _____________________",
         "clause_type": "unknown",
-        "method": "unknown",
-        "confidence": 0.45893794298171997
+        "method": "fast_lane",
+        "confidence": 0.0
       }
     ]
   },
   "lease_02_retail_sundial": {
     "n_pages": 2,
     "n_sections": 18,
-    "n_sentences": 28,
+    "n_sentences": 0,
     "sections": [
       {
-        "id": "",
+        "id": "s0",
         "text": "RETAIL LEASE AGREEMENT THIS LEASE (\"Lease\") is made as of June 15, 2026, by and between PARTY A, SUNDIAL BUSINESS PARK LLC (\"Landlord\"), and PARTY B, BRIGHTWELL LOGISTICS (\"Tenant\"). The Premises are located within the Project commonly known as Sundial Business Park, situated on approximately twenty-two acres. SECTION 1 \u2014 GRANT AND TERM",
-        "clause_type": "term",
-        "method": "classifier",
-        "confidence": 0.8829413056373596
+        "clause_type": "unknown",
+        "method": "fast_lane",
+        "confidence": 0.0
       },
       {
-        "id": "",
+        "id": "s1",
         "text": "1.1 Landlord hereby leases to Tenant, and Tenant hereby leases from Landlord, the Premises described in Exhibit A for a Term of seven years commencing on the Commencement Date. SECTION 2 \u2014 CONTINUOUS OPERATION",
         "clause_type": "term",
         "method": "fast_lane",
         "confidence": 0.5
       },
       {
-        "id": "",
+        "id": "s2",
         "text": "2(a) Notwithstanding anything to the contrary in this Lease, Tenant shall have no obligation to operate or conduct business at the Premises.",
         "clause_type": "no_obligation",
         "method": "fast_lane",
         "confidence": 0.75
       },
       {
-        "id": "",
+        "id": "s3",
         "text": "2(b) Tenant may 'go dark' and cease operating at the Premises at any time following the third anniversary of the Rent Commencement Date without penalty.",
         "clause_type": "term",
         "method": "fast_lane",
         "confidence": 0.5
       },
       {
-        "id": "",
+        "id": "s4",
         "text": "2(c) Landlord shall have no remedy against Tenant, including termination, based solely on Tenant's cessation of business operations at the Premises. SECTION 3 \u2014 EXPANSION AND EXTENSION",
         "clause_type": "termination",
         "method": "fast_lane",
         "confidence": 0.5
       },
       {
-        "id": "",
+        "id": "s5",
         "text": "3.1 Tenant shall have the right to expand into the adjacent Suite 305, comprising approximately 2,400 rentable square feet, upon sixty days' prior written notice to Landlord.",
-        "clause_type": "premises",
-        "method": "classifier",
-        "confidence": 0.9784740805625916
+        "clause_type": "unknown",
+        "method": "fast_lane",
+        "confidence": 0.0
       },
       {
-        "id": "",
+        "id": "s6",
         "text": "3.2 Tenant shall have the option to extend the Term of this Lease for two additional periods of five years each, exercisable by written notice given not less than nine months prior to the expiration of the then-current Term.",
         "clause_type": "term",
         "method": "fast_lane",
         "confidence": 0.75
       },
       {
-        "id": "",
+        "id": "s7",
         "text": "3.3 Landlord and Tenant shall negotiate in good faith to determine the Fair Market Rent applicable to any Extension Period, failing which the matter shall be resolved by arbitration. SECTION 4 \u2014 ASSIGNMENT RIGHTS",
         "clause_type": "dispute_resolution",
         "method": "fast_lane",
         "confidence": 0.5
       },
       {
-        "id": "",
+        "id": "s8",
         "text": "4.1 Tenant may assign this Lease to an Affiliate of Tenant without obtaining Landlord's prior consent, provided Tenant gives Landlord written notice within ten days of such assignment.",
         "clause_type": "subletting",
         "method": "fast_lane",
         "confidence": 0.5
       },
       {
-        "id": "",
+        "id": "s9",
         "text": "4.2 Landlord's consent shall not be required for an assignment of this Lease to any entity controlling, controlled by, or under common control with Tenant. SECTION 5 \u2014 RENT AND SERVICE CHARGES",
         "clause_type": "unknown",
-        "method": "unknown",
-        "confidence": 0.632121741771698
+        "method": "fast_lane",
+        "confidence": 0.0
       },
       {
-        "id": "",
+        "id": "s10",
         "text": "5.1 Tenant shall pay, as Additional Rent, its Proportionate Share of Operating Expenses, including janitorial, security, and landscaping services provided by Landlord.",
         "clause_type": "rent",
         "method": "fast_lane",
         "confidence": 0.5
       },
       {
-        "id": "",
+        "id": "s11",
         "text": "5.2 Service Charges for after-hours HVAC usage shall be billed to Tenant at the rate of $75 per hour, subject to annual adjustment. SECTION 6 \u2014 LANDLORD REPRESENTATIONS",
         "clause_type": "utilities",
         "method": "fast_lane",
         "confidence": 0.5
       },
       {
-        "id": "",
+        "id": "s12",
         "text": "6.1 Landlord represents and warrants that it holds fee simple title to the Building and has full authority to enter into this Lease.",
-        "clause_type": "premises",
-        "method": "classifier",
-        "confidence": 0.8326889872550964
+        "clause_type": "unknown",
+        "method": "fast_lane",
+        "confidence": 0.0
       },
       {
-        "id": "",
+        "id": "s13",
         "text": "6.2 Landlord warrants that, to its knowledge, the Premises comply with all applicable building codes as of the Commencement Date. SECTION 7 \u2014 COMPULSORY RECONSTRUCTION",
         "clause_type": "term",
         "method": "fast_lane",
         "confidence": 0.5
       },
       {
-        "id": "",
+        "id": "s14",
         "text": "7.1 In the event any governmental authority requires the compulsory reconstruction of the Building, Landlord shall proceed with such reconstruction at its sole cost and shall equitably abate Rent during the period of reconstruction. SECTION 8 \u2014 MISCELLANEOUS / ADDITIONAL REMARKS",
         "clause_type": "unknown",
-        "method": "unknown",
-        "confidence": 0.5743322372436523
+        "method": "fast_lane",
+        "confidence": 0.0
       },
       {
-        "id": "",
+        "id": "s15",
         "text": "8.1 Additional Remarks: the parties acknowledge ongoing discussions regarding a potential future expansion into the adjacent building, to be documented separately if finalized.",
-        "clause_type": "maintenance",
-        "method": "classifier",
-        "confidence": 0.7982016205787659
+        "clause_type": "unknown",
+        "method": "fast_lane",
+        "confidence": 0.0
       },
       {
-        "id": "",
+        "id": "s16",
         "text": "8.2 Tenant shall obtain and maintain, at its sole cost, all permits necessary to operate its business at the Premises.",
-        "clause_type": "maintenance",
-        "method": "classifier",
-        "confidence": 0.7303084135055542
+        "clause_type": "unknown",
+        "method": "fast_lane",
+        "confidence": 0.0
       },
       {
-        "id": "",
+        "id": "s17",
         "text": "8.3 Tenant shall not store any Hazardous Materials on the Premises except in compliance with applicable Environmental Laws. IN WITNESS WHEREOF, the parties have executed this Lease as of the date first written above. PARTY A: Sundial Business Park LLC By: _____________________ PARTY B: Brightwell Logistics By: _____________________",
-        "clause_type": "term",
-        "method": "classifier",
-        "confidence": 0.9278382658958435
+        "clause_type": "unknown",
+        "method": "fast_lane",
+        "confidence": 0.0
       }
     ]
   },
   "lease_03_industrial_ferrous": {
     "n_pages": 2,
     "n_sections": 18,
-    "n_sentences": 28,
+    "n_sentences": 0,
     "sections": [
       {
-        "id": "",
+        "id": "s0",
         "text": "INDUSTRIAL LEASE AGREEMENT THIS INDUSTRIAL LEASE AGREEMENT is entered into as of August 4, 2026, between FERROUS MANUFACTURING CO. (\"Lessor\") and NORTHGATE VENTURES (\"Lessee\"). ARTICLE I \u2014 DEMISE",
-        "clause_type": "term",
-        "method": "classifier",
-        "confidence": 0.9710065126419067
+        "clause_type": "unknown",
+        "method": "fast_lane",
+        "confidence": 0.0
       },
       {
-        "id": "",
+        "id": "s1",
         "text": "1.1 Lessor hereby demises to Lessee the warehouse and adjoining office space described in Exhibit A, for a Term of eight years. ARTICLE II \u2014 RENT AND GUARANTY",
-        "clause_type": "term",
-        "method": "classifier",
-        "confidence": 0.9020580649375916
+        "clause_type": "unknown",
+        "method": "fast_lane",
+        "confidence": 0.0
       },
       {
-        "id": "",
+        "id": "s2",
         "text": "2.1 Lessee shall pay Base Rent in the amount set forth in Schedule 1, payable monthly in advance.",
         "clause_type": "rent",
         "method": "fast_lane",
         "confidence": 0.5
       },
       {
-        "id": "",
+        "id": "s3",
         "text": "2.2 The Guaranty executed by Guarantor in connection with this Lease may be assigned by Guarantor to a successor entity of substantially equivalent net worth without Lessor's consent.",
-        "clause_type": "termination",
-        "method": "classifier",
-        "confidence": 0.6846258640289307
+        "clause_type": "unknown",
+        "method": "fast_lane",
+        "confidence": 0.0
       },
       {
-        "id": "",
+        "id": "s4",
         "text": "2.3 Guarantor's obligations under the Guaranty shall automatically transfer to any assignee of this Lease that is a Permitted Transferee, without the need for a new guaranty instrument. ARTICLE III \u2014 HOLDOVER",
-        "clause_type": "subletting",
-        "method": "classifier",
-        "confidence": 0.9795968532562256
+        "clause_type": "unknown",
+        "method": "fast_lane",
+        "confidence": 0.0
       },
       {
-        "id": "",
+        "id": "s5",
         "text": "3.1 Should Lessee remain in possession of the Premises after the expiration of the Term without Lessor's written consent, Lessee shall be deemed a tenant at sufferance and shall pay Rent equal to one hundred fifty percent (150%) of the Base Rent in effect immediately prior to expiration.",
         "clause_type": "holdover",
         "method": "fast_lane",
         "confidence": 0.75
       },
       {
-        "id": "",
+        "id": "s6",
         "text": "3.2 Any holdover by Lessee beyond the Term shall not be construed as a renewal of this Lease, and Lessor may pursue all remedies available at law or in equity. ARTICLE IV \u2014 RIGHT OF FIRST REFUSAL",
         "clause_type": "unknown",
-        "method": "unknown",
-        "confidence": 0.47823503613471985
+        "method": "fast_lane",
+        "confidence": 0.0
       },
       {
-        "id": "",
+        "id": "s7",
         "text": "4.1 Should Lessor elect to sell the Building during the Term, Lessor shall first offer to sell the Building to Lessee on the same terms as any bona fide third-party offer Lessor intends to accept.",
-        "clause_type": "termination",
-        "method": "classifier",
-        "confidence": 0.8702446818351746
+        "clause_type": "unknown",
+        "method": "fast_lane",
+        "confidence": 0.0
       },
       {
-        "id": "",
+        "id": "s8",
         "text": "4.2 Lessee shall have thirty days after receipt of Lessor's notice of a proposed sale to exercise its right of first refusal to purchase the Building. ARTICLE V \u2014 REPAIRS AND SERVICES",
         "clause_type": "unknown",
-        "method": "unknown",
-        "confidence": 0.3999873399734497
+        "method": "fast_lane",
+        "confidence": 0.0
       },
       {
-        "id": "",
+        "id": "s9",
         "text": "5.1 Lessor shall maintain the elevators, common area HVAC, and life safety systems of the Building in good working order throughout the Term.",
         "clause_type": "utilities",
         "method": "fast_lane",
         "confidence": 0.5
       },
       {
-        "id": "",
+        "id": "s10",
         "text": "5.2 Lessee shall keep the Premises in a clean and sanitary condition at all times during the Term.",
-        "clause_type": "termination",
-        "method": "classifier",
-        "confidence": 0.9315295219421387
+        "clause_type": "unknown",
+        "method": "fast_lane",
+        "confidence": 0.0
       },
       {
-        "id": "",
+        "id": "s11",
         "text": "5.3 Lessee shall not exceed the maximum occupancy load established by the local fire marshal for the Premises.",
         "clause_type": "unknown",
-        "method": "unknown",
-        "confidence": 0.310091108083725
+        "method": "fast_lane",
+        "confidence": 0.0
       },
       {
-        "id": "",
+        "id": "s12",
         "text": "ARTICLE VI \u2014 CHANGE OF CONTROL",
         "clause_type": "unknown",
-        "method": "unknown",
-        "confidence": 0.6041122674942017
+        "method": "fast_lane",
+        "confidence": 0.0
       },
       {
-        "id": "",
+        "id": "s13",
         "text": "6.1 A transfer of more than fifty percent (50%) of the voting equity interests in Lessee shall be deemed an assignment of this Lease requiring Lessor's prior written consent.",
-        "clause_type": "subletting",
-        "method": "classifier",
-        "confidence": 0.9749910831451416
+        "clause_type": "unknown",
+        "method": "fast_lane",
+        "confidence": 0.0
       },
       {
-        "id": "",
+        "id": "s14",
         "text": "6.2 Should Guarantor undergo a Change of Control, Lessee shall provide Lessor with a replacement guaranty from an entity of comparable financial strength within thirty days. ARTICLE VII \u2014 REINSTATEMENT",
         "clause_type": "unknown",
-        "method": "unknown",
-        "confidence": 0.42601606249809265
+        "method": "fast_lane",
+        "confidence": 0.0
       },
       {
-        "id": "",
+        "id": "s15",
         "text": "7.1 Should this Lease be terminated as a result of Lessee's default and Lessee subsequently cures such default within the applicable statutory redemption period, Lessor may, in its sole discretion, reinstate this Lease upon terms mutually agreed by the parties. ARTICLE VIII \u2014 GENERAL",
         "clause_type": "termination",
         "method": "fast_lane",
         "confidence": 0.5
       },
       {
-        "id": "",
+        "id": "s16",
         "text": "8.1 This Lease shall be governed by and construed in accordance with the laws of the Commonwealth of Massachusetts.",
         "clause_type": "dispute_resolution",
         "method": "fast_lane",
         "confidence": 0.5
       },
       {
-        "id": "",
+        "id": "s17",
         "text": "8.2 Lessee shall indemnify, defend, and hold harmless Lessor from any claims arising out of Lessee's use of the Premises. IN WITNESS WHEREOF, the parties have executed this Lease as of the date first written above. LESSOR: Ferrous Manufacturing Co. By: _____________________ LESSEE: Northgate Ventures By: _____________________",
-        "clause_type": "term",
-        "method": "classifier",
-        "confidence": 0.9295469522476196
+        "clause_type": "unknown",
+        "method": "fast_lane",
+        "confidence": 0.0
       }
     ]
   },
   "lease_03_industrial_ferrous_SCANNED": {
     "n_pages": 2,
     "n_sections": 16,
-    "n_sentences": 28,
+    "n_sentences": 0,
     "sections": [
       {
-        "id": "",
+        "id": "s0",
         "text": "INDUSTRIAL LEASEAGREEMENT THIS INDUSTRIAL LEASE AGREEMENT is entered into as of August 4, 2026, between FERROUS MANUFACTURING CO. (\"Lessor\") and NORTHGATE VENTURES (\"Lessee\"). ARTICLEI\u2014DEMISE",
-        "clause_type": "term",
-        "method": "classifier",
-        "confidence": 0.8920761942863464
+        "clause_type": "unknown",
+        "method": "fast_lane",
+        "confidence": 0.0
       },
       {
-        "id": "",
+        "id": "s1",
         "text": "1.1 Lessor hereby demises to Lessee the warehouse and adjoining office space described in Exhibit A, for a Term of eight years. ARTICLE II\u2014RENT AND GUARANTY",
-        "clause_type": "term",
-        "method": "classifier",
-        "confidence": 0.9020597338676453
+        "clause_type": "unknown",
+        "method": "fast_lane",
+        "confidence": 0.0
       },
       {
-        "id": "",
+        "id": "s2",
         "text": "2.1 Lessee shall pay Base Rent in the amount set forth in Schedule 1, payable monthly in advance. a a y t es t a y toa successor entity of substantially equivalent net worth without Lessor's consent.",
         "clause_type": "rent",
         "method": "fast_lane",
         "confidence": 0.5
       },
       {
-        "id": "",
+        "id": "s3",
         "text": "2.3 Guarantor's obligations under the Guaranty shall automatically transfer to any assignee of this Lease that is a Permitted Transferee, without the need for a new guaranty instrument. ARTICLE III \u2014HOLDOVER",
-        "clause_type": "subletting",
-        "method": "classifier",
-        "confidence": 0.979596734046936
+        "clause_type": "unknown",
+        "method": "fast_lane",
+        "confidence": 0.0
       },
       {
-        "id": "",
+        "id": "s4",
         "text": "3.1 Should Lessee remain in possession of the Premises after the expiration of the Term without Lessor's written consent, Lessee shall be deemed a tenant at sufferance and shall pay Rent equal to one hundred fifty percent (150%) of the Base Rent in effect immediately prior to expiration.",
         "clause_type": "holdover",
         "method": "fast_lane",
         "confidence": 0.75
       },
       {
-        "id": "",
+        "id": "s5",
         "text": "3.2 Any holdover by Lessee beyond the Term shall not be construed as a renewal of this Lease, and Lessor may pursue all remedies available at law or in equity. ARTICLE IV \u2014RIGHT OF FIRST REFUSAL",
         "clause_type": "unknown",
-        "method": "unknown",
-        "confidence": 0.4782329797744751
+        "method": "fast_lane",
+        "confidence": 0.0
       },
       {
-        "id": "",
+        "id": "s6",
         "text": "4.1 Should Lessor elect to sell the Building during the Term, Lessor shall first offer to sell the Building to Lessee on the same terms as any bona fide third-party offer Lessor intends to accept.",
-        "clause_type": "termination",
-        "method": "classifier",
-        "confidence": 0.8702427744865417
+        "clause_type": "unknown",
+        "method": "fast_lane",
+        "confidence": 0.0
       },
       {
-        "id": "",
+        "id": "s7",
         "text": "4.2 Lessee shall have thirty days after receipt of Lessor's notice of a proposed sale to exercise its right of first refusal to purchase the Building. ARTICLE V \u2014REPAIRS AND SERVICES",
         "clause_type": "unknown",
-        "method": "unknown",
-        "confidence": 0.3999877870082855
+        "method": "fast_lane",
+        "confidence": 0.0
       },
       {
-        "id": "",
+        "id": "s8",
         "text": "5.1 Lessor shall maintain the elevators, common area HVAC, and life safety systems of the Building in good working order throughout the Term.",
         "clause_type": "utilities",
         "method": "fast_lane",
         "confidence": 0.5
       },
       {
-        "id": "",
+        "id": "s9",
         "text": "5.2 Lessee shall keep the Premises in a clean and sanitary condition at all times during the Term.",
-        "clause_type": "termination",
-        "method": "classifier",
-        "confidence": 0.9315300583839417
+        "clause_type": "unknown",
+        "method": "fast_lane",
+        "confidence": 0.0
       },
       {
-        "id": "",
+        "id": "s10",
         "text": "5.3 Lessee shall not exceed the maximum occupancy load established by the local fire marshal for the Premises.",
         "clause_type": "unknown",
-        "method": "unknown",
-        "confidence": 0.3100965917110443
+        "method": "fast_lane",
+        "confidence": 0.0
       },
       {
-        "id": "",
+        "id": "s11",
         "text": "ARTICLEVI\u2014 CHANGE OF CONTROL",
-        "clause_type": "subletting",
-        "method": "classifier",
-        "confidence": 0.6908380389213562
+        "clause_type": "unknown",
+        "method": "fast_lane",
+        "confidence": 0.0
       },
       {
-        "id": "",
+        "id": "s12",
         "text": "6.1 A transfer of more than fifty percent (50%) of the voting equity interests in Lessee shall be deemed an assignment of this Lease requiring Lessor's prior written consent. bsa d o n nt from an entity of comparable financial strength within thirty days. ARTICLE VII \u2014 REINSTATEMENT",
         "clause_type": "unknown",
-        "method": "unknown",
-        "confidence": 0.4324393570423126
+        "method": "fast_lane",
+        "confidence": 0.0
       },
       {
-        "id": "",
+        "id": "s13",
         "text": "7.1 Should this Lease be terminated as a result of Lessee's default and Lessee subsequently cures such default within the applicable statutory redemption period, Lessor may, in its sole discretion, reinstate this Lease upon terms mutually agreed by the parties. ARTICLE VIII\u2014 GENERAL",
         "clause_type": "termination",
         "method": "fast_lane",
         "confidence": 0.5
       },
       {
-        "id": "",
+        "id": "s14",
         "text": "8.1 This Lease shall be governed by andconstrued in accordance with the laws of the Commonwealth of Massachusetts.",
         "clause_type": "dispute_resolution",
         "method": "fast_lane",
         "confidence": 0.5
       },
       {
-        "id": "",
+        "id": "s15",
         "text": "8.2 Lessee shall indemnify, defend, and hold harmless Lessor from any claims arising out of Lessee's use of the Premises. IN WITNESS WHEREOF, the parties have executed this Lease as of the date first written above. LESSOR: Ferrous Manufacturing Co. By: LESSEE: Northgate Ventures By:",
-        "clause_type": "entire_agreement",
-        "method": "classifier",
-        "confidence": 0.9109522104263306
+        "clause_type": "unknown",
+        "method": "fast_lane",
+        "confidence": 0.0
       }
     ]
   },
   "lease_04_mixeduse_silverline": {
     "n_pages": 2,
     "n_sections": 25,
-    "n_sentences": 35,
+    "n_sentences": 0,
     "sections": [
       {
-        "id": "",
+        "id": "s0",
         "text": "MIXED-USE LEASE AGREEMENT THIS LEASE AGREEMENT is made as of October 12, 2026, by and between SILVERLINE CAPITAL PARTNERS (\"Landlord\") and AURELIA SYSTEMS INC. (\"Tenant\"). The Building contains approximately 145,000 rentable square feet across six floors and was completed in",
-        "clause_type": "term",
-        "method": "classifier",
-        "confidence": 0.9498627185821533
+        "clause_type": "unknown",
+        "method": "fast_lane",
+        "confidence": 0.0
       },
       {
-        "id": "",
+        "id": "s1",
         "text": "2016. ARTICLE 1 \u2014 BASIC TERMS",
-        "clause_type": "registration",
-        "method": "classifier",
-        "confidence": 0.8483198285102844
+        "clause_type": "unknown",
+        "method": "fast_lane",
+        "confidence": 0.0
       },
       {
-        "id": "",
+        "id": "s2",
         "text": "1.1 The Premises consist of 9,800 rentable square feet located on the fourth floor of the Building known as",
-        "clause_type": "premises",
-        "method": "classifier",
-        "confidence": 0.9950181245803833
+        "clause_type": "unknown",
+        "method": "fast_lane",
+        "confidence": 0.0
       },
       {
-        "id": "",
+        "id": "s3",
         "text": "700 Meridian Avenue.",
         "clause_type": "unknown",
-        "method": "unknown",
-        "confidence": 0.5244665741920471
+        "method": "fast_lane",
+        "confidence": 0.0
       },
       {
-        "id": "",
+        "id": "s4",
         "text": "1.2 Base Rent for the first Lease Year is $41.00 per rentable square foot, payable in equal monthly installments.",
         "clause_type": "rent",
         "method": "fast_lane",
         "confidence": 0.5
       },
       {
-        "id": "",
+        "id": "s5",
         "text": "1.3 The Security Deposit required under this Lease is $62,000, payable by wire transfer upon execution of this Lease. ARTICLE 2 \u2014 TENANT OBLIGATIONS",
         "clause_type": "deposit",
         "method": "fast_lane",
         "confidence": 0.5
       },
       {
-        "id": "",
+        "id": "s6",
         "text": "2.1 Tenant shall pay to Landlord the Base Rent set forth in Article 1 on or before the first day of each calendar month.",
         "clause_type": "rent",
         "method": "fast_lane",
         "confidence": 0.5
       },
       {
-        "id": "",
+        "id": "s7",
         "text": "2.2 Tenant shall deliver to Landlord a certificate of insurance evidencing the coverage required under this Lease no later than the Commencement Date.",
         "clause_type": "term",
         "method": "fast_lane",
         "confidence": 0.5
       },
       {
-        "id": "",
+        "id": "s8",
         "text": "2.3 Tenant shall not make any structural Alterations to the Premises without the prior written consent of Landlord. ARTICLE 3 \u2014 LANDLORD OBLIGATIONS AND WARRANTIES",
-        "clause_type": "maintenance",
-        "method": "classifier",
-        "confidence": 0.7551042437553406
+        "clause_type": "unknown",
+        "method": "fast_lane",
+        "confidence": 0.0
       },
       {
-        "id": "",
+        "id": "s9",
         "text": "3.1 Landlord agrees to keep the roof, foundation, and structural walls of the Building in good repair throughout the Term.",
-        "clause_type": "premises",
-        "method": "classifier",
-        "confidence": 0.9576785564422607
+        "clause_type": "unknown",
+        "method": "fast_lane",
+        "confidence": 0.0
       },
       {
-        "id": "",
+        "id": "s10",
         "text": "3.2 Landlord represents and warrants that there are no pending or threatened condemnation proceedings affecting the Building as of the date of this Lease.",
         "clause_type": "unknown",
-        "method": "unknown",
-        "confidence": 0.6141130924224854
+        "method": "fast_lane",
+        "confidence": 0.0
       },
       {
-        "id": "",
+        "id": "s11",
         "text": "3.3 Landlord warrants that the HVAC system serving the Premises is in good working order as of the Commencement Date and will remain so for ninety days. ARTICLE 4 \u2014 DAMAGE AND DESTRUCTION",
         "clause_type": "utilities",
         "method": "fast_lane",
         "confidence": 0.5
       },
       {
-        "id": "",
+        "id": "s12",
         "text": "4.1 In the event of damage to the Premises not caused by Tenant's negligence, Landlord shall commence restoration within sixty days of receiving insurance proceeds and complete the same with reasonable diligence.",
-        "clause_type": "termination",
-        "method": "classifier",
-        "confidence": 0.7149575352668762
+        "clause_type": "unknown",
+        "method": "fast_lane",
+        "confidence": 0.0
       },
       {
-        "id": "",
+        "id": "s13",
         "text": "4.2 If the Premises are damaged during the last twelve months of the Term, either party may terminate this Lease if restoration is reasonably expected to exceed ninety days.",
         "clause_type": "termination",
         "method": "fast_lane",
         "confidence": 0.75
       },
       {
-        "id": "",
+        "id": "s14",
         "text": "ARTICLE 5 \u2014 CHANGE OF CONTROL",
-        "clause_type": "rent",
-        "method": "classifier",
-        "confidence": 0.7125298380851746
+        "clause_type": "unknown",
+        "method": "fast_lane",
+        "confidence": 0.0
       },
       {
-        "id": "",
+        "id": "s15",
         "text": "5.1 For purposes of this Lease, a 'Change of Control' means any transaction or series of related transactions resulting in a change in the person or entity that controls, directly or indirectly, a majority of Tenant's voting securities.",
-        "clause_type": "subletting",
-        "method": "classifier",
-        "confidence": 0.5898830890655518
+        "clause_type": "unknown",
+        "method": "fast_lane",
+        "confidence": 0.0
       },
       {
-        "id": "",
+        "id": "s16",
         "text": "5.2 Landlord shall have the right to terminate this Lease upon sixty days' notice if a Change of Control of Tenant results in the Premises being operated by a Competing Business. ARTICLE 6 \u2014 ENTITLEMENTS AND PERMISSIONS",
         "clause_type": "termination",
         "method": "fast_lane",
         "confidence": 0.875
       },
       {
-        "id": "",
+        "id": "s17",
         "text": "6.1 Tenant shall have the right to install and maintain a sign on the exterior facade of the Building, subject to Landlord's approval.",
-        "clause_type": "maintenance",
-        "method": "classifier",
-        "confidence": 0.979925811290741
+        "clause_type": "unknown",
+        "method": "fast_lane",
+        "confidence": 0.0
       },
       {
-        "id": "",
+        "id": "s18",
         "text": "6.2 Tenant may install customary trade fixtures in the Premises without Landlord's prior approval.",
-        "clause_type": "maintenance",
-        "method": "classifier",
-        "confidence": 0.8824754953384399
+        "clause_type": "unknown",
+        "method": "fast_lane",
+        "confidence": 0.0
       },
       {
-        "id": "",
+        "id": "s19",
         "text": "6.3 Landlord shall have the right to enter the Premises upon twenty-four hours' notice to inspect for compliance with this Lease. ARTICLE 7 \u2014 WAIVERS",
         "clause_type": "access",
         "method": "fast_lane",
         "confidence": 0.5
       },
       {
-        "id": "",
+        "id": "s20",
         "text": "7.1 Tenant hereby waives any right to a jury trial in any litigation arising out of this Lease.",
         "clause_type": "dispute_resolution",
         "method": "fast_lane",
         "confidence": 0.5
       },
       {
-        "id": "",
+        "id": "s21",
         "text": "7.2 Landlord shall have no liability for any loss of Tenant's property resulting from theft or vandalism on the Premises. ARTICLE 8 \u2014 GENERAL PROVISIONS",
-        "clause_type": "maintenance",
-        "method": "classifier",
-        "confidence": 0.7126020789146423
+        "clause_type": "unknown",
+        "method": "fast_lane",
+        "confidence": 0.0
       },
       {
-        "id": "",
+        "id": "s22",
         "text": "8.1 This Lease consists of the Basic Lease Information, the General Terms and Conditions, and the Exhibits attached hereto.",
-        "clause_type": "termination",
-        "method": "classifier",
-        "confidence": 0.9044458866119385
+        "clause_type": "unknown",
+        "method": "fast_lane",
+        "confidence": 0.0
       },
       {
-        "id": "",
+        "id": "s23",
         "text": "8.2 This Lease shall be governed by and construed in accordance with the laws of the State of Illinois.",
         "clause_type": "dispute_resolution",
         "method": "fast_lane",
         "confidence": 0.5
       },
       {
-        "id": "",
+        "id": "s24",
         "text": "8.3 Tenant's broker in this transaction is Vireo Properties, and Landlord's broker is Windmere Capital, whose commissions shall be paid by Landlord pursuant to a separate agreement. IN WITNESS WHEREOF, the parties have executed this Lease as of the date first written above. LANDLORD: Silverline Capital Partners By: _____________________ TENANT: Aurelia Systems Inc. By: _____________________",
-        "clause_type": "term",
-        "method": "classifier",
-        "confidence": 0.5760020613670349
+        "clause_type": "unknown",
+        "method": "fast_lane",
+        "confidence": 0.0
       }
     ]
   },
   "lease_05_smallsuite_thornfield": {
     "n_pages": 2,
     "n_sections": 11,
-    "n_sentences": 21,
+    "n_sentences": 0,
     "sections": [
       {
-        "id": "",
+        "id": "s0",
         "text": "SMALL SUITE LEASE AGREEMENT This Lease Agreement is made effective as of November 20, 2026, between THORNFIELD GROUP (\"Landlord\") and RIDGELINE HOLDINGS (\"Tenant\").",
-        "clause_type": "term",
-        "method": "classifier",
-        "confidence": 0.880160927772522
+        "clause_type": "unknown",
+        "method": "fast_lane",
+        "confidence": 0.0
       },
       {
-        "id": "",
+        "id": "s1",
         "text": "Premises and Term The Premises consist of approximately 6,200 rentable square feet located on the third floor of the Building. The Term of this Lease commences on the Commencement Date and expires sixty months thereafter.",
         "clause_type": "term",
         "method": "fast_lane",
         "confidence": 0.875
       },
       {
-        "id": "",
+        "id": "s2",
         "text": "Rent Tenant shall pay Base Rent monthly in advance without deduction, offset, or counterclaim except as expressly permitted herein. Landlord may waive the late fee described elsewhere in this Lease at its sole discretion on a case-by-case basis.",
         "clause_type": "rent",
         "method": "fast_lane",
         "confidence": 0.5
       },
       {
-        "id": "",
+        "id": "s3",
         "text": "Break Option Tenant shall have a one-time option to terminate this Lease effective as of the last day of the thirty-sixth month of the Term, provided Tenant gives Landlord at least one hundred eighty days' prior written notice and pays a termination fee equal to three months' Base Rent. Tenant's right to terminate under this provision shall lapse if not exercised in writing on or before the date that is nine months prior to the applicable break date.",
         "clause_type": "termination",
         "method": "fast_lane",
         "confidence": 0.984375
       },
       {
-        "id": "",
+        "id": "s4",
         "text": "Sublease and Assignment Tenant may not sublease the Premises at a rental rate higher than the Rent payable by Tenant without Landlord's consent. Subleases to an Affiliate of Tenant shall be permitted without Landlord's consent, provided the Affiliate's use is consistent with the Permitted Use.",
         "clause_type": "subletting",
         "method": "fast_lane",
         "confidence": 0.875
       },
       {
-        "id": "",
+        "id": "s5",
         "text": "No Obligation to Operate Nothing in this Lease shall be construed to require Tenant to open for business, remain open, or continue to operate at the Premises during the Term. Tenant's decision to cease operations at the Premises, whether temporary or permanent, shall not relieve Tenant of its obligation to pay Rent but shall not otherwise constitute a breach of this Lease.",
         "clause_type": "no_obligation",
         "method": "fast_lane",
         "confidence": 0.5
       },
       {
-        "id": "",
+        "id": "s6",
         "text": "Services Landlord shall provide janitorial services to the Premises five days per week, the cost of which shall be included in Operating Expenses billed to Tenant. Tenant shall be separately billed for any specialized cleaning services requested beyond the standard janitorial package.",
-        "clause_type": "utilities",
-        "method": "classifier",
-        "confidence": 0.9777187705039978
+        "clause_type": "unknown",
+        "method": "fast_lane",
+        "confidence": 0.0
       },
       {
-        "id": "",
+        "id": "s7",
         "text": "Insurance and Indemnity",
-        "clause_type": "subletting",
-        "method": "classifier",
-        "confidence": 0.8031982183456421
+        "clause_type": "unknown",
+        "method": "fast_lane",
+        "confidence": 0.0
       },
       {
-        "id": "",
+        "id": "s8",
         "text": "Tenant shall obtain and maintain commercial general liability insurance in the amounts specified in the attached exhibits throughout the Term. Tenant shall indemnify, defend, and hold harmless Landlord from any claims arising out of Tenant's use of the Premises.",
         "clause_type": "unknown",
-        "method": "unknown",
-        "confidence": 0.5560881495475769
+        "method": "fast_lane",
+        "confidence": 0.0
       },
       {
-        "id": "",
+        "id": "s9",
         "text": "Riders The Special Stipulations Rider attached to this Lease grants Tenant a one-time termination right exercisable at the end of Lease Year 5, as further described therein.",
         "clause_type": "termination",
         "method": "fast_lane",
         "confidence": 0.5
       },
       {
-        "id": "",
+        "id": "s10",
         "text": "Miscellaneous The parties acknowledge that this Lease was negotiated at arm's length, with each party represented by legal counsel. Any ambiguity in this Lease shall not be construed against the drafting party. IN WITNESS WHEREOF, the parties have executed this Lease as of the date first written above. LANDLORD: Thornfield Group By: _____________________ TENANT: Ridgeline Holdings By: _____________________",
         "clause_type": "unknown",
-        "method": "unknown",
-        "confidence": 0.46222299337387085
+        "method": "fast_lane",
+        "confidence": 0.0
       }
     ]
   },
   "lease_05_smallsuite_thornfield_SCANNED": {
     "n_pages": 2,
     "n_sections": 13,
-    "n_sentences": 21,
+    "n_sentences": 0,
     "sections": [
       {
-        "id": "",
+        "id": "s0",
         "text": "SMALLSUITELEASEAGREEMENT This Lease Agreement is made effective as of November 20, 2026, between THORNFIELD GROUP (\"Landlord\") and RIDGELINE HOLDINGS (\"Tenant\").",
-        "clause_type": "term",
-        "method": "classifier",
-        "confidence": 0.5541068315505981
+        "clause_type": "unknown",
+        "method": "fast_lane",
+        "confidence": 0.0
       },
       {
-        "id": "",
+        "id": "s1",
         "text": "Premises and Term The Premises consist of approximately 6,200 rentable square feet located on the third floor of the Building. The Term of this Lease commences on the Commencement Date and expires sixty months thereafter.",
         "clause_type": "term",
         "method": "fast_lane",
         "confidence": 0.875
       },
       {
-        "id": "",
+        "id": "s2",
         "text": "Rent",
-        "clause_type": "entire_agreement",
-        "method": "classifier",
-        "confidence": 0.645691454410553
+        "clause_type": "unknown",
+        "method": "fast_lane",
+        "confidence": 0.0
       },
       {
-        "id": "",
+        "id": "s3",
         "text": "Tn t tt t t ot it t t y it t siy permitted herein. Landlord may waive the late fee described elsewhere in this Lease at its sole discretion on a case-by-case basis.",
         "clause_type": "late_fee",
         "method": "fast_lane",
         "confidence": 0.5
       },
       {
-        "id": "",
+        "id": "s4",
         "text": "Break Option Tenant shall have a one-time option to terminate this Lease effective as of the last day of the thirty-sixth mo r t and pays a termination fee equal to three months' Base Rent. Tenant's right to terminate under this provision shall lapse if not exercised in writing on or before the date that is nine months prior to the applicable break date.",
         "clause_type": "termination",
         "method": "fast_lane",
         "confidence": 0.984375
       },
       {
-        "id": "",
+        "id": "s5",
         "text": "Sublease andAssignment",
         "clause_type": "subletting",
         "method": "fast_lane",
         "confidence": 0.5
       },
       {
-        "id": "",
+        "id": "s6",
         "text": "Tena t t t out Landlord's consent. Subleases to an Affiliate of Tenant shall be permitted without Landlord's consent, provided the Affiliate's use is consistent with the Permitted Use.",
         "clause_type": "subletting",
         "method": "fast_lane",
         "confidence": 0.5
       },
       {
-        "id": "",
+        "id": "s7",
         "text": "No Obligation to Operate Nothing in this Lease shall be construed to require Tenant to open for business, remain open, or continue to operate at the Premises during the Term. Tenant's decision to cease operations at the Premises, whether temporary or permanent, shall not relieve Tenant of its obligation to pay Rent but shall not otherwise constitute a breach of this Lease.",
         "clause_type": "no_obligation",
         "method": "fast_lane",
         "confidence": 0.5
       },
       {
-        "id": "",
+        "id": "s8",
         "text": "Services Landlord shall provide janitorial services to the Premises five days per week, the cost of which shall be included in Operating Expenses billed to Tenant. Tenant shall be separately billed for any specialized cleaning services requested beyond the standard janitorial package.",
-        "clause_type": "utilities",
-        "method": "classifier",
-        "confidence": 0.9777185320854187
+        "clause_type": "unknown",
+        "method": "fast_lane",
+        "confidence": 0.0
       },
       {
-        "id": "",
+        "id": "s9",
         "text": "Insurance and Indemnity",
-        "clause_type": "subletting",
-        "method": "classifier",
-        "confidence": 0.8031901121139526
+        "clause_type": "unknown",
+        "method": "fast_lane",
+        "confidence": 0.0
       },
       {
-        "id": "",
+        "id": "s10",
         "text": "Tenant shall obtain and maintain commercial general liability insurance in the amounts specified in the attached exhibits throughout the Term. Tenant shall indemnify, defend, and hold harmless Landlord from any claims arising out of Tenant's use of the Premises.",
         "clause_type": "unknown",
-        "method": "unknown",
-        "confidence": 0.5561390519142151
+        "method": "fast_lane",
+        "confidence": 0.0
       },
       {
-        "id": "",
+        "id": "s11",
         "text": "Riders The Special Stipulations Rider attached to this Lease grants Tenant a one-time termination right exercisable at the end of Lease Year 5, as further described therein.",
         "clause_type": "termination",
         "method": "fast_lane",
         "confidence": 0.5
       },
       {
-        "id": "",
+        "id": "s12",
         "text": "Miscellaneous The parties acknowledge that this Lease was negotiated at arm's length, with each party represented by legal counsel. Any ambiguity in this Lease shall not be construed against the drafting party. IN WITNESS WHEREOF, the parties have executed this Lease as of the date first written above. LANDLORD: Thornfield Group By: TENANT: Ridgeline HoldingsBy:",
-        "clause_type": "entire_agreement",
-        "method": "classifier",
-        "confidence": 0.9645403027534485
+        "clause_type": "unknown",
+        "method": "fast_lane",
+        "confidence": 0.0
       }
     ]
   },
   "lease_06_table_rentschedule_bellwood": {
     "n_pages": 2,
     "n_sections": 18,
-    "n_sentences": 37,
+    "n_sentences": 0,
     "sections": [
       {
-        "id": "",
+        "id": "s0",
         "text": "LEASE AGREEMENT WITH RENT SCHEDULE THIS LEASE AGREEMENT is made as of December 3, 2026, by and between BELLWOOD ENTERPRISES (\"Landlord\") and MERIDIAN RETAIL LLC (\"Tenant\"). ARTICLE 1 \u2014 PREMISES",
-        "clause_type": "term",
-        "method": "classifier",
-        "confidence": 0.9720140695571899
+        "clause_type": "unknown",
+        "method": "fast_lane",
+        "confidence": 0.0
       },
       {
-        "id": "",
+        "id": "s1",
         "text": "1.1 The Premises consist of approximately 12,400 rentable square feet located on the second floor of the Building known as 220 Ridgeline Plaza. ARTICLE 2 \u2014 BASE RENT SCHEDULE",
         "clause_type": "rent",
         "method": "fast_lane",
         "confidence": 0.5
       },
       {
-        "id": "",
+        "id": "s2",
         "text": "2.1 Tenant shall pay Base Rent in accordance with the following schedule, payable in equal monthly installments in advance on the first day of each calendar month: Lease Year Annual Base Rent Monthly Installment Rent / RSF",
         "clause_type": "rent",
         "method": "fast_lane",
         "confidence": 0.75
       },
       {
-        "id": "",
+        "id": "s3",
         "text": "1 $434,000 $36,166.67 $35.00",
-        "clause_type": "utilities",
-        "method": "classifier",
-        "confidence": 0.7609483599662781
+        "clause_type": "unknown",
+        "method": "fast_lane",
+        "confidence": 0.0
       },
       {
-        "id": "",
+        "id": "s4",
         "text": "2 $447,020 $37,251.67 $36.05",
-        "clause_type": "utilities",
-        "method": "classifier",
-        "confidence": 0.9630916118621826
+        "clause_type": "unknown",
+        "method": "fast_lane",
+        "confidence": 0.0
       },
       {
-        "id": "",
+        "id": "s5",
         "text": "3 $460,431 $38,369.25 $37.13",
-        "clause_type": "utilities",
-        "method": "classifier",
-        "confidence": 0.9386920928955078
+        "clause_type": "unknown",
+        "method": "fast_lane",
+        "confidence": 0.0
       },
       {
-        "id": "",
+        "id": "s6",
         "text": "4 $474,244 $39,520.33 $38.25",
-        "clause_type": "utilities",
-        "method": "classifier",
-        "confidence": 0.8824945092201233
+        "clause_type": "unknown",
+        "method": "fast_lane",
+        "confidence": 0.0
       },
       {
-        "id": "",
+        "id": "s7",
         "text": "5 $488,471 $40,705.92 $39.39",
         "clause_type": "unknown",
-        "method": "unknown",
-        "confidence": 0.6068500876426697
+        "method": "fast_lane",
+        "confidence": 0.0
       },
       {
-        "id": "",
+        "id": "s8",
         "text": "6 $503,125 $41,927.08 $40.58",
-        "clause_type": "utilities",
-        "method": "classifier",
-        "confidence": 0.874894380569458
+        "clause_type": "unknown",
+        "method": "fast_lane",
+        "confidence": 0.0
       },
       {
-        "id": "",
+        "id": "s9",
         "text": "7 $518,219 $43,184.92 $41.79",
-        "clause_type": "utilities",
-        "method": "classifier",
-        "confidence": 0.9424938559532166
+        "clause_type": "unknown",
+        "method": "fast_lane",
+        "confidence": 0.0
       },
       {
-        "id": "",
+        "id": "s10",
         "text": "2.2 Tenant shall pay any Additional Rent due under this Lease within thirty days of receipt of Landlord's invoice therefor. ARTICLE 3 \u2014 OPERATING EXPENSE RECONCILIATION",
         "clause_type": "rent",
         "method": "fast_lane",
         "confidence": 0.75
       },
       {
-        "id": "",
+        "id": "s11",
         "text": "3.1 Tenant's Proportionate Share of Operating Expenses for the Building is set forth below, reflecting actual costs for the prior calendar year and Landlord's budget for the current year: Expense Category 2025 Actual 2026 Budget Tenant Share Common Area Maintenance $118,400 $122,950 9.6% Real Estate Taxes $312,450 $321,800 9.6% Insurance $41,200 $43,000 9.6% Utilities (Common Areas) $67,900 $70,500 9.6% Security Services $88,300 $91,000 9.6%",
         "clause_type": "utilities",
         "method": "fast_lane",
         "confidence": 0.5
       },
       {
-        "id": "",
+        "id": "s12",
         "text": "3.2 Landlord shall provide Tenant with an itemized statement of actual Operating Expenses within ninety days following the end of each calendar year.",
-        "clause_type": "termination",
-        "method": "classifier",
-        "confidence": 0.5952368974685669
+        "clause_type": "unknown",
+        "method": "fast_lane",
+        "confidence": 0.0
       },
       {
-        "id": "",
+        "id": "s13",
         "text": "3.3 Tenant shall have the right to audit Landlord's books and records relating to Operating Expenses upon thirty days' prior written notice, no more than once per calendar year. ARTICLE 4 \u2014 DEFAULT",
         "clause_type": "unknown",
-        "method": "unknown",
-        "confidence": 0.47088858485221863
+        "method": "fast_lane",
+        "confidence": 0.0
       },
       {
-        "id": "",
+        "id": "s14",
         "text": "4.1 Tenant shall pay a late fee equal to five percent (5%) of any installment of Rent not received within five days of the due date.",
         "clause_type": "late_fee",
         "method": "fast_lane",
         "confidence": 0.5
       },
       {
-        "id": "",
+        "id": "s15",
         "text": "4.2 Landlord shall not increase the Base Rent during the Initial Term except as expressly set forth in the schedule above. ARTICLE 5 \u2014 GENERAL",
         "clause_type": "rent",
         "method": "fast_lane",
         "confidence": 0.5
       },
       {
-        "id": "",
+        "id": "s16",
         "text": "5.1 This Lease shall be governed by and construed in accordance with the laws of the State of Illinois.",
         "clause_type": "dispute_resolution",
         "method": "fast_lane",
         "confidence": 0.5
       },
       {
-        "id": "",
+        "id": "s17",
         "text": "5.2 The Guarantor identified in the Basic Lease Information is a wholly owned subsidiary of Tenant's parent corporation. IN WITNESS WHEREOF, the parties have executed this Lease as of the date first written above. LANDLORD: Bellwood Enterprises By: _____________________ TENANT: Meridian Retail LLC By: _____________________",
-        "clause_type": "term",
-        "method": "classifier",
-        "confidence": 0.635641872882843
+        "clause_type": "unknown",
+        "method": "fast_lane",
+        "confidence": 0.0
       }
     ]
   },
   "lease_07_edgecase_stresstest_windmere": {
     "n_pages": 2,
     "n_sections": 18,
-    "n_sentences": 28,
+    "n_sentences": 0,
     "sections": [
       {
-        "id": "",
+        "id": "s0",
         "text": "LEASE AGREEMENT (EDGE-CASE STRESS TEST) THIS LEASE is made as of December 3, 2026, by and between WINDMERE CAPITAL (\"Landlord\") and HALCYON FOODS INC. (\"Tenant\"). This document intentionally concentrates ambiguous and compound deontic language for model stress-testing purposes. ARTICLE 1 \u2014 NEGATED ENTITLEMENTS (nen)",
-        "clause_type": "maintenance",
-        "method": "classifier",
-        "confidence": 0.6785755157470703
+        "clause_type": "unknown",
+        "method": "fast_lane",
+        "confidence": 0.0
       },
       {
-        "id": "",
+        "id": "s1",
         "text": "1.1 Tenant shall have no right to any abatement of Rent except as expressly set forth in Article 6, notwithstanding any implied covenant of quiet enjoyment.",
-        "clause_type": "utilities",
-        "method": "classifier",
-        "confidence": 0.6442613005638123
+        "clause_type": "unknown",
+        "method": "fast_lane",
+        "confidence": 0.0
       },
       {
-        "id": "",
+        "id": "s2",
         "text": "1.2 Landlord shall have no obligation to relet the Premises in preference to other available space in the Building, and Tenant waives any claim arising from Landlord's failure to do so.",
         "clause_type": "no_obligation",
         "method": "fast_lane",
         "confidence": 0.75
       },
       {
-        "id": "",
+        "id": "s3",
         "text": "1.3 Tenant hereby waives any right to offset Rent against amounts allegedly owed by Landlord, regardless of the merits of any such claim. ARTICLE 2 \u2014 COMPOUND / MULTI-LABEL SENTENCES",
         "clause_type": "unknown",
-        "method": "unknown",
-        "confidence": 0.5152296423912048
+        "method": "fast_lane",
+        "confidence": 0.0
       },
       {
-        "id": "",
+        "id": "s4",
         "text": "2.1 Tenant shall not assign this Lease without Landlord's prior written consent, provided that Tenant may assign this Lease to an Affiliate without such consent upon ten days' written notice.",
         "clause_type": "subletting",
         "method": "fast_lane",
         "confidence": 0.75
       },
       {
-        "id": "",
+        "id": "s5",
         "text": "2.2 Landlord shall have the right to enter the Premises upon 24 hours' notice to inspect for compliance, but shall not unreasonably interfere with Tenant's business operations while doing so.",
         "clause_type": "access",
         "method": "fast_lane",
         "confidence": 0.5
       },
       {
-        "id": "",
+        "id": "s6",
         "text": "2.3 Tenant may sublease up to twenty-five percent of the Premises without Landlord's consent, provided Tenant shall remain primarily liable for all obligations under this Lease notwithstanding any such sublease.",
         "clause_type": "subletting",
         "method": "fast_lane",
         "confidence": 0.75
       },
       {
-        "id": "",
+        "id": "s7",
         "text": "2.4 Landlord shall repair any structural defect within thirty days of notice, unless such repair is rendered impossible by circumstances beyond Landlord's reasonable control, in which case Landlord shall have no liability for delay. ARTICLE 3 \u2014 DOUBLE NEGATIVES AND CONDITIONAL SCOPING",
-        "clause_type": "maintenance",
-        "method": "classifier",
-        "confidence": 0.6679572463035583
+        "clause_type": "unknown",
+        "method": "fast_lane",
+        "confidence": 0.0
       },
       {
-        "id": "",
+        "id": "s8",
         "text": "3.1 Tenant shall not be prohibited from installing customary trade fixtures, provided such fixtures do not penetrate load-bearing structural elements of the Building.",
-        "clause_type": "maintenance",
-        "method": "classifier",
-        "confidence": 0.9917846918106079
+        "clause_type": "unknown",
+        "method": "fast_lane",
+        "confidence": 0.0
       },
       {
-        "id": "",
+        "id": "s9",
         "text": "3.2 Nothing herein shall be construed to prevent Landlord from declining to consent to an Alteration that Landlord reasonably determines would impair the structural integrity of the Building.",
         "clause_type": "unknown",
-        "method": "unknown",
-        "confidence": 0.38615351915359497
+        "method": "fast_lane",
+        "confidence": 0.0
       },
       {
-        "id": "",
+        "id": "s10",
         "text": "3.3 It shall not be a breach of this Lease for Tenant to fail to open for business during the first thirty days following the Commencement Date, notwithstanding the Permitted Use clause elsewhere in this Lease. ARTICLE 4 \u2014 CONDITIONAL / DEFEASIBLE OBLIGATIONS",
         "clause_type": "term",
         "method": "fast_lane",
         "confidence": 0.5
       },
       {
-        "id": "",
+        "id": "s11",
         "text": "4.1 Tenant shall pay Percentage Rent equal to six percent of Gross Sales in excess of the Breakpoint, but only during any Lease Year in which annual Gross Sales exceed $1,200,000.",
-        "clause_type": "premises",
-        "method": "classifier",
-        "confidence": 0.8403056859970093
+        "clause_type": "unknown",
+        "method": "fast_lane",
+        "confidence": 0.0
       },
       {
-        "id": "",
+        "id": "s12",
         "text": "4.2 Landlord shall provide a tenant improvement allowance of $40 per rentable square foot, provided that such allowance shall be forfeited in full if Tenant fails to commence construction within ninety days of the Commencement Date.",
         "clause_type": "term",
         "method": "fast_lane",
         "confidence": 0.5
       },
       {
-        "id": "",
+        "id": "s13",
         "text": "4.3 In the event, and only in the event, that Tenant's Guarantor's net worth falls below $5,000,000, Landlord shall be entitled to require a replacement guaranty or an increase in the Security Deposit. ARTICLE 5 \u2014 RENT AND ABATEMENT (mixed obl/ent within one paragraph)",
         "clause_type": "deposit",
         "method": "fast_lane",
         "confidence": 0.5
       },
       {
-        "id": "",
+        "id": "s14",
         "text": "5.1 Tenant shall be entitled to a rent abatement equal to the number of days the Premises are rendered untenantable due to casualty; Tenant shall nonetheless continue to pay all other Additional Rent not affected by such casualty during the abatement period. ARTICLE 6 \u2014 FACTUAL / NONE CONTROL SET",
         "clause_type": "rent",
         "method": "fast_lane",
         "confidence": 0.5
       },
       {
-        "id": "",
+        "id": "s15",
         "text": "6.1 The Term of this Lease is seven years, commencing on the Commencement Date.",
         "clause_type": "term",
         "method": "fast_lane",
         "confidence": 0.75
       },
       {
-        "id": "",
+        "id": "s16",
         "text": "6.2 The Building was constructed in 2011 and most recently renovated in 2021.",
-        "clause_type": "maintenance",
-        "method": "classifier",
-        "confidence": 0.9967130422592163
+        "clause_type": "unknown",
+        "method": "fast_lane",
+        "confidence": 0.0
       },
       {
-        "id": "",
+        "id": "s17",
         "text": "6.3 Exhibit A depicts the floor plan of the Premises and is incorporated herein by reference. IN WITNESS WHEREOF, the parties have executed this Lease as of the date first written above. LANDLORD: Windmere Capital By: _____________________ TENANT: Halcyon Foods Inc. By: _____________________",
+        "clause_type": "unknown",
+        "method": "fast_lane",
+        "confidence": 0.0
+      }
+    ]
+  },
+  "lease_08_warehouse_hazelbrook_ferrovia": {
+    "n_pages": 2,
+    "n_sections": 23,
+    "n_sentences": 0,
+    "sections": [
+      {
+        "id": "s0",
+        "text": "WAREHOUSE LEASE AGREEMENT THIS INDUSTRIAL WAREHOUSE LEASE is made as of January 9, 2027, between HAZELBROOK LOGISTICS PARK LLC (\"Landlord\") and FERROVIA DISTRIBUTION CO. (\"Tenant\").",
+        "clause_type": "unknown",
+        "method": "fast_lane",
+        "confidence": 0.0
+      },
+      {
+        "id": "s1",
+        "text": "1. Premises and Term",
+        "clause_type": "unknown",
+        "method": "fast_lane",
+        "confidence": 0.0
+      },
+      {
+        "id": "s2",
+        "text": "1.1 The Premises consist of a 48,000 square foot warehouse and 3,200 square foot office component located at Building 4, Hazelbrook Logistics Park. The Term is twelve years, commencing on the Commencement Date.",
         "clause_type": "term",
-        "method": "classifier",
-        "confidence": 0.8397892713546753
+        "method": "fast_lane",
+        "confidence": 0.5
+      },
+      {
+        "id": "s3",
+        "text": "2. Rent",
+        "clause_type": "unknown",
+        "method": "fast_lane",
+        "confidence": 0.0
+      },
+      {
+        "id": "s4",
+        "text": "2.1 Tenant shall pay Base Rent of $9.75 per square foot per annum, escalating by 2.5% on each anniversary of the Commencement Date, payable monthly in advance.",
+        "clause_type": "rent",
+        "method": "fast_lane",
+        "confidence": 0.5
+      },
+      {
+        "id": "s5",
+        "text": "3. Registration and Stamp Duty",
+        "clause_type": "registration",
+        "method": "fast_lane",
+        "confidence": 0.5
+      },
+      {
+        "id": "s6",
+        "text": "3.1 Tenant shall be responsible for the payment of all stamp duty, registration fees, and any recording charges arising from the execution and registration of this Lease with the appropriate land records office.",
+        "clause_type": "registration",
+        "method": "fast_lane",
+        "confidence": 0.75
+      },
+      {
+        "id": "s7",
+        "text": "3.2 Landlord shall reasonably cooperate with Tenant, including execution of any documents reasonably required, to effect registration of this Lease or a memorandum thereof within sixty days of the Commencement Date.",
+        "clause_type": "registration",
+        "method": "fast_lane",
+        "confidence": 0.5
+      },
+      {
+        "id": "s8",
+        "text": "4. Guard Dogs and Pets",
+        "clause_type": "pets",
+        "method": "fast_lane",
+        "confidence": 0.5
+      },
+      {
+        "id": "s9",
+        "text": "4.1 Tenant may keep up to two trained guard dogs on the Premises after business hours for security purposes, provided such dogs are confined to the warehouse floor and are not present during Landlord's scheduled inspections.",
+        "clause_type": "unknown",
+        "method": "fast_lane",
+        "confidence": 0.0
+      },
+      {
+        "id": "s10",
+        "text": "4.2 No other animals or pets of any kind shall be kept, harbored, or permitted on the Premises without Landlord's prior written consent.",
+        "clause_type": "pets",
+        "method": "fast_lane",
+        "confidence": 0.5
+      },
+      {
+        "id": "s11",
+        "text": "5. Maintenance and Repairs",
+        "clause_type": "unknown",
+        "method": "fast_lane",
+        "confidence": 0.0
+      },
+      {
+        "id": "s12",
+        "text": "5.1 Tenant shall maintain the loading dock levelers, dock doors, and warehouse floor sealant in good operating condition throughout the Term.",
+        "clause_type": "unknown",
+        "method": "fast_lane",
+        "confidence": 0.0
+      },
+      {
+        "id": "s13",
+        "text": "5.2 Landlord shall be responsible for the roof membrane, structural frame, and exterior walls of the Building.",
+        "clause_type": "unknown",
+        "method": "fast_lane",
+        "confidence": 0.0
+      },
+      {
+        "id": "s14",
+        "text": "6. Access",
+        "clause_type": "unknown",
+        "method": "fast_lane",
+        "confidence": 0.0
+      },
+      {
+        "id": "s15",
+        "text": "6.1 Landlord may enter the Premises upon 48 hours' prior notice to inspect fire suppression and sprinkler systems, except in the case of an emergency, in which case no notice shall be required.",
+        "clause_type": "access",
+        "method": "fast_lane",
+        "confidence": 0.5
+      },
+      {
+        "id": "s16",
+        "text": "7. Late Payment",
+        "clause_type": "unknown",
+        "method": "fast_lane",
+        "confidence": 0.0
+      },
+      {
+        "id": "s17",
+        "text": "7.1 Any Rent not received within seven days of the due date shall accrue interest at the lesser of 1.5% per month or the maximum rate permitted by applicable law.",
+        "clause_type": "unknown",
+        "method": "fast_lane",
+        "confidence": 0.0
+      },
+      {
+        "id": "s18",
+        "text": "8. Termination and Holdover",
+        "clause_type": "termination",
+        "method": "fast_lane",
+        "confidence": 0.5
+      },
+      {
+        "id": "s19",
+        "text": "8.1 Either party may terminate this Lease upon 180 days' written notice given at any time after the sixth Lease Year.",
+        "clause_type": "termination",
+        "method": "fast_lane",
+        "confidence": 0.75
+      },
+      {
+        "id": "s20",
+        "text": "8.2 Should Tenant remain in possession after expiration without Landlord's written consent, Tenant shall pay holdover rent equal to 175% of the Base Rent then in effect.",
+        "clause_type": "rent",
+        "method": "fast_lane",
+        "confidence": 0.5
+      },
+      {
+        "id": "s21",
+        "text": "9. Entire Agreement",
+        "clause_type": "entire_agreement",
+        "method": "fast_lane",
+        "confidence": 0.5
+      },
+      {
+        "id": "s22",
+        "text": "9.1 This Lease, together with all Exhibits and the Rider referenced herein, constitutes the entire agreement between the parties and supersedes all prior negotiations and agreements. IN WITNESS WHEREOF, the parties have executed this Lease as of the date first written above. Landlord: Hazelbrook Logistics Park LLC By: _____________________ Tenant: Ferrovia Distribution Co. By: _____________________",
+        "clause_type": "entire_agreement",
+        "method": "fast_lane",
+        "confidence": 0.75
+      }
+    ]
+  },
+  "lease_09_coworking_nimbus_quill": {
+    "n_pages": 2,
+    "n_sections": 2,
+    "n_sentences": 0,
+    "sections": [
+      {
+        "id": "s0",
+        "text": "FLEXIBLE WORKSPACE MEMBERSHIP AGREEMENT MEMBERSHIP AND LICENSE AGREEMENT FOR FLEXIBLE WORKSPACE, dated February 2, 2027, between NIMBUS WORKSPACE COLLECTIVE (\"Operator\") and QUILL & CO. CONSULTING (\"Member\"). A. Term This Agreement is for a dedicated desk in Suite 4B and continues on a month-to-month basis commencing on the Start Date, terminable by either party upon 30 days' written notice. B. Fees Member shall pay the monthly Membership Fee of $650 in advance on the first of each month via the Operator's billing portal. C. Deposit Member shall pay a refundable deposit equal to one month's Membership Fee prior to occupying the dedicated desk, to be returned within 30 days of termination less any deductions for damage. D. Premises and Permitted Use The dedicated desk and shared amenities may be used solely for general office and consulting work consistent with a professional coworking environment. E. Access Operator's staff may access Suite 4B at any time during posted business hours for cleaning, maintenance, and safety inspections without advance notice to Member. F. Utilities and Services The Membership Fee includes high-speed internet, printing allowance, meeting room credits, and standard utilities; excess usage beyond the allowances described in the Member Handbook may be billed separately. G. Termination Either party may terminate this Agreement upon 30 days' written notice for any reason. Operator may terminate immediately for Member's breach of the coworking community guidelines. H. Entire Agreement This Agreement, together with the Member Handbook incorporated by reference, constitutes the entire agreement between Operator and Member regarding use of the workspace.",
+        "clause_type": "termination",
+        "method": "fast_lane",
+        "confidence": 0.96875
+      },
+      {
+        "id": "s1",
+        "text": "IN WITNESS WHEREOF, the parties have executed this Lease as of the date first written above. Operator: Nimbus Workspace Collective By: _____________________ Member: Quill & Co. Consulting By: _____________________",
+        "clause_type": "unknown",
+        "method": "fast_lane",
+        "confidence": 0.0
+      }
+    ]
+  },
+  "lease_10_groundlease_meadowline_cascade": {
+    "n_pages": 2,
+    "n_sections": 14,
+    "n_sentences": 0,
+    "sections": [
+      {
+        "id": "s0",
+        "text": "GROUND LEASE THIS GROUND LEASE is made as of March 18, 2027, by and between MEADOWLINE LAND HOLDINGS (\"Landlord\") and CASCADE DEVELOPMENT PARTNERS (\"Tenant\"). Landlord is the fee owner of the land described in Exhibit A, and Tenant intends to construct and operate a commercial development thereon. Article 1 \u2014 Term",
+        "clause_type": "unknown",
+        "method": "fast_lane",
+        "confidence": 0.0
+      },
+      {
+        "id": "s1",
+        "text": "1.1 The Term of this Ground Lease is fifty years commencing on the Effective Date, with two options to extend for twenty-five years each on the terms set forth in Article 9. Article 2 \u2014 Ground Rent",
+        "clause_type": "unknown",
+        "method": "fast_lane",
+        "confidence": 0.0
+      },
+      {
+        "id": "s2",
+        "text": "2.1 Tenant shall pay Ground Rent of $180,000 per annum for the first ten Lease Years, subject to a Consumer Price Index adjustment every five years thereafter. Article 3 \u2014 Registration",
+        "clause_type": "registration",
+        "method": "fast_lane",
+        "confidence": 0.5
+      },
+      {
+        "id": "s3",
+        "text": "3.1 This Ground Lease shall be recorded by Tenant, at Tenant's sole cost, in the official records of the county in which the Land is located within ninety days of execution.",
+        "clause_type": "unknown",
+        "method": "fast_lane",
+        "confidence": 0.0
+      },
+      {
+        "id": "s4",
+        "text": "3.2 Landlord shall execute a recordable memorandum of this Ground Lease promptly upon Tenant's request. Article 4 \u2014 Premises and Permitted Development",
+        "clause_type": "unknown",
+        "method": "fast_lane",
+        "confidence": 0.0
+      },
+      {
+        "id": "s5",
+        "text": "4.1 Tenant may construct, operate, and maintain a mixed-use commercial development on the Land consistent with the Development Plan attached as Exhibit B. Article 5 \u2014 Maintenance",
+        "clause_type": "unknown",
+        "method": "fast_lane",
+        "confidence": 0.0
+      },
+      {
+        "id": "s6",
+        "text": "5.1 Tenant shall, at its sole cost, construct, maintain, and repair all Improvements on the Land throughout the Term, and shall surrender the Land with Improvements in good condition upon expiration, subject to Article",
+        "clause_type": "unknown",
+        "method": "fast_lane",
+        "confidence": 0.0
+      },
+      {
+        "id": "s7",
+        "text": "10. Article 6 \u2014 Leasehold Mortgages and Subletting",
+        "clause_type": "subletting",
+        "method": "fast_lane",
+        "confidence": 0.5
+      },
+      {
+        "id": "s8",
+        "text": "6.1 Tenant may sublease all or portions of the Improvements to third parties in the ordinary course of operating the development without Landlord's consent, provided such subleases are subordinate to this Ground Lease. Article 7 \u2014 Dispute Resolution",
+        "clause_type": "subletting",
+        "method": "fast_lane",
+        "confidence": 0.75
+      },
+      {
+        "id": "s9",
+        "text": "7.1 Any dispute arising under this Ground Lease relating to the CPI adjustment described in Article 2 shall be resolved by binding arbitration under the rules of the American Arbitration Association.",
+        "clause_type": "dispute_resolution",
+        "method": "fast_lane",
+        "confidence": 0.875
+      },
+      {
+        "id": "s10",
+        "text": "Article 8 \u2014 Termination",
+        "clause_type": "termination",
+        "method": "fast_lane",
+        "confidence": 0.5
+      },
+      {
+        "id": "s11",
+        "text": "8.1 Landlord may terminate this Ground Lease only upon an uncured monetary default continuing for more than 120 days after written notice. Article 9 \u2014 Extension Options",
+        "clause_type": "termination",
+        "method": "fast_lane",
+        "confidence": 0.5
+      },
+      {
+        "id": "s12",
+        "text": "9.1 Tenant may exercise each extension option by written notice given not less than twenty-four months prior to expiration of the then-current Term. Article 10 \u2014 Entire Agreement",
+        "clause_type": "entire_agreement",
+        "method": "fast_lane",
+        "confidence": 0.5
+      },
+      {
+        "id": "s13",
+        "text": "10.1 This Ground Lease, together with Exhibits A through F, constitutes the entire agreement of the parties and supersedes all prior discussions, letters of intent, and term sheets. IN WITNESS WHEREOF, the parties have executed this Lease as of the date first written above. Landlord: Meadowline Land Holdings By: _____________________ Tenant: Cascade Development Partners By: _____________________",
+        "clause_type": "entire_agreement",
+        "method": "fast_lane",
+        "confidence": 0.75
+      }
+    ]
+  },
+  "lease_11_restaurant_saffronrow_copperpot": {
+    "n_pages": 2,
+    "n_sections": 21,
+    "n_sentences": 0,
+    "sections": [
+      {
+        "id": "s0",
+        "text": "RESTAURANT LEASE AGREEMENT THIS RESTAURANT LEASE is made as of April 5, 2027, between SAFFRON ROW RETAIL LLC (\"Landlord\") and COPPERPOT HOSPITALITY GROUP (\"Tenant\").",
+        "clause_type": "unknown",
+        "method": "fast_lane",
+        "confidence": 0.0
+      },
+      {
+        "id": "s1",
+        "text": "1. Premises and Permitted Use",
+        "clause_type": "unknown",
+        "method": "fast_lane",
+        "confidence": 0.0
+      },
+      {
+        "id": "s2",
+        "text": "1.1 The Premises comprise 2,850 square feet of ground-floor retail space to be operated exclusively as a full-service restaurant under the trade name approved by Landlord.",
+        "clause_type": "unknown",
+        "method": "fast_lane",
+        "confidence": 0.0
+      },
+      {
+        "id": "s3",
+        "text": "2. Term",
+        "clause_type": "unknown",
+        "method": "fast_lane",
+        "confidence": 0.0
+      },
+      {
+        "id": "s4",
+        "text": "2.1 The Term is ten years, commencing on the Rent Commencement Date, which shall be the earlier of Tenant's opening for business or 120 days after the Commencement Date.",
+        "clause_type": "term",
+        "method": "fast_lane",
+        "confidence": 0.75
+      },
+      {
+        "id": "s5",
+        "text": "3. Rent",
+        "clause_type": "unknown",
+        "method": "fast_lane",
+        "confidence": 0.0
+      },
+      {
+        "id": "s6",
+        "text": "3.1 Tenant shall pay Minimum Rent of $62,000 per annum plus Percentage Rent equal to 7% of Gross Sales in excess of the Breakpoint of $886,000 per annum.",
+        "clause_type": "unknown",
+        "method": "fast_lane",
+        "confidence": 0.0
+      },
+      {
+        "id": "s7",
+        "text": "3.2 Tenant shall submit monthly Gross Sales reports to Landlord within fifteen days after the end of each calendar month.",
+        "clause_type": "unknown",
+        "method": "fast_lane",
+        "confidence": 0.0
+      },
+      {
+        "id": "s8",
+        "text": "4. Late Fees",
+        "clause_type": "unknown",
+        "method": "fast_lane",
+        "confidence": 0.0
+      },
+      {
+        "id": "s9",
+        "text": "4.1 Any installment of Rent not paid within five days of the due date shall incur a late charge of $500 plus interest at 12% per annum on the outstanding balance.",
+        "clause_type": "late_fee",
+        "method": "fast_lane",
+        "confidence": 0.5
+      },
+      {
+        "id": "s10",
+        "text": "5. Utilities and Grease Trap",
+        "clause_type": "utilities",
+        "method": "fast_lane",
+        "confidence": 0.5
+      },
+      {
+        "id": "s11",
+        "text": "5.1 Tenant shall install, maintain, and service a grease trap in compliance with applicable health and environmental regulations, at Tenant's sole cost.",
+        "clause_type": "unknown",
+        "method": "fast_lane",
+        "confidence": 0.0
+      },
+      {
+        "id": "s12",
+        "text": "5.2 Tenant shall pay directly for all utilities serving the Premises, including gas, electricity, water, and sewer, based on separately metered consumption.",
+        "clause_type": "utilities",
+        "method": "fast_lane",
+        "confidence": 0.875
+      },
+      {
+        "id": "s13",
+        "text": "6. Maintenance",
+        "clause_type": "unknown",
+        "method": "fast_lane",
+        "confidence": 0.0
+      },
+      {
+        "id": "s14",
+        "text": "6.1 Tenant shall maintain all kitchen equipment, exhaust hoods, and fire suppression systems specific to restaurant operations in good working order.",
+        "clause_type": "unknown",
+        "method": "fast_lane",
+        "confidence": 0.0
+      },
+      {
+        "id": "s15",
+        "text": "7. Subletting and Assignment",
+        "clause_type": "subletting",
+        "method": "fast_lane",
+        "confidence": 0.5
+      },
+      {
+        "id": "s16",
+        "text": "7.1 Tenant shall not assign this Lease or sublet the Premises without Landlord's prior written consent, which may be withheld in Landlord's sole discretion given the concentration of food-service tenants in the Project.",
+        "clause_type": "subletting",
+        "method": "fast_lane",
+        "confidence": 0.75
+      },
+      {
+        "id": "s17",
+        "text": "8. Dispute Resolution",
+        "clause_type": "dispute_resolution",
+        "method": "fast_lane",
+        "confidence": 0.5
+      },
+      {
+        "id": "s18",
+        "text": "8.1 Any dispute concerning the calculation of Percentage Rent shall be submitted to an independent accountant mutually selected by the parties, whose determination shall be final and binding.",
+        "clause_type": "rent",
+        "method": "fast_lane",
+        "confidence": 0.5
+      },
+      {
+        "id": "s19",
+        "text": "9. Termination",
+        "clause_type": "termination",
+        "method": "fast_lane",
+        "confidence": 0.5
+      },
+      {
+        "id": "s20",
+        "text": "9.1 Landlord may terminate this Lease if Tenant fails to open for business within 180 days after the Commencement Date, subject to force majeure delays. IN WITNESS WHEREOF, the parties have executed this Lease as of the date first written above. Landlord: Saffron Row Retail LLC By: _____________________ Tenant: Copperpot Hospitality Group By: _____________________",
+        "clause_type": "termination",
+        "method": "fast_lane",
+        "confidence": 0.75
+      }
+    ]
+  },
+  "lease_12_medoffice_accessiblecare_valleyview": {
+    "n_pages": 2,
+    "n_sections": 12,
+    "n_sentences": 0,
+    "sections": [
+      {
+        "id": "s0",
+        "text": "MEDICAL OFFICE LEASE THIS MEDICAL OFFICE LEASE is made as of May 14, 2027, between ACCESSIBLE CARE REALTY TRUST (\"Landlord\") and VALLEYVIEW FAMILY MEDICINE PLLC (\"Tenant\"). Section 1. Premises",
+        "clause_type": "unknown",
+        "method": "fast_lane",
+        "confidence": 0.0
+      },
+      {
+        "id": "s1",
+        "text": "1.1 The Premises consist of 5,400 rentable square feet on the ground floor, configured for outpatient medical use, including examination rooms and a minor procedure suite. Section 2. Term and Deposit",
+        "clause_type": "unknown",
+        "method": "fast_lane",
+        "confidence": 0.0
+      },
+      {
+        "id": "s2",
+        "text": "2.1 The Term is eight years. Tenant shall deposit $28,500 with Landlord as a Security Deposit upon execution of this Lease, to be held without interest as security for Tenant's performance. Section 3. Accessibility and Access",
+        "clause_type": "deposit",
+        "method": "fast_lane",
+        "confidence": 0.5
+      },
+      {
+        "id": "s3",
+        "text": "3.1 Landlord represents that the Common Areas comply with the Americans with Disabilities Act as of the Commencement Date and shall maintain such compliance throughout the Term.",
+        "clause_type": "term",
+        "method": "fast_lane",
+        "confidence": 0.5
+      },
+      {
+        "id": "s4",
+        "text": "3.2 Landlord may access the Premises upon 24 hours' notice for inspection, except that no notice is required to access mechanical rooms not containing patient records or patient care areas. Section 4. Maintenance",
+        "clause_type": "unknown",
+        "method": "fast_lane",
+        "confidence": 0.0
+      },
+      {
+        "id": "s5",
+        "text": "4.1 Landlord shall maintain and repair the Building's medical gas lines, backup generator, and emergency lighting systems serving the Premises.",
+        "clause_type": "utilities",
+        "method": "fast_lane",
+        "confidence": 0.5
+      },
+      {
+        "id": "s6",
+        "text": "4.2 Tenant shall maintain all medical equipment and fixtures installed by Tenant in compliance with applicable healthcare licensing requirements. Section 5. Utilities",
+        "clause_type": "utilities",
+        "method": "fast_lane",
+        "confidence": 0.5
+      },
+      {
+        "id": "s7",
+        "text": "5.1 Tenant shall pay its Proportionate Share of Building utilities, with medical-grade HVAC and backup power costs allocated separately as described in Exhibit C. Section 6. Subletting",
+        "clause_type": "utilities",
+        "method": "fast_lane",
+        "confidence": 0.75
+      },
+      {
+        "id": "s8",
+        "text": "6.1 Tenant may permit visiting physicians and locum tenens practitioners to use the Premises without such use being deemed a sublease requiring Landlord's consent. Section 7. Rent and Late Fee",
+        "clause_type": "subletting",
+        "method": "fast_lane",
+        "confidence": 0.5
+      },
+      {
+        "id": "s9",
+        "text": "7.1 Base Rent shall be $46.00 per rentable square foot per annum, escalating 3% annually. Any late payment beyond a five-day grace period shall incur a 4% late charge.",
+        "clause_type": "rent",
+        "method": "fast_lane",
+        "confidence": 0.75
+      },
+      {
+        "id": "s10",
+        "text": "Section 8. Termination",
+        "clause_type": "termination",
+        "method": "fast_lane",
+        "confidence": 0.5
+      },
+      {
+        "id": "s11",
+        "text": "8.1 Tenant may terminate this Lease if Tenant's medical license or facility certification is revoked through no fault of Tenant, upon 60 days' written notice to Landlord. IN WITNESS WHEREOF, the parties have executed this Lease as of the date first written above. Landlord: Accessible Care Realty Trust By: _____________________ Tenant: Valleyview Family Medicine PLLC By: _____________________",
+        "clause_type": "termination",
+        "method": "fast_lane",
+        "confidence": 0.75
+      }
+    ]
+  },
+  "lease_13_datacenter_quorum_prismworks": {
+    "n_pages": 2,
+    "n_sections": 21,
+    "n_sentences": 0,
+    "sections": [
+      {
+        "id": "s0",
+        "text": "DATA CENTER COLOCATION LEASE THIS DATA CENTER COLOCATION LEASE is made as of June 2, 2027, between QUORUM DIGITAL INFRASTRUCTURE LLC (\"Landlord\") and PRISMWORKS CLOUD SERVICES, INC. (\"Tenant\").",
+        "clause_type": "unknown",
+        "method": "fast_lane",
+        "confidence": 0.0
+      },
+      {
+        "id": "s1",
+        "text": "1. Premises",
+        "clause_type": "unknown",
+        "method": "fast_lane",
+        "confidence": 0.0
+      },
+      {
+        "id": "s2",
+        "text": "1.1 The Premises consist of a dedicated 4,000 square foot data hall within Landlord's Tier III facility, together with rights to 1.2 megawatts of critical IT load capacity.",
+        "clause_type": "unknown",
+        "method": "fast_lane",
+        "confidence": 0.0
+      },
+      {
+        "id": "s3",
+        "text": "2. Term",
+        "clause_type": "unknown",
+        "method": "fast_lane",
+        "confidence": 0.0
+      },
+      {
+        "id": "s4",
+        "text": "2.1 The Term is fifteen years, commencing on the Ready-for-Service Date.",
+        "clause_type": "unknown",
+        "method": "fast_lane",
+        "confidence": 0.0
+      },
+      {
+        "id": "s5",
+        "text": "3. Power and Utilities",
+        "clause_type": "utilities",
+        "method": "fast_lane",
+        "confidence": 0.5
+      },
+      {
+        "id": "s6",
+        "text": "3.1 Landlord shall provide Tenant with redundant N+1 power distribution and uninterruptible power supply coverage for the full Critical Load Capacity at all times during the Term.",
+        "clause_type": "unknown",
+        "method": "fast_lane",
+        "confidence": 0.0
+      },
+      {
+        "id": "s7",
+        "text": "3.2 Tenant shall pay for actual power consumption measured at the Tenant's power distribution units, billed monthly at Landlord's then-current per-kilowatt-hour rate.",
+        "clause_type": "unknown",
+        "method": "fast_lane",
+        "confidence": 0.0
+      },
+      {
+        "id": "s8",
+        "text": "3.3 Landlord shall maintain the facility's cooling infrastructure to keep the data hall within the temperature and humidity ranges specified in Exhibit D at all times.",
+        "clause_type": "unknown",
+        "method": "fast_lane",
+        "confidence": 0.0
+      },
+      {
+        "id": "s9",
+        "text": "4. Maintenance and Service Levels",
+        "clause_type": "unknown",
+        "method": "fast_lane",
+        "confidence": 0.0
+      },
+      {
+        "id": "s10",
+        "text": "4.1 Landlord shall provide 24x7x365 on-site facility engineering staff and shall remedy any Critical Infrastructure failure within the Service Level times set forth in Exhibit E.",
+        "clause_type": "unknown",
+        "method": "fast_lane",
+        "confidence": 0.0
+      },
+      {
+        "id": "s11",
+        "text": "5. Access",
+        "clause_type": "unknown",
+        "method": "fast_lane",
+        "confidence": 0.0
+      },
+      {
+        "id": "s12",
+        "text": "5.1 Tenant's authorized personnel shall have 24-hour biometric access to the data hall; Landlord shall not enter the caged Premises except in an emergency or with 24 hours' prior notice for scheduled maintenance.",
+        "clause_type": "unknown",
+        "method": "fast_lane",
+        "confidence": 0.0
+      },
+      {
+        "id": "s13",
+        "text": "6. Rent and Deposit",
+        "clause_type": "unknown",
+        "method": "fast_lane",
+        "confidence": 0.0
+      },
+      {
+        "id": "s14",
+        "text": "6.1 Tenant shall pay Base Rent of $18,500 per month plus metered power charges under Section 3.2, and shall provide a Letter of Credit in the amount of six months' Base Rent as security.",
+        "clause_type": "rent",
+        "method": "fast_lane",
+        "confidence": 0.75
+      },
+      {
+        "id": "s15",
+        "text": "7. Subletting",
+        "clause_type": "subletting",
+        "method": "fast_lane",
+        "confidence": 0.5
+      },
+      {
+        "id": "s16",
+        "text": "7.1 Tenant shall not sublease rack space or cage capacity to third parties for a competing colocation business without Landlord's prior written consent.",
+        "clause_type": "subletting",
+        "method": "fast_lane",
+        "confidence": 0.5
+      },
+      {
+        "id": "s17",
+        "text": "8. Termination",
+        "clause_type": "termination",
+        "method": "fast_lane",
+        "confidence": 0.5
+      },
+      {
+        "id": "s18",
+        "text": "8.1 Tenant may terminate this Lease if Landlord fails to remedy a Critical Infrastructure failure exceeding four consecutive hours more than twice in any twelve-month period.",
+        "clause_type": "termination",
+        "method": "fast_lane",
+        "confidence": 0.75
+      },
+      {
+        "id": "s19",
+        "text": "9. Dispute Resolution",
+        "clause_type": "dispute_resolution",
+        "method": "fast_lane",
+        "confidence": 0.5
+      },
+      {
+        "id": "s20",
+        "text": "9.1 Disputes concerning Service Level Agreement credits shall be resolved through the escalation procedure in Exhibit E prior to either party commencing litigation. IN WITNESS WHEREOF, the parties have executed this Lease as of the date first written above. Landlord: Quorum Digital Infrastructure LLC By: _____________________ Tenant: Prismworks Cloud Services, Inc. By: _____________________",
+        "clause_type": "dispute_resolution",
+        "method": "fast_lane",
+        "confidence": 0.5
+      }
+    ]
+  },
+  "lease_14_petfriendly_maplecourt_barkavenue": {
+    "n_pages": 2,
+    "n_sections": 20,
+    "n_sentences": 0,
+    "sections": [
+      {
+        "id": "s0",
+        "text": "RETAIL LEASE AGREEMENT THIS RETAIL LEASE is made as of July 8, 2027, between MAPLECOURT SHOPPES LLC (\"Landlord\") and BARK AVENUE PET BOUTIQUE & GROOMING, INC. (\"Tenant\").",
+        "clause_type": "pets",
+        "method": "fast_lane",
+        "confidence": 0.5
+      },
+      {
+        "id": "s1",
+        "text": "1. Premises and Permitted Use",
+        "clause_type": "unknown",
+        "method": "fast_lane",
+        "confidence": 0.0
+      },
+      {
+        "id": "s2",
+        "text": "1.1 The Premises consist of 1,950 square feet to be used solely for the retail sale of pet supplies and the operation of a pet grooming salon.",
+        "clause_type": "pets",
+        "method": "fast_lane",
+        "confidence": 0.75
+      },
+      {
+        "id": "s3",
+        "text": "2. Pet Policy",
+        "clause_type": "pets",
+        "method": "fast_lane",
+        "confidence": 0.5
+      },
+      {
+        "id": "s4",
+        "text": "2.1 Notwithstanding any general Building policy prohibiting animals, Tenant and its customers may bring dogs and cats into the Premises in connection with Tenant's grooming and retail operations, provided all animals are leashed or crated while in the Common Areas.",
+        "clause_type": "unknown",
+        "method": "fast_lane",
+        "confidence": 0.0
+      },
+      {
+        "id": "s5",
+        "text": "2.2 Tenant shall maintain pet liability insurance covering injury to persons or property caused by animals on or about the Premises, in the amount of not less than $1,000,000 per occurrence.",
+        "clause_type": "pets",
+        "method": "fast_lane",
+        "confidence": 0.5
+      },
+      {
+        "id": "s6",
+        "text": "2.3 Tenant shall promptly clean and sanitize any area of the Common Areas soiled by an animal in connection with Tenant's business.",
+        "clause_type": "unknown",
+        "method": "fast_lane",
+        "confidence": 0.0
+      },
+      {
+        "id": "s7",
+        "text": "3. Term and Deposit",
+        "clause_type": "unknown",
+        "method": "fast_lane",
+        "confidence": 0.0
+      },
+      {
+        "id": "s8",
+        "text": "3.1 The Term is six years. Tenant shall pay a Security Deposit of $11,700 upon execution of this Lease.",
+        "clause_type": "deposit",
+        "method": "fast_lane",
+        "confidence": 0.75
+      },
+      {
+        "id": "s9",
+        "text": "4. Rent",
+        "clause_type": "unknown",
+        "method": "fast_lane",
+        "confidence": 0.0
+      },
+      {
+        "id": "s10",
+        "text": "4.1 Base Rent shall be $34.50 per square foot per annum, payable monthly, with 3% annual escalations.",
+        "clause_type": "rent",
+        "method": "fast_lane",
+        "confidence": 0.75
+      },
+      {
+        "id": "s11",
+        "text": "5. Maintenance and Utilities",
+        "clause_type": "utilities",
+        "method": "fast_lane",
+        "confidence": 0.5
+      },
+      {
+        "id": "s12",
+        "text": "5.1 Tenant shall maintain a dedicated grooming-station drain trap in compliance with applicable plumbing codes and shall service such trap not less than quarterly.",
+        "clause_type": "unknown",
+        "method": "fast_lane",
+        "confidence": 0.0
+      },
+      {
+        "id": "s13",
+        "text": "5.2 Tenant shall pay its Proportionate Share of Common Area utilities as Additional Rent.",
+        "clause_type": "rent",
+        "method": "fast_lane",
+        "confidence": 0.5
+      },
+      {
+        "id": "s14",
+        "text": "6. Access",
+        "clause_type": "unknown",
+        "method": "fast_lane",
+        "confidence": 0.0
+      },
+      {
+        "id": "s15",
+        "text": "6.1 Landlord may inspect the grooming facility upon 48 hours' notice to confirm compliance with the sanitation requirements of Section 5.1.",
+        "clause_type": "unknown",
+        "method": "fast_lane",
+        "confidence": 0.0
+      },
+      {
+        "id": "s16",
+        "text": "7. Subletting",
+        "clause_type": "subletting",
+        "method": "fast_lane",
+        "confidence": 0.5
+      },
+      {
+        "id": "s17",
+        "text": "7.1 Tenant shall not assign this Lease or sublet the Premises to a party whose primary business is not pet-related without Landlord's prior written consent.",
+        "clause_type": "subletting",
+        "method": "fast_lane",
+        "confidence": 0.75
+      },
+      {
+        "id": "s18",
+        "text": "8. Termination",
+        "clause_type": "termination",
+        "method": "fast_lane",
+        "confidence": 0.5
+      },
+      {
+        "id": "s19",
+        "text": "8.1 Landlord may terminate this Lease if Tenant receives more than two substantiated animal-welfare or sanitation code violations within any consecutive twelve-month period. IN WITNESS WHEREOF, the parties have executed this Lease as of the date first written above. Landlord: Maplecourt Shoppes LLC By: _____________________ Tenant: Bark Avenue Pet Boutique & Grooming, Inc. By: _____________________",
+        "clause_type": "termination",
+        "method": "fast_lane",
+        "confidence": 0.75
+      }
+    ]
+  },
+  "lease_15_sublease_crestfield_pioneer": {
+    "n_pages": 2,
+    "n_sections": 20,
+    "n_sentences": 0,
+    "sections": [
+      {
+        "id": "s0",
+        "text": "SUBLEASE AGREEMENT THIS SUBLEASE AGREEMENT is made as of August 20, 2027, between CRESTFIELD ANALYTICS, INC. (\"Sublandlord\") and PIONEER GRANT CONSULTING LLC (\"Subtenant\"). Sublandlord is the tenant under that certain Master Lease dated January 10, 2023, between Regency Tower Holdings, as landlord, and Sublandlord, as tenant, covering the eighth floor of Regency Tower.",
+        "clause_type": "subletting",
+        "method": "fast_lane",
+        "confidence": 0.75
+      },
+      {
+        "id": "s1",
+        "text": "1. Sublease of Premises",
+        "clause_type": "subletting",
+        "method": "fast_lane",
+        "confidence": 0.5
+      },
+      {
+        "id": "s2",
+        "text": "1.1 Sublandlord hereby subleases to Subtenant, and Subtenant subleases from Sublandlord, approximately",
+        "clause_type": "subletting",
+        "method": "fast_lane",
+        "confidence": 0.75
+      },
+      {
+        "id": "s3",
+        "text": "4,100 square feet of the eighth floor Premises described in the Master Lease.",
+        "clause_type": "unknown",
+        "method": "fast_lane",
+        "confidence": 0.0
+      },
+      {
+        "id": "s4",
+        "text": "2. Term",
+        "clause_type": "unknown",
+        "method": "fast_lane",
+        "confidence": 0.0
+      },
+      {
+        "id": "s5",
+        "text": "2.1 The Sublease Term commences on the Sublease Commencement Date and expires one day prior to the expiration of the Master Lease Term, unless earlier terminated.",
+        "clause_type": "term",
+        "method": "fast_lane",
+        "confidence": 0.9375
+      },
+      {
+        "id": "s6",
+        "text": "3. Consent and Subordination",
+        "clause_type": "unknown",
+        "method": "fast_lane",
+        "confidence": 0.0
+      },
+      {
+        "id": "s7",
+        "text": "3.1 This Sublease is subject to and conditioned upon the written consent of the Master Landlord, which consent is attached as Exhibit A.",
+        "clause_type": "subletting",
+        "method": "fast_lane",
+        "confidence": 0.5
+      },
+      {
+        "id": "s8",
+        "text": "3.2 This Sublease is subject and subordinate to all terms, covenants, and conditions of the Master Lease, which is incorporated herein by reference.",
+        "clause_type": "subletting",
+        "method": "fast_lane",
+        "confidence": 0.5
+      },
+      {
+        "id": "s9",
+        "text": "4. Rent",
+        "clause_type": "unknown",
+        "method": "fast_lane",
+        "confidence": 0.0
+      },
+      {
+        "id": "s10",
+        "text": "4.1 Subtenant shall pay Sublandlord Base Rent of $38.00 per square foot per annum, payable monthly, which Sublandlord shall apply toward its corresponding obligation under the Master Lease.",
+        "clause_type": "rent",
+        "method": "fast_lane",
+        "confidence": 0.5
+      },
+      {
+        "id": "s11",
+        "text": "5. Further Subletting",
+        "clause_type": "subletting",
+        "method": "fast_lane",
+        "confidence": 0.5
+      },
+      {
+        "id": "s12",
+        "text": "5.1 Subtenant shall not further sublease the Premises or assign this Sublease without the prior written consent of both Sublandlord and the Master Landlord.",
+        "clause_type": "subletting",
+        "method": "fast_lane",
+        "confidence": 0.75
+      },
+      {
+        "id": "s13",
+        "text": "6. Maintenance and Access",
+        "clause_type": "unknown",
+        "method": "fast_lane",
+        "confidence": 0.0
+      },
+      {
+        "id": "s14",
+        "text": "6.1 Sublandlord shall pass through to Subtenant the benefit of the Master Landlord's maintenance obligations under the Master Lease, but shall have no independent maintenance obligation of its own.",
+        "clause_type": "maintenance",
+        "method": "fast_lane",
+        "confidence": 0.9375
+      },
+      {
+        "id": "s15",
+        "text": "6.2 Master Landlord retains all access and inspection rights described in the Master Lease, which shall apply equally to the subleased Premises.",
+        "clause_type": "subletting",
+        "method": "fast_lane",
+        "confidence": 0.5
+      },
+      {
+        "id": "s16",
+        "text": "7. Default",
+        "clause_type": "unknown",
+        "method": "fast_lane",
+        "confidence": 0.0
+      },
+      {
+        "id": "s17",
+        "text": "7.1 Any default by Sublandlord under the Master Lease that results in termination of the Master Lease shall automatically terminate this Sublease without liability to Sublandlord, except for Sublandlord's own uncured defaults under this Sublease.",
+        "clause_type": "termination",
+        "method": "fast_lane",
+        "confidence": 0.75
+      },
+      {
+        "id": "s18",
+        "text": "8. Entire Agreement",
+        "clause_type": "entire_agreement",
+        "method": "fast_lane",
+        "confidence": 0.5
+      },
+      {
+        "id": "s19",
+        "text": "8.1 This Sublease, together with the Master Lease incorporated by reference, constitutes the entire agreement between Sublandlord and Subtenant regarding the Premises. IN WITNESS WHEREOF, the parties have executed this Lease as of the date first written above. Sublandlord: Crestfield Analytics, Inc. By: _____________________ Subtenant: Pioneer Grant Consulting LLC By: _____________________",
+        "clause_type": "subletting",
+        "method": "fast_lane",
+        "confidence": 0.5
+      }
+    ]
+  },
+  "lease_16_popup_lumen_giltgrove": {
+    "n_pages": 1,
+    "n_sections": 8,
+    "n_sentences": 0,
+    "sections": [
+      {
+        "id": "s0",
+        "text": "POP-UP RETAIL LICENSE AGREEMENT SHORT-TERM POP-UP RETAIL LICENSE AGREEMENT, dated September 3, 2027, between LUMEN MARKETPLACE PROPERTIES (\"Landlord\") and GILT & GROVE SEASONAL GOODS (\"Tenant\").",
+        "clause_type": "unknown",
+        "method": "fast_lane",
+        "confidence": 0.0
+      },
+      {
+        "id": "s1",
+        "text": "Term This License is for a term of forty-five days, commencing on the Start Date and automatically expiring on the End Date without further notice required from either party.",
+        "clause_type": "unknown",
+        "method": "fast_lane",
+        "confidence": 0.0
+      },
+      {
+        "id": "s2",
+        "text": "Rent Tenant shall pay a flat License Fee of $6,750 for the full Term, due in full prior to occupancy, with no installment payment option available.",
+        "clause_type": "unknown",
+        "method": "fast_lane",
+        "confidence": 0.0
+      },
+      {
+        "id": "s3",
+        "text": "Premises The Premises consist of a 600 square foot kiosk space in the Marketplace's central atrium, to be used solely for the seasonal retail sale of Tenant's merchandise.",
+        "clause_type": "unknown",
+        "method": "fast_lane",
+        "confidence": 0.0
+      },
+      {
+        "id": "s4",
+        "text": "Deposit A refundable damage deposit of $1,000 shall be paid concurrently with the License Fee and returned within ten business days after the End Date, less any deductions for damage.",
+        "clause_type": "deposit",
+        "method": "fast_lane",
+        "confidence": 0.75
+      },
+      {
+        "id": "s5",
+        "text": "Access and Hours Tenant may access the kiosk only during Marketplace operating hours; Landlord's security staff retains access to the kiosk at all times for safety purposes.",
+        "clause_type": "unknown",
+        "method": "fast_lane",
+        "confidence": 0.0
+      },
+      {
+        "id": "s6",
+        "text": "Termination Landlord may terminate this License immediately, without refund, if Tenant's operation violates Marketplace conduct rules or applicable law.",
+        "clause_type": "termination",
+        "method": "fast_lane",
+        "confidence": 0.75
+      },
+      {
+        "id": "s7",
+        "text": "No Renewal This License does not create any right of renewal, extension, or holdover tenancy, and Tenant shall vacate the kiosk no later than the End Date. IN WITNESS WHEREOF, the parties have executed this Lease as of the date first written above. Landlord: Lumen Marketplace Properties By: _____________________ Tenant: Gilt & Grove Seasonal Goods By: _____________________",
+        "clause_type": "unknown",
+        "method": "fast_lane",
+        "confidence": 0.0
+      }
+    ]
+  },
+  "lease_17_multitenant_regent_kestrel": {
+    "n_pages": 2,
+    "n_sections": 12,
+    "n_sentences": 0,
+    "sections": [
+      {
+        "id": "s0",
+        "text": "DEED OF LEASE THIS DEED OF LEASE is made as of October 11, 2027, between REGENT COMMERCIAL ESTATES PVT. LTD. (\"Lessor\") and KESTREL SOFTWARE SOLUTIONS PVT. LTD. (\"Lessee\"). Clause 1 \u2014 Demised Premises",
+        "clause_type": "premises",
+        "method": "fast_lane",
+        "confidence": 0.5
+      },
+      {
+        "id": "s1",
+        "text": "1.1 The Lessor hereby demises unto the Lessee office space admeasuring 8,200 square feet on the sixth floor of Regent Commercial Tower, more particularly described in Annexure I. Clause 2 \u2014 Term",
+        "clause_type": "unknown",
+        "method": "fast_lane",
+        "confidence": 0.0
+      },
+      {
+        "id": "s2",
+        "text": "2.1 This Lease shall be for a period of nine years commencing from the date of handover of possession, with a lock-in period of the first three years. Clause 3 \u2014 Stamp Duty and Registration",
+        "clause_type": "registration",
+        "method": "fast_lane",
+        "confidence": 0.5
+      },
+      {
+        "id": "s3",
+        "text": "3.1 The stamp duty payable on this Lease Deed and the cost of registration thereof with the office of the Sub-Registrar shall be borne equally by the Lessor and the Lessee.",
+        "clause_type": "registration",
+        "method": "fast_lane",
+        "confidence": 0.5
+      },
+      {
+        "id": "s4",
+        "text": "3.2 The Lessee shall be responsible for presenting this Lease Deed for registration within the statutory period prescribed under the applicable Registration Act, and the Lessor shall provide all documents reasonably necessary to effect such registration. Clause 4 \u2014 Rent",
+        "clause_type": "registration",
+        "method": "fast_lane",
+        "confidence": 0.875
+      },
+      {
+        "id": "s5",
+        "text": "4.1 The Lessee shall pay monthly rent of INR 82 per square foot, escalating by 15% at the end of every three years during the Term. Clause 5 \u2014 Security Deposit",
+        "clause_type": "rent",
+        "method": "fast_lane",
+        "confidence": 0.5
+      },
+      {
+        "id": "s6",
+        "text": "5.1 The Lessee shall pay an interest-free refundable security deposit equivalent to ten months' rent, to be refunded within thirty days of vacating the Premises, subject to deductions for damages. Clause 6 \u2014 Maintenance and Utilities",
+        "clause_type": "deposit",
+        "method": "fast_lane",
+        "confidence": 0.75
+      },
+      {
+        "id": "s7",
+        "text": "6.1 The Lessor shall be responsible for the maintenance of the common lobby, lifts, and central air-conditioning plant serving the Building.",
+        "clause_type": "maintenance",
+        "method": "fast_lane",
+        "confidence": 0.75
+      },
+      {
+        "id": "s8",
+        "text": "6.2 The Lessee shall pay maintenance charges and utility charges for electricity and water consumed within the Premises based on sub-metered readings. Clause 7 \u2014 Lock-in and Termination",
+        "clause_type": "utilities",
+        "method": "fast_lane",
+        "confidence": 0.75
+      },
+      {
+        "id": "s9",
+        "text": "7.1 Neither party may terminate this Lease during the lock-in period described in Clause 2.1, except in the event of an uncured material breach.",
+        "clause_type": "termination",
+        "method": "fast_lane",
+        "confidence": 0.75
+      },
+      {
+        "id": "s10",
+        "text": "Clause 8 \u2014 Dispute Resolution",
+        "clause_type": "dispute_resolution",
+        "method": "fast_lane",
+        "confidence": 0.5
+      },
+      {
+        "id": "s11",
+        "text": "8.1 Any dispute arising out of or in connection with this Lease Deed shall be referred to arbitration by a sole arbitrator appointed by mutual consent, with the seat of arbitration at the city in which the Premises are located. IN WITNESS WHEREOF, the parties have executed this Lease as of the date first written above. Lessor: Regent Commercial Estates Pvt. Ltd. By: _____________________ Lessee: Kestrel Software Solutions Pvt. Ltd. By: _____________________",
+        "clause_type": "dispute_resolution",
+        "method": "fast_lane",
+        "confidence": 0.9375
+      }
+    ]
+  },
+  "lease_18_storage_boxwood_oyelaran": {
+    "n_pages": 1,
+    "n_sections": 7,
+    "n_sentences": 0,
+    "sections": [
+      {
+        "id": "s0",
+        "text": "SELF-STORAGE RENTAL AGREEMENT SELF-STORAGE RENTAL AGREEMENT, dated November 1, 2027, between BOXWOOD SELF STORAGE FACILITY (\"Owner\") and DESMOND R. OYELARAN (\"Occupant\").",
+        "clause_type": "unknown",
+        "method": "fast_lane",
+        "confidence": 0.0
+      },
+      {
+        "id": "s1",
+        "text": "1. Unit and Term Owner rents to Occupant Storage Unit #C-114, approximately 10 feet by 15 feet, on a month-to-month basis commencing on the move-in date.",
+        "clause_type": "unknown",
+        "method": "fast_lane",
+        "confidence": 0.0
+      },
+      {
+        "id": "s2",
+        "text": "2. Rent Occupant shall pay monthly rent of $145.00 in advance on the first of each month via the facility's online portal or in person at the office.",
+        "clause_type": "rent",
+        "method": "fast_lane",
+        "confidence": 0.5
+      },
+      {
+        "id": "s3",
+        "text": "3. Late Fee A late fee of $25.00 applies to any payment received after the fifth day of the month, and access to the unit may be suspended for accounts more than fifteen days past due.",
+        "clause_type": "late_fee",
+        "method": "fast_lane",
+        "confidence": 0.75
+      },
+      {
+        "id": "s4",
+        "text": "4. Permitted Use The Unit shall be used solely for storage of Occupant's personal property and shall not be used for residential occupancy, business operations, or storage of hazardous, flammable, or perishable items.",
+        "clause_type": "unknown",
+        "method": "fast_lane",
+        "confidence": 0.0
+      },
+      {
+        "id": "s5",
+        "text": "5. Access Occupant may access the Unit during posted facility hours using Occupant's assigned gate code. Owner may access the Unit only with Occupant's consent, a court order, or in the event of an emergency threatening the facility.",
+        "clause_type": "unknown",
+        "method": "fast_lane",
+        "confidence": 0.0
+      },
+      {
+        "id": "s6",
+        "text": "6. Termination Either party may terminate this Agreement upon fourteen days' written or electronic notice. Owner may terminate immediately for non-payment exceeding thirty days, subject to applicable lien-sale procedures under state law. IN WITNESS WHEREOF, the parties have executed this Lease as of the date first written above. Owner: Boxwood Self Storage Facility By: _____________________ Occupant: Desmond R. Oyelaran By: _____________________",
+        "clause_type": "termination",
+        "method": "fast_lane",
+        "confidence": 0.9375
+      }
+    ]
+  },
+  "lease_19_restaurant_saltmark_tidewater": {
+    "n_pages": 2,
+    "n_sections": 13,
+    "n_sentences": 0,
+    "sections": [
+      {
+        "id": "s0",
+        "text": "RESTAURANT LEASE AGREEMENT THIS LEASE AGREEMENT is made as of December 6, 2027, between SALTMARK HARBOR PROPERTIES (\"Landlord\") and TIDEWATER OYSTER BAR LLC (\"Tenant\"). Article 1 \u2014 Premises and Term",
+        "clause_type": "unknown",
+        "method": "fast_lane",
+        "confidence": 0.0
+      },
+      {
+        "id": "s1",
+        "text": "1.1 The Premises consist of 3,300 square feet of waterfront retail space with an adjoining outdoor patio, leased for a Term of ten years. Article 2 \u2014 Rent",
+        "clause_type": "unknown",
+        "method": "fast_lane",
+        "confidence": 0.0
+      },
+      {
+        "id": "s2",
+        "text": "2.1 Tenant shall pay Base Rent of $71,000 per annum, with 3% annual escalations, plus Percentage Rent of",
+        "clause_type": "rent",
+        "method": "fast_lane",
+        "confidence": 0.5
+      },
+      {
+        "id": "s3",
+        "text": "6% of Gross Sales above a Breakpoint of $1,050,000. Article 3 \u2014 Mandatory Mediation and Arbitration",
+        "clause_type": "dispute_resolution",
+        "method": "fast_lane",
+        "confidence": 0.75
+      },
+      {
+        "id": "s4",
+        "text": "3.1 The parties shall first attempt to resolve any dispute arising under this Lease through non-binding mediation administered by a mediator mutually selected within thirty days of a written request by either party.",
+        "clause_type": "dispute_resolution",
+        "method": "fast_lane",
+        "confidence": 0.875
+      },
+      {
+        "id": "s5",
+        "text": "3.2 If mediation does not resolve the dispute within sixty days, the dispute shall be submitted to binding arbitration under the Commercial Arbitration Rules of the American Arbitration Association, with the arbitration to be held in the city in which the Premises are located.",
+        "clause_type": "dispute_resolution",
+        "method": "fast_lane",
+        "confidence": 0.99609375
+      },
+      {
+        "id": "s6",
+        "text": "3.3 The prevailing party in any arbitration under this Article shall be entitled to recover its reasonable attorneys' fees and arbitration costs from the non-prevailing party. Article 4 \u2014 Jury Trial and Venue Waiver",
+        "clause_type": "dispute_resolution",
+        "method": "fast_lane",
+        "confidence": 0.75
+      },
+      {
+        "id": "s7",
+        "text": "4.1 Each party knowingly and voluntarily waives any right to a jury trial and any objection to venue in connection with any proceeding permitted under Article 3. Article 5 \u2014 Maintenance and Patio Use",
+        "clause_type": "unknown",
+        "method": "fast_lane",
+        "confidence": 0.0
+      },
+      {
+        "id": "s8",
+        "text": "5.1 Tenant shall maintain the outdoor patio furniture, umbrellas, and heating elements in good condition and shall remove such items during named storm events upon Landlord's notice. Article 6 \u2014 Utilities",
+        "clause_type": "utilities",
+        "method": "fast_lane",
+        "confidence": 0.5
+      },
+      {
+        "id": "s9",
+        "text": "6.1 Tenant shall pay directly for all utilities serving the Premises, including a dedicated seafood tank aeration system. Article 7 \u2014 Subletting",
+        "clause_type": "utilities",
+        "method": "fast_lane",
+        "confidence": 0.5
+      },
+      {
+        "id": "s10",
+        "text": "7.1 Tenant shall not assign this Lease or sublet the Premises without Landlord's prior written consent, not to be unreasonably withheld.",
+        "clause_type": "subletting",
+        "method": "fast_lane",
+        "confidence": 0.75
+      },
+      {
+        "id": "s11",
+        "text": "Article 8 \u2014 Termination",
+        "clause_type": "termination",
+        "method": "fast_lane",
+        "confidence": 0.5
+      },
+      {
+        "id": "s12",
+        "text": "8.1 Landlord may terminate this Lease if Tenant's health department permit is revoked and not reinstated within forty-five days. IN WITNESS WHEREOF, the parties have executed this Lease as of the date first written above. Landlord: Saltmark Harbor Properties By: _____________________ Tenant: Tidewater Oyster Bar LLC By: _____________________",
+        "clause_type": "termination",
+        "method": "fast_lane",
+        "confidence": 0.75
+      }
+    ]
+  },
+  "lease_20_lab_helix_meridiangenomics": {
+    "n_pages": 2,
+    "n_sections": 19,
+    "n_sentences": 0,
+    "sections": [
+      {
+        "id": "s0",
+        "text": "LABORATORY LEASE THIS LABORATORY LEASE is made as of January 15, 2028, between HELIX SCIENCE PARK LLC (\"Landlord\") and MERIDIAN GENOMICS THERAPEUTICS, INC. (\"Tenant\").",
+        "clause_type": "unknown",
+        "method": "fast_lane",
+        "confidence": 0.0
+      },
+      {
+        "id": "s1",
+        "text": "1. Premises",
+        "clause_type": "unknown",
+        "method": "fast_lane",
+        "confidence": 0.0
+      },
+      {
+        "id": "s2",
+        "text": "1.1 The Premises consist of 14,600 square feet configured as BSL-2 wet laboratory and office space within the Helix Science Park campus.",
+        "clause_type": "unknown",
+        "method": "fast_lane",
+        "confidence": 0.0
+      },
+      {
+        "id": "s3",
+        "text": "2. Term",
+        "clause_type": "unknown",
+        "method": "fast_lane",
+        "confidence": 0.0
+      },
+      {
+        "id": "s4",
+        "text": "2.1 The Term is twelve years, commencing on the date Landlord delivers the Premises with the base laboratory infrastructure described in Exhibit B substantially complete.",
+        "clause_type": "unknown",
+        "method": "fast_lane",
+        "confidence": 0.0
+      },
+      {
+        "id": "s5",
+        "text": "3. Laboratory Systems Maintenance",
+        "clause_type": "unknown",
+        "method": "fast_lane",
+        "confidence": 0.0
+      },
+      {
+        "id": "s6",
+        "text": "3.1 Landlord shall maintain the building-standard fume hood exhaust system, emergency eyewash and shower stations, and laboratory-grade HVAC serving the Premises.",
+        "clause_type": "utilities",
+        "method": "fast_lane",
+        "confidence": 0.5
+      },
+      {
+        "id": "s7",
+        "text": "3.2 Tenant shall maintain all laboratory casework, benches, and Tenant-installed scientific equipment, and shall comply with all applicable biosafety and hazardous-waste regulations.",
+        "clause_type": "unknown",
+        "method": "fast_lane",
+        "confidence": 0.0
+      },
+      {
+        "id": "s8",
+        "text": "4. Utilities",
+        "clause_type": "utilities",
+        "method": "fast_lane",
+        "confidence": 0.5
+      },
+      {
+        "id": "s9",
+        "text": "4.1 Tenant shall pay for its actual consumption of electricity, reverse-osmosis water, compressed gases, and specialty waste disposal, each separately metered or invoiced.",
+        "clause_type": "utilities",
+        "method": "fast_lane",
+        "confidence": 0.5
+      },
+      {
+        "id": "s10",
+        "text": "4.2 Landlord shall maintain a backup generator providing emergency power to designated critical laboratory circuits within the Premises.",
+        "clause_type": "unknown",
+        "method": "fast_lane",
+        "confidence": 0.0
+      },
+      {
+        "id": "s11",
+        "text": "5. Access",
+        "clause_type": "unknown",
+        "method": "fast_lane",
+        "confidence": 0.0
+      },
+      {
+        "id": "s12",
+        "text": "5.1 Landlord may access the Premises upon 24 hours' notice for inspection of life-safety systems, except that Tenant may restrict access to any active biosafety containment area pending completion of appropriate decontamination protocols.",
+        "clause_type": "unknown",
+        "method": "fast_lane",
+        "confidence": 0.0
+      },
+      {
+        "id": "s13",
+        "text": "6. Rent and Deposit",
+        "clause_type": "unknown",
+        "method": "fast_lane",
+        "confidence": 0.0
+      },
+      {
+        "id": "s14",
+        "text": "6.1 Base Rent is $58.00 per square foot per annum. Tenant shall provide a Letter of Credit equal to twelve months' Base Rent as security given the specialized nature of the buildout.",
+        "clause_type": "rent",
+        "method": "fast_lane",
+        "confidence": 0.75
+      },
+      {
+        "id": "s15",
+        "text": "7. Subletting",
+        "clause_type": "subletting",
+        "method": "fast_lane",
+        "confidence": 0.5
+      },
+      {
+        "id": "s16",
+        "text": "7.1 Tenant may sublease a portion of the Premises to a bona fide research collaborator without Landlord's consent, provided such collaborator's use complies with the biosafety requirements of this Lease.",
+        "clause_type": "subletting",
+        "method": "fast_lane",
+        "confidence": 0.5
+      },
+      {
+        "id": "s17",
+        "text": "8. Termination",
+        "clause_type": "termination",
+        "method": "fast_lane",
+        "confidence": 0.5
+      },
+      {
+        "id": "s18",
+        "text": "8.1 Tenant may terminate this Lease upon 180 days' notice if Tenant loses its institutional biosafety committee approval for the Permitted Use through no fault of Tenant. IN WITNESS WHEREOF, the parties have executed this Lease as of the date first written above. Landlord: Helix Science Park LLC By: _____________________ Tenant: Meridian Genomics Therapeutics, Inc. By: _____________________",
+        "clause_type": "termination",
+        "method": "fast_lane",
+        "confidence": 0.75
+      }
+    ]
+  },
+  "lease_21_parking_apex_downtownvalet": {
+    "n_pages": 2,
+    "n_sections": 19,
+    "n_sentences": 0,
+    "sections": [
+      {
+        "id": "s0",
+        "text": "PARKING FACILITY LEASE THIS PARKING FACILITY LEASE is made as of February 9, 2028, between APEX PARKING VENTURES LLC (\"Landlord\") and DOWNTOWN VALET OPERATORS, INC. (\"Tenant\").",
+        "clause_type": "unknown",
+        "method": "fast_lane",
+        "confidence": 0.0
+      },
+      {
+        "id": "s1",
+        "text": "1. Premises",
+        "clause_type": "unknown",
+        "method": "fast_lane",
+        "confidence": 0.0
+      },
+      {
+        "id": "s2",
+        "text": "1.1 The Premises consist of the four-level, 340-space parking structure located at 88 Canal Street, together with the ground-floor attendant booth.",
+        "clause_type": "unknown",
+        "method": "fast_lane",
+        "confidence": 0.0
+      },
+      {
+        "id": "s3",
+        "text": "2. Term",
+        "clause_type": "unknown",
+        "method": "fast_lane",
+        "confidence": 0.0
+      },
+      {
+        "id": "s4",
+        "text": "2.1 The Term is five years, commencing on the Commencement Date, with one option to extend for an additional five years.",
+        "clause_type": "term",
+        "method": "fast_lane",
+        "confidence": 0.5
+      },
+      {
+        "id": "s5",
+        "text": "3. Rent",
+        "clause_type": "unknown",
+        "method": "fast_lane",
+        "confidence": 0.0
+      },
+      {
+        "id": "s6",
+        "text": "3.1 Tenant shall pay Landlord fixed Base Rent of $32,000 per month plus 8% of Tenant's Gross Parking Revenue in excess of $410,000 per annum.",
+        "clause_type": "rent",
+        "method": "fast_lane",
+        "confidence": 0.5
+      },
+      {
+        "id": "s7",
+        "text": "4. Maintenance",
+        "clause_type": "unknown",
+        "method": "fast_lane",
+        "confidence": 0.0
+      },
+      {
+        "id": "s8",
+        "text": "4.1 Landlord shall maintain the structural elements, elevators, and fire suppression systems of the parking structure.",
+        "clause_type": "unknown",
+        "method": "fast_lane",
+        "confidence": 0.0
+      },
+      {
+        "id": "s9",
+        "text": "4.2 Tenant shall maintain the parking equipment, gate arms, payment kiosks, and striping, and shall keep the facility clean and free of debris.",
+        "clause_type": "unknown",
+        "method": "fast_lane",
+        "confidence": 0.0
+      },
+      {
+        "id": "s10",
+        "text": "5. Utilities",
+        "clause_type": "utilities",
+        "method": "fast_lane",
+        "confidence": 0.5
+      },
+      {
+        "id": "s11",
+        "text": "5.1 Tenant shall pay directly for electricity used to operate lighting, gate equipment, and ventilation fans within the Premises.",
+        "clause_type": "utilities",
+        "method": "fast_lane",
+        "confidence": 0.5
+      },
+      {
+        "id": "s12",
+        "text": "6. Access",
+        "clause_type": "unknown",
+        "method": "fast_lane",
+        "confidence": 0.0
+      },
+      {
+        "id": "s13",
+        "text": "6.1 Landlord retains the right to access any level of the structure at any time for structural inspection or emergency repair without advance notice to Tenant.",
+        "clause_type": "access",
+        "method": "fast_lane",
+        "confidence": 0.5
+      },
+      {
+        "id": "s14",
+        "text": "7. Late Fee",
+        "clause_type": "late_fee",
+        "method": "fast_lane",
+        "confidence": 0.5
+      },
+      {
+        "id": "s15",
+        "text": "7.1 Any unpaid Rent more than ten days past due shall bear interest at 1% per month until paid in full.",
+        "clause_type": "unknown",
+        "method": "fast_lane",
+        "confidence": 0.0
+      },
+      {
+        "id": "s16",
+        "text": "8. Termination",
+        "clause_type": "termination",
+        "method": "fast_lane",
+        "confidence": 0.5
+      },
+      {
+        "id": "s17",
+        "text": "8.1 Landlord may terminate this Lease upon 90 days' notice if Landlord elects to redevelop the site, subject to payment of a termination fee equal to six months' Base Rent to Tenant.",
+        "clause_type": "termination",
+        "method": "fast_lane",
+        "confidence": 0.875
+      },
+      {
+        "id": "s18",
+        "text": "IN WITNESS WHEREOF, the parties have executed this Lease as of the date first written above. Landlord: Apex Parking Ventures LLC By: _____________________ Tenant: Downtown Valet Operators, Inc. By: _____________________",
+        "clause_type": "unknown",
+        "method": "fast_lane",
+        "confidence": 0.0
+      }
+    ]
+  },
+  "lease_22_bigbox_vantage_greatland": {
+    "n_pages": 2,
+    "n_sections": 13,
+    "n_sentences": 0,
+    "sections": [
+      {
+        "id": "s0",
+        "text": "ANCHOR TENANT LEASE THIS ANCHOR TENANT LEASE is made as of March 22, 2028, between VANTAGE POINT SHOPPING CENTER LLC (\"Landlord\") and GREATLAND HOME & HARDWARE, INC. (\"Tenant\"). Article 1 \u2014 Premises and Term",
+        "clause_type": "unknown",
+        "method": "fast_lane",
+        "confidence": 0.0
+      },
+      {
+        "id": "s1",
+        "text": "1.1 The Premises consist of 92,000 square feet designated as the anchor space at the southeast corner of the Shopping Center. The Term is twenty years, divided into four five-year Renewal Terms exercisable at Tenant's sole option. Article 2 \u2014 Co-Tenancy and Termination",
+        "clause_type": "termination",
+        "method": "fast_lane",
+        "confidence": 0.5
+      },
+      {
+        "id": "s2",
+        "text": "2.1 If Gross Leasable Area occupancy in the Shopping Center falls below 70% for more than 180 consecutive days, Tenant may pay Substitute Rent equal to 4% of Gross Sales in lieu of Base Rent until occupancy is restored.",
+        "clause_type": "rent",
+        "method": "fast_lane",
+        "confidence": 0.5
+      },
+      {
+        "id": "s3",
+        "text": "2.2 If the co-tenancy condition described in Article 2.1 continues for more than twelve consecutive months, Tenant may terminate this Lease upon 60 days' written notice. Article 3 \u2014 Holdover",
+        "clause_type": "termination",
+        "method": "fast_lane",
+        "confidence": 0.75
+      },
+      {
+        "id": "s4",
+        "text": "3.1 Should Tenant remain in possession after expiration of the Term without Landlord's written consent, Tenant shall pay holdover rent equal to 125% of the Base Rent in effect immediately prior to expiration for the first ninety days, increasing to 200% thereafter. Article 4 \u2014 Rent",
+        "clause_type": "term",
+        "method": "fast_lane",
+        "confidence": 0.875
+      },
+      {
+        "id": "s5",
+        "text": "4.1 Base Rent shall be $6.25 per square foot per annum for the Initial Term, fixed without escalation, reflecting Tenant's anchor status and traffic-generating role in the Shopping Center. Article 5 \u2014 Exclusive Use",
+        "clause_type": "rent",
+        "method": "fast_lane",
+        "confidence": 0.75
+      },
+      {
+        "id": "s6",
+        "text": "5.1 Landlord shall not lease space in the Shopping Center to any other home improvement or hardware retailer during the Term. Article 6 \u2014 Maintenance",
+        "clause_type": "unknown",
+        "method": "fast_lane",
+        "confidence": 0.0
+      },
+      {
+        "id": "s7",
+        "text": "6.1 Landlord shall maintain the Shopping Center's Common Areas, parking lot, and roof over the Premises.",
+        "clause_type": "unknown",
+        "method": "fast_lane",
+        "confidence": 0.0
+      },
+      {
+        "id": "s8",
+        "text": "6.2 Tenant shall maintain the interior of the Premises and all Tenant-installed fixtures. Article 7 \u2014 Subletting",
+        "clause_type": "subletting",
+        "method": "fast_lane",
+        "confidence": 0.5
+      },
+      {
+        "id": "s9",
+        "text": "7.1 Tenant may sublease or assign this Lease to any entity operating a home improvement, hardware, or general merchandise retail concept without Landlord's consent.",
+        "clause_type": "subletting",
+        "method": "fast_lane",
+        "confidence": 0.75
+      },
+      {
+        "id": "s10",
+        "text": "Article 8 \u2014 Late Fee and Deposit",
+        "clause_type": "late_fee",
+        "method": "fast_lane",
+        "confidence": 0.5
+      },
+      {
+        "id": "s11",
+        "text": "8.1 No Security Deposit is required of Tenant given its investment-grade credit rating. Any late Rent payment shall incur a grace period of ten days before any late charge accrues. Article 9 \u2014 Termination for Redevelopment",
+        "clause_type": "rent",
+        "method": "fast_lane",
+        "confidence": 0.5
+      },
+      {
+        "id": "s12",
+        "text": "9.1 Landlord may not terminate this Lease for redevelopment or demolition purposes at any point during the Initial Term or any exercised Renewal Term. IN WITNESS WHEREOF, the parties have executed this Lease as of the date first written above. Landlord: Vantage Point Shopping Center LLC By: _____________________ Tenant: Greatland Home & Hardware, Inc. By: _____________________",
+        "clause_type": "termination",
+        "method": "fast_lane",
+        "confidence": 0.75
       }
     ]
   }

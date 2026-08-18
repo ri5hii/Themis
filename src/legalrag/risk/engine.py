@@ -69,6 +69,7 @@ class RiskRule:
     rule_id: str
     clause_types: tuple[str, ...]  # only fire on these clause types
     triggers: list[re.Pattern]  # ALL must match (AND logic)
+    exclusions: list[re.Pattern] = field(default_factory=list)  # ANY match suppresses
     extractors: dict[str, re.Pattern] = field(default_factory=dict)
     risk_level: str = "medium"
     rationale_template: str = ""
@@ -80,6 +81,11 @@ class RiskRule:
 def _check_triggers(text: str, triggers: list[re.Pattern]) -> bool:
     """Return True if ALL trigger patterns match the text."""
     return all(t.search(text) for t in triggers)
+
+
+def _check_exclusions(text: str, exclusions: list[re.Pattern]) -> bool:
+    """Return True if ANY exclusion pattern matches (rule suppressed)."""
+    return any(e.search(text) for e in exclusions)
 
 
 def _extract_values(text: str, extractors: dict[str, re.Pattern]) -> dict:
@@ -138,6 +144,8 @@ def analyzeRisk(
             if ctype != "unknown" and ctype not in rule.clause_types:
                 continue
             if not _check_triggers(text, rule.triggers):
+                continue
+            if _check_exclusions(text, rule.exclusions):
                 continue
 
             extracted = _extract_values(text, rule.extractors)

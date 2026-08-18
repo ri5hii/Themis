@@ -8,8 +8,8 @@ Each RiskRule defines:
   - rationale_template: plain-language explanation template
   - statute_query / statute_anchors / statute_fallback: for grounding
 
-Trigger methodology (v0.4.2 redesign)
--------------------------------------
+Trigger methodology (v0.4.2 redesign, v0.4.3 coverage expansion)
+-------------------------------------------------------------
 Trigger patterns are derived from published lease-risk taxonomies and
 practitioner guidance rather than from inspection of the test corpus:
 
@@ -30,6 +30,17 @@ practitioner guidance rather than from inspection of the test corpus:
              Part III". https://www.mass.gov/info-details/re80c13-commercial-lease-clauses-of-tenant-concerns-part-iii
   [NYCGUIDE] NYC SBS, "Commercial Leasing" guide for tenants.
              https://www.nyc.gov/assets/sbs/downloads/pdf/about/reports/commercial-lease-guide-accessible.pdf
+  [INDIA]    Indian Registration Act 1908 s.17(1)(d) (leases >1 year must be
+             registered); Indian Stamp Act 1899 (stamp duty on leases).
+
+v0.4.3 added rules 19-27 for red-flag concepts identified in the held-out
+gap analysis (access notice, stamp-duty registration, as-is reinstatement,
+mandatory arbitration, fee shifting, tenant lock-in, automatic termination,
+upfront full-term payment, landlord-insurance cost shift) — each grounded in
+the sources above. `no_renewal` was NOT added: it is an absence-detection
+concern (a lease lacking a renewal clause), which the engine cannot detect
+from clause text. Rule exclusions (negative guards) suppress false positives
+on explicit waiver language, e.g. "No Security Deposit is required".
 
 Severity is a screening signal only: rules flag clauses for human review,
 they do not compute statutory compliance.
@@ -52,20 +63,32 @@ RULES: list[RiskRule] = [
     # ── DEPOSIT ──────────────────────────────────────────────────────
 
     # 1. Deposit cap exceeded (MEDIUM)
-    # Source: [HARV2018] §5 Security Deposit; [MASSGOV] §B; [NYCGUIDE].
-    # Deposit amounts are only extracted when a currency value appears
-    # within 40 chars of the word "deposit" so thresholds (e.g. net-worth
-    # floors) are not mistaken for deposit amounts.
+    # Source: [HARV2018] §5 Security Deposit; [MASSGOV] §B; [NYCGUIDE];
+    # [LEIV2020] red flag "guarantee transferable" defines the deposit red
+    # flag to include cash deposits AND letters of credit. Deposit clauses
+    # frequently co-occur in rent- and late-fee-classified sections (e.g.
+    # "Rent and Deposit"), so the rule fires on those types too.
+    # Exclusion guard: explicit "No Security Deposit is required" waivers
+    # are not deposit risk (false-positive guard, v0.4.3).
     RiskRule(
         rule_id="deposit.cap_exceeded",
-        clause_types=("deposit",),
+        clause_types=("deposit", "rent", "late_fee"),
         triggers=[
-            re.compile(r"\bsecurity\s+deposit\b|\bdeposit\s+(?:of|shall|to)\b", re.IGNORECASE),
+            re.compile(
+                r"\bsecurity\s+deposit\b|\bletter\s+of\s+credit\b"
+                r"|\bdeposit\s+(?:of|shall|to|required|payable|held)\b",
+                re.IGNORECASE,
+            ),
+        ],
+        exclusions=[
+            re.compile(r"\bno\s+security\s+deposit\b|\bsecurity\s+deposit\s+(?:is\s+)?not\s+required\b",
+                       re.IGNORECASE),
         ],
         extractors={
             "deposit_amount": re.compile(
                 r"(?:\$|Rs\.?|INR|₹)\s*([\d,]+(?:\.\d+)?).{0,40}\b(?:security\s+)?deposit\b"
-                r"|(?:security\s+)?deposit\b.{0,40}?(?:\$|Rs\.?|INR|₹)\s*([\d,]+(?:\.\d+)?)",
+                r"|(?:security\s+)?deposit\b.{0,40}?(?:\$|Rs\.?|INR|₹)\s*([\d,]+(?:\.\d+)?)"
+                r"|(?:\$|Rs\.?|INR|₹)\s*([\d,]+(?:\.\d+)?).{0,40}\bletter\s+of\s+credit\b",
                 re.IGNORECASE | re.DOTALL,
             ),
         },
@@ -142,8 +165,8 @@ RULES: list[RiskRule] = [
         clause_types=("rent",),
         triggers=[
             re.compile(
-                r"\b(?:without|no|not)\s+(?:deduction|offset|counterclaim)\b"
-                r"|\bwaive\w*\s+.{0,30}\b(?:offset|counterclaim|deduction)\b",
+                r"\b(?:without|no|not)\s+(?:deduction|offset|counterclaim|abatement)\b"
+                r"|\bwaive\w*\s+.{0,30}\b(?:offset|counterclaim|deduction|abatement)\b",
                 re.IGNORECASE | re.DOTALL,
             ),
         ],
@@ -188,9 +211,12 @@ RULES: list[RiskRule] = [
     # 6. Holdover punitive rate (MEDIUM)
     # Source: [LEASELENS] red flag #2 (holdover at 200% with no cure);
     # [NYCGUIDE] holdover definitions. Market range 110-200%.
+    # Clause type "term" included: the Leivaditi-benchmark regression
+    # (progress.md §7 Fix b) showed holdover sections are frequently
+    # classified as "term" by the tie-break order.
     RiskRule(
         rule_id="holdover.punitive_rate",
-        clause_types=("holdover",),
+        clause_types=("holdover", "term"),
         triggers=[
             re.compile(
                 r"\bhold\w*\s+over\b|\btenant\s+at\s+sufferance\b"
@@ -218,12 +244,15 @@ RULES: list[RiskRule] = [
 
     # 7. Late fee excessive (MEDIUM)
     # Source: [MASSGOV] §G Late Rent Payments; [HARV2018] §4.
+    # Interest-on-unpaid-rent drafting without the word "late" is a
+    # common late-fee variant ([MASSGOV] §G).
     RiskRule(
         rule_id="late_fee.excessive",
         clause_types=("late_fee",),
         triggers=[
             re.compile(
-                r"\blate\s+(?:fee|charge|payment)\b|\binterest.*overdue\b",
+                r"\blate\s+(?:fee|charge|payment)\b|\binterest.*overdue\b"
+                r"|\binterest\s+at\s+\d+\s*(?:%|percent)\b",
                 re.IGNORECASE,
             ),
         ],
@@ -298,7 +327,8 @@ RULES: list[RiskRule] = [
         clause_types=("subletting",),
         triggers=[
             re.compile(
-                r"\bchange\s+of\s+control\b|\bequity\s+transfer\b"
+                r"\bchange\s+of\s+control\b|\bchange\s+in\s+(?:management|ownership|control)\b"
+                r"|\bequity\s+transfer\b"
                 r"|\bvoting\s+(?:interest|threshold|percent)\b"
                 r"|\bmerger\b|\bconsolidat\w*\b"
                 r"|\bsale\s+of\s+(?:substantially\s+)?all\b",
@@ -439,16 +469,18 @@ RULES: list[RiskRule] = [
     ),
 
     # 16. Incorporation by reference (INFO)
-    # Source: [CUAD2021] "Incorporation by Reference" category.
-    # Clause types include "termination" because rider clauses often
-    # grant termination rights and are classified as termination.
+    # Source: [CUAD2021] "Incorporation by Reference" category;
+    # [LEIV2020] red flag "special stipulations" (rider supplements and
+    # modifies lease provisions). "Rider/addendum/appendix" words alone
+    # indicate external terms even without attachment verbs.
     RiskRule(
         rule_id="maintenance.incorporation_by_ref",
         clause_types=("maintenance", "utilities", "termination"),
         triggers=[
             re.compile(
                 r"\b(?:incorporat\w*|made\s+a\s+part)\s+.{0,20}\bby\s+reference\b"
-                r"|\b(?:rider|schedule|annex|exhibit)\b.{0,30}\b(?:attached|enclosed|hereto)\b",
+                r"|\b(?:rider|schedule|annex|exhibit|addendum|appendix)\b.{0,30}\b(?:attached|enclosed|hereto)\b"
+                r"|\b(?:rider|addendum|appendix)\b",
                 re.IGNORECASE | re.DOTALL,
             ),
         ],
@@ -485,6 +517,249 @@ RULES: list[RiskRule] = [
         ),
         statute_query="duty to mitigate damages landlord tenant default",
         statute_anchors=["mitigate", "damages", "landlord"],
+        statute_fallback="general",
+    ),
+
+    # ── ACCESS ───────────────────────────────────────────────────────
+
+    # 19. Unrestricted landlord entry (LOW)
+    # Source: [MASSGOV] §D Access / covenant of quiet enjoyment;
+    # [NYCGUIDE] access provisions (tenant should ensure reasonable notice).
+    # Tenant risk: landlord may enter at any time without notice.
+    RiskRule(
+        rule_id="access.unrestricted_entry",
+        clause_types=("access", "premises", "maintenance", "utilities"),
+        triggers=[
+            re.compile(
+                r"\b(?:landlord|lessor|owner|landlord'?s?\s+(?:agents?|representatives?|employees?))\b",
+                re.IGNORECASE,
+            ),
+            re.compile(
+                r"\b(?:enter|access|inspect|examine|tour)\w*\b",
+                re.IGNORECASE,
+            ),
+            re.compile(
+                r"\b(?:at\s+any\s+time|at\s+all\s+times|without\s+(?:notice|prior\s+notice|permission|advance\s+notice)|upon\s+demand|at\s+will)\b",
+                re.IGNORECASE,
+            ),
+        ],
+        risk_level="low",
+        rationale_template=(
+            "Landlord retains unrestricted access to the premises (any time "
+            "or without notice), which can disrupt tenant operations."
+        ),
+        statute_query="landlord access premises notice inspection quiet enjoyment",
+        statute_anchors=["access", "notice", "premises", "landlord"],
+        statute_fallback="general",
+    ),
+
+    # ── TRANSACTION / COSTS ──────────────────────────────────────────
+
+    # 20. Tenant bears stamp duty + registration (LOW)
+    # Source: Indian Registration Act 1908 s.17(1)(d) (leases exceeding one
+    # year must be registered); Indian Stamp Act 1899 (stamp duty on lease
+    # instruments); standard Indian commercial-leasing drafting practice.
+    RiskRule(
+        rule_id="transaction.registration_costs",
+        clause_types=("registration", "rent", "term", "termination"),
+        triggers=[
+            re.compile(r"\b(?:stamp\s+duty|registration|registry|notariz\w*)\b", re.IGNORECASE),
+            re.compile(r"\b(?:tenant|lessee)\b", re.IGNORECASE),
+            re.compile(
+                r"\b(?:bear|pay|cost|expense|charge|liab\w*|borne|incurred)\b",
+                re.IGNORECASE,
+            ),
+        ],
+        risk_level="low",
+        rationale_template=(
+            "Stamp duty and registration costs are placed on the Tenant. "
+            "Verify the applicable duty (stamp duty can be several percent "
+            "of rent) is not an outsized, landlord-shifting burden."
+        ),
+        statute_query="lease registration stamp duty tenant cost",
+        statute_anchors=["registration", "stamp duty", "tenant", "cost"],
+        statute_fallback="general",
+    ),
+
+    # ── REINSTATEMENT ────────────────────────────────────────────────
+
+    # 21. As-is reinstatement obligation (LOW)
+    # Source: [LEIV2020] Table 1 red flag "as is reinstatement" (keywords:
+    # "as is reinstatement, as it is, restore").
+    RiskRule(
+        rule_id="reinstatement.as_is_restoration",
+        clause_types=("maintenance", "premises", "term", "termination"),
+        triggers=[
+            re.compile(r"\b(?:restore|restoration|reinstat\w*)\b", re.IGNORECASE),
+            re.compile(
+                r"\b(?:original\s+condition|as\s+it\s+was|as\s+it\s+existed|prior\s+to|same\s+condition|as\s+is)\b",
+                re.IGNORECASE,
+            ),
+        ],
+        risk_level="low",
+        rationale_template=(
+            "Tenant must restore the premises to its original condition, "
+            "including ordinary wear-and-tear items. Verify scope of the "
+            "restoration obligation."
+        ),
+        statute_query="reinstatement restoration original condition tenant surrender",
+        statute_anchors=["restore", "condition", "tenant"],
+        statute_fallback="general",
+    ),
+
+    # ── DISPUTE RESOLUTION ───────────────────────────────────────────
+
+    # 22. Mandatory binding arbitration (INFO)
+    # Source: [MASSGOV] RE80C13 dispute-resolution guidance; [NYCGUIDE].
+    # Binding arbitration waives court access and can shift cost burdens
+    # to the tenant.
+    RiskRule(
+        rule_id="dispute_resolution.mandatory_arbitration",
+        clause_types=("dispute_resolution", "termination", "rent"),
+        triggers=[
+            re.compile(r"\barbitrat\w*\b", re.IGNORECASE),
+            re.compile(
+                r"\b(?:binding|final|exclusive\s+means|in\s+lieu\s+of|sole\s+remedy)\b"
+                r"|\bshall\s+(?:submit|be\s+settled|be\s+resolved)\b",
+                re.IGNORECASE,
+            ),
+        ],
+        risk_level="info",
+        rationale_template=(
+            "Disputes must be resolved by binding arbitration, waiving "
+            "court access for tenant claims."
+        ),
+        statute_query="arbitration binding dispute resolution tenant",
+        statute_anchors=["arbitration", "binding", "dispute"],
+        statute_fallback="general",
+    ),
+
+    # 23. One-way fee shifting (INFO)
+    # Source: [MASSGOV] RE80C13 attorney-fee provisions; [LEASELENS]
+    # fee-shifting guidance. One-way fee shifting exposes the tenant to
+    # landlord attorney costs on any dispute.
+    RiskRule(
+        rule_id="dispute_resolution.fee_shifting",
+        clause_types=("dispute_resolution", "rent", "termination"),
+        triggers=[
+            re.compile(
+                r"\b(?:attorney'?s?\s+fees?|attorney\s+costs?|legal\s+fees?|lawyers?\s+fees?|solicitor'?s?\s+fees?)\b",
+                re.IGNORECASE,
+            ),
+            re.compile(r"\b(?:tenant|lessee)\b", re.IGNORECASE),
+            re.compile(r"\b(?:pay|bear|reimburs\w*|cost|expense)\b", re.IGNORECASE),
+        ],
+        risk_level="info",
+        rationale_template=(
+            "Attorney-fee obligation is placed on the Tenant. Verify "
+            "fee-shifting is not one-way in the landlord's favor."
+        ),
+        statute_query="attorney fees prevailing party fee shifting tenant",
+        statute_anchors=["fees", "attorney", "tenant"],
+        statute_fallback="general",
+    ),
+
+    # ── TERMINATION ──────────────────────────────────────────────────
+
+    # 24. Tenant lock-in / no early exit (LOW)
+    # Source: [MASSGOV] RE80C13 early-termination guidance; [NYCGUIDE]
+    # termination-rights guidance. A lease with no tenant exit right for
+    # the full term is a lock-in risk.
+    RiskRule(
+        rule_id="termination.no_early_exit",
+        clause_types=("termination", "rent", "term"),
+        triggers=[
+            re.compile(r"\b(?:tenant|lessee)\b", re.IGNORECASE),
+            re.compile(
+                r"\b(?:no\s+right|may\s+not|shall\s+not|is\s+not\s+entitled|has\s+no\s+right|without\s+the\s+right)\b",
+                re.IGNORECASE,
+            ),
+            re.compile(r"\b(?:terminat\w*|cancel\w*|break)\b", re.IGNORECASE),
+        ],
+        risk_level="low",
+        rationale_template=(
+            "Tenant has no early-termination right for the lease term, "
+            "creating a lock-in risk."
+        ),
+        statute_query="tenant early termination right lock in",
+        statute_anchors=["termination", "tenant", "right"],
+        statute_fallback="general",
+    ),
+
+    # 25. Automatic termination (INFO)
+    # Source: [LEIV2020] red flag "termination" / "break option";
+    # [NYCGUIDE] termination drafting. Automatic termination on an event
+    # (e.g. cessation of business) removes tenant tenure security.
+    RiskRule(
+        rule_id="termination.automatic",
+        clause_types=("termination", "term"),
+        triggers=[
+            re.compile(
+                r"\b(?:shall\s+)?(?:be\s+deemed\s+)?(?:automatically\s+terminat\w*"
+                r"|automatically\s+expire|terminat\w*\s+automatically|expire\s+automatically)\b",
+                re.IGNORECASE,
+            ),
+        ],
+        risk_level="info",
+        rationale_template=(
+            "Lease terminates automatically upon a stated event, removing "
+            "tenant tenure security. Verify the triggering event."
+        ),
+        statute_query="automatic termination event lease tenant",
+        statute_anchors=["termination", "automatic"],
+        statute_fallback="general",
+    ),
+
+    # ── RENT ─────────────────────────────────────────────────────────
+
+    # 26. Upfront full-term payment (LOW)
+    # Source: [NYCGUIDE] prepaid-rent guidance; [HARV2018] §4 Rent.
+    # Full-term rent due in advance at signing is an outsized cash
+    # commitment risk. Two drafting patterns: "full rent payable in
+    # advance" and "rent/license fee due in full prior to commencement".
+    RiskRule(
+        rule_id="rent.upfront_payment",
+        clause_types=("rent", "deposit"),
+        triggers=[
+            re.compile(
+                r"\b(?:full|entire|whole)\s+(?:rent|rental|annual\s+rent)\b.{0,60}\b"
+                r"(?:in\s+advance|prior\s+to|at\s+signing|upon\s+execution|before\s+possession)\b"
+                r"|\b(?:rent|rental|license\s+fee|payment|installment)\b.{0,60}\b"
+                r"(?:due\s+in\s+full|payable\s+in\s+full)\b.{0,40}\b"
+                r"(?:prior\s+to|before|in\s+advance|at\s+signing|upon\s+execution)\b",
+                re.IGNORECASE | re.DOTALL,
+            ),
+        ],
+        risk_level="low",
+        rationale_template=(
+            "Full rent is payable in advance at signing, an outsized "
+            "upfront cash commitment for the tenant."
+        ),
+        statute_query="rent advance payment full term upfront tenant",
+        statute_anchors=["rent", "advance", "payment"],
+        statute_fallback="general",
+    ),
+
+    # ── INSURANCE ────────────────────────────────────────────────────
+
+    # 27. Tenant pays landlord's insurance (INFO)
+    # Source: [MASSGOV] RE80C13 insurance provisions; [NYCGUIDE].
+    # Tenant bearing landlord's insurance premiums is a cost-shift risk.
+    RiskRule(
+        rule_id="insurance.tenant_pays_all",
+        clause_types=("maintenance", "premises", "rent", "utilities"),
+        triggers=[
+            re.compile(r"\binsurance\b", re.IGNORECASE),
+            re.compile(r"\b(?:landlord'?s?|owner'?s?|lessor'?s?)\b", re.IGNORECASE),
+            re.compile(r"\b(?:cost|expense|premium|reimburs\w*|bear|pay\w*)\b", re.IGNORECASE),
+        ],
+        risk_level="info",
+        rationale_template=(
+            "Tenant bears costs for the Landlord's insurance. Verify the "
+            "insurance-cost allocation is not one-sided."
+        ),
+        statute_query="insurance premiums tenant landlord cost allocation",
+        statute_anchors=["insurance", "tenant", "cost"],
         statute_fallback="general",
     ),
 

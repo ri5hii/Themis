@@ -70,6 +70,15 @@ RULE_TO_CONCEPT = {
     "maintenance.incorporation_by_ref": "incorporation_by_ref",
     "termination.no_mitigate": "no_mitigate",
     "no_obligation.go_dark": "go_dark",
+    "access.unrestricted_entry": "access_control",
+    "transaction.registration_costs": "registration",
+    "reinstatement.as_is_restoration": "reinstatement_window",
+    "dispute_resolution.mandatory_arbitration": "arbitration",
+    "dispute_resolution.fee_shifting": "fee_shifting",
+    "termination.no_early_exit": "termination_restriction",
+    "termination.automatic": "automatic_termination",
+    "rent.upfront_payment": "upfront_payment",
+    "insurance.tenant_pays_all": "insurance",
 }
 
 
@@ -100,12 +109,16 @@ def load_annotations() -> dict[str, dict]:
     for name in ("claude_inference.json", "claude_inference_08_22.json"):
         path = ANNOT_DIR / name
         if path.exists():
-            for doc_name, doc in json.load(open(path))["documents"].items():
+            with open(path) as fh:
+                docs_in = json.load(fh)["documents"]
+            for doc_name, doc in docs_in.items():
                 docs.setdefault(doc_name, {"claude": [], "human": []})
                 docs[doc_name]["claude"] = doc.get("risk_flags", [])
     path = ANNOT_DIR / "my_inference.json"
     if path.exists():
-        for doc_name, doc in json.load(open(path))["documents"].items():
+        with open(path) as fh:
+            docs_in = json.load(fh)["documents"]
+        for doc_name, doc in docs_in.items():
             docs.setdefault(doc_name, {"claude": [], "human": []})
             docs[doc_name]["human"] = doc.get("risk_flags", [])
     return docs
@@ -123,7 +136,8 @@ def main() -> int:
 
     themis: dict[str, list] = {}
     for f in sorted(findings_dir.glob("*_analysis.json")):
-        themis[f.stem.replace("_analysis", "")] = json.load(open(f))["findings"]
+        with open(f) as fh:
+            themis[f.stem.replace("_analysis", "")] = json.load(fh)["findings"]
 
     annotations = load_annotations()
 

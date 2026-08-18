@@ -14,14 +14,15 @@
           "extra": []
         },
         "claude_vs_themis": {
-          "jaccard": 0.7778,
-          "precision": 0.875,
-          "recall": 0.875,
-          "f1": 0.875,
-          "n_intersection": 7,
+          "jaccard": 0.6667,
+          "precision": 0.8571,
+          "recall": 0.75,
+          "f1": 0.8,
+          "n_intersection": 6,
           "n_gold": 8,
-          "n_pred": 8,
+          "n_pred": 7,
           "missed": [
+            "premises",
             "unknown"
           ],
           "extra": [
@@ -29,14 +30,15 @@
           ]
         },
         "human_vs_themis": {
-          "jaccard": 0.7778,
-          "precision": 0.875,
-          "recall": 0.875,
-          "f1": 0.875,
-          "n_intersection": 7,
+          "jaccard": 0.6667,
+          "precision": 0.8571,
+          "recall": 0.75,
+          "f1": 0.8,
+          "n_intersection": 6,
           "n_gold": 8,
-          "n_pred": 8,
+          "n_pred": 7,
           "missed": [
+            "premises",
             "unknown"
           ],
           "extra": [
@@ -59,37 +61,35 @@
           "extra": []
         },
         "claude_vs_themis": {
-          "jaccard": 0.6,
-          "precision": 0.6667,
-          "recall": 0.8571,
-          "f1": 0.75,
-          "n_intersection": 6,
+          "jaccard": 0.5556,
+          "precision": 0.7143,
+          "recall": 0.7143,
+          "f1": 0.7143,
+          "n_intersection": 5,
           "n_gold": 7,
-          "n_pred": 9,
+          "n_pred": 7,
           "missed": [
+            "premises",
             "unknown"
           ],
           "extra": [
-            "maintenance",
             "no_obligation",
             "termination"
           ]
         },
         "human_vs_themis": {
-          "jaccard": 0.5,
-          "precision": 0.5556,
+          "jaccard": 0.625,
+          "precision": 0.7143,
           "recall": 0.8333,
-          "f1": 0.6667,
+          "f1": 0.7692,
           "n_intersection": 5,
           "n_gold": 6,
-          "n_pred": 9,
+          "n_pred": 7,
           "missed": [
             "unknown"
           ],
           "extra": [
-            "maintenance",
             "no_obligation",
-            "premises",
             "termination"
           ]
         }
@@ -111,36 +111,38 @@
           "extra": []
         },
         "claude_vs_themis": {
-          "jaccard": 0.6364,
+          "jaccard": 0.4545,
           "precision": 1.0,
-          "recall": 0.6364,
-          "f1": 0.7778,
-          "n_intersection": 7,
+          "recall": 0.4545,
+          "f1": 0.625,
+          "n_intersection": 5,
           "n_gold": 11,
-          "n_pred": 7,
+          "n_pred": 5,
           "missed": [
             "deposit",
             "maintenance",
             "premises",
+            "subletting",
+            "term",
             "unknown"
           ],
           "extra": []
         },
         "human_vs_themis": {
-          "jaccard": 0.5,
-          "precision": 0.7143,
-          "recall": 0.625,
-          "f1": 0.6667,
-          "n_intersection": 5,
+          "jaccard": 0.4444,
+          "precision": 0.8,
+          "recall": 0.5,
+          "f1": 0.6154,
+          "n_intersection": 4,
           "n_gold": 8,
-          "n_pred": 7,
+          "n_pred": 5,
           "missed": [
             "maintenance",
             "premises",
+            "subletting",
             "unknown"
           ],
           "extra": [
-            "term",
             "utilities"
           ]
         }
@@ -162,39 +164,38 @@
           "extra": []
         },
         "claude_vs_themis": {
-          "jaccard": 0.5833,
-          "precision": 0.875,
-          "recall": 0.6364,
-          "f1": 0.7368,
-          "n_intersection": 7,
+          "jaccard": 0.4545,
+          "precision": 1.0,
+          "recall": 0.4545,
+          "f1": 0.625,
+          "n_intersection": 5,
           "n_gold": 11,
-          "n_pred": 8,
+          "n_pred": 5,
           "missed": [
             "deposit",
             "maintenance",
             "premises",
+            "subletting",
+            "term",
             "unknown"
           ],
-          "extra": [
-            "entire_agreement"
-          ]
+          "extra": []
         },
         "human_vs_themis": {
-          "jaccard": 0.4545,
-          "precision": 0.625,
-          "recall": 0.625,
-          "f1": 0.625,
-          "n_intersection": 5,
+          "jaccard": 0.4444,
+          "precision": 0.8,
+          "recall": 0.5,
+          "f1": 0.6154,
+          "n_intersection": 4,
           "n_gold": 8,
-          "n_pred": 8,
+          "n_pred": 5,
           "missed": [
             "maintenance",
             "premises",
+            "subletting",
             "unknown"
           ],
           "extra": [
-            "entire_agreement",
-            "term",
             "utilities"
           ]
         }
@@ -215,34 +216,39 @@
           "extra": []
         },
         "claude_vs_themis": {
-          "jaccard": 0.6154,
-          "precision": 0.7273,
-          "recall": 0.8,
-          "f1": 0.7619,
-          "n_intersection": 8,
+          "jaccard": 0.4167,
+          "precision": 0.7143,
+          "recall": 0.5,
+          "f1": 0.5882,
+          "n_intersection": 5,
           "n_gold": 10,
-          "n_pred": 11,
+          "n_pred": 7,
           "missed": [
             "entire_agreement",
+            "maintenance",
+            "premises",
+            "subletting",
             "unknown"
           ],
           "extra": [
-            "registration",
             "term",
             "utilities"
           ]
         },
         "human_vs_themis": {
-          "jaccard": 0.7273,
-          "precision": 0.7273,
-          "recall": 1.0,
-          "f1": 0.8421,
-          "n_intersection": 8,
+          "jaccard": 0.5,
+          "precision": 0.7143,
+          "recall": 0.625,
+          "f1": 0.6667,
+          "n_intersection": 5,
           "n_gold": 8,
-          "n_pred": 11,
-          "missed": [],
+          "n_pred": 7,
+          "missed": [
+            "maintenance",
+            "premises",
+            "subletting"
+          ],
           "extra": [
-            "registration",
             "term",
             "utilities"
           ]
@@ -264,36 +270,38 @@
           "extra": []
         },
         "claude_vs_themis": {
-          "jaccard": 0.4545,
-          "precision": 0.8333,
-          "recall": 0.5,
-          "f1": 0.625,
-          "n_intersection": 5,
+          "jaccard": 0.3636,
+          "precision": 0.8,
+          "recall": 0.4,
+          "f1": 0.5333,
+          "n_intersection": 4,
           "n_gold": 10,
-          "n_pred": 6,
+          "n_pred": 5,
           "missed": [
             "entire_agreement",
             "late_fee",
             "maintenance",
             "premises",
-            "unknown"
+            "unknown",
+            "utilities"
           ],
           "extra": [
             "no_obligation"
           ]
         },
         "human_vs_themis": {
-          "jaccard": 0.5556,
-          "precision": 0.8333,
-          "recall": 0.625,
-          "f1": 0.7143,
-          "n_intersection": 5,
+          "jaccard": 0.4444,
+          "precision": 0.8,
+          "recall": 0.5,
+          "f1": 0.6154,
+          "n_intersection": 4,
           "n_gold": 8,
-          "n_pred": 6,
+          "n_pred": 5,
           "missed": [
             "late_fee",
             "premises",
-            "unknown"
+            "unknown",
+            "utilities"
           ],
           "extra": [
             "no_obligation"
@@ -316,38 +324,40 @@
           "extra": []
         },
         "claude_vs_themis": {
-          "jaccard": 0.5455,
-          "precision": 0.8571,
-          "recall": 0.6,
-          "f1": 0.7059,
-          "n_intersection": 6,
+          "jaccard": 0.3636,
+          "precision": 0.8,
+          "recall": 0.4,
+          "f1": 0.5333,
+          "n_intersection": 4,
           "n_gold": 10,
-          "n_pred": 7,
+          "n_pred": 5,
           "missed": [
+            "entire_agreement",
             "maintenance",
             "premises",
             "rent",
-            "unknown"
+            "unknown",
+            "utilities"
           ],
           "extra": [
             "no_obligation"
           ]
         },
         "human_vs_themis": {
-          "jaccard": 0.5,
-          "precision": 0.7143,
-          "recall": 0.625,
-          "f1": 0.6667,
-          "n_intersection": 5,
+          "jaccard": 0.4444,
+          "precision": 0.8,
+          "recall": 0.5,
+          "f1": 0.6154,
+          "n_intersection": 4,
           "n_gold": 8,
-          "n_pred": 7,
+          "n_pred": 5,
           "missed": [
             "premises",
             "rent",
-            "unknown"
+            "unknown",
+            "utilities"
           ],
           "extra": [
-            "entire_agreement",
             "no_obligation"
           ]
         }
@@ -367,37 +377,31 @@
           "extra": []
         },
         "claude_vs_themis": {
-          "jaccard": 0.5,
-          "precision": 0.6667,
+          "jaccard": 0.6667,
+          "precision": 1.0,
           "recall": 0.6667,
-          "f1": 0.6667,
+          "f1": 0.8,
           "n_intersection": 4,
           "n_gold": 6,
-          "n_pred": 6,
+          "n_pred": 4,
           "missed": [
             "deposit",
             "premises"
           ],
-          "extra": [
-            "term",
-            "termination"
-          ]
+          "extra": []
         },
         "human_vs_themis": {
-          "jaccard": 0.5714,
-          "precision": 0.6667,
+          "jaccard": 0.8,
+          "precision": 1.0,
           "recall": 0.8,
-          "f1": 0.7273,
+          "f1": 0.8889,
           "n_intersection": 4,
           "n_gold": 5,
-          "n_pred": 6,
+          "n_pred": 4,
           "missed": [
             "premises"
           ],
-          "extra": [
-            "term",
-            "termination"
-          ]
+          "extra": []
         }
       },
       "lease_07_edgecase_stresstest_windmere": {
@@ -415,36 +419,38 @@
           ]
         },
         "claude_vs_themis": {
-          "jaccard": 0.7,
-          "precision": 0.7778,
-          "recall": 0.875,
-          "f1": 0.8235,
-          "n_intersection": 7,
+          "jaccard": 0.5556,
+          "precision": 0.8333,
+          "recall": 0.625,
+          "f1": 0.7143,
+          "n_intersection": 5,
           "n_gold": 8,
-          "n_pred": 9,
+          "n_pred": 6,
           "missed": [
+            "maintenance",
+            "premises",
             "unknown"
           ],
           "extra": [
-            "no_obligation",
-            "utilities"
+            "no_obligation"
           ]
         },
         "human_vs_themis": {
-          "jaccard": 0.6364,
-          "precision": 0.7778,
-          "recall": 0.7778,
-          "f1": 0.7778,
-          "n_intersection": 7,
+          "jaccard": 0.5,
+          "precision": 0.8333,
+          "recall": 0.5556,
+          "f1": 0.6667,
+          "n_intersection": 5,
           "n_gold": 9,
-          "n_pred": 9,
+          "n_pred": 6,
           "missed": [
+            "maintenance",
+            "premises",
             "termination",
             "unknown"
           ],
           "extra": [
-            "no_obligation",
-            "utilities"
+            "no_obligation"
           ]
         }
       }
@@ -458,17 +464,17 @@
         "n_docs": 9
       },
       "claude_vs_themis": {
-        "mean_jaccard": 0.6014,
-        "mean_precision": 0.8088,
-        "mean_recall": 0.7163,
-        "mean_f1": 0.747,
+        "mean_jaccard": 0.4997,
+        "mean_precision": 0.8577,
+        "mean_recall": 0.5517,
+        "mean_f1": 0.6593,
         "n_docs": 9
       },
       "human_vs_themis": {
-        "mean_jaccard": 0.5803,
-        "mean_precision": 0.721,
-        "mean_recall": 0.754,
-        "mean_f1": 0.7291,
+        "mean_jaccard": 0.541,
+        "mean_precision": 0.8132,
+        "mean_recall": 0.6182,
+        "mean_f1": 0.6948,
         "n_docs": 9
       }
     }
@@ -753,7 +759,7 @@
             "claude_types": [
               "premises"
             ],
-            "themis_type": "term",
+            "themis_type": "unknown",
             "agree": false
           },
           {
@@ -763,8 +769,8 @@
             "claude_types": [
               "premises"
             ],
-            "themis_type": "premises",
-            "agree": true
+            "themis_type": "unknown",
+            "agree": false
           },
           {
             "themis_text_start": "1.2 The Term of this Lease shall be ten years, commencing on the Commencement Da...",
@@ -813,7 +819,7 @@
             "claude_types": [
               "term"
             ],
-            "themis_type": "maintenance",
+            "themis_type": "unknown",
             "agree": false
           },
           {
@@ -823,7 +829,7 @@
             "claude_types": [
               "premises"
             ],
-            "themis_type": "maintenance",
+            "themis_type": "unknown",
             "agree": false
           },
           {
@@ -833,7 +839,7 @@
             "claude_types": [
               "premises"
             ],
-            "themis_type": "maintenance",
+            "themis_type": "unknown",
             "agree": false
           },
           {
@@ -893,7 +899,7 @@
             "claude_types": [
               "premises"
             ],
-            "themis_type": "termination",
+            "themis_type": "unknown",
             "agree": false
           },
           {
@@ -923,8 +929,8 @@
             "claude_types": [
               "unknown"
             ],
-            "themis_type": "rent",
-            "agree": false
+            "themis_type": "unknown",
+            "agree": true
           },
           {
             "themis_text_start": "8.1 Rider No. 1, attached hereto and made a part of this Lease, sets forth addit...",
@@ -964,8 +970,8 @@
             "claude_types": [
               "term"
             ],
-            "themis_type": "term",
-            "agree": true
+            "themis_type": "unknown",
+            "agree": false
           },
           {
             "themis_text_start": "LANDLORD: Oakmont Realty Trust By: _____________________ TENANT: Cobalt Industri...",
@@ -979,7 +985,7 @@
           }
         ],
         "n_themis_matched": 23,
-        "themis_agreement": 0.3478
+        "themis_agreement": 0.3043
       },
       "lease_02_retail_sundial": {
         "claude_human_matches": [
@@ -1207,8 +1213,8 @@
               "premises",
               "term"
             ],
-            "themis_type": "term",
-            "agree": true
+            "themis_type": "unknown",
+            "agree": false
           },
           {
             "themis_text_start": "1.1 Landlord hereby leases to Tenant, and Tenant hereby leases from Landlord, th...",
@@ -1258,8 +1264,8 @@
             "claude_types": [
               "premises"
             ],
-            "themis_type": "premises",
-            "agree": true
+            "themis_type": "unknown",
+            "agree": false
           },
           {
             "themis_text_start": "3.2 Tenant shall have the option to extend the Term of this Lease for two additi...",
@@ -1331,8 +1337,8 @@
             "claude_types": [
               "unknown"
             ],
-            "themis_type": "premises",
-            "agree": false
+            "themis_type": "unknown",
+            "agree": true
           },
           {
             "themis_text_start": "6.2 Landlord warrants that, to its knowledge, the Premises comply with all appli...",
@@ -1363,8 +1369,8 @@
             "claude_types": [
               "unknown"
             ],
-            "themis_type": "maintenance",
-            "agree": false
+            "themis_type": "unknown",
+            "agree": true
           },
           {
             "themis_text_start": "8.2 Tenant shall obtain and maintain, at its sole cost, all permits necessary to...",
@@ -1373,7 +1379,7 @@
             "claude_types": [
               "premises"
             ],
-            "themis_type": "maintenance",
+            "themis_type": "unknown",
             "agree": false
           },
           {
@@ -1383,7 +1389,7 @@
             "claude_types": [
               "premises"
             ],
-            "themis_type": "term",
+            "themis_type": "unknown",
             "agree": false
           }
         ],
@@ -1607,8 +1613,8 @@
               "premises",
               "term"
             ],
-            "themis_type": "term",
-            "agree": true
+            "themis_type": "unknown",
+            "agree": false
           },
           {
             "themis_text_start": "1.1 Lessor hereby demises to Lessee the warehouse and adjoining office space des...",
@@ -1618,8 +1624,8 @@
               "premises",
               "term"
             ],
-            "themis_type": "term",
-            "agree": true
+            "themis_type": "unknown",
+            "agree": false
           },
           {
             "themis_text_start": "2.1 Lessee shall pay Base Rent in the amount set forth in Schedule 1, payable mo...",
@@ -1638,7 +1644,7 @@
             "claude_types": [
               "deposit"
             ],
-            "themis_type": "termination",
+            "themis_type": "unknown",
             "agree": false
           },
           {
@@ -1649,8 +1655,8 @@
               "deposit",
               "subletting"
             ],
-            "themis_type": "subletting",
-            "agree": true
+            "themis_type": "unknown",
+            "agree": false
           },
           {
             "themis_text_start": "3.1 Should Lessee remain in possession of the Premises after the expiration of t...",
@@ -1679,8 +1685,8 @@
             "claude_types": [
               "unknown"
             ],
-            "themis_type": "termination",
-            "agree": false
+            "themis_type": "unknown",
+            "agree": true
           },
           {
             "themis_text_start": "4.2 Lessee shall have thirty days after receipt of Lessor's notice of a proposed...",
@@ -1730,8 +1736,8 @@
             "claude_types": [
               "subletting"
             ],
-            "themis_type": "subletting",
-            "agree": true
+            "themis_type": "unknown",
+            "agree": false
           },
           {
             "themis_text_start": "6.2 Should Guarantor undergo a Change of Control, Lessee shall provide Lessor wi...",
@@ -1772,12 +1778,12 @@
             "claude_types": [
               "unknown"
             ],
-            "themis_type": "term",
-            "agree": false
+            "themis_type": "unknown",
+            "agree": true
           }
         ],
         "n_themis_matched": 17,
-        "themis_agreement": 0.5294
+        "themis_agreement": 0.4118
       },
       "lease_03_industrial_ferrous_SCANNED": {
         "claude_human_matches": [
@@ -1996,8 +2002,8 @@
               "premises",
               "term"
             ],
-            "themis_type": "term",
-            "agree": true
+            "themis_type": "unknown",
+            "agree": false
           },
           {
             "themis_text_start": "1.1 Lessor hereby demises to Lessee the warehouse and adjoining office space des...",
@@ -2007,8 +2013,8 @@
               "premises",
               "term"
             ],
-            "themis_type": "term",
-            "agree": true
+            "themis_type": "unknown",
+            "agree": false
           },
           {
             "themis_text_start": "2.1 Lessee shall pay Base Rent in the amount set forth in Schedule 1, payable mo...",
@@ -2028,8 +2034,8 @@
               "deposit",
               "subletting"
             ],
-            "themis_type": "subletting",
-            "agree": true
+            "themis_type": "unknown",
+            "agree": false
           },
           {
             "themis_text_start": "3.1 Should Lessee remain in possession of the Premises after the expiration of t...",
@@ -2058,8 +2064,8 @@
             "claude_types": [
               "unknown"
             ],
-            "themis_type": "termination",
-            "agree": false
+            "themis_type": "unknown",
+            "agree": true
           },
           {
             "themis_text_start": "4.2 Lessee shall have thirty days after receipt of Lessor's notice of a proposed...",
@@ -2099,8 +2105,8 @@
             "claude_types": [
               "subletting"
             ],
-            "themis_type": "subletting",
-            "agree": true
+            "themis_type": "unknown",
+            "agree": false
           },
           {
             "themis_text_start": "6.1 A transfer of more than fifty percent (50%) of the voting equity interests i...",
@@ -2140,12 +2146,12 @@
             "claude_types": [
               "unknown"
             ],
-            "themis_type": "entire_agreement",
-            "agree": false
+            "themis_type": "unknown",
+            "agree": true
           }
         ],
         "n_themis_matched": 15,
-        "themis_agreement": 0.6
+        "themis_agreement": 0.4667
       },
       "lease_04_mixeduse_silverline": {
         "claude_human_matches": [
@@ -2429,7 +2435,7 @@
             "claude_types": [
               "rent"
             ],
-            "themis_type": "term",
+            "themis_type": "unknown",
             "agree": false
           },
           {
@@ -2439,8 +2445,8 @@
             "claude_types": [
               "premises"
             ],
-            "themis_type": "premises",
-            "agree": true
+            "themis_type": "unknown",
+            "agree": false
           },
           {
             "themis_text_start": "1.2 Base Rent for the first Lease Year is $41.00 per rentable square foot, payab...",
@@ -2490,7 +2496,7 @@
               "maintenance",
               "unknown"
             ],
-            "themis_type": "maintenance",
+            "themis_type": "unknown",
             "agree": true
           },
           {
@@ -2500,7 +2506,7 @@
             "claude_types": [
               "maintenance"
             ],
-            "themis_type": "premises",
+            "themis_type": "unknown",
             "agree": false
           },
           {
@@ -2530,7 +2536,7 @@
             "claude_types": [
               "premises"
             ],
-            "themis_type": "termination",
+            "themis_type": "unknown",
             "agree": false
           },
           {
@@ -2550,7 +2556,7 @@
             "claude_types": [
               "subletting"
             ],
-            "themis_type": "rent",
+            "themis_type": "unknown",
             "agree": false
           },
           {
@@ -2560,8 +2566,8 @@
             "claude_types": [
               "subletting"
             ],
-            "themis_type": "subletting",
-            "agree": true
+            "themis_type": "unknown",
+            "agree": false
           },
           {
             "themis_text_start": "5.2 Landlord shall have the right to terminate this Lease upon sixty days' notic...",
@@ -2582,7 +2588,7 @@
               "subletting",
               "termination"
             ],
-            "themis_type": "maintenance",
+            "themis_type": "unknown",
             "agree": false
           },
           {
@@ -2593,8 +2599,8 @@
               "maintenance",
               "premises"
             ],
-            "themis_type": "maintenance",
-            "agree": true
+            "themis_type": "unknown",
+            "agree": false
           },
           {
             "themis_text_start": "6.3 Landlord shall have the right to enter the Premises upon twenty-four hours' ...",
@@ -2623,7 +2629,7 @@
             "claude_types": [
               "premises"
             ],
-            "themis_type": "maintenance",
+            "themis_type": "unknown",
             "agree": false
           },
           {
@@ -2633,7 +2639,7 @@
             "claude_types": [
               "entire_agreement"
             ],
-            "themis_type": "termination",
+            "themis_type": "unknown",
             "agree": false
           },
           {
@@ -2653,12 +2659,12 @@
             "claude_types": [
               "unknown"
             ],
-            "themis_type": "term",
-            "agree": false
+            "themis_type": "unknown",
+            "agree": true
           }
         ],
         "n_themis_matched": 23,
-        "themis_agreement": 0.4348
+        "themis_agreement": 0.3478
       },
       "lease_05_smallsuite_thornfield": {
         "claude_human_matches": [
@@ -2788,8 +2794,8 @@
               "premises",
               "term"
             ],
-            "themis_type": "term",
-            "agree": true
+            "themis_type": "unknown",
+            "agree": false
           },
           {
             "themis_text_start": "Premises and Term The Premises consist of approximately 6,200 rentable square fe...",
@@ -2854,8 +2860,8 @@
               "maintenance",
               "utilities"
             ],
-            "themis_type": "utilities",
-            "agree": true
+            "themis_type": "unknown",
+            "agree": false
           },
           {
             "themis_text_start": "Insurance and Indemnity",
@@ -2864,8 +2870,8 @@
             "claude_types": [
               "unknown"
             ],
-            "themis_type": "subletting",
-            "agree": false
+            "themis_type": "unknown",
+            "agree": true
           },
           {
             "themis_text_start": "Tenant shall obtain and maintain commercial general liability insurance in the a...",
@@ -2901,7 +2907,7 @@
           }
         ],
         "n_themis_matched": 11,
-        "themis_agreement": 0.4545
+        "themis_agreement": 0.3636
       },
       "lease_05_smallsuite_thornfield_SCANNED": {
         "claude_human_matches": [
@@ -3031,8 +3037,8 @@
               "premises",
               "term"
             ],
-            "themis_type": "term",
-            "agree": true
+            "themis_type": "unknown",
+            "agree": false
           },
           {
             "themis_text_start": "Premises and Term The Premises consist of approximately 6,200 rentable square fe...",
@@ -3053,7 +3059,7 @@
               "late_fee",
               "rent"
             ],
-            "themis_type": "entire_agreement",
+            "themis_type": "unknown",
             "agree": false
           },
           {
@@ -3117,8 +3123,8 @@
               "maintenance",
               "utilities"
             ],
-            "themis_type": "utilities",
-            "agree": true
+            "themis_type": "unknown",
+            "agree": false
           },
           {
             "themis_text_start": "Insurance and Indemnity",
@@ -3127,8 +3133,8 @@
             "claude_types": [
               "unknown"
             ],
-            "themis_type": "subletting",
-            "agree": false
+            "themis_type": "unknown",
+            "agree": true
           },
           {
             "themis_text_start": "Tenant shall obtain and maintain commercial general liability insurance in the a...",
@@ -3159,12 +3165,12 @@
               "entire_agreement",
               "unknown"
             ],
-            "themis_type": "entire_agreement",
+            "themis_type": "unknown",
             "agree": true
           }
         ],
         "n_themis_matched": 13,
-        "themis_agreement": 0.4615
+        "themis_agreement": 0.3846
       },
       "lease_06_table_rentschedule_bellwood": {
         "claude_human_matches": [
@@ -3309,7 +3315,7 @@
             "claude_types": [
               "premises"
             ],
-            "themis_type": "term",
+            "themis_type": "unknown",
             "agree": false
           },
           {
@@ -3361,7 +3367,7 @@
               "rent",
               "utilities"
             ],
-            "themis_type": "termination",
+            "themis_type": "unknown",
             "agree": false
           },
           {
@@ -3412,7 +3418,7 @@
             "claude_types": [
               "deposit"
             ],
-            "themis_type": "term",
+            "themis_type": "unknown",
             "agree": false
           }
         ],
@@ -3648,7 +3654,7 @@
             "claude_types": [
               "rent"
             ],
-            "themis_type": "utilities",
+            "themis_type": "unknown",
             "agree": false
           },
           {
@@ -3708,8 +3714,8 @@
             "claude_types": [
               "maintenance"
             ],
-            "themis_type": "maintenance",
-            "agree": true
+            "themis_type": "unknown",
+            "agree": false
           },
           {
             "themis_text_start": "3.1 Tenant shall not be prohibited from installing customary trade fixtures, pro...",
@@ -3719,8 +3725,8 @@
               "maintenance",
               "premises"
             ],
-            "themis_type": "maintenance",
-            "agree": true
+            "themis_type": "unknown",
+            "agree": false
           },
           {
             "themis_text_start": "3.2 Nothing herein shall be construed to prevent Landlord from declining to cons...",
@@ -3750,7 +3756,7 @@
             "claude_types": [
               "rent"
             ],
-            "themis_type": "premises",
+            "themis_type": "unknown",
             "agree": false
           },
           {
@@ -3801,8 +3807,8 @@
             "claude_types": [
               "unknown"
             ],
-            "themis_type": "maintenance",
-            "agree": false
+            "themis_type": "unknown",
+            "agree": true
           },
           {
             "themis_text_start": "6.3 Exhibit A depicts the floor plan of the Premises and is incorporated herein ...",
@@ -3812,8 +3818,8 @@
               "premises",
               "unknown"
             ],
-            "themis_type": "term",
-            "agree": false
+            "themis_type": "unknown",
+            "agree": true
           }
         ],
         "n_themis_matched": 17,
