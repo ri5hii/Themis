@@ -317,7 +317,7 @@ class TestIngestLexdemod:
         assert out[0]["spans"] == {"obl": [[8, 9]]}
         assert out[0]["split"] == "train"
 
-    def test_ingestAnnotated_drops_none_sentence_text(self):
+    def test_ingestAnnotated_keeps_none_span_row(self):
         rows = [
             {
                 "cid": "x.htm-1",

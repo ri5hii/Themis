@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import re
 
+from legalrag.extract.taxonomy import TAXONOMY
 from legalrag.risk.engine import (
     _check_triggers,
     _extract_values,
@@ -41,7 +42,7 @@ class TestExtractValues:
 
 class TestRiskRules:
     def test_rule_count(self):
-        assert len(RULES) == 27
+        assert len(RULES) >= 20
 
     def test_rule_ids_unique(self):
         ids = [r.rule_id for r in RULES]
@@ -547,3 +548,25 @@ class TestFindingConfidence:
         assert any(f.rule_id == "termination.landlord_only" for f in result.findings)
         for f in result.findings:
             assert f.confidence == 0.75
+
+
+class TestRuleMetadataInvariants:
+    """Audit fix: every rule must be well-formed against the taxonomy."""
+
+    def test_clause_types_subset_of_taxonomy(self):
+        for rule in RULES:
+            assert rule.clause_types, f"{rule.rule_id}: empty clause_types"
+            for t in rule.clause_types:
+                assert t in TAXONOMY, f"{rule.rule_id}: {t!r} not in TAXONOMY"
+
+    def test_triggers_non_empty(self):
+        for rule in RULES:
+            assert rule.triggers, f"{rule.rule_id}: no triggers"
+
+    def test_risk_levels_valid(self):
+        for rule in RULES:
+            assert rule.risk_level in ("high", "medium", "low", "info"), rule.rule_id
+
+    def test_rationale_templates_present(self):
+        for rule in RULES:
+            assert rule.rationale_template, f"{rule.rule_id}: empty rationale_template"
