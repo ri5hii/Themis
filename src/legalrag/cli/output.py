@@ -110,6 +110,8 @@ def render_markdown(output: dict[str, Any]) -> str:
             lines.append(f"- Rationale: {f['rationale']}")
         if f.get("statute"):
             lines.append(f"- Statute: {f['statute']}")
+        if f.get("section_id"):
+            lines.append(f"- Section: {f['section_id']}")
         if f.get("user_verdict"):
             lines.append(f"- Your verdict: {f['user_verdict']}")
         if f.get("user_risk_level"):
