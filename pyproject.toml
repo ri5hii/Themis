@@ -25,6 +25,9 @@ slm = [
 ]
 ocr = ["docling"]
 
+[project.scripts]
+themis = "legalrag.cli:main"
+
 [tool.setuptools.packages.find]
 where = ["src"]
 
