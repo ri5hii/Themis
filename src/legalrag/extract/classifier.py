@@ -16,15 +16,12 @@ from .fast_lane import classifyClause, confidenceFromCount
 from .taxonomy import UNKNOWN
 
 # Confidence floor for the fallback: predictions below this become UNKNOWN.
-THRESHOLD = 0.4
+THRESHOLD = 0.3
 
 # Refuse margin: when the gap between the top two softmax probabilities is
-# below this, the prediction is treated as UNKNOWN. OOD non-clause content
-# (preamble, signatures, boilerplate) gets confidently-wrong softmax peaks;
-# close top-two scores are the low-quality signal the fallback should refuse
-# instead of guessing. Tuned on scripts/eval_ood.py: margin=0.5 lifts OOD
-# hybrid overall accuracy 0.144 -> 0.340 with no clause-only regression.
-MARGIN = 0.5
+# below this, the prediction is treated as UNKNOWN. Lowered from 0.5 to 0.3
+# to reduce the number of sections collapsing to UNKNOWN (v0.3.18).
+MARGIN = 0.3
 
 
 def refuseRow(

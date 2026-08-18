@@ -102,12 +102,11 @@ def test_from_sklearn_wraps_coefs() -> None:
 
 
 def test_threshold_constant_contract() -> None:
-    # The docs' M5 threshold spec is 0.4.
-    assert THRESHOLD == 0.4
+    # The docs' threshold spec (lowered from 0.4 to 0.3 in v0.3.18).
+    assert THRESHOLD == 0.3
 
 
 def test_margin_constant_contract() -> None:
-    # Refuse margin default (docs/progress.md §6.14 low-quality refuse path),
-    # tuned on eval_ood so clause-only accuracy is preserved while OOD overall
-    # accuracy improves.
-    assert MARGIN == 0.5
+    # Refuse margin default (lowered from 0.5 to 0.3 in v0.3.18 to reduce
+    # the number of sections collapsing to UNKNOWN).
+    assert MARGIN == 0.3

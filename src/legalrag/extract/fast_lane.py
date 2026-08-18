@@ -59,7 +59,7 @@ _TRIGGERS: dict[str, tuple[re.Pattern[str], ...]] = {
         re.compile(r"\bmaintenance\s+(?:obligations?|duties?|charges?)\b", re.IGNORECASE),
     ),
     "utilities": (
-        re.compile(r"\butilit\w*\b", re.IGNORECASE),
+        re.compile(r"\butilities\b", re.IGNORECASE),
         re.compile(r"\belectricit\w*\b", re.IGNORECASE),
         re.compile(r"\bgas\s+(?:charges?|bills?|costs?)?\b", re.IGNORECASE),
         re.compile(r"\bwater\s+(?:charges?|bills?|rates?)?\b", re.IGNORECASE),
@@ -116,6 +116,7 @@ _TRIGGERS: dict[str, tuple[re.Pattern[str], ...]] = {
         re.compile(r"\blitigat\w*\b", re.IGNORECASE),
         re.compile(r"\bmediation\b", re.IGNORECASE),
         re.compile(r"\bgoverning\s+law\b", re.IGNORECASE),
+        re.compile(r"\bgoverned\s+by\b", re.IGNORECASE),
         re.compile(r"\bresolv\w*\s+.{0,20}\bdispute\b", re.IGNORECASE | re.DOTALL),
     ),
     "premises": (
@@ -135,6 +136,12 @@ _TRIGGERS: dict[str, tuple[re.Pattern[str], ...]] = {
         re.compile(r"\bintegration\s+clause\b", re.IGNORECASE),
         re.compile(r"\bmerger\s+clause\b", re.IGNORECASE),
         re.compile(r"\bsupersed\w*\s+.{0,30}\b(?:prior|previous|representations)\b", re.IGNORECASE | re.DOTALL),
+    ),
+    "no_obligation": (
+        re.compile(r"\bno\s+obligation\s+to\s+(?:operate|conduct|open|maintain)\b", re.IGNORECASE),
+        re.compile(r"\bshall\s+have\s+no\s+obligation\b", re.IGNORECASE),
+        re.compile(r"\bnot\s+(?:obligated|required)\s+to\s+(?:maintain|operate|provide|open)\b", re.IGNORECASE),
+        re.compile(r"\bno\s+(?:duty|obligation)\s+to\s+relet\b", re.IGNORECASE),
     ),
 }
 

@@ -1,4 +1,4 @@
-# Lease clause taxonomy: the 15 clause types Extract classifies into.
+# Lease clause taxonomy: the 16 clause types Extract classifies into.
 #
 # The order of TAXONOMY is a spec: `classifyClause` breaks evidence-count ties
 # in this order (earlier-declared type wins, per docs/progress.md §5.14), so it
@@ -22,6 +22,7 @@ TAXONOMY: tuple[str, ...] = (
     "premises",
     "pets",
     "entire_agreement",
+    "no_obligation",
 )
 
 UNKNOWN = "unknown"
