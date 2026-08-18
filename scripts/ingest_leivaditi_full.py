@@ -43,7 +43,7 @@ def main() -> int:
             continue
         rows = ingest_fn(ing.parseCsv(str(path)))
         dst = out / f"leivaditi_full_{name}.jsonl"
-        with open(dst, "w") as f:
+        with open(dst, "w", encoding="utf-8") as f:
             f.writelines(json.dumps(row) + "\n" for row in rows)
         print(f"[ingest] {name}: {len(rows)} rows -> {dst}")
 

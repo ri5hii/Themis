@@ -58,7 +58,7 @@ ENTITY_CLASSES = {
 
 
 def parseCsv(path: str) -> list[dict[str, str]]:
-    with open(path, newline="") as f:
+    with open(path, newline="", encoding="utf-8") as f:
         return [dict(row) for row in csv.DictReader(f)]
 
 

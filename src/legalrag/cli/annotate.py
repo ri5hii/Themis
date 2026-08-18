@@ -37,6 +37,14 @@ def _write_rows(rows: list[dict], out_path: Path) -> None:
             fh.write(json.dumps(row, ensure_ascii=False) + "\n")
 
 
+def _read(prompt: Callable[[str], str | None], msg: str) -> str | None:
+    """Prompt for input; None on EOF (non-interactive stdin)."""
+    try:
+        return prompt(msg)
+    except EOFError:
+        return None
+
+
 def annotate_sections(
     pdf_path: Path,
     out_path: Path,
@@ -60,9 +68,7 @@ def annotate_sections(
         print(f"\n--- Section {i + 1}/{n} ---")
         print(body)
         while True:
-            choice = prompt("  type (u=unknown, ?=types, q=quit): ")
-            if choice is None:
-                raise AnnotateAborted(rows)
+            choice = _read(prompt, "  type (u=unknown, ?=types, q=quit): ")
             if choice is None:
                 raise AnnotateAborted(rows)
             choice = choice.strip().lower()
@@ -104,8 +110,8 @@ def build_parser(parser: argparse.ArgumentParser | None = None) -> argparse.Argu
     return parser
 
 
-def main(argv: list[str] | None = None) -> int:
-    args = build_parser().parse_args(argv)
+def main(args: argparse.Namespace | None = None) -> int:
+    args = args if args is not None else build_parser().parse_args()
     pdf_path = Path(args.pdf)
     if not pdf_path.exists():
         print(f"[error] {pdf_path} not found")

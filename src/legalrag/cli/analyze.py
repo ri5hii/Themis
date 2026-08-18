@@ -168,8 +168,8 @@ def build_parser(parser: argparse.ArgumentParser | None = None) -> argparse.Argu
     return parser
 
 
-def main(argv: list[str] | None = None) -> int:
-    args = build_parser().parse_args(argv)
+def main(args: argparse.Namespace | None = None) -> int:
+    args = args if args is not None else build_parser().parse_args()
     colors = tty() and not args.no_color
 
     try:
@@ -179,8 +179,9 @@ def main(argv: list[str] | None = None) -> int:
             interactive=args.interactive,
             threads=args.threads,
         )
-    except FileNotFoundError as e:
-        print(f"[error] {e.filename} not found")
+    except (FileNotFoundError, IsADirectoryError, NotADirectoryError) as e:
+        name = getattr(e, "filename", None) or args.pdf
+        print(f"[error] {name} not a readable file")
         return 1
 
     body = render(output, args.format, colors)

@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "legalrag"
-version = "0.5.0"
+version = "0.6.5"
 description = "RAG-based legal document analysis to narrow the access-to-justice gap"
 requires-python = ">=3.10"
 dependencies = [
@@ -13,6 +13,8 @@ dependencies = [
     "transformers",
     "faiss-cpu",
     "joblib",
+    "pypdfium2",
+    "python-docx",
 ]
 
 [project.optional-dependencies]
@@ -23,7 +25,7 @@ slm = [
     "peft",
     "bitsandbytes",
 ]
-ocr = ["docling"]
+ocr = ["rapidocr"]
 
 [project.scripts]
 themis = "legalrag.cli:main"

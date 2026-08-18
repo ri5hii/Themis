@@ -20,7 +20,7 @@ SPLIT_RATIOS = (0.8, 0.1, 0.1)
 
 
 def loadJsonl(path: str) -> list[dict[str, Any]]:
-    with open(path) as f:
+    with open(path, encoding="utf-8") as f:
         return [json.loads(line) for line in f if line.strip()]
 
 

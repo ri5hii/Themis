@@ -142,6 +142,28 @@ class TestAnnotate:
         rows = [json.loads(l) for l in out_path.read_text().splitlines()]
         assert [(r["section_idx"], r["type"]) for r in rows] == [(0, "term")]
 
+    def test_eof_aborts_with_partial_rows(self, tmp_path, monkeypatch):
+
+        pdf = tmp_path / "doc.pdf"
+        pdf.write_bytes(b"%PDF-1.4 fake")
+        monkeypatch.setattr(annotate, "extractText", lambda p: type("X", (), {
+            "full_text": "A.\n\nB.\n\nC.",
+            "n_pages": 1,
+        })())
+
+        answers = iter(["rent", "term"])
+        out_path = tmp_path / "out.jsonl"
+
+        def stub(_msg):
+            try:
+                return next(answers)
+            except StopIteration:
+                raise EOFError
+
+        with pytest.raises(annotate.AnnotateAborted) as exc:
+            annotate.annotate_sections(pdf, out_path, prompt=stub)
+        assert [(r["section_idx"], r["type"]) for r in exc.value.rows] == [(0, "rent"), (1, "term")]
+
 
 class TestDispatch:
     def test_parser_routes_subcommands(self):

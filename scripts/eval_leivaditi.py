@@ -34,7 +34,7 @@ DATA = Path(__file__).resolve().parent.parent / "data" / "annotated" / "leivadit
 
 def load_sentences() -> list[dict]:
     sentences = []
-    with open(DATA) as fh:
+    with open(DATA, encoding="utf-8") as fh:
         for line in fh:
             sentences.append(json.loads(line))
     return sentences

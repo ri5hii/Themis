@@ -26,7 +26,7 @@ def main(argv: list[str] | None = None) -> int:
     argv = list(argv) if argv is not None else sys.argv[1:]
     parser = build_parser()
     args = parser.parse_args(argv)
-    return args.func(argv[1:])
+    return args.func(args)
 
 
 if __name__ == "__main__":

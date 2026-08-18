@@ -112,14 +112,14 @@ def load_annotations() -> dict[str, dict]:
     for name in ("claude_inference.json", "claude_inference_08_22.json"):
         path = ANNOT_DIR / name
         if path.exists():
-            with open(path) as fh:
+            with open(path, encoding="utf-8") as fh:
                 docs_in = json.load(fh)["documents"]
             for doc_name, doc in docs_in.items():
                 docs.setdefault(doc_name, {"claude": [], "human": []})
                 docs[doc_name]["claude"] = doc.get("risk_flags", [])
     path = ANNOT_DIR / "my_inference.json"
     if path.exists():
-        with open(path) as fh:
+        with open(path, encoding="utf-8") as fh:
             docs_in = json.load(fh)["documents"]
         for doc_name, doc in docs_in.items():
             docs.setdefault(doc_name, {"claude": [], "human": []})
@@ -139,7 +139,7 @@ def main() -> int:
 
     themis: dict[str, list] = {}
     for f in sorted(findings_dir.glob("*_analysis.json")):
-        with open(f) as fh:
+        with open(f, encoding="utf-8") as fh:
             themis[f.stem.replace("_analysis", "")] = json.load(fh)["findings"]
 
     annotations = load_annotations()

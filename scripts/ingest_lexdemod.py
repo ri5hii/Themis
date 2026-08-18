@@ -42,7 +42,7 @@ def main() -> int:
 
     cleaned = ing.ingestAnnotated(rows)
     dst = out / "lexdemod_annotated.jsonl"
-    with open(dst, "w") as f:
+    with open(dst, "w", encoding="utf-8") as f:
         f.writelines(json.dumps(row) + "\n" for row in cleaned)
     print(f"[ingest] lexdemod: {len(cleaned)} rows -> {dst}")
     return 0
