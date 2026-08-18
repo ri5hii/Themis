@@ -92,3 +92,44 @@ class TestBuildAndQuery:
         buildEmbeddings(sections_index, out, model_name="fake/model")
         hits = queryEmbeddings("q", out, model_name="fake/model", k=1)
         assert len(hits) == 1
+
+def test_query_embeddings_caches_index(monkeypatch, tmp_path: Path) -> None:
+    """Audit fix: grounding calls queryEmbeddings per finding; the FAISS
+    index and id map must load once, not on every call."""
+    import faiss
+
+    from legalrag import retrieve
+
+    d = tmp_path / "idx"
+    d.mkdir()
+    flat = faiss.IndexFlatIP(2)
+    flat.add(np.array([[1.0, 0.0]], dtype="float32"))
+    faiss.write_index(flat, str(d / retrieve.FAISS_INDEX))
+    (d / retrieve.IDS_JSONL).write_text(
+        json.dumps({"id": "h_1", "text": "rent paid monthly", "sources": ["a"]}) + "\n",
+        encoding="utf-8",
+    )
+
+    calls = {"read_index": 0}
+
+    real_read = faiss.read_index
+
+    def counting_read(path):
+        calls["read_index"] += 1
+        return real_read(path)
+
+    monkeypatch.setattr(faiss, "read_index", counting_read)
+    monkeypatch.setattr(
+        retrieve,
+        "embedTexts",
+        lambda texts, model_name, batch_size=16: np.array([[1.0, 0.0]], dtype="float32"),
+    )
+
+    try:
+        q1 = queryEmbeddings("rent", d, k=1)
+        q2 = queryEmbeddings("rent", d, k=1)
+        assert calls["read_index"] == 1
+        assert q1 == q2
+        assert q1[0]["id"] == "h_1"
+    finally:
+        retrieve.clearIndexCache()

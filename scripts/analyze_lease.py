@@ -21,6 +21,17 @@ from legalrag.risk.grounding import groundAll
 from legalrag.risk.rules import RULES as RISK_RULES
 
 STATUTE_INDEX = Path("data/indexes/statutes")
+ROOT = Path(__file__).resolve().parent.parent
+CLASSIFIER_PATH = ROOT / "models" / "classifier.npz"
+
+
+def _load_fallback() -> object | None:
+    """Trained classifier for fast-lane `unknown` sections, if present."""
+    if not CLASSIFIER_PATH.exists():
+        return None
+    from legalrag.extract.classifier import TrainedClassifier
+
+    return TrainedClassifier.load(CLASSIFIER_PATH)
 
 
 def main() -> int:
@@ -48,19 +59,22 @@ def main() -> int:
     raw_sections = splitParagraphs(extraction.full_text)
     print(f"  {len(raw_sections)} sections")
 
-    # 3. Classify sections
+    # 3. Classify sections (fast-lane + trained classifier fallback, batched)
     print("[3/5] Classifying sections...")
-    section_dicts = []
-    for i, sec_text in enumerate(raw_sections):
-        sec = {"id": f"section_{i}", "text": sec_text[:2000]}
-        result = analyzeSections([sec])
-        best_type = result[0] if result else {"type": "unknown", "confidence": 0.0}
-        section_dicts.append({
-            "id": f"section_{i}",
-            "text": sec_text[:2000],
-            "type": best_type.get("clause_type", "unknown"),
-            "confidence": best_type.get("confidence", 0.0),
-        })
+    fallback = _load_fallback()
+    if fallback is not None:
+        print(f"  classifier fallback: {fallback.model_name}")
+    section_dicts = [{"id": f"section_{i}", "text": t[:2000]} for i, t in enumerate(raw_sections)]
+    classified_rows = analyzeSections(section_dicts, fallback)
+    section_dicts = [
+        {
+            "id": row["id"],
+            "text": row["text"],
+            "type": row["clause_type"],
+            "confidence": row["confidence"],
+        }
+        for row in classified_rows
+    ]
 
     classified = sum(1 for s in section_dicts if s["type"] != "unknown")
     print(f"  {classified}/{len(section_dicts)} sections classified")

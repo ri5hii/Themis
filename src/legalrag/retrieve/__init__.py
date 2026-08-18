@@ -6,6 +6,7 @@
 from __future__ import annotations
 
 import json
+from functools import lru_cache
 from pathlib import Path
 
 import numpy as np
@@ -29,29 +30,31 @@ def _normalize(vectors: np.ndarray) -> np.ndarray:
     return vectors / np.clip(norms, 1e-9, None)
 
 
+@lru_cache(maxsize=8)
+def _loadIndex(out_dir: str) -> tuple:
+    """Cached (FAISS index, id rows) for an index directory."""
+    import faiss
+
+    d = Path(out_dir)
+    index = faiss.read_index(str(d / FAISS_INDEX))
+    ids: list[dict] = []
+    with (d / IDS_JSONL).open(encoding="utf-8") as fh:
+        for line in fh:
+            line = line.strip()
+            if line:
+                ids.append(json.loads(line))
+    return index, ids
+
+
+def clearIndexCache() -> None:
+    _loadIndex.cache_clear()
+
+
 def embedTexts(texts: list[str], model_name: str, batch_size: int = 16) -> np.ndarray:
     """Embed a list of texts into L2-normalized dense vectors (n, dim)."""
-    import torch
-    from transformers import AutoModel, AutoTokenizer
+    from legalrag.embeddings import encodeMeanPooled
 
-    tokenizer = AutoTokenizer.from_pretrained(model_name)
-    model = AutoModel.from_pretrained(model_name)
-    model.eval()
-
-    vecs: list[np.ndarray] = []
-    with torch.inference_mode():
-        for i in range(0, len(texts), batch_size):
-            batch = texts[i : i + batch_size]
-            enc = tokenizer(
-                batch,
-                padding=True,
-                truncation=True,
-                max_length=256,
-                return_tensors="pt",
-            )
-            out = model(**enc)
-            vecs.append(_mean_pool(out, enc["attention_mask"]))
-    return _normalize(np.vstack(vecs).astype("float32"))
+    return _normalize(encodeMeanPooled(texts, model_name, batch_size=batch_size))
 
 
 def buildEmbeddings(
@@ -110,15 +113,7 @@ def queryEmbeddings(
     k: int = 5,
 ) -> list[dict]:
     """Search the built FAISS index; returns [{id, text, sources, score, rank}]."""
-    import faiss
-
-    index = faiss.read_index(str(out_dir / FAISS_INDEX))
-    ids: list[dict] = []
-    with (out_dir / IDS_JSONL).open(encoding="utf-8") as fh:
-        for line in fh:
-            line = line.strip()
-            if line:
-                ids.append(json.loads(line))
+    index, ids = _loadIndex(str(out_dir))
 
     qvec = embedTexts([query], model_name)
     scores, idxs = index.search(qvec, k)

@@ -141,7 +141,9 @@ def _cuda_available() -> bool:
 
 
 def _default_device() -> str:
-    return "cuda" if _cuda_available() else "cpu"
+    from ..embeddings import default_device
+
+    return default_device()
 
 
 def encodeTexts(
@@ -151,30 +153,6 @@ def encodeTexts(
     device: str | None = None,
 ) -> np.ndarray:
     """Mean-pooled LegalBERT embeddings for the linear head (raw, unnormalized)."""
-    import torch
-    from transformers import AutoModel, AutoTokenizer
+    from ..embeddings import encodeMeanPooled
 
-    device = device or _default_device()
-    tokenizer = AutoTokenizer.from_pretrained(model_name)
-    model = AutoModel.from_pretrained(model_name)
-    model.to(device)
-    model.eval()
-
-    vecs: list[np.ndarray] = []
-    with torch.inference_mode():
-        for i in range(0, len(texts), batch_size):
-            batch = texts[i : i + batch_size]
-            enc = tokenizer(
-                batch,
-                padding=True,
-                truncation=True,
-                max_length=256,
-                return_tensors="pt",
-            ).to(device)
-            out = model(**enc)
-            token_embeds = out.last_hidden_state
-            mask = enc["attention_mask"].unsqueeze(-1).float().to(token_embeds.device)
-            summed = (token_embeds * mask).sum(1)
-            counts = mask.sum(1).clamp(min=1e-9)
-            vecs.append((summed / counts).cpu().numpy())
-    return np.vstack(vecs).astype("float32")
+    return encodeMeanPooled(texts, model_name, batch_size=batch_size, device=device)
