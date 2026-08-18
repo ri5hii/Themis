@@ -154,3 +154,33 @@ def test_entire_agreement() -> None:
 def test_no_obligation() -> None:
     t, _ = fast_lane.classifyClause("Landlord shall have no obligation to operate the mall")
     assert t == "no_obligation"
+
+
+class TestExtractImage:
+    """extractImage OCR dispatch (engine stubbed, audit item 13)."""
+
+    def test_ocr_success(self, monkeypatch, tmp_path) -> None:
+        from legalrag.ingest import extract as ex
+
+        img = tmp_path / "page.png"
+        img.write_bytes(b"fake-png-bytes")
+        monkeypatch.setattr(ex, "_ocr_instance", lambda: object())
+        monkeypatch.setattr(ex, "_ocr_text", lambda data, engine: "Landlord shall repair")
+
+        out = ex.extractImage(img, "page")
+        assert out.methods == {"ocr"}
+        assert out.pages[0].text == "Landlord shall repair"
+        assert out.pages[0].method == "ocr"
+        assert out.n_pages == 1
+
+    def test_ocr_empty_falls_back_to_error(self, monkeypatch, tmp_path) -> None:
+        from legalrag.ingest import extract as ex
+
+        img = tmp_path / "blank.png"
+        img.write_bytes(b"fake-png-bytes")
+        monkeypatch.setattr(ex, "_ocr_instance", lambda: object())
+        monkeypatch.setattr(ex, "_ocr_text", lambda data, engine: "")
+
+        out = ex.extractImage(img, "blank")
+        assert out.methods == {"error"}
+        assert out.pages[0].method == "error"
