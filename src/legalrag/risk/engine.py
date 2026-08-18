@@ -150,15 +150,15 @@ def analyzeRisk(
         ctype = section.get("type", "unknown")
         text = section.get("text", "")
         section_id = section.get("id", "")
-        confidence = section.get("confidence", 0.0)
+        known_type = ctype != "unknown"
 
-        if ctype != "unknown":
+        if known_type:
             classified += 1
 
         for rule in rules:
             # For classified sections, only fire on matching clause types.
             # For unknown sections, try all rules (trigger patterns filter).
-            if ctype != "unknown" and ctype not in rule.clause_types:
+            if known_type and ctype not in rule.clause_types:
                 continue
             if not _check_triggers(text, rule.triggers):
                 continue
@@ -173,7 +173,7 @@ def analyzeRisk(
                     rule_id=rule.rule_id,
                     clause_type=ctype,
                     risk_level=rule.risk_level,
-                    confidence=confidence,
+                    confidence=1.0 if known_type else 0.75,
                     rationale=rationale,
                     clause_text=text[:600],
                     extracted_values=extracted,

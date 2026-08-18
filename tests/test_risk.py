@@ -534,3 +534,17 @@ class TestRationaleInterpolation:
                 assert "{" not in f.rationale, f"{f.rule_id}: literal placeholder in {f.rationale!r}"
 
 
+class TestFindingConfidence:
+    """Audit fix: confidence reflects match context, not classification confidence."""
+
+    def test_type_matched_fire_confidence_one(self):
+        sections = [{"id": "s1", "type": "deposit", "text": "security deposit of $10,000"}]
+        result = analyzeRisk(sections, RULES)
+        assert result.findings[0].confidence == 1.0
+
+    def test_unknown_section_fire_confidence_075(self):
+        sections = [{"id": "s1", "type": "unknown", "text": "landlord may terminate this lease at any time"}]
+        result = analyzeRisk(sections, RULES)
+        assert any(f.rule_id == "termination.landlord_only" for f in result.findings)
+        for f in result.findings:
+            assert f.confidence == 0.75
