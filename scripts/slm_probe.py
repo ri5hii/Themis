@@ -3,10 +3,12 @@
 End-state design: deterministic engine handles classification/flagging; a
 grammar-constrained SLM handles *prose* generation only. This probe evaluates
 the LLM on a small sample of redflag sections from the full benchmark,
-constraining output to a strict JSON schema via llama.cpp's GBNF grammar.
+constraining output to the shipped grammar (legalrag.slm.grammar.GRAMMAR) —
+the same strict JSON schema the risk stage uses for findings.
 
-Outputs: JSON with {type, plain_language, tenant_impact}. Grammar guarantees
-the parse; the probe measures parse rate, timing, and output quality.
+Outputs: JSON with {clause_type, risk_level, statute, plain_explanation,
+tenant_impact}. Grammar guarantees the parse; the probe measures parse rate,
+timing, and output quality.
 
 Usage:
     PYTHONUNBUFFERED=1 python scripts/slm_probe.py --model models/...gguf \
@@ -24,28 +26,8 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "src"))
 
 from legalrag import tasks
-
-# GBNF grammar for the structured output. `chars+` (not `chars`) avoids a
-# known llama.cpp+Llama-tokenizer degeneracy that emits single-char strings.
-GRAMMAR = r"""
-root   ::= object
-object ::= "{" ws "\"type\"" ws ":" ws type ws "," ws "\"plain_language\"" ws ":" ws string ws "," ws "\"tenant_impact\"" ws ":" ws string ws "}"
-type   ::= "\"obligation\"" | "\"entitlement\"" | "\"prohibition\"" | "\"permission\"" | "\"other\""
-string ::= "\"" chars+ "\""
-chars  ::= [^"\\] | "\\" (["\\/bfnrt] | "u" [0-9a-fA-F] [0-9a-fA-F] [0-9a-fA-F] [0-9a-fA-F])
-ws     ::= [ \t\n]*
-"""
-
-SYSTEM = (
-    "You review a clause from a lease contract and rewrite it in plain language "
-    "for a non-lawyer tenant. Respond with the deontic type of the clause for "
-    "the tenant, a plain-language explanation of what it means, and how it "
-    "affects the tenant (costs, restrictions, or rights)."
-)
-
-
-def make_prompt(text: str) -> str:
-    return f"Lease clause:\n{text}\n\nRewrite in plain language for the tenant."
+from legalrag.slm.grammar import GRAMMAR as GBNF_GRAMMAR
+from legalrag.slm.grammar import SYSTEM_PROMPT, make_finding_prompt
 
 
 def load_sample(n: int, seed: int, path: str) -> list[dict]:
@@ -65,7 +47,7 @@ def main() -> int:
 
     from llama_cpp import Llama, LlamaGrammar
 
-    grammar = LlamaGrammar.from_string(GRAMMAR)
+    grammar = LlamaGrammar.from_string(GBNF_GRAMMAR)
     sample = load_sample(
         args.n, args.seed, "data/cleaned/leivaditi_full_redflags.jsonl"
     )
@@ -82,8 +64,8 @@ def main() -> int:
     for row in sample:
         out = llm.create_chat_completion(
             messages=[
-                {"role": "system", "content": SYSTEM},
-                {"role": "user", "content": make_prompt(row["text"])},
+                {"role": "system", "content": SYSTEM_PROMPT},
+                {"role": "user", "content": make_finding_prompt(row["text"], "", "", "")},
             ],
             grammar=grammar,
             max_tokens=256,
@@ -101,11 +83,7 @@ def main() -> int:
 
     elapsed = time.time() - t0
     parsed_ok = sum(1 for r in results if "_parse_error" not in r)
-    types_ok = sum(
-        1
-        for r in results
-        if "_parse_error" not in r and r.get("type") in ("obligation", "entitlement", "prohibition", "permission", "other")
-    )
+    types_ok = sum(1 for r in results if "_parse_error" not in r and r.get("clause_type"))
     summary = {
         "n": len(results),
         "parse_rate": round(parsed_ok / len(results), 3),
