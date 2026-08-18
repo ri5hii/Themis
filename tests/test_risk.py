@@ -570,3 +570,23 @@ class TestRuleMetadataInvariants:
     def test_rationale_templates_present(self):
         for rule in RULES:
             assert rule.rationale_template, f"{rule.rule_id}: empty rationale_template"
+
+
+class TestGuarantyTransfer:
+    """Behavioral coverage: deposit.guaranty_transfer (audit item 13)."""
+
+    def test_fires_on_guaranty_transfer(self):
+        sections = [{
+            "id": "s1", "type": "deposit",
+            "text": "This guaranty may be transferred to the Landlord's assignees",
+        }]
+        result = analyzeRisk(sections, RULES)
+        assert any(f.rule_id == "deposit.guaranty_transfer" for f in result.findings)
+
+    def test_does_not_fire_on_guaranty_without_transfer(self):
+        sections = [{
+            "id": "s1", "type": "deposit",
+            "text": "The guaranty shall remain in full force",
+        }]
+        result = analyzeRisk(sections, RULES)
+        assert not any(f.rule_id == "deposit.guaranty_transfer" for f in result.findings)
