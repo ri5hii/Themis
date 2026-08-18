@@ -20,9 +20,9 @@ from legalrag.risk import analyzeRisk, loadStatuteChunks
 from legalrag.risk.grounding import groundAll
 from legalrag.risk.rules import RULES as RISK_RULES
 
-STATUTE_INDEX = Path("data/indexes/statutes")
 ROOT = Path(__file__).resolve().parent.parent
 CLASSIFIER_PATH = ROOT / "models" / "classifier.npz"
+STATUTE_INDEX = ROOT / "data" / "indexes" / "statutes"
 
 
 def _load_fallback() -> object | None:
@@ -86,7 +86,9 @@ def main() -> int:
 
     # Ground findings
     statute_chunks = loadStatuteChunks(STATUTE_INDEX)
-    if statute_chunks:
+    if not STATUTE_INDEX.is_dir():
+        print(f"  [warn] statute index not found: {STATUTE_INDEX} (skipping grounding)")
+    elif statute_chunks:
         rules_by_id = {r.rule_id: r for r in RISK_RULES}
         groundAll(analysis, rules_by_id, statute_chunks, STATUTE_INDEX)
         grounded = sum(1 for f in analysis.findings if f.statute)
