@@ -1,0 +1,3885 @@
+{
+  "set_level": {
+    "per_doc": {
+      "lease_01_office_meridian": {
+        "claude_vs_human": {
+          "jaccard": 1.0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "n_intersection": 8,
+          "n_gold": 8,
+          "n_pred": 8,
+          "missed": [],
+          "extra": []
+        },
+        "claude_vs_themis": {
+          "jaccard": 0.7778,
+          "precision": 0.875,
+          "recall": 0.875,
+          "f1": 0.875,
+          "n_intersection": 7,
+          "n_gold": 8,
+          "n_pred": 8,
+          "missed": [
+            "unknown"
+          ],
+          "extra": [
+            "utilities"
+          ]
+        },
+        "human_vs_themis": {
+          "jaccard": 0.7778,
+          "precision": 0.875,
+          "recall": 0.875,
+          "f1": 0.875,
+          "n_intersection": 7,
+          "n_gold": 8,
+          "n_pred": 8,
+          "missed": [
+            "unknown"
+          ],
+          "extra": [
+            "utilities"
+          ]
+        }
+      },
+      "lease_02_retail_sundial": {
+        "claude_vs_human": {
+          "jaccard": 0.8571,
+          "precision": 1.0,
+          "recall": 0.8571,
+          "f1": 0.9231,
+          "n_intersection": 6,
+          "n_gold": 7,
+          "n_pred": 6,
+          "missed": [
+            "premises"
+          ],
+          "extra": []
+        },
+        "claude_vs_themis": {
+          "jaccard": 0.6,
+          "precision": 0.6667,
+          "recall": 0.8571,
+          "f1": 0.75,
+          "n_intersection": 6,
+          "n_gold": 7,
+          "n_pred": 9,
+          "missed": [
+            "unknown"
+          ],
+          "extra": [
+            "maintenance",
+            "no_obligation",
+            "termination"
+          ]
+        },
+        "human_vs_themis": {
+          "jaccard": 0.5,
+          "precision": 0.5556,
+          "recall": 0.8333,
+          "f1": 0.6667,
+          "n_intersection": 5,
+          "n_gold": 6,
+          "n_pred": 9,
+          "missed": [
+            "unknown"
+          ],
+          "extra": [
+            "maintenance",
+            "no_obligation",
+            "premises",
+            "termination"
+          ]
+        }
+      },
+      "lease_03_industrial_ferrous": {
+        "claude_vs_human": {
+          "jaccard": 0.7273,
+          "precision": 1.0,
+          "recall": 0.7273,
+          "f1": 0.8421,
+          "n_intersection": 8,
+          "n_gold": 11,
+          "n_pred": 8,
+          "missed": [
+            "deposit",
+            "term",
+            "utilities"
+          ],
+          "extra": []
+        },
+        "claude_vs_themis": {
+          "jaccard": 0.6364,
+          "precision": 1.0,
+          "recall": 0.6364,
+          "f1": 0.7778,
+          "n_intersection": 7,
+          "n_gold": 11,
+          "n_pred": 7,
+          "missed": [
+            "deposit",
+            "maintenance",
+            "premises",
+            "unknown"
+          ],
+          "extra": []
+        },
+        "human_vs_themis": {
+          "jaccard": 0.5,
+          "precision": 0.7143,
+          "recall": 0.625,
+          "f1": 0.6667,
+          "n_intersection": 5,
+          "n_gold": 8,
+          "n_pred": 7,
+          "missed": [
+            "maintenance",
+            "premises",
+            "unknown"
+          ],
+          "extra": [
+            "term",
+            "utilities"
+          ]
+        }
+      },
+      "lease_03_industrial_ferrous_SCANNED": {
+        "claude_vs_human": {
+          "jaccard": 0.7273,
+          "precision": 1.0,
+          "recall": 0.7273,
+          "f1": 0.8421,
+          "n_intersection": 8,
+          "n_gold": 11,
+          "n_pred": 8,
+          "missed": [
+            "deposit",
+            "term",
+            "utilities"
+          ],
+          "extra": []
+        },
+        "claude_vs_themis": {
+          "jaccard": 0.5833,
+          "precision": 0.875,
+          "recall": 0.6364,
+          "f1": 0.7368,
+          "n_intersection": 7,
+          "n_gold": 11,
+          "n_pred": 8,
+          "missed": [
+            "deposit",
+            "maintenance",
+            "premises",
+            "unknown"
+          ],
+          "extra": [
+            "entire_agreement"
+          ]
+        },
+        "human_vs_themis": {
+          "jaccard": 0.4545,
+          "precision": 0.625,
+          "recall": 0.625,
+          "f1": 0.625,
+          "n_intersection": 5,
+          "n_gold": 8,
+          "n_pred": 8,
+          "missed": [
+            "maintenance",
+            "premises",
+            "unknown"
+          ],
+          "extra": [
+            "entire_agreement",
+            "term",
+            "utilities"
+          ]
+        }
+      },
+      "lease_04_mixeduse_silverline": {
+        "claude_vs_human": {
+          "jaccard": 0.8,
+          "precision": 1.0,
+          "recall": 0.8,
+          "f1": 0.8889,
+          "n_intersection": 8,
+          "n_gold": 10,
+          "n_pred": 8,
+          "missed": [
+            "entire_agreement",
+            "unknown"
+          ],
+          "extra": []
+        },
+        "claude_vs_themis": {
+          "jaccard": 0.6154,
+          "precision": 0.7273,
+          "recall": 0.8,
+          "f1": 0.7619,
+          "n_intersection": 8,
+          "n_gold": 10,
+          "n_pred": 11,
+          "missed": [
+            "entire_agreement",
+            "unknown"
+          ],
+          "extra": [
+            "registration",
+            "term",
+            "utilities"
+          ]
+        },
+        "human_vs_themis": {
+          "jaccard": 0.7273,
+          "precision": 0.7273,
+          "recall": 1.0,
+          "f1": 0.8421,
+          "n_intersection": 8,
+          "n_gold": 8,
+          "n_pred": 11,
+          "missed": [],
+          "extra": [
+            "registration",
+            "term",
+            "utilities"
+          ]
+        }
+      },
+      "lease_05_smallsuite_thornfield": {
+        "claude_vs_human": {
+          "jaccard": 0.8,
+          "precision": 1.0,
+          "recall": 0.8,
+          "f1": 0.8889,
+          "n_intersection": 8,
+          "n_gold": 10,
+          "n_pred": 8,
+          "missed": [
+            "entire_agreement",
+            "maintenance"
+          ],
+          "extra": []
+        },
+        "claude_vs_themis": {
+          "jaccard": 0.4545,
+          "precision": 0.8333,
+          "recall": 0.5,
+          "f1": 0.625,
+          "n_intersection": 5,
+          "n_gold": 10,
+          "n_pred": 6,
+          "missed": [
+            "entire_agreement",
+            "late_fee",
+            "maintenance",
+            "premises",
+            "unknown"
+          ],
+          "extra": [
+            "no_obligation"
+          ]
+        },
+        "human_vs_themis": {
+          "jaccard": 0.5556,
+          "precision": 0.8333,
+          "recall": 0.625,
+          "f1": 0.7143,
+          "n_intersection": 5,
+          "n_gold": 8,
+          "n_pred": 6,
+          "missed": [
+            "late_fee",
+            "premises",
+            "unknown"
+          ],
+          "extra": [
+            "no_obligation"
+          ]
+        }
+      },
+      "lease_05_smallsuite_thornfield_SCANNED": {
+        "claude_vs_human": {
+          "jaccard": 0.8,
+          "precision": 1.0,
+          "recall": 0.8,
+          "f1": 0.8889,
+          "n_intersection": 8,
+          "n_gold": 10,
+          "n_pred": 8,
+          "missed": [
+            "entire_agreement",
+            "maintenance"
+          ],
+          "extra": []
+        },
+        "claude_vs_themis": {
+          "jaccard": 0.5455,
+          "precision": 0.8571,
+          "recall": 0.6,
+          "f1": 0.7059,
+          "n_intersection": 6,
+          "n_gold": 10,
+          "n_pred": 7,
+          "missed": [
+            "maintenance",
+            "premises",
+            "rent",
+            "unknown"
+          ],
+          "extra": [
+            "no_obligation"
+          ]
+        },
+        "human_vs_themis": {
+          "jaccard": 0.5,
+          "precision": 0.7143,
+          "recall": 0.625,
+          "f1": 0.6667,
+          "n_intersection": 5,
+          "n_gold": 8,
+          "n_pred": 7,
+          "missed": [
+            "premises",
+            "rent",
+            "unknown"
+          ],
+          "extra": [
+            "entire_agreement",
+            "no_obligation"
+          ]
+        }
+      },
+      "lease_06_table_rentschedule_bellwood": {
+        "claude_vs_human": {
+          "jaccard": 0.8333,
+          "precision": 1.0,
+          "recall": 0.8333,
+          "f1": 0.9091,
+          "n_intersection": 5,
+          "n_gold": 6,
+          "n_pred": 5,
+          "missed": [
+            "deposit"
+          ],
+          "extra": []
+        },
+        "claude_vs_themis": {
+          "jaccard": 0.5,
+          "precision": 0.6667,
+          "recall": 0.6667,
+          "f1": 0.6667,
+          "n_intersection": 4,
+          "n_gold": 6,
+          "n_pred": 6,
+          "missed": [
+            "deposit",
+            "premises"
+          ],
+          "extra": [
+            "term",
+            "termination"
+          ]
+        },
+        "human_vs_themis": {
+          "jaccard": 0.5714,
+          "precision": 0.6667,
+          "recall": 0.8,
+          "f1": 0.7273,
+          "n_intersection": 4,
+          "n_gold": 5,
+          "n_pred": 6,
+          "missed": [
+            "premises"
+          ],
+          "extra": [
+            "term",
+            "termination"
+          ]
+        }
+      },
+      "lease_07_edgecase_stresstest_windmere": {
+        "claude_vs_human": {
+          "jaccard": 0.8889,
+          "precision": 0.8889,
+          "recall": 1.0,
+          "f1": 0.9412,
+          "n_intersection": 8,
+          "n_gold": 8,
+          "n_pred": 9,
+          "missed": [],
+          "extra": [
+            "termination"
+          ]
+        },
+        "claude_vs_themis": {
+          "jaccard": 0.7,
+          "precision": 0.7778,
+          "recall": 0.875,
+          "f1": 0.8235,
+          "n_intersection": 7,
+          "n_gold": 8,
+          "n_pred": 9,
+          "missed": [
+            "unknown"
+          ],
+          "extra": [
+            "no_obligation",
+            "utilities"
+          ]
+        },
+        "human_vs_themis": {
+          "jaccard": 0.6364,
+          "precision": 0.7778,
+          "recall": 0.7778,
+          "f1": 0.7778,
+          "n_intersection": 7,
+          "n_gold": 9,
+          "n_pred": 9,
+          "missed": [
+            "termination",
+            "unknown"
+          ],
+          "extra": [
+            "no_obligation",
+            "utilities"
+          ]
+        }
+      }
+    },
+    "aggregate": {
+      "claude_vs_human": {
+        "mean_jaccard": 0.826,
+        "mean_precision": 0.9877,
+        "mean_recall": 0.8383,
+        "mean_f1": 0.9027,
+        "n_docs": 9
+      },
+      "claude_vs_themis": {
+        "mean_jaccard": 0.6014,
+        "mean_precision": 0.8088,
+        "mean_recall": 0.7163,
+        "mean_f1": 0.747,
+        "n_docs": 9
+      },
+      "human_vs_themis": {
+        "mean_jaccard": 0.5803,
+        "mean_precision": 0.721,
+        "mean_recall": 0.754,
+        "mean_f1": 0.7291,
+        "n_docs": 9
+      }
+    }
+  },
+  "section_level": {
+    "per_doc": {
+      "lease_01_office_meridian": {
+        "claude_human_matches": [
+          {
+            "claude_heading": "Art1.1 Premises",
+            "human_heading": "Art4 Use of Premises",
+            "similarity": 0.6,
+            "claude_types": [
+              "premises"
+            ],
+            "human_types": [
+              "premises"
+            ],
+            "agree": true
+          },
+          {
+            "claude_heading": "Art1.2 Term",
+            "human_heading": "Art2 Rent",
+            "similarity": 0.6,
+            "claude_types": [
+              "term"
+            ],
+            "human_types": [
+              "rent"
+            ],
+            "agree": false
+          },
+          {
+            "claude_heading": "Art2.1 Base Rent",
+            "human_heading": "Art1 Premises and Term",
+            "similarity": 0.583,
+            "claude_types": [
+              "rent"
+            ],
+            "human_types": [
+              "premises",
+              "term"
+            ],
+            "agree": false
+          },
+          {
+            "claude_heading": "Art2.2 CAM Reimbursement",
+            "human_heading": "Art3 Maintenance and Repairs",
+            "similarity": 0.714,
+            "claude_types": [
+              "maintenance",
+              "rent"
+            ],
+            "human_types": [
+              "maintenance"
+            ],
+            "agree": false
+          },
+          {
+            "claude_heading": "Art2.3 Operating Expense Adjustment",
+            "human_heading": "Art1 Premises and Term",
+            "similarity": 0.688,
+            "claude_types": [
+              "rent"
+            ],
+            "human_types": [
+              "premises",
+              "term"
+            ],
+            "agree": false
+          },
+          {
+            "claude_heading": "Art3.1 Landlord Structural Repairs",
+            "human_heading": "Art9 Special Stipulations",
+            "similarity": 0.857,
+            "claude_types": [
+              "maintenance"
+            ],
+            "human_types": [
+              "premises"
+            ],
+            "agree": false
+          },
+          {
+            "claude_heading": "Art3.2 Tenant Interior Maintenance",
+            "human_heading": "Art3 Maintenance and Repairs",
+            "similarity": 0.692,
+            "claude_types": [
+              "maintenance"
+            ],
+            "human_types": [
+              "maintenance"
+            ],
+            "agree": true
+          },
+          {
+            "claude_heading": "Art3.3 Tenant Self-Help Repair Right",
+            "human_heading": "Art10 General Provisions",
+            "similarity": 0.667,
+            "claude_types": [
+              "maintenance",
+              "rent"
+            ],
+            "human_types": [
+              "dispute_resolution"
+            ],
+            "agree": false
+          },
+          {
+            "claude_heading": "Art4.1 Permitted Use",
+            "human_heading": "Art1 Premises and Term",
+            "similarity": 0.75,
+            "claude_types": [
+              "premises"
+            ],
+            "human_types": [
+              "premises",
+              "term"
+            ],
+            "agree": false
+          },
+          {
+            "claude_heading": "Art4.2 Illegal Use Prohibition",
+            "human_heading": "Art9 Special Stipulations",
+            "similarity": 0.688,
+            "claude_types": [
+              "premises"
+            ],
+            "human_types": [
+              "premises"
+            ],
+            "agree": true
+          },
+          {
+            "claude_heading": "Art5.1 Assignment Consent Requirement",
+            "human_heading": "Art6 Casualty and Condemnation",
+            "similarity": 0.647,
+            "claude_types": [
+              "subletting"
+            ],
+            "human_types": [
+              "rent",
+              "termination"
+            ],
+            "agree": false
+          },
+          {
+            "claude_heading": "Art5.2 Permitted M&A Assignment",
+            "human_heading": "Art1 Premises and Term",
+            "similarity": 0.846,
+            "claude_types": [
+              "subletting"
+            ],
+            "human_types": [
+              "premises",
+              "term"
+            ],
+            "agree": false
+          },
+          {
+            "claude_heading": "Art5.3 Sublease Right up to 25%",
+            "human_heading": "Art9 Special Stipulations",
+            "similarity": 0.526,
+            "claude_types": [
+              "subletting"
+            ],
+            "human_types": [
+              "premises"
+            ],
+            "agree": false
+          },
+          {
+            "claude_heading": "Art6.1 Casualty Rent Abatement",
+            "human_heading": "Art6 Casualty and Condemnation",
+            "similarity": 0.688,
+            "claude_types": [
+              "unknown"
+            ],
+            "human_types": [
+              "rent",
+              "termination"
+            ],
+            "agree": false
+          },
+          {
+            "claude_heading": "Art6.2 Landlord Termination on Major Casualty",
+            "human_heading": "Art6 Casualty and Condemnation",
+            "similarity": 0.875,
+            "claude_types": [
+              "termination"
+            ],
+            "human_types": [
+              "rent",
+              "termination"
+            ],
+            "agree": false
+          },
+          {
+            "claude_heading": "Art7.1 Rent Without Offset",
+            "human_heading": "Art4 Use of Premises",
+            "similarity": 0.571,
+            "claude_types": [
+              "rent"
+            ],
+            "human_types": [
+              "premises"
+            ],
+            "agree": false
+          },
+          {
+            "claude_heading": "Art7.2 No Duty to Mitigate",
+            "human_heading": "Art6 Casualty and Condemnation",
+            "similarity": 0.733,
+            "claude_types": [
+              "unknown"
+            ],
+            "human_types": [
+              "rent",
+              "termination"
+            ],
+            "agree": false
+          },
+          {
+            "claude_heading": "Art8.1 HVAC Rider",
+            "human_heading": "Art3 Maintenance and Repairs",
+            "similarity": 0.5,
+            "claude_types": [
+              "maintenance",
+              "unknown"
+            ],
+            "human_types": [
+              "maintenance"
+            ],
+            "agree": false
+          },
+          {
+            "claude_heading": "Art9.1 Special Stipulation - Radius Restriction",
+            "human_heading": "Art9 Special Stipulations",
+            "similarity": 0.857,
+            "claude_types": [
+              "premises",
+              "unknown"
+            ],
+            "human_types": [
+              "premises"
+            ],
+            "agree": false
+          },
+          {
+            "claude_heading": "Art10.1 Governing Law",
+            "human_heading": "Art10 General Provisions",
+            "similarity": 0.769,
+            "claude_types": [
+              "dispute_resolution"
+            ],
+            "human_types": [
+              "dispute_resolution"
+            ],
+            "agree": true
+          },
+          {
+            "claude_heading": "Art10.2 Defined Terms",
+            "human_heading": "Art7 Default and Remedies",
+            "similarity": 0.769,
+            "claude_types": [
+              "unknown"
+            ],
+            "human_types": [
+              "rent",
+              "termination"
+            ],
+            "agree": false
+          }
+        ],
+        "claude_human_agreement": 0.1905,
+        "n_matched": 21,
+        "themis_matches": [
+          {
+            "themis_text_start": "OFFICE LEASE AGREEMENT THIS LEASE AGREEMENT (\"Lease\") is made and entered into a...",
+            "matched_claude_heading": "Art1.1 Premises",
+            "overlap": 1.0,
+            "claude_types": [
+              "premises"
+            ],
+            "themis_type": "term",
+            "agree": false
+          },
+          {
+            "themis_text_start": "1.1 The Premises consist of approximately 12,400 rentable square feet located on...",
+            "matched_claude_heading": "Art1.1 Premises",
+            "overlap": 1.0,
+            "claude_types": [
+              "premises"
+            ],
+            "themis_type": "premises",
+            "agree": true
+          },
+          {
+            "themis_text_start": "1.2 The Term of this Lease shall be ten years, commencing on the Commencement Da...",
+            "matched_claude_heading": "Art1.2 Term",
+            "overlap": 1.0,
+            "claude_types": [
+              "term"
+            ],
+            "themis_type": "term",
+            "agree": true
+          },
+          {
+            "themis_text_start": "2.1 Tenant shall pay to Landlord the Base Rent set forth in Schedule 1 on or bef...",
+            "matched_claude_heading": "Art2.1 Base Rent",
+            "overlap": 1.0,
+            "claude_types": [
+              "rent"
+            ],
+            "themis_type": "rent",
+            "agree": true
+          },
+          {
+            "themis_text_start": "2.2 Tenant shall reimburse Landlord for its pro rata share of Common Area Mainte...",
+            "matched_claude_heading": "Art3.2 Tenant Interior Maintenance",
+            "overlap": 0.667,
+            "claude_types": [
+              "maintenance"
+            ],
+            "themis_type": "maintenance",
+            "agree": true
+          },
+          {
+            "themis_text_start": "2.3 Landlord may adjust the estimated monthly Operating Expense payment once per...",
+            "matched_claude_heading": "Art2.3 Operating Expense Adjustment",
+            "overlap": 0.667,
+            "claude_types": [
+              "rent"
+            ],
+            "themis_type": "unknown",
+            "agree": false
+          },
+          {
+            "themis_text_start": "3.1 Landlord shall be responsible for maintaining and repairing the structural c...",
+            "matched_claude_heading": "Art1.2 Term",
+            "overlap": 1.0,
+            "claude_types": [
+              "term"
+            ],
+            "themis_type": "maintenance",
+            "agree": false
+          },
+          {
+            "themis_text_start": "3.2 Tenant shall maintain the interior of the Premises, including all fixtures a...",
+            "matched_claude_heading": "Art1.1 Premises",
+            "overlap": 1.0,
+            "claude_types": [
+              "premises"
+            ],
+            "themis_type": "maintenance",
+            "agree": false
+          },
+          {
+            "themis_text_start": "3.3 In the event Landlord fails to complete a repair required under this Article...",
+            "matched_claude_heading": "Art1.1 Premises",
+            "overlap": 1.0,
+            "claude_types": [
+              "premises"
+            ],
+            "themis_type": "maintenance",
+            "agree": false
+          },
+          {
+            "themis_text_start": "4.1 Tenant may not use the Premises for any purpose other than general office us...",
+            "matched_claude_heading": "Art1.1 Premises",
+            "overlap": 1.0,
+            "claude_types": [
+              "premises"
+            ],
+            "themis_type": "unknown",
+            "agree": false
+          },
+          {
+            "themis_text_start": "4.2 Tenant shall not permit the Premises to be used for any illegal purpose unde...",
+            "matched_claude_heading": "Art1.1 Premises",
+            "overlap": 1.0,
+            "claude_types": [
+              "premises"
+            ],
+            "themis_type": "subletting",
+            "agree": false
+          },
+          {
+            "themis_text_start": "5.1 Tenant shall not assign this Lease or sublet the Premises without the prior ...",
+            "matched_claude_heading": "Art1.1 Premises",
+            "overlap": 1.0,
+            "claude_types": [
+              "premises"
+            ],
+            "themis_type": "subletting",
+            "agree": false
+          },
+          {
+            "themis_text_start": "5.2 Notwithstanding Section 5.1, Tenant shall be permitted to assign this Lease ...",
+            "matched_claude_heading": "Art5.1 Assignment Consent Requirement",
+            "overlap": 0.667,
+            "claude_types": [
+              "subletting"
+            ],
+            "themis_type": "subletting",
+            "agree": true
+          },
+          {
+            "themis_text_start": "5.3 Tenant shall have the right to sublease up to twenty-five percent (25%) of t...",
+            "matched_claude_heading": "Art1.1 Premises",
+            "overlap": 1.0,
+            "claude_types": [
+              "premises"
+            ],
+            "themis_type": "subletting",
+            "agree": false
+          },
+          {
+            "themis_text_start": "6.1 If the Premises are damaged by fire or other casualty to an extent that rend...",
+            "matched_claude_heading": "Art1.1 Premises",
+            "overlap": 1.0,
+            "claude_types": [
+              "premises"
+            ],
+            "themis_type": "termination",
+            "agree": false
+          },
+          {
+            "themis_text_start": "6.2 Should the Building be damaged to the extent of more than fifty percent (50%...",
+            "matched_claude_heading": "Art1.2 Term",
+            "overlap": 1.0,
+            "claude_types": [
+              "term"
+            ],
+            "themis_type": "termination",
+            "agree": false
+          },
+          {
+            "themis_text_start": "7.1 Tenant shall pay all Additional Rent due under this Lease without deduction,...",
+            "matched_claude_heading": "Art7.1 Rent Without Offset",
+            "overlap": 1.0,
+            "claude_types": [
+              "rent"
+            ],
+            "themis_type": "rent",
+            "agree": true
+          },
+          {
+            "themis_text_start": "7.2 Landlord shall have no duty to mitigate damages upon Tenant's default to any...",
+            "matched_claude_heading": "Art7.2 No Duty to Mitigate",
+            "overlap": 1.0,
+            "claude_types": [
+              "unknown"
+            ],
+            "themis_type": "rent",
+            "agree": false
+          },
+          {
+            "themis_text_start": "8.1 Rider No. 1, attached hereto and made a part of this Lease, sets forth addit...",
+            "matched_claude_heading": "Art8.1 HVAC Rider",
+            "overlap": 1.0,
+            "claude_types": [
+              "maintenance",
+              "unknown"
+            ],
+            "themis_type": "utilities",
+            "agree": false
+          },
+          {
+            "themis_text_start": "9.1 Special Stipulations: notwithstanding any provision to the contrary in this ...",
+            "matched_claude_heading": "Art1.1 Premises",
+            "overlap": 1.0,
+            "claude_types": [
+              "premises"
+            ],
+            "themis_type": "unknown",
+            "agree": false
+          },
+          {
+            "themis_text_start": "10.1 This Lease shall be governed by and construed in accordance with the laws o...",
+            "matched_claude_heading": "Art10.1 Governing Law",
+            "overlap": 0.5,
+            "claude_types": [
+              "dispute_resolution"
+            ],
+            "themis_type": "dispute_resolution",
+            "agree": true
+          },
+          {
+            "themis_text_start": "10.2 Capitalized terms used but not defined in this Lease shall have the meaning...",
+            "matched_claude_heading": "Art1.2 Term",
+            "overlap": 1.0,
+            "claude_types": [
+              "term"
+            ],
+            "themis_type": "term",
+            "agree": true
+          },
+          {
+            "themis_text_start": "LANDLORD: Oakmont Realty Trust By: _____________________ TENANT: Cobalt Industri...",
+            "matched_claude_heading": "Art6.2 Landlord Termination on Major Casualty",
+            "overlap": 0.4,
+            "claude_types": [
+              "termination"
+            ],
+            "themis_type": "unknown",
+            "agree": false
+          }
+        ],
+        "n_themis_matched": 23,
+        "themis_agreement": 0.3478
+      },
+      "lease_02_retail_sundial": {
+        "claude_human_matches": [
+          {
+            "claude_heading": "Section1.1 Grant and Term",
+            "human_heading": "Sec1 Grant and Term",
+            "similarity": 0.75,
+            "claude_types": [
+              "premises",
+              "term"
+            ],
+            "human_types": [
+              "term"
+            ],
+            "agree": false
+          },
+          {
+            "claude_heading": "Section2(a) No Obligation to Operate",
+            "human_heading": "Sec6 Landlord Representations",
+            "similarity": 0.556,
+            "claude_types": [
+              "premises"
+            ],
+            "human_types": [
+              "unknown"
+            ],
+            "agree": false
+          },
+          {
+            "claude_heading": "Section2(b) Go-Dark Right",
+            "human_heading": "Sec5 Rent and Service Charges",
+            "similarity": 0.421,
+            "claude_types": [
+              "premises"
+            ],
+            "human_types": [
+              "rent",
+              "utilities"
+            ],
+            "agree": false
+          },
+          {
+            "claude_heading": "Section2(c) No Landlord Remedy for Non-Operation",
+            "human_heading": "Sec6 Landlord Representations",
+            "similarity": 0.632,
+            "claude_types": [
+              "premises"
+            ],
+            "human_types": [
+              "unknown"
+            ],
+            "agree": false
+          },
+          {
+            "claude_heading": "Section3.1 Expansion Right",
+            "human_heading": "Sec2 Continuous Operation",
+            "similarity": 0.625,
+            "claude_types": [
+              "premises"
+            ],
+            "human_types": [
+              "unknown"
+            ],
+            "agree": false
+          },
+          {
+            "claude_heading": "Section3.2 Extension Option",
+            "human_heading": "Sec3 Expansion and Extension",
+            "similarity": 0.692,
+            "claude_types": [
+              "term"
+            ],
+            "human_types": [
+              "dispute_resolution",
+              "term"
+            ],
+            "agree": false
+          },
+          {
+            "claude_heading": "Section3.3 Fair Market Rent Arbitration",
+            "human_heading": "Sec2 Continuous Operation",
+            "similarity": 0.471,
+            "claude_types": [
+              "dispute_resolution",
+              "rent",
+              "term"
+            ],
+            "human_types": [
+              "unknown"
+            ],
+            "agree": false
+          },
+          {
+            "claude_heading": "Section4.1 Affiliate Assignment",
+            "human_heading": "Sec4 Assignment Rights",
+            "similarity": 0.6,
+            "claude_types": [
+              "subletting"
+            ],
+            "human_types": [
+              "subletting"
+            ],
+            "agree": true
+          },
+          {
+            "claude_heading": "Section4.2 Common-Control Assignment",
+            "human_heading": "Sec4 Assignment Rights",
+            "similarity": 0.733,
+            "claude_types": [
+              "subletting"
+            ],
+            "human_types": [
+              "subletting"
+            ],
+            "agree": true
+          },
+          {
+            "claude_heading": "Section5.1 Operating Expense Rent",
+            "human_heading": "Sec2 Continuous Operation",
+            "similarity": 0.667,
+            "claude_types": [
+              "rent",
+              "utilities"
+            ],
+            "human_types": [
+              "unknown"
+            ],
+            "agree": false
+          },
+          {
+            "claude_heading": "Section5.2 After-Hours HVAC Billing",
+            "human_heading": "Sec5 Rent and Service Charges",
+            "similarity": 0.632,
+            "claude_types": [
+              "utilities"
+            ],
+            "human_types": [
+              "rent",
+              "utilities"
+            ],
+            "agree": false
+          },
+          {
+            "claude_heading": "Section6.1 Title Warranty",
+            "human_heading": "Sec6 Landlord Representations",
+            "similarity": 0.5,
+            "claude_types": [
+              "unknown"
+            ],
+            "human_types": [
+              "unknown"
+            ],
+            "agree": true
+          },
+          {
+            "claude_heading": "Section6.2 Code Compliance Warranty",
+            "human_heading": "Sec6 Landlord Representations",
+            "similarity": 0.706,
+            "claude_types": [
+              "unknown"
+            ],
+            "human_types": [
+              "unknown"
+            ],
+            "agree": true
+          },
+          {
+            "claude_heading": "Section7.1 Compulsory Reconstruction Obligation",
+            "human_heading": "Sec7 Compulsory Reconstruction",
+            "similarity": 0.778,
+            "claude_types": [
+              "premises",
+              "unknown"
+            ],
+            "human_types": [
+              "unknown"
+            ],
+            "agree": false
+          },
+          {
+            "claude_heading": "Section8.1 Additional Remarks - Future Expansion",
+            "human_heading": "Sec6 Landlord Representations",
+            "similarity": 0.632,
+            "claude_types": [
+              "unknown"
+            ],
+            "human_types": [
+              "unknown"
+            ],
+            "agree": true
+          },
+          {
+            "claude_heading": "Section8.2 Tenant Permits Obligation",
+            "human_heading": "Sec6 Landlord Representations",
+            "similarity": 0.647,
+            "claude_types": [
+              "premises"
+            ],
+            "human_types": [
+              "unknown"
+            ],
+            "agree": false
+          },
+          {
+            "claude_heading": "Section8.3 Hazardous Materials Restriction",
+            "human_heading": "Sec6 Landlord Representations",
+            "similarity": 0.667,
+            "claude_types": [
+              "premises"
+            ],
+            "human_types": [
+              "unknown"
+            ],
+            "agree": false
+          }
+        ],
+        "claude_human_agreement": 0.2941,
+        "n_matched": 17,
+        "themis_matches": [
+          {
+            "themis_text_start": "RETAIL LEASE AGREEMENT THIS LEASE (\"Lease\") is made as of June 15, 2026, by and ...",
+            "matched_claude_heading": "Section1.1 Grant and Term",
+            "overlap": 1.0,
+            "claude_types": [
+              "premises",
+              "term"
+            ],
+            "themis_type": "term",
+            "agree": true
+          },
+          {
+            "themis_text_start": "1.1 Landlord hereby leases to Tenant, and Tenant hereby leases from Landlord, th...",
+            "matched_claude_heading": "Section1.1 Grant and Term",
+            "overlap": 0.667,
+            "claude_types": [
+              "premises",
+              "term"
+            ],
+            "themis_type": "term",
+            "agree": true
+          },
+          {
+            "themis_text_start": "2(a) Notwithstanding anything to the contrary in this Lease, Tenant shall have n...",
+            "matched_claude_heading": "Section2(a) No Obligation to Operate",
+            "overlap": 1.0,
+            "claude_types": [
+              "premises"
+            ],
+            "themis_type": "no_obligation",
+            "agree": false
+          },
+          {
+            "themis_text_start": "2(b) Tenant may 'go dark' and cease operating at the Premises at any time follow...",
+            "matched_claude_heading": "Section2(b) Go-Dark Right",
+            "overlap": 0.75,
+            "claude_types": [
+              "premises"
+            ],
+            "themis_type": "term",
+            "agree": false
+          },
+          {
+            "themis_text_start": "2(c) Landlord shall have no remedy against Tenant, including termination, based ...",
+            "matched_claude_heading": "Section2(c) No Landlord Remedy for Non-Operation",
+            "overlap": 0.714,
+            "claude_types": [
+              "premises"
+            ],
+            "themis_type": "termination",
+            "agree": false
+          },
+          {
+            "themis_text_start": "3.1 Tenant shall have the right to expand into the adjacent Suite 305, comprisin...",
+            "matched_claude_heading": "Section3.1 Expansion Right",
+            "overlap": 0.5,
+            "claude_types": [
+              "premises"
+            ],
+            "themis_type": "premises",
+            "agree": true
+          },
+          {
+            "themis_text_start": "3.2 Tenant shall have the option to extend the Term of this Lease for two additi...",
+            "matched_claude_heading": "Section3.2 Extension Option",
+            "overlap": 0.5,
+            "claude_types": [
+              "term"
+            ],
+            "themis_type": "term",
+            "agree": true
+          },
+          {
+            "themis_text_start": "3.3 Landlord and Tenant shall negotiate in good faith to determine the Fair Mark...",
+            "matched_claude_heading": "Section3.3 Fair Market Rent Arbitration",
+            "overlap": 1.0,
+            "claude_types": [
+              "dispute_resolution",
+              "rent",
+              "term"
+            ],
+            "themis_type": "dispute_resolution",
+            "agree": true
+          },
+          {
+            "themis_text_start": "4.1 Tenant may assign this Lease to an Affiliate of Tenant without obtaining Lan...",
+            "matched_claude_heading": "Section4.1 Affiliate Assignment",
+            "overlap": 1.0,
+            "claude_types": [
+              "subletting"
+            ],
+            "themis_type": "subletting",
+            "agree": true
+          },
+          {
+            "themis_text_start": "4.2 Landlord's consent shall not be required for an assignment of this Lease to ...",
+            "matched_claude_heading": "Section4.2 Common-Control Assignment",
+            "overlap": 1.0,
+            "claude_types": [
+              "subletting"
+            ],
+            "themis_type": "unknown",
+            "agree": false
+          },
+          {
+            "themis_text_start": "5.1 Tenant shall pay, as Additional Rent, its Proportionate Share of Operating E...",
+            "matched_claude_heading": "Section5.1 Operating Expense Rent",
+            "overlap": 1.0,
+            "claude_types": [
+              "rent",
+              "utilities"
+            ],
+            "themis_type": "rent",
+            "agree": true
+          },
+          {
+            "themis_text_start": "5.2 Service Charges for after-hours HVAC usage shall be billed to Tenant at the ...",
+            "matched_claude_heading": "Section5.2 After-Hours HVAC Billing",
+            "overlap": 0.75,
+            "claude_types": [
+              "utilities"
+            ],
+            "themis_type": "utilities",
+            "agree": true
+          },
+          {
+            "themis_text_start": "6.1 Landlord represents and warrants that it holds fee simple title to the Build...",
+            "matched_claude_heading": "Section6.1 Title Warranty",
+            "overlap": 0.5,
+            "claude_types": [
+              "unknown"
+            ],
+            "themis_type": "premises",
+            "agree": false
+          },
+          {
+            "themis_text_start": "6.2 Landlord warrants that, to its knowledge, the Premises comply with all appli...",
+            "matched_claude_heading": "Section7.1 Compulsory Reconstruction Obligation",
+            "overlap": 0.667,
+            "claude_types": [
+              "premises",
+              "unknown"
+            ],
+            "themis_type": "term",
+            "agree": false
+          },
+          {
+            "themis_text_start": "7.1 In the event any governmental authority requires the compulsory reconstructi...",
+            "matched_claude_heading": "Section7.1 Compulsory Reconstruction Obligation",
+            "overlap": 0.667,
+            "claude_types": [
+              "premises",
+              "unknown"
+            ],
+            "themis_type": "unknown",
+            "agree": true
+          },
+          {
+            "themis_text_start": "8.1 Additional Remarks: the parties acknowledge ongoing discussions regarding a ...",
+            "matched_claude_heading": "Section8.1 Additional Remarks - Future Expansion",
+            "overlap": 1.0,
+            "claude_types": [
+              "unknown"
+            ],
+            "themis_type": "maintenance",
+            "agree": false
+          },
+          {
+            "themis_text_start": "8.2 Tenant shall obtain and maintain, at its sole cost, all permits necessary to...",
+            "matched_claude_heading": "Section8.2 Tenant Permits Obligation",
+            "overlap": 0.667,
+            "claude_types": [
+              "premises"
+            ],
+            "themis_type": "maintenance",
+            "agree": false
+          },
+          {
+            "themis_text_start": "8.3 Tenant shall not store any Hazardous Materials on the Premises except in com...",
+            "matched_claude_heading": "Section8.3 Hazardous Materials Restriction",
+            "overlap": 0.667,
+            "claude_types": [
+              "premises"
+            ],
+            "themis_type": "term",
+            "agree": false
+          }
+        ],
+        "n_themis_matched": 18,
+        "themis_agreement": 0.5
+      },
+      "lease_03_industrial_ferrous": {
+        "claude_human_matches": [
+          {
+            "claude_heading": "ArtI.1 Demise",
+            "human_heading": "Art1 Demise",
+            "similarity": 1.0,
+            "claude_types": [
+              "premises",
+              "term"
+            ],
+            "human_types": [
+              "premises"
+            ],
+            "agree": false
+          },
+          {
+            "claude_heading": "ArtII.1 Base Rent",
+            "human_heading": "Art7 Reinstatement",
+            "similarity": 0.6,
+            "claude_types": [
+              "rent"
+            ],
+            "human_types": [
+              "termination"
+            ],
+            "agree": false
+          },
+          {
+            "claude_heading": "ArtII.2 Guaranty Assignment by Guarantor",
+            "human_heading": "Art2 Rent and Guaranty",
+            "similarity": 0.6,
+            "claude_types": [
+              "deposit"
+            ],
+            "human_types": [
+              "rent"
+            ],
+            "agree": false
+          },
+          {
+            "claude_heading": "ArtII.3 Guaranty Auto-Transfer to Permitted Transferee",
+            "human_heading": "Art2 Rent and Guaranty",
+            "similarity": 0.625,
+            "claude_types": [
+              "deposit",
+              "subletting"
+            ],
+            "human_types": [
+              "rent"
+            ],
+            "agree": false
+          },
+          {
+            "claude_heading": "ArtIII.1 Holdover Rent at 150%",
+            "human_heading": "Art6 Change of Control",
+            "similarity": 0.5,
+            "claude_types": [
+              "holdover"
+            ],
+            "human_types": [
+              "subletting",
+              "termination"
+            ],
+            "agree": false
+          },
+          {
+            "claude_heading": "ArtIII.2 Holdover Not a Renewal",
+            "human_heading": "Art6 Change of Control",
+            "similarity": 0.6,
+            "claude_types": [
+              "holdover"
+            ],
+            "human_types": [
+              "subletting",
+              "termination"
+            ],
+            "agree": false
+          },
+          {
+            "claude_heading": "ArtIV.1 Right of First Refusal to Sell",
+            "human_heading": "Art4 Right of First Refusal",
+            "similarity": 1.0,
+            "claude_types": [
+              "unknown"
+            ],
+            "human_types": [
+              "unknown"
+            ],
+            "agree": true
+          },
+          {
+            "claude_heading": "ArtIV.2 ROFR Exercise Window",
+            "human_heading": "Art5 Repairs and Services",
+            "similarity": 0.533,
+            "claude_types": [
+              "unknown"
+            ],
+            "human_types": [
+              "maintenance"
+            ],
+            "agree": false
+          },
+          {
+            "claude_heading": "ArtV.1 Landlord Building Systems Maintenance",
+            "human_heading": "Art2 Rent and Guaranty",
+            "similarity": 0.588,
+            "claude_types": [
+              "maintenance",
+              "utilities"
+            ],
+            "human_types": [
+              "rent"
+            ],
+            "agree": false
+          },
+          {
+            "claude_heading": "ArtV.2 Tenant Cleanliness Obligation",
+            "human_heading": "Art6 Change of Control",
+            "similarity": 0.6,
+            "claude_types": [
+              "maintenance"
+            ],
+            "human_types": [
+              "subletting",
+              "termination"
+            ],
+            "agree": false
+          },
+          {
+            "claude_heading": "ArtV.3 Occupancy Load Restriction",
+            "human_heading": "Art5 Repairs and Services",
+            "similarity": 0.625,
+            "claude_types": [
+              "premises"
+            ],
+            "human_types": [
+              "maintenance"
+            ],
+            "agree": false
+          },
+          {
+            "claude_heading": "ArtVI.1 Change of Control Consent Threshold",
+            "human_heading": "Art6 Change of Control",
+            "similarity": 0.857,
+            "claude_types": [
+              "subletting"
+            ],
+            "human_types": [
+              "subletting",
+              "termination"
+            ],
+            "agree": false
+          },
+          {
+            "claude_heading": "ArtVI.2 Replacement Guaranty on Guarantor Change of Control",
+            "human_heading": "Art6 Change of Control",
+            "similarity": 0.75,
+            "claude_types": [
+              "deposit",
+              "subletting"
+            ],
+            "human_types": [
+              "subletting",
+              "termination"
+            ],
+            "agree": false
+          },
+          {
+            "claude_heading": "ArtVII.1 Lease Reinstatement After Default Cure",
+            "human_heading": "Art4 Right of First Refusal",
+            "similarity": 0.588,
+            "claude_types": [
+              "termination",
+              "unknown"
+            ],
+            "human_types": [
+              "unknown"
+            ],
+            "agree": false
+          },
+          {
+            "claude_heading": "ArtVIII.1 Governing Law",
+            "human_heading": "Art8 General",
+            "similarity": 0.545,
+            "claude_types": [
+              "dispute_resolution"
+            ],
+            "human_types": [
+              "dispute_resolution"
+            ],
+            "agree": true
+          },
+          {
+            "claude_heading": "ArtVIII.2 Tenant Indemnification",
+            "human_heading": "Art6 Change of Control",
+            "similarity": 0.533,
+            "claude_types": [
+              "unknown"
+            ],
+            "human_types": [
+              "subletting",
+              "termination"
+            ],
+            "agree": false
+          }
+        ],
+        "claude_human_agreement": 0.125,
+        "n_matched": 16,
+        "themis_matches": [
+          {
+            "themis_text_start": "INDUSTRIAL LEASE AGREEMENT THIS INDUSTRIAL LEASE AGREEMENT is entered into as of...",
+            "matched_claude_heading": "ArtI.1 Demise",
+            "overlap": 1.0,
+            "claude_types": [
+              "premises",
+              "term"
+            ],
+            "themis_type": "term",
+            "agree": true
+          },
+          {
+            "themis_text_start": "1.1 Lessor hereby demises to Lessee the warehouse and adjoining office space des...",
+            "matched_claude_heading": "ArtI.1 Demise",
+            "overlap": 1.0,
+            "claude_types": [
+              "premises",
+              "term"
+            ],
+            "themis_type": "term",
+            "agree": true
+          },
+          {
+            "themis_text_start": "2.1 Lessee shall pay Base Rent in the amount set forth in Schedule 1, payable mo...",
+            "matched_claude_heading": "ArtII.1 Base Rent",
+            "overlap": 1.0,
+            "claude_types": [
+              "rent"
+            ],
+            "themis_type": "rent",
+            "agree": true
+          },
+          {
+            "themis_text_start": "2.2 The Guaranty executed by Guarantor in connection with this Lease may be assi...",
+            "matched_claude_heading": "ArtII.2 Guaranty Assignment by Guarantor",
+            "overlap": 0.75,
+            "claude_types": [
+              "deposit"
+            ],
+            "themis_type": "termination",
+            "agree": false
+          },
+          {
+            "themis_text_start": "2.3 Guarantor's obligations under the Guaranty shall automatically transfer to a...",
+            "matched_claude_heading": "ArtII.3 Guaranty Auto-Transfer to Permitted Transferee",
+            "overlap": 1.0,
+            "claude_types": [
+              "deposit",
+              "subletting"
+            ],
+            "themis_type": "subletting",
+            "agree": true
+          },
+          {
+            "themis_text_start": "3.1 Should Lessee remain in possession of the Premises after the expiration of t...",
+            "matched_claude_heading": "ArtII.1 Base Rent",
+            "overlap": 1.0,
+            "claude_types": [
+              "rent"
+            ],
+            "themis_type": "holdover",
+            "agree": false
+          },
+          {
+            "themis_text_start": "3.2 Any holdover by Lessee beyond the Term shall not be construed as a renewal o...",
+            "matched_claude_heading": "ArtIII.2 Holdover Not a Renewal",
+            "overlap": 1.0,
+            "claude_types": [
+              "holdover"
+            ],
+            "themis_type": "unknown",
+            "agree": false
+          },
+          {
+            "themis_text_start": "4.1 Should Lessor elect to sell the Building during the Term, Lessor shall first...",
+            "matched_claude_heading": "ArtIV.1 Right of First Refusal to Sell",
+            "overlap": 0.667,
+            "claude_types": [
+              "unknown"
+            ],
+            "themis_type": "termination",
+            "agree": false
+          },
+          {
+            "themis_text_start": "4.2 Lessee shall have thirty days after receipt of Lessor's notice of a proposed...",
+            "matched_claude_heading": "ArtIV.1 Right of First Refusal to Sell",
+            "overlap": 0.833,
+            "claude_types": [
+              "unknown"
+            ],
+            "themis_type": "unknown",
+            "agree": true
+          },
+          {
+            "themis_text_start": "5.1 Lessor shall maintain the elevators, common area HVAC, and life safety syste...",
+            "matched_claude_heading": "ArtV.1 Landlord Building Systems Maintenance",
+            "overlap": 0.5,
+            "claude_types": [
+              "maintenance",
+              "utilities"
+            ],
+            "themis_type": "utilities",
+            "agree": true
+          },
+          {
+            "themis_text_start": "5.3 Lessee shall not exceed the maximum occupancy load established by the local ...",
+            "matched_claude_heading": "ArtV.3 Occupancy Load Restriction",
+            "overlap": 0.667,
+            "claude_types": [
+              "premises"
+            ],
+            "themis_type": "unknown",
+            "agree": false
+          },
+          {
+            "themis_text_start": "ARTICLE VI \u2014 CHANGE OF CONTROL",
+            "matched_claude_heading": "ArtVI.1 Change of Control Consent Threshold",
+            "overlap": 0.6,
+            "claude_types": [
+              "subletting"
+            ],
+            "themis_type": "unknown",
+            "agree": false
+          },
+          {
+            "themis_text_start": "6.1 A transfer of more than fifty percent (50%) of the voting equity interests i...",
+            "matched_claude_heading": "ArtVI.1 Change of Control Consent Threshold",
+            "overlap": 0.4,
+            "claude_types": [
+              "subletting"
+            ],
+            "themis_type": "subletting",
+            "agree": true
+          },
+          {
+            "themis_text_start": "6.2 Should Guarantor undergo a Change of Control, Lessee shall provide Lessor wi...",
+            "matched_claude_heading": "ArtVI.2 Replacement Guaranty on Guarantor Change of Control",
+            "overlap": 1.0,
+            "claude_types": [
+              "deposit",
+              "subletting"
+            ],
+            "themis_type": "unknown",
+            "agree": false
+          },
+          {
+            "themis_text_start": "7.1 Should this Lease be terminated as a result of Lessee's default and Lessee s...",
+            "matched_claude_heading": "ArtVII.1 Lease Reinstatement After Default Cure",
+            "overlap": 0.6,
+            "claude_types": [
+              "termination",
+              "unknown"
+            ],
+            "themis_type": "termination",
+            "agree": true
+          },
+          {
+            "themis_text_start": "8.1 This Lease shall be governed by and construed in accordance with the laws of...",
+            "matched_claude_heading": "ArtVIII.1 Governing Law",
+            "overlap": 0.5,
+            "claude_types": [
+              "dispute_resolution"
+            ],
+            "themis_type": "dispute_resolution",
+            "agree": true
+          },
+          {
+            "themis_text_start": "8.2 Lessee shall indemnify, defend, and hold harmless Lessor from any claims ari...",
+            "matched_claude_heading": "ArtIV.1 Right of First Refusal to Sell",
+            "overlap": 0.333,
+            "claude_types": [
+              "unknown"
+            ],
+            "themis_type": "term",
+            "agree": false
+          }
+        ],
+        "n_themis_matched": 17,
+        "themis_agreement": 0.5294
+      },
+      "lease_03_industrial_ferrous_SCANNED": {
+        "claude_human_matches": [
+          {
+            "claude_heading": "ArtI.1 Demise",
+            "human_heading": "Art1 Demise",
+            "similarity": 1.0,
+            "claude_types": [
+              "premises",
+              "term"
+            ],
+            "human_types": [
+              "premises"
+            ],
+            "agree": false
+          },
+          {
+            "claude_heading": "ArtII.1 Base Rent",
+            "human_heading": "Art7 Reinstatement",
+            "similarity": 0.6,
+            "claude_types": [
+              "rent"
+            ],
+            "human_types": [
+              "termination"
+            ],
+            "agree": false
+          },
+          {
+            "claude_heading": "ArtII.2 Guaranty Assignment by Guarantor",
+            "human_heading": "Art2 Rent and Guaranty",
+            "similarity": 0.6,
+            "claude_types": [
+              "deposit"
+            ],
+            "human_types": [
+              "rent"
+            ],
+            "agree": false
+          },
+          {
+            "claude_heading": "ArtII.3 Guaranty Auto-Transfer to Permitted Transferee",
+            "human_heading": "Art2 Rent and Guaranty",
+            "similarity": 0.625,
+            "claude_types": [
+              "deposit",
+              "subletting"
+            ],
+            "human_types": [
+              "rent"
+            ],
+            "agree": false
+          },
+          {
+            "claude_heading": "ArtIII.1 Holdover Rent at 150%",
+            "human_heading": "Art6 Change of Control",
+            "similarity": 0.5,
+            "claude_types": [
+              "holdover"
+            ],
+            "human_types": [
+              "subletting",
+              "termination"
+            ],
+            "agree": false
+          },
+          {
+            "claude_heading": "ArtIII.2 Holdover Not a Renewal",
+            "human_heading": "Art6 Change of Control",
+            "similarity": 0.6,
+            "claude_types": [
+              "holdover"
+            ],
+            "human_types": [
+              "subletting",
+              "termination"
+            ],
+            "agree": false
+          },
+          {
+            "claude_heading": "ArtIV.1 Right of First Refusal to Sell",
+            "human_heading": "Art4 Right of First Refusal",
+            "similarity": 1.0,
+            "claude_types": [
+              "unknown"
+            ],
+            "human_types": [
+              "unknown"
+            ],
+            "agree": true
+          },
+          {
+            "claude_heading": "ArtIV.2 ROFR Exercise Window",
+            "human_heading": "Art5 Repairs and Services",
+            "similarity": 0.533,
+            "claude_types": [
+              "unknown"
+            ],
+            "human_types": [
+              "maintenance"
+            ],
+            "agree": false
+          },
+          {
+            "claude_heading": "ArtV.1 Landlord Building Systems Maintenance",
+            "human_heading": "Art2 Rent and Guaranty",
+            "similarity": 0.588,
+            "claude_types": [
+              "maintenance",
+              "utilities"
+            ],
+            "human_types": [
+              "rent"
+            ],
+            "agree": false
+          },
+          {
+            "claude_heading": "ArtV.2 Tenant Cleanliness Obligation",
+            "human_heading": "Art6 Change of Control",
+            "similarity": 0.6,
+            "claude_types": [
+              "maintenance"
+            ],
+            "human_types": [
+              "subletting",
+              "termination"
+            ],
+            "agree": false
+          },
+          {
+            "claude_heading": "ArtV.3 Occupancy Load Restriction",
+            "human_heading": "Art5 Repairs and Services",
+            "similarity": 0.625,
+            "claude_types": [
+              "premises"
+            ],
+            "human_types": [
+              "maintenance"
+            ],
+            "agree": false
+          },
+          {
+            "claude_heading": "ArtVI.1 Change of Control Consent Threshold",
+            "human_heading": "Art6 Change of Control",
+            "similarity": 0.857,
+            "claude_types": [
+              "subletting"
+            ],
+            "human_types": [
+              "subletting",
+              "termination"
+            ],
+            "agree": false
+          },
+          {
+            "claude_heading": "ArtVI.2 Replacement Guaranty on Guarantor Change of Control",
+            "human_heading": "Art6 Change of Control",
+            "similarity": 0.75,
+            "claude_types": [
+              "deposit",
+              "subletting"
+            ],
+            "human_types": [
+              "subletting",
+              "termination"
+            ],
+            "agree": false
+          },
+          {
+            "claude_heading": "ArtVII.1 Lease Reinstatement After Default Cure",
+            "human_heading": "Art4 Right of First Refusal",
+            "similarity": 0.588,
+            "claude_types": [
+              "termination",
+              "unknown"
+            ],
+            "human_types": [
+              "unknown"
+            ],
+            "agree": false
+          },
+          {
+            "claude_heading": "ArtVIII.1 Governing Law",
+            "human_heading": "Art8 General",
+            "similarity": 0.545,
+            "claude_types": [
+              "dispute_resolution"
+            ],
+            "human_types": [
+              "dispute_resolution"
+            ],
+            "agree": true
+          },
+          {
+            "claude_heading": "ArtVIII.2 Tenant Indemnification",
+            "human_heading": "Art6 Change of Control",
+            "similarity": 0.533,
+            "claude_types": [
+              "unknown"
+            ],
+            "human_types": [
+              "subletting",
+              "termination"
+            ],
+            "agree": false
+          }
+        ],
+        "claude_human_agreement": 0.125,
+        "n_matched": 16,
+        "themis_matches": [
+          {
+            "themis_text_start": "INDUSTRIAL LEASEAGREEMENT THIS INDUSTRIAL LEASE AGREEMENT is entered into as of ...",
+            "matched_claude_heading": "ArtI.1 Demise",
+            "overlap": 1.0,
+            "claude_types": [
+              "premises",
+              "term"
+            ],
+            "themis_type": "term",
+            "agree": true
+          },
+          {
+            "themis_text_start": "1.1 Lessor hereby demises to Lessee the warehouse and adjoining office space des...",
+            "matched_claude_heading": "ArtI.1 Demise",
+            "overlap": 1.0,
+            "claude_types": [
+              "premises",
+              "term"
+            ],
+            "themis_type": "term",
+            "agree": true
+          },
+          {
+            "themis_text_start": "2.1 Lessee shall pay Base Rent in the amount set forth in Schedule 1, payable mo...",
+            "matched_claude_heading": "ArtII.1 Base Rent",
+            "overlap": 1.0,
+            "claude_types": [
+              "rent"
+            ],
+            "themis_type": "rent",
+            "agree": true
+          },
+          {
+            "themis_text_start": "2.3 Guarantor's obligations under the Guaranty shall automatically transfer to a...",
+            "matched_claude_heading": "ArtII.3 Guaranty Auto-Transfer to Permitted Transferee",
+            "overlap": 1.0,
+            "claude_types": [
+              "deposit",
+              "subletting"
+            ],
+            "themis_type": "subletting",
+            "agree": true
+          },
+          {
+            "themis_text_start": "3.1 Should Lessee remain in possession of the Premises after the expiration of t...",
+            "matched_claude_heading": "ArtII.1 Base Rent",
+            "overlap": 1.0,
+            "claude_types": [
+              "rent"
+            ],
+            "themis_type": "holdover",
+            "agree": false
+          },
+          {
+            "themis_text_start": "3.2 Any holdover by Lessee beyond the Term shall not be construed as a renewal o...",
+            "matched_claude_heading": "ArtIII.2 Holdover Not a Renewal",
+            "overlap": 1.0,
+            "claude_types": [
+              "holdover"
+            ],
+            "themis_type": "unknown",
+            "agree": false
+          },
+          {
+            "themis_text_start": "4.1 Should Lessor elect to sell the Building during the Term, Lessor shall first...",
+            "matched_claude_heading": "ArtIV.1 Right of First Refusal to Sell",
+            "overlap": 0.667,
+            "claude_types": [
+              "unknown"
+            ],
+            "themis_type": "termination",
+            "agree": false
+          },
+          {
+            "themis_text_start": "4.2 Lessee shall have thirty days after receipt of Lessor's notice of a proposed...",
+            "matched_claude_heading": "ArtIV.1 Right of First Refusal to Sell",
+            "overlap": 0.833,
+            "claude_types": [
+              "unknown"
+            ],
+            "themis_type": "unknown",
+            "agree": true
+          },
+          {
+            "themis_text_start": "5.1 Lessor shall maintain the elevators, common area HVAC, and life safety syste...",
+            "matched_claude_heading": "ArtV.1 Landlord Building Systems Maintenance",
+            "overlap": 0.5,
+            "claude_types": [
+              "maintenance",
+              "utilities"
+            ],
+            "themis_type": "utilities",
+            "agree": true
+          },
+          {
+            "themis_text_start": "5.3 Lessee shall not exceed the maximum occupancy load established by the local ...",
+            "matched_claude_heading": "ArtV.3 Occupancy Load Restriction",
+            "overlap": 0.667,
+            "claude_types": [
+              "premises"
+            ],
+            "themis_type": "unknown",
+            "agree": false
+          },
+          {
+            "themis_text_start": "ARTICLEVI\u2014 CHANGE OF CONTROL",
+            "matched_claude_heading": "ArtVI.1 Change of Control Consent Threshold",
+            "overlap": 0.6,
+            "claude_types": [
+              "subletting"
+            ],
+            "themis_type": "subletting",
+            "agree": true
+          },
+          {
+            "themis_text_start": "6.1 A transfer of more than fifty percent (50%) of the voting equity interests i...",
+            "matched_claude_heading": "ArtVI.1 Change of Control Consent Threshold",
+            "overlap": 0.4,
+            "claude_types": [
+              "subletting"
+            ],
+            "themis_type": "unknown",
+            "agree": false
+          },
+          {
+            "themis_text_start": "7.1 Should this Lease be terminated as a result of Lessee's default and Lessee s...",
+            "matched_claude_heading": "ArtVII.1 Lease Reinstatement After Default Cure",
+            "overlap": 0.6,
+            "claude_types": [
+              "termination",
+              "unknown"
+            ],
+            "themis_type": "termination",
+            "agree": true
+          },
+          {
+            "themis_text_start": "8.1 This Lease shall be governed by andconstrued in accordance with the laws of ...",
+            "matched_claude_heading": "ArtVIII.1 Governing Law",
+            "overlap": 0.5,
+            "claude_types": [
+              "dispute_resolution"
+            ],
+            "themis_type": "dispute_resolution",
+            "agree": true
+          },
+          {
+            "themis_text_start": "8.2 Lessee shall indemnify, defend, and hold harmless Lessor from any claims ari...",
+            "matched_claude_heading": "ArtIV.1 Right of First Refusal to Sell",
+            "overlap": 0.333,
+            "claude_types": [
+              "unknown"
+            ],
+            "themis_type": "entire_agreement",
+            "agree": false
+          }
+        ],
+        "n_themis_matched": 15,
+        "themis_agreement": 0.6
+      },
+      "lease_04_mixeduse_silverline": {
+        "claude_human_matches": [
+          {
+            "claude_heading": "Art1.1 Premises Description",
+            "human_heading": "Art6 Entitlements and Permissions",
+            "similarity": 0.786,
+            "claude_types": [
+              "premises"
+            ],
+            "human_types": [
+              "access",
+              "premises"
+            ],
+            "agree": false
+          },
+          {
+            "claude_heading": "Art1.2 Base Rent",
+            "human_heading": "Art1 Basic Terms",
+            "similarity": 0.636,
+            "claude_types": [
+              "rent"
+            ],
+            "human_types": [
+              "deposit",
+              "premises",
+              "rent"
+            ],
+            "agree": false
+          },
+          {
+            "claude_heading": "Art1.3 Security Deposit",
+            "human_heading": "Art4 Damage and Destruction",
+            "similarity": 0.625,
+            "claude_types": [
+              "deposit"
+            ],
+            "human_types": [
+              "termination"
+            ],
+            "agree": false
+          },
+          {
+            "claude_heading": "Art2.1 Rent Payment Obligation",
+            "human_heading": "Art6 Entitlements and Permissions",
+            "similarity": 0.688,
+            "claude_types": [
+              "rent"
+            ],
+            "human_types": [
+              "access",
+              "premises"
+            ],
+            "agree": false
+          },
+          {
+            "claude_heading": "Art2.2 Insurance Certificate Delivery",
+            "human_heading": "Art4 Damage and Destruction",
+            "similarity": 0.611,
+            "claude_types": [
+              "unknown"
+            ],
+            "human_types": [
+              "termination"
+            ],
+            "agree": false
+          },
+          {
+            "claude_heading": "Art2.3 Structural Alteration Consent",
+            "human_heading": "Art4 Damage and Destruction",
+            "similarity": 0.733,
+            "claude_types": [
+              "maintenance",
+              "unknown"
+            ],
+            "human_types": [
+              "termination"
+            ],
+            "agree": false
+          },
+          {
+            "claude_heading": "Art3.1 Landlord Structural Repair",
+            "human_heading": "Art6 Entitlements and Permissions",
+            "similarity": 0.8,
+            "claude_types": [
+              "maintenance"
+            ],
+            "human_types": [
+              "access",
+              "premises"
+            ],
+            "agree": false
+          },
+          {
+            "claude_heading": "Art3.2 Condemnation Warranty",
+            "human_heading": "Art4 Damage and Destruction",
+            "similarity": 0.688,
+            "claude_types": [
+              "unknown"
+            ],
+            "human_types": [
+              "termination"
+            ],
+            "agree": false
+          },
+          {
+            "claude_heading": "Art3.3 HVAC Warranty (90 days)",
+            "human_heading": "Art4 Damage and Destruction",
+            "similarity": 0.364,
+            "claude_types": [
+              "maintenance",
+              "unknown"
+            ],
+            "human_types": [
+              "termination"
+            ],
+            "agree": false
+          },
+          {
+            "claude_heading": "Art4.1 Casualty Restoration Timeline",
+            "human_heading": "Art4 Damage and Destruction",
+            "similarity": 0.75,
+            "claude_types": [
+              "unknown"
+            ],
+            "human_types": [
+              "termination"
+            ],
+            "agree": false
+          },
+          {
+            "claude_heading": "Art4.2 Termination on Late-Term Casualty",
+            "human_heading": "Art4 Damage and Destruction",
+            "similarity": 0.75,
+            "claude_types": [
+              "termination"
+            ],
+            "human_types": [
+              "termination"
+            ],
+            "agree": true
+          },
+          {
+            "claude_heading": "Art5.1 Change of Control Definition",
+            "human_heading": "Art5 Change of Control",
+            "similarity": 0.857,
+            "claude_types": [
+              "subletting"
+            ],
+            "human_types": [
+              "subletting",
+              "termination"
+            ],
+            "agree": false
+          },
+          {
+            "claude_heading": "Art5.2 Landlord Termination on Change of Control",
+            "human_heading": "Art5 Change of Control",
+            "similarity": 0.8,
+            "claude_types": [
+              "subletting",
+              "termination"
+            ],
+            "human_types": [
+              "subletting",
+              "termination"
+            ],
+            "agree": true
+          },
+          {
+            "claude_heading": "Art6.1 Signage Right",
+            "human_heading": "Art2 Tenant Obligations",
+            "similarity": 0.615,
+            "claude_types": [
+              "premises"
+            ],
+            "human_types": [
+              "premises",
+              "rent"
+            ],
+            "agree": false
+          },
+          {
+            "claude_heading": "Art6.2 Trade Fixtures Right",
+            "human_heading": "Art4 Damage and Destruction",
+            "similarity": 0.588,
+            "claude_types": [
+              "maintenance",
+              "premises"
+            ],
+            "human_types": [
+              "termination"
+            ],
+            "agree": false
+          },
+          {
+            "claude_heading": "Art6.3 Landlord Access for Inspection",
+            "human_heading": "Art6 Entitlements and Permissions",
+            "similarity": 0.8,
+            "claude_types": [
+              "access"
+            ],
+            "human_types": [
+              "access",
+              "premises"
+            ],
+            "agree": false
+          },
+          {
+            "claude_heading": "Art7.1 Jury Trial Waiver",
+            "human_heading": "Art7 Waivers",
+            "similarity": 0.462,
+            "claude_types": [
+              "dispute_resolution"
+            ],
+            "human_types": [
+              "dispute_resolution"
+            ],
+            "agree": true
+          },
+          {
+            "claude_heading": "Art7.2 Theft/Vandalism Liability Waiver",
+            "human_heading": "Art6 Entitlements and Permissions",
+            "similarity": 0.55,
+            "claude_types": [
+              "unknown"
+            ],
+            "human_types": [
+              "access",
+              "premises"
+            ],
+            "agree": false
+          },
+          {
+            "claude_heading": "Art8.1 Lease Composition/Exhibits",
+            "human_heading": "Art6 Entitlements and Permissions",
+            "similarity": 0.611,
+            "claude_types": [
+              "entire_agreement"
+            ],
+            "human_types": [
+              "access",
+              "premises"
+            ],
+            "agree": false
+          },
+          {
+            "claude_heading": "Art8.2 Governing Law",
+            "human_heading": "Art8 General Provisions",
+            "similarity": 0.769,
+            "claude_types": [
+              "dispute_resolution"
+            ],
+            "human_types": [
+              "dispute_resolution"
+            ],
+            "agree": true
+          },
+          {
+            "claude_heading": "Art8.3 Broker Commissions",
+            "human_heading": "Art1 Basic Terms",
+            "similarity": 0.615,
+            "claude_types": [
+              "unknown"
+            ],
+            "human_types": [
+              "deposit",
+              "premises",
+              "rent"
+            ],
+            "agree": false
+          }
+        ],
+        "claude_human_agreement": 0.1905,
+        "n_matched": 21,
+        "themis_matches": [
+          {
+            "themis_text_start": "MIXED-USE LEASE AGREEMENT THIS LEASE AGREEMENT is made as of October 12, 2026, b...",
+            "matched_claude_heading": "Art1.2 Base Rent",
+            "overlap": 0.5,
+            "claude_types": [
+              "rent"
+            ],
+            "themis_type": "term",
+            "agree": false
+          },
+          {
+            "themis_text_start": "1.1 The Premises consist of 9,800 rentable square feet located on the fourth flo...",
+            "matched_claude_heading": "Art1.1 Premises Description",
+            "overlap": 0.5,
+            "claude_types": [
+              "premises"
+            ],
+            "themis_type": "premises",
+            "agree": true
+          },
+          {
+            "themis_text_start": "1.2 Base Rent for the first Lease Year is $41.00 per rentable square foot, payab...",
+            "matched_claude_heading": "Art1.2 Base Rent",
+            "overlap": 1.0,
+            "claude_types": [
+              "rent"
+            ],
+            "themis_type": "rent",
+            "agree": true
+          },
+          {
+            "themis_text_start": "1.3 The Security Deposit required under this Lease is $62,000, payable by wire t...",
+            "matched_claude_heading": "Art1.3 Security Deposit",
+            "overlap": 1.0,
+            "claude_types": [
+              "deposit"
+            ],
+            "themis_type": "deposit",
+            "agree": true
+          },
+          {
+            "themis_text_start": "2.1 Tenant shall pay to Landlord the Base Rent set forth in Article 1 on or befo...",
+            "matched_claude_heading": "Art1.2 Base Rent",
+            "overlap": 1.0,
+            "claude_types": [
+              "rent"
+            ],
+            "themis_type": "rent",
+            "agree": true
+          },
+          {
+            "themis_text_start": "2.2 Tenant shall deliver to Landlord a certificate of insurance evidencing the c...",
+            "matched_claude_heading": "Art2.2 Insurance Certificate Delivery",
+            "overlap": 0.667,
+            "claude_types": [
+              "unknown"
+            ],
+            "themis_type": "term",
+            "agree": false
+          },
+          {
+            "themis_text_start": "2.3 Tenant shall not make any structural Alterations to the Premises without the...",
+            "matched_claude_heading": "Art2.3 Structural Alteration Consent",
+            "overlap": 1.0,
+            "claude_types": [
+              "maintenance",
+              "unknown"
+            ],
+            "themis_type": "maintenance",
+            "agree": true
+          },
+          {
+            "themis_text_start": "3.1 Landlord agrees to keep the roof, foundation, and structural walls of the Bu...",
+            "matched_claude_heading": "Art3.1 Landlord Structural Repair",
+            "overlap": 1.0,
+            "claude_types": [
+              "maintenance"
+            ],
+            "themis_type": "premises",
+            "agree": false
+          },
+          {
+            "themis_text_start": "3.2 Landlord represents and warrants that there are no pending or threatened con...",
+            "matched_claude_heading": "Art3.2 Condemnation Warranty",
+            "overlap": 0.5,
+            "claude_types": [
+              "unknown"
+            ],
+            "themis_type": "unknown",
+            "agree": true
+          },
+          {
+            "themis_text_start": "3.3 Landlord warrants that the HVAC system serving the Premises is in good worki...",
+            "matched_claude_heading": "Art1.1 Premises Description",
+            "overlap": 0.5,
+            "claude_types": [
+              "premises"
+            ],
+            "themis_type": "utilities",
+            "agree": false
+          },
+          {
+            "themis_text_start": "4.1 In the event of damage to the Premises not caused by Tenant's negligence, La...",
+            "matched_claude_heading": "Art1.1 Premises Description",
+            "overlap": 0.5,
+            "claude_types": [
+              "premises"
+            ],
+            "themis_type": "termination",
+            "agree": false
+          },
+          {
+            "themis_text_start": "4.2 If the Premises are damaged during the last twelve months of the Term, eithe...",
+            "matched_claude_heading": "Art1.1 Premises Description",
+            "overlap": 0.5,
+            "claude_types": [
+              "premises"
+            ],
+            "themis_type": "termination",
+            "agree": false
+          },
+          {
+            "themis_text_start": "ARTICLE 5 \u2014 CHANGE OF CONTROL",
+            "matched_claude_heading": "Art5.1 Change of Control Definition",
+            "overlap": 0.75,
+            "claude_types": [
+              "subletting"
+            ],
+            "themis_type": "rent",
+            "agree": false
+          },
+          {
+            "themis_text_start": "5.1 For purposes of this Lease, a 'Change of Control' means any transaction or s...",
+            "matched_claude_heading": "Art5.1 Change of Control Definition",
+            "overlap": 0.75,
+            "claude_types": [
+              "subletting"
+            ],
+            "themis_type": "subletting",
+            "agree": true
+          },
+          {
+            "themis_text_start": "5.2 Landlord shall have the right to terminate this Lease upon sixty days' notic...",
+            "matched_claude_heading": "Art5.2 Landlord Termination on Change of Control",
+            "overlap": 0.833,
+            "claude_types": [
+              "subletting",
+              "termination"
+            ],
+            "themis_type": "termination",
+            "agree": true
+          },
+          {
+            "themis_text_start": "6.1 Tenant shall have the right to install and maintain a sign on the exterior f...",
+            "matched_claude_heading": "Art5.2 Landlord Termination on Change of Control",
+            "overlap": 0.5,
+            "claude_types": [
+              "subletting",
+              "termination"
+            ],
+            "themis_type": "maintenance",
+            "agree": false
+          },
+          {
+            "themis_text_start": "6.2 Tenant may install customary trade fixtures in the Premises without Landlord...",
+            "matched_claude_heading": "Art6.2 Trade Fixtures Right",
+            "overlap": 0.667,
+            "claude_types": [
+              "maintenance",
+              "premises"
+            ],
+            "themis_type": "maintenance",
+            "agree": true
+          },
+          {
+            "themis_text_start": "6.3 Landlord shall have the right to enter the Premises upon twenty-four hours' ...",
+            "matched_claude_heading": "Art1.1 Premises Description",
+            "overlap": 0.5,
+            "claude_types": [
+              "premises"
+            ],
+            "themis_type": "access",
+            "agree": false
+          },
+          {
+            "themis_text_start": "7.1 Tenant hereby waives any right to a jury trial in any litigation arising out...",
+            "matched_claude_heading": "Art7.1 Jury Trial Waiver",
+            "overlap": 0.667,
+            "claude_types": [
+              "dispute_resolution"
+            ],
+            "themis_type": "dispute_resolution",
+            "agree": true
+          },
+          {
+            "themis_text_start": "7.2 Landlord shall have no liability for any loss of Tenant's property resulting...",
+            "matched_claude_heading": "Art1.1 Premises Description",
+            "overlap": 0.5,
+            "claude_types": [
+              "premises"
+            ],
+            "themis_type": "maintenance",
+            "agree": false
+          },
+          {
+            "themis_text_start": "8.1 This Lease consists of the Basic Lease Information, the General Terms and Co...",
+            "matched_claude_heading": "Art8.1 Lease Composition/Exhibits",
+            "overlap": 0.5,
+            "claude_types": [
+              "entire_agreement"
+            ],
+            "themis_type": "termination",
+            "agree": false
+          },
+          {
+            "themis_text_start": "8.2 This Lease shall be governed by and construed in accordance with the laws of...",
+            "matched_claude_heading": "Art8.1 Lease Composition/Exhibits",
+            "overlap": 0.5,
+            "claude_types": [
+              "entire_agreement"
+            ],
+            "themis_type": "dispute_resolution",
+            "agree": false
+          },
+          {
+            "themis_text_start": "8.3 Tenant's broker in this transaction is Vireo Properties, and Landlord's brok...",
+            "matched_claude_heading": "Art8.3 Broker Commissions",
+            "overlap": 1.0,
+            "claude_types": [
+              "unknown"
+            ],
+            "themis_type": "term",
+            "agree": false
+          }
+        ],
+        "n_themis_matched": 23,
+        "themis_agreement": 0.4348
+      },
+      "lease_05_smallsuite_thornfield": {
+        "claude_human_matches": [
+          {
+            "claude_heading": "Premises and Term",
+            "human_heading": "Premises and Term",
+            "similarity": 1.0,
+            "claude_types": [
+              "premises",
+              "term"
+            ],
+            "human_types": [
+              "premises",
+              "term"
+            ],
+            "agree": true
+          },
+          {
+            "claude_heading": "Rent",
+            "human_heading": "Rent",
+            "similarity": 1.0,
+            "claude_types": [
+              "late_fee",
+              "rent"
+            ],
+            "human_types": [
+              "late_fee",
+              "rent"
+            ],
+            "agree": true
+          },
+          {
+            "claude_heading": "Break Option",
+            "human_heading": "Break Option",
+            "similarity": 1.0,
+            "claude_types": [
+              "termination"
+            ],
+            "human_types": [
+              "termination"
+            ],
+            "agree": true
+          },
+          {
+            "claude_heading": "Sublease and Assignment",
+            "human_heading": "Sublease and Assignment",
+            "similarity": 1.0,
+            "claude_types": [
+              "subletting"
+            ],
+            "human_types": [
+              "subletting"
+            ],
+            "agree": true
+          },
+          {
+            "claude_heading": "No Obligation to Operate",
+            "human_heading": "No Obligation to Operate",
+            "similarity": 1.0,
+            "claude_types": [
+              "premises"
+            ],
+            "human_types": [
+              "unknown"
+            ],
+            "agree": false
+          },
+          {
+            "claude_heading": "Services",
+            "human_heading": "Services",
+            "similarity": 1.0,
+            "claude_types": [
+              "maintenance",
+              "utilities"
+            ],
+            "human_types": [
+              "utilities"
+            ],
+            "agree": false
+          },
+          {
+            "claude_heading": "Insurance and Indemnity",
+            "human_heading": "Insurance and Indemnity",
+            "similarity": 1.0,
+            "claude_types": [
+              "unknown"
+            ],
+            "human_types": [
+              "unknown"
+            ],
+            "agree": true
+          },
+          {
+            "claude_heading": "Riders",
+            "human_heading": "Riders",
+            "similarity": 1.0,
+            "claude_types": [
+              "unknown"
+            ],
+            "human_types": [
+              "unknown"
+            ],
+            "agree": true
+          },
+          {
+            "claude_heading": "Miscellaneous",
+            "human_heading": "Miscellaneous",
+            "similarity": 1.0,
+            "claude_types": [
+              "entire_agreement",
+              "unknown"
+            ],
+            "human_types": [
+              "unknown"
+            ],
+            "agree": false
+          }
+        ],
+        "claude_human_agreement": 0.6667,
+        "n_matched": 9,
+        "themis_matches": [
+          {
+            "themis_text_start": "SMALL SUITE LEASE AGREEMENT This Lease Agreement is made effective as of Novembe...",
+            "matched_claude_heading": "Premises and Term",
+            "overlap": 0.333,
+            "claude_types": [
+              "premises",
+              "term"
+            ],
+            "themis_type": "term",
+            "agree": true
+          },
+          {
+            "themis_text_start": "Premises and Term The Premises consist of approximately 6,200 rentable square fe...",
+            "matched_claude_heading": "Premises and Term",
+            "overlap": 1.0,
+            "claude_types": [
+              "premises",
+              "term"
+            ],
+            "themis_type": "term",
+            "agree": true
+          },
+          {
+            "themis_text_start": "Rent Tenant shall pay Base Rent monthly in advance without deduction, offset, or...",
+            "matched_claude_heading": "Rent",
+            "overlap": 1.0,
+            "claude_types": [
+              "late_fee",
+              "rent"
+            ],
+            "themis_type": "rent",
+            "agree": true
+          },
+          {
+            "themis_text_start": "Break Option Tenant shall have a one-time option to terminate this Lease effecti...",
+            "matched_claude_heading": "Rent",
+            "overlap": 1.0,
+            "claude_types": [
+              "late_fee",
+              "rent"
+            ],
+            "themis_type": "termination",
+            "agree": false
+          },
+          {
+            "themis_text_start": "Sublease and Assignment Tenant may not sublease the Premises at a rental rate hi...",
+            "matched_claude_heading": "Rent",
+            "overlap": 1.0,
+            "claude_types": [
+              "late_fee",
+              "rent"
+            ],
+            "themis_type": "subletting",
+            "agree": false
+          },
+          {
+            "themis_text_start": "No Obligation to Operate Nothing in this Lease shall be construed to require Ten...",
+            "matched_claude_heading": "Rent",
+            "overlap": 1.0,
+            "claude_types": [
+              "late_fee",
+              "rent"
+            ],
+            "themis_type": "no_obligation",
+            "agree": false
+          },
+          {
+            "themis_text_start": "Services Landlord shall provide janitorial services to the Premises five days pe...",
+            "matched_claude_heading": "Services",
+            "overlap": 1.0,
+            "claude_types": [
+              "maintenance",
+              "utilities"
+            ],
+            "themis_type": "utilities",
+            "agree": true
+          },
+          {
+            "themis_text_start": "Insurance and Indemnity",
+            "matched_claude_heading": "Insurance and Indemnity",
+            "overlap": 1.0,
+            "claude_types": [
+              "unknown"
+            ],
+            "themis_type": "subletting",
+            "agree": false
+          },
+          {
+            "themis_text_start": "Tenant shall obtain and maintain commercial general liability insurance in the a...",
+            "matched_claude_heading": "Premises and Term",
+            "overlap": 1.0,
+            "claude_types": [
+              "premises",
+              "term"
+            ],
+            "themis_type": "unknown",
+            "agree": false
+          },
+          {
+            "themis_text_start": "Riders The Special Stipulations Rider attached to this Lease grants Tenant a one...",
+            "matched_claude_heading": "Riders",
+            "overlap": 1.0,
+            "claude_types": [
+              "unknown"
+            ],
+            "themis_type": "termination",
+            "agree": false
+          },
+          {
+            "themis_text_start": "Miscellaneous The parties acknowledge that this Lease was negotiated at arm's le...",
+            "matched_claude_heading": "Miscellaneous",
+            "overlap": 1.0,
+            "claude_types": [
+              "entire_agreement",
+              "unknown"
+            ],
+            "themis_type": "unknown",
+            "agree": true
+          }
+        ],
+        "n_themis_matched": 11,
+        "themis_agreement": 0.4545
+      },
+      "lease_05_smallsuite_thornfield_SCANNED": {
+        "claude_human_matches": [
+          {
+            "claude_heading": "Premises and Term",
+            "human_heading": "Premises and Term",
+            "similarity": 1.0,
+            "claude_types": [
+              "premises",
+              "term"
+            ],
+            "human_types": [
+              "premises",
+              "term"
+            ],
+            "agree": true
+          },
+          {
+            "claude_heading": "Rent",
+            "human_heading": "Rent",
+            "similarity": 1.0,
+            "claude_types": [
+              "late_fee",
+              "rent"
+            ],
+            "human_types": [
+              "late_fee",
+              "rent"
+            ],
+            "agree": true
+          },
+          {
+            "claude_heading": "Break Option",
+            "human_heading": "Break Option",
+            "similarity": 1.0,
+            "claude_types": [
+              "termination"
+            ],
+            "human_types": [
+              "termination"
+            ],
+            "agree": true
+          },
+          {
+            "claude_heading": "Sublease and Assignment",
+            "human_heading": "Sublease and Assignment",
+            "similarity": 1.0,
+            "claude_types": [
+              "subletting"
+            ],
+            "human_types": [
+              "subletting"
+            ],
+            "agree": true
+          },
+          {
+            "claude_heading": "No Obligation to Operate",
+            "human_heading": "No Obligation to Operate",
+            "similarity": 1.0,
+            "claude_types": [
+              "premises"
+            ],
+            "human_types": [
+              "unknown"
+            ],
+            "agree": false
+          },
+          {
+            "claude_heading": "Services",
+            "human_heading": "Services",
+            "similarity": 1.0,
+            "claude_types": [
+              "maintenance",
+              "utilities"
+            ],
+            "human_types": [
+              "utilities"
+            ],
+            "agree": false
+          },
+          {
+            "claude_heading": "Insurance and Indemnity",
+            "human_heading": "Insurance and Indemnity",
+            "similarity": 1.0,
+            "claude_types": [
+              "unknown"
+            ],
+            "human_types": [
+              "unknown"
+            ],
+            "agree": true
+          },
+          {
+            "claude_heading": "Riders",
+            "human_heading": "Riders",
+            "similarity": 1.0,
+            "claude_types": [
+              "unknown"
+            ],
+            "human_types": [
+              "unknown"
+            ],
+            "agree": true
+          },
+          {
+            "claude_heading": "Miscellaneous",
+            "human_heading": "Miscellaneous",
+            "similarity": 1.0,
+            "claude_types": [
+              "entire_agreement",
+              "unknown"
+            ],
+            "human_types": [
+              "unknown"
+            ],
+            "agree": false
+          }
+        ],
+        "claude_human_agreement": 0.6667,
+        "n_matched": 9,
+        "themis_matches": [
+          {
+            "themis_text_start": "SMALLSUITELEASEAGREEMENT This Lease Agreement is made effective as of November 2...",
+            "matched_claude_heading": "Premises and Term",
+            "overlap": 0.333,
+            "claude_types": [
+              "premises",
+              "term"
+            ],
+            "themis_type": "term",
+            "agree": true
+          },
+          {
+            "themis_text_start": "Premises and Term The Premises consist of approximately 6,200 rentable square fe...",
+            "matched_claude_heading": "Premises and Term",
+            "overlap": 1.0,
+            "claude_types": [
+              "premises",
+              "term"
+            ],
+            "themis_type": "term",
+            "agree": true
+          },
+          {
+            "themis_text_start": "Rent",
+            "matched_claude_heading": "Rent",
+            "overlap": 1.0,
+            "claude_types": [
+              "late_fee",
+              "rent"
+            ],
+            "themis_type": "entire_agreement",
+            "agree": false
+          },
+          {
+            "themis_text_start": "Tn t tt t t ot it t t y it t siy permitted herein. Landlord may waive the late f...",
+            "matched_claude_heading": "Premises and Term",
+            "overlap": 0.333,
+            "claude_types": [
+              "premises",
+              "term"
+            ],
+            "themis_type": "late_fee",
+            "agree": false
+          },
+          {
+            "themis_text_start": "Break Option Tenant shall have a one-time option to terminate this Lease effecti...",
+            "matched_claude_heading": "Rent",
+            "overlap": 1.0,
+            "claude_types": [
+              "late_fee",
+              "rent"
+            ],
+            "themis_type": "termination",
+            "agree": false
+          },
+          {
+            "themis_text_start": "Sublease andAssignment",
+            "matched_claude_heading": "Sublease and Assignment",
+            "overlap": 1.0,
+            "claude_types": [
+              "subletting"
+            ],
+            "themis_type": "subletting",
+            "agree": true
+          },
+          {
+            "themis_text_start": "Tena t t t out Landlord's consent. Subleases to an Affiliate of Tenant shall be ...",
+            "matched_claude_heading": "Sublease and Assignment",
+            "overlap": 0.667,
+            "claude_types": [
+              "subletting"
+            ],
+            "themis_type": "subletting",
+            "agree": true
+          },
+          {
+            "themis_text_start": "No Obligation to Operate Nothing in this Lease shall be construed to require Ten...",
+            "matched_claude_heading": "Rent",
+            "overlap": 1.0,
+            "claude_types": [
+              "late_fee",
+              "rent"
+            ],
+            "themis_type": "no_obligation",
+            "agree": false
+          },
+          {
+            "themis_text_start": "Services Landlord shall provide janitorial services to the Premises five days pe...",
+            "matched_claude_heading": "Services",
+            "overlap": 1.0,
+            "claude_types": [
+              "maintenance",
+              "utilities"
+            ],
+            "themis_type": "utilities",
+            "agree": true
+          },
+          {
+            "themis_text_start": "Insurance and Indemnity",
+            "matched_claude_heading": "Insurance and Indemnity",
+            "overlap": 1.0,
+            "claude_types": [
+              "unknown"
+            ],
+            "themis_type": "subletting",
+            "agree": false
+          },
+          {
+            "themis_text_start": "Tenant shall obtain and maintain commercial general liability insurance in the a...",
+            "matched_claude_heading": "Premises and Term",
+            "overlap": 1.0,
+            "claude_types": [
+              "premises",
+              "term"
+            ],
+            "themis_type": "unknown",
+            "agree": false
+          },
+          {
+            "themis_text_start": "Riders The Special Stipulations Rider attached to this Lease grants Tenant a one...",
+            "matched_claude_heading": "Riders",
+            "overlap": 1.0,
+            "claude_types": [
+              "unknown"
+            ],
+            "themis_type": "termination",
+            "agree": false
+          },
+          {
+            "themis_text_start": "Miscellaneous The parties acknowledge that this Lease was negotiated at arm's le...",
+            "matched_claude_heading": "Miscellaneous",
+            "overlap": 1.0,
+            "claude_types": [
+              "entire_agreement",
+              "unknown"
+            ],
+            "themis_type": "entire_agreement",
+            "agree": true
+          }
+        ],
+        "n_themis_matched": 13,
+        "themis_agreement": 0.4615
+      },
+      "lease_06_table_rentschedule_bellwood": {
+        "claude_human_matches": [
+          {
+            "claude_heading": "Art1.1 Premises",
+            "human_heading": "Art1 Premises",
+            "similarity": 1.0,
+            "claude_types": [
+              "premises"
+            ],
+            "human_types": [
+              "premises"
+            ],
+            "agree": true
+          },
+          {
+            "claude_heading": "Art2.1 Base Rent Schedule (Table)",
+            "human_heading": "Art2 Base Rent Schedule",
+            "similarity": 0.867,
+            "claude_types": [
+              "rent"
+            ],
+            "human_types": [
+              "rent"
+            ],
+            "agree": true
+          },
+          {
+            "claude_heading": "Art2.2 Additional Rent Payment",
+            "human_heading": "Art3 Operating Expense Reconciliation",
+            "similarity": 0.588,
+            "claude_types": [
+              "rent"
+            ],
+            "human_types": [
+              "rent",
+              "utilities"
+            ],
+            "agree": false
+          },
+          {
+            "claude_heading": "Art3.1 Operating Expense Table",
+            "human_heading": "Art3 Operating Expense Reconciliation",
+            "similarity": 0.867,
+            "claude_types": [
+              "rent",
+              "utilities"
+            ],
+            "human_types": [
+              "rent",
+              "utilities"
+            ],
+            "agree": true
+          },
+          {
+            "claude_heading": "Art3.2 Annual Expense Statement",
+            "human_heading": "Art3 Operating Expense Reconciliation",
+            "similarity": 0.562,
+            "claude_types": [
+              "rent",
+              "utilities"
+            ],
+            "human_types": [
+              "rent",
+              "utilities"
+            ],
+            "agree": true
+          },
+          {
+            "claude_heading": "Art3.3 Tenant Audit Right",
+            "human_heading": "Art2 Base Rent Schedule",
+            "similarity": 0.6,
+            "claude_types": [
+              "dispute_resolution",
+              "rent"
+            ],
+            "human_types": [
+              "rent"
+            ],
+            "agree": false
+          },
+          {
+            "claude_heading": "Art4.1 Late Fee",
+            "human_heading": "Art4 Default",
+            "similarity": 0.625,
+            "claude_types": [
+              "late_fee"
+            ],
+            "human_types": [
+              "late_fee",
+              "rent"
+            ],
+            "agree": false
+          },
+          {
+            "claude_heading": "Art4.2 Rent Increase Restriction",
+            "human_heading": "Art3 Operating Expense Reconciliation",
+            "similarity": 0.714,
+            "claude_types": [
+              "rent"
+            ],
+            "human_types": [
+              "rent",
+              "utilities"
+            ],
+            "agree": false
+          },
+          {
+            "claude_heading": "Art5.1 Governing Law",
+            "human_heading": "Art3 Operating Expense Reconciliation",
+            "similarity": 0.562,
+            "claude_types": [
+              "dispute_resolution"
+            ],
+            "human_types": [
+              "rent",
+              "utilities"
+            ],
+            "agree": false
+          },
+          {
+            "claude_heading": "Art5.2 Guarantor Reference",
+            "human_heading": "Art3 Operating Expense Reconciliation",
+            "similarity": 0.562,
+            "claude_types": [
+              "deposit"
+            ],
+            "human_types": [
+              "rent",
+              "utilities"
+            ],
+            "agree": false
+          }
+        ],
+        "claude_human_agreement": 0.4,
+        "n_matched": 10,
+        "themis_matches": [
+          {
+            "themis_text_start": "LEASE AGREEMENT WITH RENT SCHEDULE THIS LEASE AGREEMENT is made as of December 3...",
+            "matched_claude_heading": "Art1.1 Premises",
+            "overlap": 1.0,
+            "claude_types": [
+              "premises"
+            ],
+            "themis_type": "term",
+            "agree": false
+          },
+          {
+            "themis_text_start": "1.1 The Premises consist of approximately 12,400 rentable square feet located on...",
+            "matched_claude_heading": "Art1.1 Premises",
+            "overlap": 1.0,
+            "claude_types": [
+              "premises"
+            ],
+            "themis_type": "rent",
+            "agree": false
+          },
+          {
+            "themis_text_start": "2.1 Tenant shall pay Base Rent in accordance with the following schedule, payabl...",
+            "matched_claude_heading": "Art2.1 Base Rent Schedule (Table)",
+            "overlap": 0.75,
+            "claude_types": [
+              "rent"
+            ],
+            "themis_type": "rent",
+            "agree": true
+          },
+          {
+            "themis_text_start": "2.2 Tenant shall pay any Additional Rent due under this Lease within thirty days...",
+            "matched_claude_heading": "Art2.2 Additional Rent Payment",
+            "overlap": 0.667,
+            "claude_types": [
+              "rent"
+            ],
+            "themis_type": "rent",
+            "agree": true
+          },
+          {
+            "themis_text_start": "3.1 Tenant's Proportionate Share of Operating Expenses for the Building is set f...",
+            "matched_claude_heading": "Art3.1 Operating Expense Table",
+            "overlap": 0.667,
+            "claude_types": [
+              "rent",
+              "utilities"
+            ],
+            "themis_type": "utilities",
+            "agree": true
+          },
+          {
+            "themis_text_start": "3.2 Landlord shall provide Tenant with an itemized statement of actual Operating...",
+            "matched_claude_heading": "Art3.1 Operating Expense Table",
+            "overlap": 0.667,
+            "claude_types": [
+              "rent",
+              "utilities"
+            ],
+            "themis_type": "termination",
+            "agree": false
+          },
+          {
+            "themis_text_start": "3.3 Tenant shall have the right to audit Landlord's books and records relating t...",
+            "matched_claude_heading": "Art3.3 Tenant Audit Right",
+            "overlap": 1.0,
+            "claude_types": [
+              "dispute_resolution",
+              "rent"
+            ],
+            "themis_type": "unknown",
+            "agree": false
+          },
+          {
+            "themis_text_start": "4.1 Tenant shall pay a late fee equal to five percent (5%) of any installment of...",
+            "matched_claude_heading": "Art4.1 Late Fee",
+            "overlap": 1.0,
+            "claude_types": [
+              "late_fee"
+            ],
+            "themis_type": "late_fee",
+            "agree": true
+          },
+          {
+            "themis_text_start": "4.2 Landlord shall not increase the Base Rent during the Initial Term except as ...",
+            "matched_claude_heading": "Art2.1 Base Rent Schedule (Table)",
+            "overlap": 0.75,
+            "claude_types": [
+              "rent"
+            ],
+            "themis_type": "rent",
+            "agree": true
+          },
+          {
+            "themis_text_start": "5.1 This Lease shall be governed by and construed in accordance with the laws of...",
+            "matched_claude_heading": "Art5.1 Governing Law",
+            "overlap": 0.5,
+            "claude_types": [
+              "dispute_resolution"
+            ],
+            "themis_type": "dispute_resolution",
+            "agree": true
+          },
+          {
+            "themis_text_start": "5.2 The Guarantor identified in the Basic Lease Information is a wholly owned su...",
+            "matched_claude_heading": "Art5.2 Guarantor Reference",
+            "overlap": 0.5,
+            "claude_types": [
+              "deposit"
+            ],
+            "themis_type": "term",
+            "agree": false
+          }
+        ],
+        "n_themis_matched": 11,
+        "themis_agreement": 0.5455
+      },
+      "lease_07_edgecase_stresstest_windmere": {
+        "claude_human_matches": [
+          {
+            "claude_heading": "Art1.1 Rent Abatement Waiver",
+            "human_heading": "Art5 Rent and Abatement",
+            "similarity": 0.667,
+            "claude_types": [
+              "rent"
+            ],
+            "human_types": [
+              "rent"
+            ],
+            "agree": true
+          },
+          {
+            "claude_heading": "Art1.2 No Reletting Preference / Claim Waiver",
+            "human_heading": "Art6 Factual Control Set",
+            "similarity": 0.526,
+            "claude_types": [
+              "unknown"
+            ],
+            "human_types": [
+              "premises",
+              "term"
+            ],
+            "agree": false
+          },
+          {
+            "claude_heading": "Art1.3 Rent Offset Waiver",
+            "human_heading": "Art6 Factual Control Set",
+            "similarity": 0.6,
+            "claude_types": [
+              "rent"
+            ],
+            "human_types": [
+              "premises",
+              "term"
+            ],
+            "agree": false
+          },
+          {
+            "claude_heading": "Art2.1 Assignment Prohibition with Affiliate Carve-Out",
+            "human_heading": "Art3 Double Negatives",
+            "similarity": 0.619,
+            "claude_types": [
+              "subletting"
+            ],
+            "human_types": [
+              "unknown"
+            ],
+            "agree": false
+          },
+          {
+            "claude_heading": "Art2.2 Landlord Access with Non-Interference Limit",
+            "human_heading": "Art6 Factual Control Set",
+            "similarity": 0.647,
+            "claude_types": [
+              "access"
+            ],
+            "human_types": [
+              "premises",
+              "term"
+            ],
+            "agree": false
+          },
+          {
+            "claude_heading": "Art2.3 Sublease Right with Continuing Tenant Liability",
+            "human_heading": "Art3 Double Negatives",
+            "similarity": 0.632,
+            "claude_types": [
+              "subletting"
+            ],
+            "human_types": [
+              "unknown"
+            ],
+            "agree": false
+          },
+          {
+            "claude_heading": "Art2.4 Conditional Structural Repair Obligation",
+            "human_heading": "Art3 Double Negatives",
+            "similarity": 0.765,
+            "claude_types": [
+              "maintenance"
+            ],
+            "human_types": [
+              "unknown"
+            ],
+            "agree": false
+          },
+          {
+            "claude_heading": "Art3.1 Trade Fixture Right with Structural Carve-Out",
+            "human_heading": "Art3 Double Negatives",
+            "similarity": 0.6,
+            "claude_types": [
+              "maintenance",
+              "premises"
+            ],
+            "human_types": [
+              "unknown"
+            ],
+            "agree": false
+          },
+          {
+            "claude_heading": "Art3.2 Landlord Alteration Consent Discretion",
+            "human_heading": "Art4 Conditional Obligations",
+            "similarity": 0.714,
+            "claude_types": [
+              "maintenance",
+              "premises"
+            ],
+            "human_types": [
+              "deposit",
+              "rent"
+            ],
+            "agree": false
+          },
+          {
+            "claude_heading": "Art3.3 No-Breach for Delayed Opening",
+            "human_heading": "Art4 Conditional Obligations",
+            "similarity": 0.556,
+            "claude_types": [
+              "premises"
+            ],
+            "human_types": [
+              "deposit",
+              "rent"
+            ],
+            "agree": false
+          },
+          {
+            "claude_heading": "Art4.1 Percentage Rent Above Breakpoint",
+            "human_heading": "Art3 Double Negatives",
+            "similarity": 0.556,
+            "claude_types": [
+              "rent"
+            ],
+            "human_types": [
+              "unknown"
+            ],
+            "agree": false
+          },
+          {
+            "claude_heading": "Art4.2 TI Allowance with Forfeiture Condition",
+            "human_heading": "Art6 Factual Control Set",
+            "similarity": 0.688,
+            "claude_types": [
+              "maintenance",
+              "rent"
+            ],
+            "human_types": [
+              "premises",
+              "term"
+            ],
+            "agree": false
+          },
+          {
+            "claude_heading": "Art4.3 Guaranty/Deposit Trigger on Net Worth Decline",
+            "human_heading": "Art3 Double Negatives",
+            "similarity": 0.571,
+            "claude_types": [
+              "deposit"
+            ],
+            "human_types": [
+              "unknown"
+            ],
+            "agree": false
+          },
+          {
+            "claude_heading": "Art5.1 Rent Abatement with Continuing Rent Carve-Out",
+            "human_heading": "Art3 Double Negatives",
+            "similarity": 0.579,
+            "claude_types": [
+              "rent"
+            ],
+            "human_types": [
+              "unknown"
+            ],
+            "agree": false
+          },
+          {
+            "claude_heading": "Art6.1 Term Length",
+            "human_heading": "Art1 Negated Entitlements",
+            "similarity": 0.538,
+            "claude_types": [
+              "term"
+            ],
+            "human_types": [
+              "rent",
+              "termination"
+            ],
+            "agree": false
+          },
+          {
+            "claude_heading": "Art6.2 Building Age/Renovation (Factual)",
+            "human_heading": "Art3 Double Negatives",
+            "similarity": 0.65,
+            "claude_types": [
+              "unknown"
+            ],
+            "human_types": [
+              "unknown"
+            ],
+            "agree": true
+          },
+          {
+            "claude_heading": "Art6.3 Exhibit Reference",
+            "human_heading": "Art6 Factual Control Set",
+            "similarity": 0.438,
+            "claude_types": [
+              "premises",
+              "unknown"
+            ],
+            "human_types": [
+              "premises",
+              "term"
+            ],
+            "agree": false
+          }
+        ],
+        "claude_human_agreement": 0.1176,
+        "n_matched": 17,
+        "themis_matches": [
+          {
+            "themis_text_start": "1.1 Tenant shall have no right to any abatement of Rent except as expressly set ...",
+            "matched_claude_heading": "Art1.1 Rent Abatement Waiver",
+            "overlap": 0.667,
+            "claude_types": [
+              "rent"
+            ],
+            "themis_type": "utilities",
+            "agree": false
+          },
+          {
+            "themis_text_start": "1.2 Landlord shall have no obligation to relet the Premises in preference to oth...",
+            "matched_claude_heading": "Art1.2 No Reletting Preference / Claim Waiver",
+            "overlap": 0.5,
+            "claude_types": [
+              "unknown"
+            ],
+            "themis_type": "no_obligation",
+            "agree": false
+          },
+          {
+            "themis_text_start": "1.3 Tenant hereby waives any right to offset Rent against amounts allegedly owed...",
+            "matched_claude_heading": "Art1.3 Rent Offset Waiver",
+            "overlap": 0.667,
+            "claude_types": [
+              "rent"
+            ],
+            "themis_type": "unknown",
+            "agree": false
+          },
+          {
+            "themis_text_start": "2.1 Tenant shall not assign this Lease without Landlord's prior written consent,...",
+            "matched_claude_heading": "Art2.1 Assignment Prohibition with Affiliate Carve-Out",
+            "overlap": 0.5,
+            "claude_types": [
+              "subletting"
+            ],
+            "themis_type": "subletting",
+            "agree": true
+          },
+          {
+            "themis_text_start": "2.2 Landlord shall have the right to enter the Premises upon 24 hours' notice to...",
+            "matched_claude_heading": "Art2.3 Sublease Right with Continuing Tenant Liability",
+            "overlap": 0.5,
+            "claude_types": [
+              "subletting"
+            ],
+            "themis_type": "access",
+            "agree": false
+          },
+          {
+            "themis_text_start": "2.3 Tenant may sublease up to twenty-five percent of the Premises without Landlo...",
+            "matched_claude_heading": "Art2.3 Sublease Right with Continuing Tenant Liability",
+            "overlap": 0.5,
+            "claude_types": [
+              "subletting"
+            ],
+            "themis_type": "subletting",
+            "agree": true
+          },
+          {
+            "themis_text_start": "2.4 Landlord shall repair any structural defect within thirty days of notice, un...",
+            "matched_claude_heading": "Art2.4 Conditional Structural Repair Obligation",
+            "overlap": 0.75,
+            "claude_types": [
+              "maintenance"
+            ],
+            "themis_type": "maintenance",
+            "agree": true
+          },
+          {
+            "themis_text_start": "3.1 Tenant shall not be prohibited from installing customary trade fixtures, pro...",
+            "matched_claude_heading": "Art3.1 Trade Fixture Right with Structural Carve-Out",
+            "overlap": 0.429,
+            "claude_types": [
+              "maintenance",
+              "premises"
+            ],
+            "themis_type": "maintenance",
+            "agree": true
+          },
+          {
+            "themis_text_start": "3.2 Nothing herein shall be construed to prevent Landlord from declining to cons...",
+            "matched_claude_heading": "Art3.2 Landlord Alteration Consent Discretion",
+            "overlap": 0.75,
+            "claude_types": [
+              "maintenance",
+              "premises"
+            ],
+            "themis_type": "unknown",
+            "agree": false
+          },
+          {
+            "themis_text_start": "3.3 It shall not be a breach of this Lease for Tenant to fail to open for busine...",
+            "matched_claude_heading": "Art3.3 No-Breach for Delayed Opening",
+            "overlap": 0.6,
+            "claude_types": [
+              "premises"
+            ],
+            "themis_type": "term",
+            "agree": false
+          },
+          {
+            "themis_text_start": "4.1 Tenant shall pay Percentage Rent equal to six percent of Gross Sales in exce...",
+            "matched_claude_heading": "Art4.1 Percentage Rent Above Breakpoint",
+            "overlap": 0.75,
+            "claude_types": [
+              "rent"
+            ],
+            "themis_type": "premises",
+            "agree": false
+          },
+          {
+            "themis_text_start": "4.2 Landlord shall provide a tenant improvement allowance of $40 per rentable sq...",
+            "matched_claude_heading": "Art4.2 TI Allowance with Forfeiture Condition",
+            "overlap": 0.6,
+            "claude_types": [
+              "maintenance",
+              "rent"
+            ],
+            "themis_type": "term",
+            "agree": false
+          },
+          {
+            "themis_text_start": "4.3 In the event, and only in the event, that Tenant's Guarantor's net worth fal...",
+            "matched_claude_heading": "Art1.1 Rent Abatement Waiver",
+            "overlap": 0.667,
+            "claude_types": [
+              "rent"
+            ],
+            "themis_type": "deposit",
+            "agree": false
+          },
+          {
+            "themis_text_start": "5.1 Tenant shall be entitled to a rent abatement equal to the number of days the...",
+            "matched_claude_heading": "Art1.1 Rent Abatement Waiver",
+            "overlap": 0.667,
+            "claude_types": [
+              "rent"
+            ],
+            "themis_type": "rent",
+            "agree": true
+          },
+          {
+            "themis_text_start": "6.1 The Term of this Lease is seven years, commencing on the Commencement Date.",
+            "matched_claude_heading": "Art6.1 Term Length",
+            "overlap": 0.5,
+            "claude_types": [
+              "term"
+            ],
+            "themis_type": "term",
+            "agree": true
+          },
+          {
+            "themis_text_start": "6.2 The Building was constructed in 2011 and most recently renovated in 2021.",
+            "matched_claude_heading": "Art6.2 Building Age/Renovation (Factual)",
+            "overlap": 0.333,
+            "claude_types": [
+              "unknown"
+            ],
+            "themis_type": "maintenance",
+            "agree": false
+          },
+          {
+            "themis_text_start": "6.3 Exhibit A depicts the floor plan of the Premises and is incorporated herein ...",
+            "matched_claude_heading": "Art6.3 Exhibit Reference",
+            "overlap": 1.0,
+            "claude_types": [
+              "premises",
+              "unknown"
+            ],
+            "themis_type": "term",
+            "agree": false
+          }
+        ],
+        "n_themis_matched": 17,
+        "themis_agreement": 0.3529
+      }
+    },
+    "aggregate": {
+      "matched": 136,
+      "type_agree": 35,
+      "overall_agreement": 0.2574
+    }
+  },
+  "risk_flags": {
+    "per_doc": {
+      "lease_01_office_meridian": {
+        "claude_n": 5,
+        "human_n": 5,
+        "keyword_overlap": 2
+      },
+      "lease_02_retail_sundial": {
+        "claude_n": 5,
+        "human_n": 3,
+        "keyword_overlap": 1
+      },
+      "lease_03_industrial_ferrous": {
+        "claude_n": 5,
+        "human_n": 4,
+        "keyword_overlap": 3
+      },
+      "lease_03_industrial_ferrous_SCANNED": {
+        "claude_n": 3,
+        "human_n": 3,
+        "keyword_overlap": 0
+      },
+      "lease_04_mixeduse_silverline": {
+        "claude_n": 5,
+        "human_n": 4,
+        "keyword_overlap": 3
+      },
+      "lease_05_smallsuite_thornfield": {
+        "claude_n": 5,
+        "human_n": 4,
+        "keyword_overlap": 1
+      },
+      "lease_05_smallsuite_thornfield_SCANNED": {
+        "claude_n": 3,
+        "human_n": 2,
+        "keyword_overlap": 1
+      },
+      "lease_06_table_rentschedule_bellwood": {
+        "claude_n": 5,
+        "human_n": 3,
+        "keyword_overlap": 1
+      },
+      "lease_07_edgecase_stresstest_windmere": {
+        "claude_n": 6,
+        "human_n": 4,
+        "keyword_overlap": 3
+      }
+    },
+    "aggregate": {
+      "claude_total_flags": 42,
+      "human_total_flags": 32,
+      "total_keyword_overlap": 15,
+      "mean_claude_per_doc": 4.7,
+      "mean_human_per_doc": 3.6
+    }
+  }
+}

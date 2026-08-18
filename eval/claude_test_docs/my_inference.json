@@ -1,0 +1,172 @@
+{
+  "method": "human/LLM independent reading of extracted text (pdftotext), prior to running Themis",
+  "notes": "Clause types use the 15-type extract taxonomy for comparability with Themis. Risk flags are my own judgment of deal risk, not Themis output.",
+  "documents": {
+    "lease_03_industrial_ferrous_SCANNED": {
+      "title": "SCANNED copy of Industrial Lease (Ferrous/Northgate) — OCR extract (docling/rapidocr)",
+      "per_section": {
+        "Art1 Demise": ["premises"],
+        "Art2 Rent and Guaranty": ["rent"],
+        "Art3 Holdover": ["holdover"],
+        "Art4 Right of First Refusal": ["unknown"],
+        "Art5 Repairs and Services": ["maintenance"],
+        "Art6 Change of Control": ["subletting", "termination"],
+        "Art7 Reinstatement": ["termination"],
+        "Art8 General": ["dispute_resolution"]
+      },
+      "risk_flags": [
+        "Same lease as lease_03 text version; OCR degraded (Art VIII governing law garbled as '8ot o t ot Massachusetts'; Art II 'Lessor ma a si ai it' line unusable)",
+        "2.2/2.3: guaranty auto-transferable without new instrument",
+        "3.1: holdover at 150% of Base Rent"
+      ]
+    },
+    "lease_05_smallsuite_thornfield_SCANNED": {
+      "title": "SCANNED copy of Small Suite Lease (Thornfield/Ridgeline) — OCR extract (docling/rapidocr)",
+      "per_section": {
+        "Premises and Term": ["premises", "term"],
+        "Rent": ["rent", "late_fee"],
+        "Break Option": ["termination"],
+        "Sublease and Assignment": ["subletting"],
+        "No Obligation to Operate": ["unknown"],
+        "Services": ["utilities"],
+        "Insurance and Indemnity": ["unknown"],
+        "Riders": ["unknown"],
+        "Miscellaneous": ["unknown"]
+      },
+      "risk_flags": [
+        "Same lease as lease_05 text version; OCR degraded (break-option lapse sentence and sublease sentence partly garbled)",
+        "Break option + no-obligation-to-operate present"
+      ]
+    },
+    "lease_01_office_meridian": {
+      "title": "Office Lease (Oakmont Realty / Cobalt Industries), Austin TX, 10-yr term",
+      "per_section": {
+        "Art1 Premises and Term": ["premises", "term"],
+        "Art2 Rent": ["rent"],
+        "Art3 Maintenance and Repairs": ["maintenance"],
+        "Art4 Use of Premises": ["premises"],
+        "Art5 Assignment and Subletting": ["subletting"],
+        "Art6 Casualty and Condemnation": ["rent", "termination"],
+        "Art7 Default and Remedies": ["rent", "termination"],
+        "Art8 Riders": ["unknown"],
+        "Art9 Special Stipulations": ["premises"],
+        "Art10 General Provisions": ["dispute_resolution"]
+      },
+      "risk_flags": [
+        "5.2: assignment on merger/sale of substantially all assets allowed WITHOUT landlord consent (tenant-friendly; loss of landlord control over change of control)",
+        "5.3: 25% sublease without consent (tenant-friendly)",
+        "6.2: landlord may terminate if casualty >50% of replacement cost (landlord-friendly)",
+        "7.1: no offset/counterclaim except as permitted (landlord-friendly)",
+        "7.2: landlord no duty to mitigate beyond law (landlord-friendly)"
+      ]
+    },
+    "lease_02_retail_sundial": {
+      "title": "Retail Lease (Sundial Business Park / Brightwell Logistics), 7-yr term",
+      "per_section": {
+        "Sec1 Grant and Term": ["term"],
+        "Sec2 Continuous Operation": ["unknown"],
+        "Sec3 Expansion and Extension": ["term", "dispute_resolution"],
+        "Sec4 Assignment Rights": ["subletting"],
+        "Sec5 Rent and Service Charges": ["rent", "utilities"],
+        "Sec6 Landlord Representations": ["unknown"],
+        "Sec7 Compulsory Reconstruction": ["unknown"],
+        "Sec8 Miscellaneous": ["unknown"]
+      },
+      "risk_flags": [
+        "Sec2: GO-DARK clause — tenant has NO obligation to operate, may cease business after year 3, landlord has no remedy/termination for cessation (significant landlord red flag)",
+        "Sec4: assignment to affiliate/controlled entity without landlord consent (tenant-friendly)",
+        "Sec3: extension at fair market rent via arbitration if not agreed (neutral)"
+      ]
+    },
+    "lease_03_industrial_ferrous": {
+      "title": "Industrial Lease (Ferrous Manufacturing / Northgate Ventures), 8-yr term",
+      "per_section": {
+        "Art1 Demise": ["premises"],
+        "Art2 Rent and Guaranty": ["rent"],
+        "Art3 Holdover": ["holdover"],
+        "Art4 Right of First Refusal": ["unknown"],
+        "Art5 Repairs and Services": ["maintenance"],
+        "Art6 Change of Control": ["subletting", "termination"],
+        "Art7 Reinstatement": ["termination"],
+        "Art8 General": ["dispute_resolution"]
+      },
+      "risk_flags": [
+        "2.2/2.3: GUARANTY auto-transferable to assignee/successor without new guaranty instrument (guarantee-transferable red flag)",
+        "3.1: holdover at 150% of Base Rent",
+        "6.1: change of control (>50% voting) deemed assignment requiring consent",
+        "7.1: landlord may reinstate lease at sole discretion after cure (landlord-friendly)"
+      ]
+    },
+    "lease_04_mixeduse_silverline": {
+      "title": "Mixed-Use Lease (Silverline Capital / Aurelia Systems), Chicago IL",
+      "per_section": {
+        "Art1 Basic Terms": ["premises", "rent", "deposit"],
+        "Art2 Tenant Obligations": ["rent", "premises"],
+        "Art3 Landlord Obligations": ["maintenance"],
+        "Art4 Damage and Destruction": ["termination"],
+        "Art5 Change of Control": ["termination", "subletting"],
+        "Art6 Entitlements and Permissions": ["access", "premises"],
+        "Art7 Waivers": ["dispute_resolution"],
+        "Art8 General Provisions": ["dispute_resolution"]
+      },
+      "risk_flags": [
+        "1.3: $62,000 security deposit by wire at execution (cash-flow burden)",
+        "5.2: landlord may TERMINATE on change of control if tenant operated by a competing business (landlord-friendly)",
+        "7.1: jury trial waiver (tenant-friendly to landlord)",
+        "7.2: landlord no liability for tenant property theft/vandalism"
+      ]
+    },
+    "lease_05_smallsuite_thornfield": {
+      "title": "Small Suite Lease (Thornfield Group / Ridgeline Holdings), 60-month term",
+      "per_section": {
+        "Premises and Term": ["premises", "term"],
+        "Rent": ["rent", "late_fee"],
+        "Break Option": ["termination"],
+        "Sublease and Assignment": ["subletting"],
+        "No Obligation to Operate": ["unknown"],
+        "Services": ["utilities"],
+        "Insurance and Indemnity": ["unknown"],
+        "Riders": ["unknown"],
+        "Miscellaneous": ["unknown"]
+      },
+      "risk_flags": [
+        "Break option: one-time termination at end of month 36 with 180 days notice + 3 months rent fee",
+        "NO OBLIGATION TO OPERATE — tenant may cease operations without breach (landlord red flag)",
+        "Sublease cap: cannot sublease at a rate higher than tenant's rent without consent",
+        "Landlord may waive late fee at sole discretion (tenant-friendly)"
+      ]
+    },
+    "lease_06_table_rentschedule_bellwood": {
+      "title": "Lease with Rent Schedule (Bellwood Enterprises / Meridian Retail), 7-yr term",
+      "per_section": {
+        "Art1 Premises": ["premises"],
+        "Art2 Base Rent Schedule": ["rent"],
+        "Art3 Operating Expense Reconciliation": ["rent", "utilities"],
+        "Art4 Default": ["late_fee", "rent"],
+        "Art5 General": ["dispute_resolution"]
+      },
+      "risk_flags": [
+        "4.1: late fee 5% of installment if not received within 5 days of due date",
+        "5.2: guarantor is a wholly owned subsidiary of tenant's parent (weak guaranty — parent not directly liable)",
+        "3.3: tenant audit right (tenant-friendly)"
+      ]
+    },
+    "lease_07_edgecase_stresstest_windmere": {
+      "title": "Edge-case stress test lease (Windmere Capital / Halcyon Foods), 7-yr term",
+      "per_section": {
+        "Art1 Negated Entitlements": ["termination", "rent"],
+        "Art2 Compound Sentences": ["subletting", "access", "maintenance"],
+        "Art3 Double Negatives": ["unknown"],
+        "Art4 Conditional Obligations": ["rent", "deposit"],
+        "Art5 Rent and Abatement": ["rent"],
+        "Art6 Factual Control Set": ["term", "premises"]
+      },
+      "risk_flags": [
+        "Stress test doc: compound/negated deontic language — expects model to handle nen (negated entitlements) correctly",
+        "1.1: no abatement right except Art6, despite quiet enjoyment (landlord-friendly)",
+        "1.3: waiver of rent offset regardless of merits",
+        "4.3: replacement guaranty/deposit increase triggered by guarantor net worth <$5M"
+      ]
+    }
+  }
+}

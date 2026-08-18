@@ -1,0 +1,340 @@
+{
+  "per_doc": {
+    "lease_01_office_meridian": {
+      "mine": [
+        "dispute_resolution",
+        "maintenance",
+        "premises",
+        "rent",
+        "subletting",
+        "term",
+        "termination"
+      ],
+      "themis": [
+        "entire_agreement",
+        "maintenance",
+        "premises",
+        "rent",
+        "subletting",
+        "term",
+        "termination",
+        "utilities"
+      ],
+      "intersection": [
+        "maintenance",
+        "premises",
+        "rent",
+        "subletting",
+        "term",
+        "termination"
+      ],
+      "jaccard": 0.667,
+      "precision": 0.75,
+      "recall": 0.857,
+      "missed_by_themis": [
+        "dispute_resolution"
+      ],
+      "themis_extra": [
+        "entire_agreement",
+        "utilities"
+      ]
+    },
+    "lease_02_retail_sundial": {
+      "mine": [
+        "dispute_resolution",
+        "rent",
+        "subletting",
+        "term",
+        "utilities"
+      ],
+      "themis": [
+        "dispute_resolution",
+        "maintenance",
+        "premises",
+        "rent",
+        "subletting",
+        "term",
+        "termination",
+        "utilities"
+      ],
+      "intersection": [
+        "dispute_resolution",
+        "rent",
+        "subletting",
+        "term",
+        "utilities"
+      ],
+      "jaccard": 0.625,
+      "precision": 0.625,
+      "recall": 1.0,
+      "missed_by_themis": [],
+      "themis_extra": [
+        "maintenance",
+        "premises",
+        "termination"
+      ]
+    },
+    "lease_03_industrial_ferrous": {
+      "mine": [
+        "dispute_resolution",
+        "holdover",
+        "maintenance",
+        "premises",
+        "rent",
+        "subletting",
+        "termination"
+      ],
+      "themis": [
+        "rent",
+        "subletting",
+        "term",
+        "termination",
+        "utilities"
+      ],
+      "intersection": [
+        "rent",
+        "subletting",
+        "termination"
+      ],
+      "jaccard": 0.333,
+      "precision": 0.6,
+      "recall": 0.429,
+      "missed_by_themis": [
+        "dispute_resolution",
+        "holdover",
+        "maintenance",
+        "premises"
+      ],
+      "themis_extra": [
+        "term",
+        "utilities"
+      ]
+    },
+    "lease_03_industrial_ferrous_SCANNED": {
+      "mine": [
+        "dispute_resolution",
+        "holdover",
+        "maintenance",
+        "premises",
+        "rent",
+        "subletting",
+        "termination"
+      ],
+      "themis": [
+        "dispute_resolution",
+        "entire_agreement",
+        "rent",
+        "subletting",
+        "term",
+        "termination",
+        "utilities"
+      ],
+      "intersection": [
+        "dispute_resolution",
+        "rent",
+        "subletting",
+        "termination"
+      ],
+      "jaccard": 0.4,
+      "precision": 0.571,
+      "recall": 0.571,
+      "missed_by_themis": [
+        "holdover",
+        "maintenance",
+        "premises"
+      ],
+      "themis_extra": [
+        "entire_agreement",
+        "term",
+        "utilities"
+      ]
+    },
+    "lease_04_mixeduse_silverline": {
+      "mine": [
+        "access",
+        "deposit",
+        "dispute_resolution",
+        "maintenance",
+        "premises",
+        "rent",
+        "subletting",
+        "termination"
+      ],
+      "themis": [
+        "access",
+        "deposit",
+        "dispute_resolution",
+        "entire_agreement",
+        "maintenance",
+        "premises",
+        "registration",
+        "rent",
+        "term",
+        "termination"
+      ],
+      "intersection": [
+        "access",
+        "deposit",
+        "dispute_resolution",
+        "maintenance",
+        "premises",
+        "rent",
+        "termination"
+      ],
+      "jaccard": 0.636,
+      "precision": 0.7,
+      "recall": 0.875,
+      "missed_by_themis": [
+        "subletting"
+      ],
+      "themis_extra": [
+        "entire_agreement",
+        "registration",
+        "term"
+      ]
+    },
+    "lease_05_smallsuite_thornfield": {
+      "mine": [
+        "late_fee",
+        "premises",
+        "rent",
+        "subletting",
+        "term",
+        "termination",
+        "utilities"
+      ],
+      "themis": [
+        "rent",
+        "subletting",
+        "term",
+        "termination",
+        "utilities"
+      ],
+      "intersection": [
+        "rent",
+        "subletting",
+        "term",
+        "termination",
+        "utilities"
+      ],
+      "jaccard": 0.714,
+      "precision": 1.0,
+      "recall": 0.714,
+      "missed_by_themis": [
+        "late_fee",
+        "premises"
+      ],
+      "themis_extra": []
+    },
+    "lease_05_smallsuite_thornfield_SCANNED": {
+      "mine": [
+        "late_fee",
+        "premises",
+        "rent",
+        "subletting",
+        "term",
+        "termination",
+        "utilities"
+      ],
+      "themis": [
+        "entire_agreement",
+        "late_fee",
+        "subletting",
+        "term",
+        "termination",
+        "utilities"
+      ],
+      "intersection": [
+        "late_fee",
+        "subletting",
+        "term",
+        "termination",
+        "utilities"
+      ],
+      "jaccard": 0.625,
+      "precision": 0.833,
+      "recall": 0.714,
+      "missed_by_themis": [
+        "premises",
+        "rent"
+      ],
+      "themis_extra": [
+        "entire_agreement"
+      ]
+    },
+    "lease_06_table_rentschedule_bellwood": {
+      "mine": [
+        "dispute_resolution",
+        "late_fee",
+        "premises",
+        "rent",
+        "utilities"
+      ],
+      "themis": [
+        "entire_agreement",
+        "late_fee",
+        "rent",
+        "term",
+        "utilities"
+      ],
+      "intersection": [
+        "late_fee",
+        "rent",
+        "utilities"
+      ],
+      "jaccard": 0.429,
+      "precision": 0.6,
+      "recall": 0.6,
+      "missed_by_themis": [
+        "dispute_resolution",
+        "premises"
+      ],
+      "themis_extra": [
+        "entire_agreement",
+        "term"
+      ]
+    },
+    "lease_07_edgecase_stresstest_windmere": {
+      "mine": [
+        "access",
+        "deposit",
+        "maintenance",
+        "premises",
+        "rent",
+        "subletting",
+        "term",
+        "termination"
+      ],
+      "themis": [
+        "access",
+        "deposit",
+        "maintenance",
+        "premises",
+        "rent",
+        "subletting",
+        "term"
+      ],
+      "intersection": [
+        "access",
+        "deposit",
+        "maintenance",
+        "premises",
+        "rent",
+        "subletting",
+        "term"
+      ],
+      "jaccard": 0.875,
+      "precision": 1.0,
+      "recall": 0.875,
+      "missed_by_themis": [
+        "termination"
+      ],
+      "themis_extra": []
+    }
+  },
+  "summary": {
+    "mean_jaccard": 0.589,
+    "mean_precision": 0.742,
+    "mean_recall": 0.737
+  }
+}

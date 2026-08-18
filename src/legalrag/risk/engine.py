@@ -88,11 +88,13 @@ def _extract_values(text: str, extractors: dict[str, re.Pattern]) -> dict:
     for name, pattern in extractors.items():
         m = pattern.search(text)
         if m:
-            # Try named groups first, then group(1)
+            # Try named groups first, then first non-empty numbered group
             if m.groupdict():
                 values[name] = m.groupdict()
             else:
-                values[name] = m.group(1)
+                groups = [g for g in m.groups() if g is not None]
+                if groups:
+                    values[name] = groups[0]
     return values
 
 
@@ -123,15 +125,17 @@ def analyzeRisk(
 
     for section in sections:
         ctype = section.get("type", "unknown")
-        if ctype == "unknown":
-            continue
-        classified += 1
         text = section.get("text", "")
         section_id = section.get("id", "")
         confidence = section.get("confidence", 0.0)
 
+        if ctype != "unknown":
+            classified += 1
+
         for rule in rules:
-            if ctype not in rule.clause_types:
+            # For classified sections, only fire on matching clause types.
+            # For unknown sections, try all rules (trigger patterns filter).
+            if ctype != "unknown" and ctype not in rule.clause_types:
                 continue
             if not _check_triggers(text, rule.triggers):
                 continue
