@@ -235,7 +235,7 @@ class TestAnalyzeRisk:
 
     def test_change_of_control_fires(self):
         sections = [self._make_section(
-            "change of control at 50 percent equity transfer requires consent",
+            "change of control at 50% equity transfer requires consent",
             "subletting",
         )]
         result = analyzeRisk(sections, RULES)
@@ -495,3 +495,42 @@ class TestAnalyzeRisk:
         )]
         result = analyzeRisk(sections, RULES)
         assert any(f.rule_id == "insurance.tenant_pays_all" for f in result.findings)
+
+
+class TestRationaleInterpolation:
+    """Audit fix: extracted values must appear in rationales (no literal placeholders)."""
+
+    def test_deposit_rationale_interpolates_amount(self):
+        sections = [{
+            "id": "s1", "type": "deposit",
+            "text": "The Security Deposit required under this Lease is $62,000",
+        }]
+        result = analyzeRisk(sections, RULES)
+        f = next(x for x in result.findings if x.rule_id == "deposit.cap_exceeded")
+        assert "62,000" in f.rationale
+        assert "{deposit_amount}" not in f.rationale
+
+    def test_threshold_rationale_interpolates(self):
+        sections = [{
+            "id": "s1", "type": "subletting",
+            "text": "change of control at 50% equity transfer requires consent",
+        }]
+        result = analyzeRisk(sections, RULES)
+        f = next(x for x in result.findings if x.rule_id == "subletting.change_of_control")
+        assert "50" in f.rationale
+        assert "{threshold}" not in f.rationale
+
+    def test_no_literal_placeholders_in_any_fired_rationale(self):
+        for rule in RULES:
+            if not rule.triggers:
+                continue
+            probe = rule.triggers[0]
+            sample = " ".join(r.pattern for r in rule.triggers)
+            if not sample:
+                continue
+            sections = [{"id": "s1", "type": rule.clause_types[0], "text": sample}]
+            result = analyzeRisk(sections, RULES)
+            for f in result.findings:
+                assert "{" not in f.rationale, f"{f.rule_id}: literal placeholder in {f.rationale!r}"
+
+
