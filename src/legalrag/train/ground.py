@@ -20,7 +20,8 @@ from sklearn.metrics import accuracy_score
 from sklearn.model_selection import train_test_split
 
 from legalrag.embeddings import encodeMeanPooled
-from legalrag.risk.gate import BM25, Gate
+from legalrag.risk.gate import BM25, HEAD_NPZ, META_JSON, Gate
+from legalrag.train.artifacts import artifact_stamp, backup_existing
 from legalrag.train.data import build_statute_pairs
 
 DEFAULT_MODEL = "nlpaueb/legal-bert-base-uncased"
@@ -49,6 +50,7 @@ def train_gate(
     rules: list,
     model_name: str = DEFAULT_MODEL,
     out_dir: Path | None = None,
+    backup_root: Path | None = None,
     seed: int = 42,
     neg_per_pos: int = 3,
     test_size: float = 0.2,
@@ -87,10 +89,19 @@ def train_gate(
         bm25=bm25,
     )
     out_dir = out_dir or Path.cwd() / "models" / "grounding"
-    gate.save(out_dir)
+    backed = backup_existing(
+        out_dir,
+        [HEAD_NPZ, META_JSON],
+        backup_root or (out_dir.parent / "backups"),
+        "grounding",
+    )
+    stamp = artifact_stamp(list(zip(queries, texts, labels)))
+    gate.save(out_dir, extra_meta=stamp)
     if verbose:
         print(f"[ground] saved gate -> {out_dir}")
-    return {
+        if backed:
+            print(f"[ground] previous gate backed up -> {backed}")
+    meta = {
         "model": model_name,
         "features": list(Gate.FEATURES),
         "threshold": gate.threshold,
@@ -99,3 +110,5 @@ def train_gate(
         "test_accuracy": round(float(acc), 4),
         "head": str(out_dir / "head.npz"),
     }
+    meta.update(stamp)
+    return meta

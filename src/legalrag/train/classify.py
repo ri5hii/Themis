@@ -17,6 +17,7 @@ from sklearn.metrics import classification_report
 from sklearn.model_selection import train_test_split
 
 from legalrag.extract.classifier import TrainedClassifier, encodeTexts
+from legalrag.train.artifacts import artifact_stamp, backup_existing
 
 DEFAULT_MODEL = "nlpaueb/legal-bert-base-uncased"
 
@@ -28,6 +29,7 @@ def train_classifier(
     test_size: float = 0.2,
     seed: int = 42,
     out_dir: Path | None = None,
+    backup_root: Path | None = None,
     encode_fn: Callable[[list[str], str], np.ndarray] = encodeTexts,
     verbose: bool = True,
 ) -> dict:
@@ -67,6 +69,12 @@ def train_classifier(
 
     classes = [str(c) for c in clf.classes_]
     out_dir = out_dir or Path.cwd() / "models"
+    backed = backup_existing(
+        out_dir,
+        ["classifier.npz", "classifier.joblib", "classifier_meta.json"],
+        backup_root or (out_dir / "backups"),
+        "classifier",
+    )
     npz_path = out_dir / "classifier.npz"
     joblib_path = out_dir / "classifier.joblib"
     tc = TrainedClassifier.from_sklearn(model_name, clf, classes)
@@ -80,9 +88,12 @@ def train_classifier(
         "threshold": tc.threshold,
         "npz": str(npz_path),
     }
+    meta.update(artifact_stamp(list(zip(texts, labels))))
     (out_dir / "classifier_meta.json").write_text(
         json.dumps(meta, indent=2) + "\n", encoding="utf-8"
     )
     if verbose:
         print(f"[classify] saved {npz_path} and {joblib_path}")
+        if backed:
+            print(f"[classify] previous artifact backed up -> {backed}")
     return meta

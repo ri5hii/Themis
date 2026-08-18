@@ -25,3 +25,9 @@ Trainable components, with their data sources:
 Segment (heuristics) and risk (hand-authored trigger rules) are **not
 trainable by design** — "training" those means editing `rules.py`
 triggers/anchors, so the CLI never implies otherwise.
+
+Every artifact carries provenance in its `meta.json` — training timestamp,
+git commit (+ dirty flag), package version, and a SHA-256 of the training
+rows — and `themis analyze` records which classifier/gate versions a run
+consumed under `artifacts` in its JSON output. Retraining never overwrites:
+the previous artifact is moved to `models/backups/<kind>/<stamp>/`.

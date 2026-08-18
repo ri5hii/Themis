@@ -43,6 +43,7 @@ def test_analyze_e2e_pipeline(tmp_path, monkeypatch):
     assert out["sections"] == 3
     assert set(out["stage_times_s"]) >= {"parse", "segment", "classify", "risk"}
     assert out["summary"]["n_findings"] == len(out["findings"])
+    assert set(out["artifacts"]) == {"classifier", "gate"}
 
     rule_ids = {f["rule_id"] for f in out["findings"]}
     assert "rent.no_offset" in rule_ids

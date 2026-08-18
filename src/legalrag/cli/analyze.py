@@ -7,6 +7,7 @@
 from __future__ import annotations
 
 import argparse
+import json
 import time
 from pathlib import Path
 from typing import Any
@@ -23,7 +24,30 @@ from .review import ReviewAborted, review_findings
 
 ROOT = Path(__file__).resolve().parents[3]
 CLASSIFIER_PATH = ROOT / "models" / "classifier.npz"
+CLASSIFIER_META = ROOT / "models" / "classifier_meta.json"
+GATE_META = ROOT / "models" / "grounding" / "meta.json"
 STATUTE_INDEX = ROOT / "data" / "indexes" / "statutes"
+
+
+def _read_artifact_meta(path: Path, drop: tuple[str, ...] = ()) -> dict[str, Any] | None:
+    """Trimmed artifact meta.json contents; None when absent or unreadable."""
+    if not path.exists():
+        return None
+    try:
+        meta = json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError):
+        return None
+    for key in drop:
+        meta.pop(key, None)
+    return meta
+
+
+def _artifact_versions() -> dict[str, Any]:
+    """Trained artifact versions this run consumes (classifier fallback, gate)."""
+    return {
+        "classifier": _read_artifact_meta(CLASSIFIER_META),
+        "gate": _read_artifact_meta(GATE_META, drop=("bm25",)),
+    }
 
 
 def _load_fallback() -> object | None:
@@ -72,6 +96,7 @@ def analyze_lease(
 
     # 3. Classify (fast-lane + trained classifier fallback, batched)
     log("[3/5] Classifying sections...")
+    artifacts = _artifact_versions()
     fallback = _load_fallback()
     if fallback is not None:
         log(f"  classifier fallback: {fallback.model_name}")
@@ -106,6 +131,12 @@ def analyze_lease(
         stage_times["grounding"] = round(time.time() - s, 1)
         grounded = sum(1 for f in analysis.findings if f.statute)
         log(f"  {grounded}/{len(analysis.findings)} findings grounded")
+        gate_meta = artifacts.get("gate")
+        if gate_meta:
+            log(
+                f"  grounding gate: {gate_meta.get('model')} "
+                f"(trained {gate_meta.get('trained_at')})"
+            )
 
     # 5. SLM (optional)
     slm_outputs: list[dict[str, Any]] = []
@@ -143,6 +174,7 @@ def analyze_lease(
         "classified": classified,
         "findings": findings_out,
         "slm": slm_outputs,
+        "artifacts": artifacts,
         "summary": {
             "n_findings": len(analysis.findings),
             "n_high": sum(1 for f in analysis.findings if f.risk_level == "high"),

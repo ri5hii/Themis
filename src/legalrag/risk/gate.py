@@ -108,24 +108,24 @@ class Gate:
         z = float((features @ self.weights + self.intercept)[0])
         return 1.0 / (1.0 + math.exp(-z))
 
-    def save(self, out_dir: Path) -> None:
+    def save(self, out_dir: Path, extra_meta: dict | None = None) -> None:
+        """Persist head.npz + meta.json; ``extra_meta`` is merged into the meta."""
         out_dir.mkdir(parents=True, exist_ok=True)
         np.savez(
             out_dir / HEAD_NPZ,
             weights=self.weights,
             intercept=np.asarray([self.intercept]),
         )
+        meta = {
+            "model": self.model_name,
+            "features": self.FEATURES,
+            "threshold": self.threshold,
+            "bm25": self.bm25.to_dict(),
+        }
+        if extra_meta:
+            meta.update(extra_meta)
         (out_dir / META_JSON).write_text(
-            json.dumps(
-                {
-                    "model": self.model_name,
-                    "features": self.FEATURES,
-                    "threshold": self.threshold,
-                    "bm25": self.bm25.to_dict(),
-                },
-                indent=2,
-            )
-            + "\n",
+            json.dumps(meta, indent=2) + "\n",
             encoding="utf-8",
         )
 

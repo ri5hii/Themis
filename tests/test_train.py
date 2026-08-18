@@ -181,6 +181,148 @@ class TestClassifyTrain:
             )
 
 
+class TestArtifactProvenance:
+    ROWS: ClassVar[list[str]] = [
+        "Rent shall be paid monthly.",
+        "Rent escalates annually by five percent.",
+        "Tenant shall not sublet.",
+        "Subletting requires written consent.",
+        "Deposit is refundable on exit.",
+        "Deposit of two months rent.",
+        "Lease term is ten years.",
+        "Term runs until vacated.",
+    ]
+    LABELS: ClassVar[list[str]] = ["rent", "rent", "subletting", "subletting", "deposit", "deposit", "term", "term"]
+
+    @staticmethod
+    def _stub_encode(texts, model, batch_size=16):
+        return np.asarray(
+            [
+                [
+                    1.0 if "rent" in t else 0.0,
+                    1.0 if "sublet" in t else 0.0,
+                    1.0 if "deposit" in t else 0.0,
+                    1.0 if "term" in t else 0.0,
+                ]
+                for t in texts
+            ],
+            dtype="float32",
+        )
+
+    def test_classifier_meta_carries_provenance(self, tmp_path) -> None:
+        meta = train_classifier(
+            self.ROWS, self.LABELS,
+            model_name="fake-model",
+            test_size=0.5,
+            seed=1,
+            out_dir=tmp_path,
+            encode_fn=self._stub_encode,
+            verbose=False,
+        )
+        for key in ("trained_at", "git_commit", "git_dirty", "data_sha256", "package_version"):
+            assert key in meta, key
+        assert meta["git_commit"]
+        assert len(meta["data_sha256"]) == 64
+
+    def test_retrain_backs_up_previous_artifact(self, tmp_path) -> None:
+        train_classifier(
+            self.ROWS, self.LABELS,
+            model_name="fake-model",
+            test_size=0.5,
+            seed=1,
+            out_dir=tmp_path,
+            encode_fn=self._stub_encode,
+            verbose=False,
+        )
+        train_classifier(
+            self.ROWS, self.LABELS,
+            model_name="fake-model",
+            test_size=0.5,
+            seed=1,
+            out_dir=tmp_path,
+            encode_fn=self._stub_encode,
+            verbose=False,
+        )
+        backed = list((tmp_path / "backups" / "classifier").glob("*/classifier.npz"))
+        assert len(backed) == 1
+        assert (tmp_path / "classifier.npz").exists()
+
+    def test_data_sha_changes_with_training_rows(self, tmp_path) -> None:
+        meta1 = train_classifier(
+            self.ROWS, self.LABELS,
+            model_name="fake-model",
+            test_size=0.5,
+            seed=1,
+            out_dir=tmp_path,
+            encode_fn=self._stub_encode,
+            verbose=False,
+        )
+        meta2 = train_classifier(
+            self.ROWS + ["Rent is payable in advance."],
+            self.LABELS + ["rent"],
+            model_name="fake-model",
+            test_size=0.5,
+            seed=1,
+            out_dir=tmp_path,
+            encode_fn=self._stub_encode,
+            verbose=False,
+        )
+        assert meta2["data_sha256"] != meta1["data_sha256"]
+
+    def test_train_gate_stamps_meta_and_backs_up(self, tmp_path) -> None:
+        chunks = [
+            {"id": "mta#s.1", "text": "The rent shall not be offset or counterclaimed by tenant."},
+            {"id": "mta#s.2", "text": "Security deposit shall not exceed two months of rent."},
+            {"id": "mta#s.3", "text": "Landlord may evict the tenant for rent default."},
+            {"id": "mta#s.4", "text": "The premises shall be maintained by the landlord."},
+        ]
+        rules = [
+            RiskRule("rent.no_offset", ("rent",), [], "medium", "t",
+                     statute_query="rent offset waiver", statute_anchors=["rent", "offset"], statute_fallback="F"),
+            RiskRule("deposit.cap_exceeded", ("deposit",), [], "medium", "t",
+                     statute_query="security deposit cap", statute_anchors=["deposit", "two months"], statute_fallback="F"),
+            RiskRule("maintenance.liability_disclaim", ("maintenance",), [], "low", "t",
+                     statute_query="repair maintenance premises", statute_anchors=["premises", "maintained"], statute_fallback="F"),
+        ]
+
+        def stub_encode(texts, model, batch_size=32):
+            v = np.zeros((len(texts), 4), dtype="float32")
+            for i, t in enumerate(texts):
+                v[i, 0] = 1.0 if "rent" in t or "deposit" in t else 0.0
+                v[i, 1] = 1.0 if "offset" in t else 0.0
+                v[i, 2] = 1.0 if "two months" in t else 0.0
+                v[i, 3] = 1.0 if "maintain" in t or "premises" in t else 0.0
+            return v
+
+        meta1 = train_gate(
+            chunks, rules,
+            model_name="fake-model",
+            out_dir=tmp_path / "g",
+            seed=3,
+            neg_per_pos=3,
+            test_size=0.25,
+            encode_fn=stub_encode,
+            verbose=False,
+        )
+        assert "data_sha256" in meta1
+        meta2 = train_gate(
+            chunks, rules,
+            model_name="fake-model",
+            out_dir=tmp_path / "g",
+            seed=3,
+            neg_per_pos=3,
+            test_size=0.25,
+            encode_fn=stub_encode,
+            verbose=False,
+        )
+        assert meta2["data_sha256"] == meta1["data_sha256"]
+        backed = list((tmp_path / "backups" / "grounding").glob("*/head.npz"))
+        assert len(backed) == 1
+        gate_meta = json.loads((tmp_path / "g" / "meta.json").read_text(encoding="utf-8"))
+        assert gate_meta["data_sha256"] == meta2["data_sha256"]
+        assert gate_meta["git_commit"]
+
+
 class TestGate:
     def test_gate_roundtrip_and_score(self, tmp_path) -> None:
         bm25 = BM25.fit(["the rent shall not be offset", "security deposit cap two months"])
@@ -193,6 +335,25 @@ class TestGate:
         assert 0.0 < p < 1.0
         low = loaded.score("deposit cap", "the landlord shall evict on default", 0.1)
         assert low < p
+
+    def test_gate_save_merges_extra_meta(self, tmp_path) -> None:
+        bm25 = BM25.fit(["the rent shall not be offset"])
+        gate = Gate("fake-model", np.asarray([1.0, 2.0]), -1.0, 0.5, bm25)
+        gate.save(
+            tmp_path,
+            extra_meta={
+                "trained_at": "2026-01-01T00:00:00+00:00",
+                "git_commit": "abc1234",
+                "git_dirty": False,
+                "data_sha256": "x" * 64,
+            },
+        )
+        loaded = Gate.load(tmp_path)
+        assert loaded.threshold == 0.5
+        meta = json.loads((tmp_path / "meta.json").read_text(encoding="utf-8"))
+        assert meta["git_commit"] == "abc1234"
+        assert meta["data_sha256"] == "x" * 64
+        assert meta["bm25"]["n_docs"] == 1
 
     def test_train_gate_tiny_corpus(self, tmp_path) -> None:
         chunks = [

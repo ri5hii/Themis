@@ -6,9 +6,12 @@ Writes per-epoch checkpoints and a final adapter.
 """
 from __future__ import annotations
 
+import json
 import time
+from datetime import datetime, timezone
 from pathlib import Path
 
+from legalrag.train.artifacts import artifact_stamp, git_stamp
 from legalrag.train.data import load_finetune_pairs
 
 DEFAULT_MODEL = "Qwen/Qwen2.5-1.5B-Instruct"
@@ -42,6 +45,14 @@ def finetune(
 ) -> int:
     """Run the LoRA training loop; returns 0 on success."""
     out_dir = out_dir or Path(DEFAULT_OUT)
+    if out_dir.exists() and any(out_dir.iterdir()) and not eval_only:
+        rev = git_stamp().get("git_commit") or "nogit"
+        ts = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
+        dest = out_dir.parent / "backups" / "slm-lora" / f"{ts}-{rev}"
+        dest.parent.mkdir(parents=True, exist_ok=True)
+        out_dir.replace(dest)
+        if verbose:
+            print(f"[backup] previous LoRA artifacts -> {dest}")
     out_dir.mkdir(parents=True, exist_ok=True)
 
     train_data = load_finetune_pairs(train_data_path)
@@ -158,6 +169,24 @@ def finetune(
 
     model.save_pretrained(str(out_dir / "final"))
     tokenizer.save_pretrained(str(out_dir / "final"))
+
+    meta = {
+        "model": model_name,
+        "epochs": epochs,
+        "lr": lr,
+        "r": r,
+        "alpha": alpha,
+        "max_length": max_length,
+        "load_8bit": load_8bit,
+        "batch_size": batch_size,
+        "grad_accum": grad_accum,
+        "n_train": len(train_data),
+        "n_eval": len(eval_data),
+    }
+    meta.update(artifact_stamp(train_data))
+    (out_dir / "finetune_meta.json").write_text(
+        json.dumps(meta, indent=2) + "\n", encoding="utf-8"
+    )
 
     if verbose:
         elapsed = time.time() - t0
