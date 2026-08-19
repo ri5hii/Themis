@@ -138,3 +138,36 @@ class TestTrainEvalHelpers:
     def test_text_falls_back_to_text(self):
         mod = self._load_train_eval()
         assert mod._text([{"text": "only text"}]) == ["only text"]
+
+    def _write(self, root: Path, name: str, split: str, n: int) -> list[dict]:
+        rows = [{"source": f"{name}-{split}-{i}", "text": f"t{i}", "type": "x"} for i in range(n)]
+        p = root / f"{name}.{split}.jsonl"
+        p.write_text("".join(json.dumps(r) + "\n" for r in rows))
+        return rows
+
+    def test_load_train_rows_single_dir(self, tmp_path: Path):
+        mod = self._load_train_eval()
+        rows = self._write(tmp_path, "redflag_paragraph", "train", 3)
+        assert mod._load_train_rows(tmp_path, None, "redflag_paragraph") == rows
+
+    def test_load_train_rows_mix_dir_appends(self, tmp_path: Path):
+        mod = self._load_train_eval()
+        base = tmp_path / "base"
+        mix = tmp_path / "mix"
+        base.mkdir()
+        mix.mkdir()
+        a = self._write(base, "redflag_paragraph", "train", 3)
+        b = self._write(mix, "redflag_paragraph", "train", 2)
+        assert mod._load_train_rows(base, mix, "redflag_paragraph") == a + b
+
+    def test_load_train_rows_mix_dir_keeps_base_order(self, tmp_path: Path):
+        mod = self._load_train_eval()
+        base = tmp_path / "base"
+        mix = tmp_path / "mix"
+        base.mkdir()
+        mix.mkdir()
+        a = self._write(base, "redflag_paragraph", "train", 3)
+        b = self._write(mix, "redflag_paragraph", "train", 2)
+        rows = mod._load_train_rows(base, mix, "redflag_paragraph")
+        assert [r["source"] for r in rows[:3]] == [r["source"] for r in a]
+        assert [r["source"] for r in rows[3:]] == [r["source"] for r in b]

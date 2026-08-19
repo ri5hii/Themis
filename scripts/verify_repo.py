@@ -2,7 +2,8 @@
 
 Runs ruff, pytest, then (if raw data is present) re-ingests the Leivaditi and
 LEXDEMOD corpora and regenerates the EDA report so the tracked baseline can be
-compared. Exits non-zero on any failure.
+compared. If a sample document exists (data/samples/), also exercises the
+document ingestion CLI. Exits non-zero on any failure.
 
 Usage:
     PYTHONUNBUFFERED=1 python scripts/verify_repo.py
@@ -16,6 +17,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 PY = str(ROOT / ".venv" / "bin" / "python")
 REPORT = ROOT / "eval" / "eda_report.json"
+SAMPLE = ROOT / "data" / "samples" / "sample_lease.txt"
 
 STEPS: list[tuple[str, list[str]]] = [
     ("ruff", [PY, "-m", "ruff", "check", "src", "scripts", "tests"]),
@@ -23,7 +25,13 @@ STEPS: list[tuple[str, list[str]]] = [
     ("ingest leivaditi", [PY, "scripts/ingest_leivaditi_full.py"]),
     ("ingest lexdemod", [PY, "scripts/ingest_lexdemod.py"]),
     ("eda report", [PY, "scripts/dataset_eda.py", "--json", str(REPORT)]),
+    ("build index", [PY, "scripts/build_index.py"]),
+    ("build embeddings", [PY, "scripts/build_embeddings.py"]),
+    ("eval fast-lane", [PY, "scripts/eval_fastlane.py"]),
+    ("eval ood", [PY, "scripts/eval_ood.py"]),
 ]
+if SAMPLE.exists():
+    STEPS.append(("analyze sample", [PY, "scripts/analyze_document.py", str(SAMPLE)]))
 
 
 def main() -> int:

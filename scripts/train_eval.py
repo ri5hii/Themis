@@ -4,6 +4,13 @@ Usage:
     python scripts/train_eval.py --task redflag_paragraph --model deterministic
     python scripts/train_eval.py --task deontic_multilabel --model tfidf
 
+Split selection:
+    --splits         base split dir (default data/splits); train/test/val dirs
+    --train-splits   override where train rows come from (default --splits)
+    --test-splits    override where val/test rows come from (default --splits)
+    --mix-dir        extra train dir; its <task>.train.jsonl is appended to
+                     the train rows (plain concat, no resampling)
+
 Models:
   tfidf        TF-IDF + logistic regression (v0.1.1 baseline)
   deterministic TF-IDF + deontic trigger features + balanced class weights
@@ -31,6 +38,14 @@ MULTILABEL_LABELS = ["obl", "ent", "pro", "per", "oth", "nen", "none"]
 
 def _load_split(dir_: Path, name: str, split: str) -> list[dict]:
     return tasks.loadJsonl(str(dir_ / f"{name}.{split}.jsonl"))
+
+
+def _load_train_rows(train_dir: Path, mix_dir: Path | None, task: str) -> list[dict]:
+    """Train rows from train_dir, plus (plain concat) rows from mix_dir."""
+    rows = _load_split(train_dir, task, "train")
+    if mix_dir is not None:
+        rows = rows + _load_split(mix_dir, task, "train")
+    return rows
 
 
 def _text(rows: list[dict]) -> list[str]:
@@ -151,22 +166,28 @@ def main() -> int:
     parser.add_argument("--ngram", type=str, default=None, help="TF-IDF n-gram range, e.g. '1,2' (default: task default)")
     parser.add_argument("--seed", type=int, default=tasks.DEFAULT_SEED)
     parser.add_argument("--splits", default=str(Path("data/splits")))
+    parser.add_argument("--train-splits", default=None, help="train split dir (default: --splits)")
+    parser.add_argument("--test-splits", default=None, help="val/test split dir (default: --splits)")
+    parser.add_argument("--mix-dir", default=None, help="extra train dir, appended to train rows (plain concat)")
     parser.add_argument("--out", default=str(Path("eval/artifacts")))
     args = parser.parse_args()
 
     split_dir = Path(args.splits)
+    train_dir = Path(args.train_splits) if args.train_splits else split_dir
+    test_dir = Path(args.test_splits) if args.test_splits else split_dir
+    mix_dir = Path(args.mix_dir) if args.mix_dir else None
     out = Path(args.out)
     out.mkdir(parents=True, exist_ok=True)
 
-    train_rows = _load_split(split_dir, args.task, "train")
-    test_rows = _load_split(split_dir, args.task, "test")
+    train_rows = _load_train_rows(train_dir, mix_dir, args.task)
+    test_rows = _load_split(test_dir, args.task, "test")
     ngram = tuple(int(x) for x in (args.ngram or ("1,2" if args.task == "deontic_multilabel" else "1,1")).split(","))
     use_party = args.task == "deontic_multilabel" and not args.no_party
     t0 = time.time()
     vec, clf = _fit(train_rows, args.model, args.downsample_none, ngram, args.max_f, use_party)
     thresholds = None
     if args.calibrate and args.task == "deontic_multilabel":
-        val_rows = _load_split(split_dir, args.task, "val")
+        val_rows = _load_split(test_dir, args.task, "val")
         thresholds = _calibrate_thresholds(vec, clf, val_rows, args.model, use_party)
     _, pred = _predict(vec, clf, test_rows, args.model, thresholds, use_party)
 
@@ -187,6 +208,9 @@ def main() -> int:
         result["thresholds"] = thresholds
     result["train_n"] = len(train_rows)
     result["test_n"] = len(test_rows)
+    result["train_splits"] = str(train_dir)
+    result["test_splits"] = str(test_dir)
+    result["mix_dir"] = args.mix_dir
     result["elapsed_s"] = round(time.time() - t0, 1)
 
     dst = out / f"{args.task}.{args.model}{'.ds' if args.downsample_none else ''}{'.cal' if args.calibrate else ''}{'.party' if use_party else ''}.json"
