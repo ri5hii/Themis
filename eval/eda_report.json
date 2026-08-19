@@ -1,0 +1,426 @@
+{
+  "leases": {
+    "rows": 8659,
+    "unique_sources": 335,
+    "rows_per_source": {
+      "min": 1,
+      "p50": 14,
+      "max": 180
+    },
+    "text": {
+      "rows": 8659,
+      "mean": 388.9,
+      "min": 1,
+      "p50": 529,
+      "p90": 600,
+      "p95": 600,
+      "max": 600
+    },
+    "truncated_at_limit": 4115,
+    "truncated_pct": 47.5,
+    "empty_text": 0,
+    "type_fast_lane": {
+      "unknown": 4937,
+      "term": 1603,
+      "maintenance": 430,
+      "termination": 319,
+      "utilities": 288,
+      "registration": 286,
+      "dispute_resolution": 244,
+      "rent": 189,
+      "premises": 107,
+      "subletting": 80,
+      "access": 63,
+      "deposit": 43,
+      "pets": 29,
+      "entire_agreement": 28,
+      "late_fee": 12,
+      "holdover": 1
+    },
+    "truncation_by_type_fast_lane": {
+      "term": {
+        "n": 1603,
+        "truncated": 1406,
+        "truncated_pct": 87.7
+      },
+      "unknown": {
+        "n": 4937,
+        "truncated": 1069,
+        "truncated_pct": 21.7
+      },
+      "maintenance": {
+        "n": 430,
+        "truncated": 341,
+        "truncated_pct": 79.3
+      },
+      "termination": {
+        "n": 319,
+        "truncated": 249,
+        "truncated_pct": 78.1
+      },
+      "utilities": {
+        "n": 288,
+        "truncated": 224,
+        "truncated_pct": 77.8
+      },
+      "registration": {
+        "n": 286,
+        "truncated": 199,
+        "truncated_pct": 69.6
+      },
+      "dispute_resolution": {
+        "n": 244,
+        "truncated": 189,
+        "truncated_pct": 77.5
+      },
+      "rent": {
+        "n": 189,
+        "truncated": 149,
+        "truncated_pct": 78.8
+      },
+      "premises": {
+        "n": 107,
+        "truncated": 96,
+        "truncated_pct": 89.7
+      },
+      "access": {
+        "n": 63,
+        "truncated": 55,
+        "truncated_pct": 87.3
+      },
+      "subletting": {
+        "n": 80,
+        "truncated": 51,
+        "truncated_pct": 63.7
+      },
+      "deposit": {
+        "n": 43,
+        "truncated": 26,
+        "truncated_pct": 60.5
+      },
+      "pets": {
+        "n": 29,
+        "truncated": 26,
+        "truncated_pct": 89.7
+      },
+      "entire_agreement": {
+        "n": 28,
+        "truncated": 22,
+        "truncated_pct": 78.6
+      },
+      "late_fee": {
+        "n": 12,
+        "truncated": 12,
+        "truncated_pct": 100.0
+      },
+      "holdover": {
+        "n": 1,
+        "truncated": 1,
+        "truncated_pct": 100.0
+      }
+    },
+    "top_headings": {
+      "Preamble": 335,
+      "SIGNATURE PAGE TO SERIES G SHARE SUBSCRIPTION AGREEMENT": 96,
+      "LEASE": 91,
+      "RENT": 41,
+      "QUEENSLAND LAND REGISTRY": 41,
+      "RECITALS": 39,
+      "TABLE OF CONTENTS": 38,
+      "DEFINITIONS": 38,
+      "MISCELLANEOUS": 37,
+      "Rent": 31,
+      "LEASE CONTRACT": 30,
+      "AGREEMENT": 30,
+      "EXHIBIT B": 29,
+      "INITIALS INITIALS": 26,
+      "TERM": 24,
+      "INSURANCE": 23,
+      "Bancroft Way Office Lease": 23,
+      "ASSIGNMENT AND SUBLETTING": 22,
+      "NOTICES": 22,
+      "QUIET ENJOYMENT": 21,
+      "EXHIBIT A": 19,
+      "INTERPRETATION": 19,
+      "UTILITIES": 19,
+      "RULES AND REGULATIONS": 18,
+      "CONDEMNATION": 18
+    }
+  },
+  "redflags": {
+    "rows": 738,
+    "unique_sources": 112,
+    "rows_per_source": {
+      "min": 1,
+      "p50": 6,
+      "max": 27
+    },
+    "text": {
+      "rows": 738,
+      "mean": 375.1,
+      "min": 20,
+      "p50": 366,
+      "p90": 600,
+      "p95": 600,
+      "max": 600
+    },
+    "truncated_at_limit": 224,
+    "truncated_pct": 30.4,
+    "empty_text": 0,
+    "type": {
+      "maintenance": 191,
+      "utilities": 145,
+      "subletting": 118,
+      "termination": 113,
+      "holdover": 110,
+      "deposit": 56,
+      "term": 5
+    },
+    "redflag_type": {
+      "services_charges": 145,
+      "sublease_permitted": 118,
+      "break_option": 113,
+      "reinstatement_clause": 110,
+      "landlord_repairs": 84,
+      "damage": 68,
+      "guarantee_transferable": 56,
+      "warrantees_of_the_owner": 21,
+      "compalsory_reconstraction": 10,
+      "expansion": 8,
+      "extension_period": 5
+    },
+    "truncation_by_type": {
+      "maintenance": {
+        "n": 191,
+        "truncated": 56,
+        "truncated_pct": 29.3
+      },
+      "holdover": {
+        "n": 110,
+        "truncated": 46,
+        "truncated_pct": 41.8
+      },
+      "termination": {
+        "n": 113,
+        "truncated": 40,
+        "truncated_pct": 35.4
+      },
+      "utilities": {
+        "n": 145,
+        "truncated": 34,
+        "truncated_pct": 23.4
+      },
+      "subletting": {
+        "n": 118,
+        "truncated": 32,
+        "truncated_pct": 27.1
+      },
+      "deposit": {
+        "n": 56,
+        "truncated": 16,
+        "truncated_pct": 28.6
+      },
+      "term": {
+        "n": 5,
+        "truncated": 0,
+        "truncated_pct": 0.0
+      }
+    },
+    "type_x_redflag_type": {
+      "holdover": {
+        "reinstatement_clause": 110
+      },
+      "deposit": {
+        "guarantee_transferable": 56
+      },
+      "utilities": {
+        "services_charges": 145
+      },
+      "subletting": {
+        "sublease_permitted": 118
+      },
+      "maintenance": {
+        "landlord_repairs": 84,
+        "damage": 68,
+        "warrantees_of_the_owner": 21,
+        "compalsory_reconstraction": 10,
+        "expansion": 8
+      },
+      "termination": {
+        "break_option": 113
+      },
+      "term": {
+        "extension_period": 5
+      }
+    }
+  },
+  "cross_corpus": {
+    "source_overlap": {
+      "leases_only": 335,
+      "redflags_only": 112,
+      "shared": 0
+    }
+  },
+  "full_benchmark": {
+    "docs": {
+      "rows": 171,
+      "unique_sources": 171,
+      "rows_per_source": {
+        "min": 1,
+        "p50": 1,
+        "max": 1
+      },
+      "text": {
+        "rows": 171,
+        "mean": 48222.8,
+        "min": 1441,
+        "p50": 27905,
+        "p90": 111514,
+        "p95": 136187,
+        "max": 287742
+      },
+      "truncated_at_limit": 171,
+      "truncated_pct": 100.0,
+      "empty_text": 0,
+      "document_class": {
+        "lease agreement": 115,
+        "other": 42,
+        "amendment": 9,
+        "sublease agreement": 5
+      },
+      "len_chars": {
+        "min": 1441,
+        "p50": 27905,
+        "max": 287742
+      }
+    },
+    "redflags": {
+      "rows": 52853,
+      "docs": 179,
+      "positive": 863,
+      "negative_none": 51990,
+      "positive_types": 19,
+      "docs_with_positive": 115,
+      "type": {
+        "none": 51990,
+        "services_charges": 145,
+        "sublease_permitted": 118,
+        "break_option": 114,
+        "reinstatement_clause": 110,
+        "landlord_repairs": 84,
+        "damage": 68,
+        "guarantee_transferable": 56,
+        "change_of_control": 47,
+        "right_of_first_refusal_to_lease": 39,
+        "right_of_first_refusal_to_purchase": 26,
+        "warrantees_of_the_owner": 21,
+        "compalsory_reconstraction": 10,
+        "expansion": 8,
+        "special_stipulations": 6,
+        "extension_period": 5,
+        "additional_remarks": 3,
+        "riders": 1,
+        "assignment_indeplaatsstelling_permitted": 1,
+        "no_obligation_to_operate": 1
+      }
+    },
+    "easy_redflags": {
+      "rows": 1242,
+      "docs": 115,
+      "types": 19,
+      "type": {
+        "break_option": 307,
+        "services_charges": 190,
+        "sublease_permitted": 169,
+        "reinstatement_clause": 130,
+        "landlord_repairs": 101,
+        "damage": 83,
+        "guarantee_transferable": 74,
+        "change_of_control": 51,
+        "right_of_first_refusal_to_lease": 41,
+        "warrantees_of_the_owner": 27,
+        "right_of_first_refusal_to_purchase": 26,
+        "expansion": 15,
+        "compalsory_reconstraction": 10,
+        "special_stipulations": 6,
+        "extension_period": 5,
+        "additional_remarks": 3,
+        "assignment_indeplaatsstelling_permitted": 2,
+        "riders": 1,
+        "no_obligation_to_operate": 1
+      }
+    },
+    "entities": {
+      "rows": 2101,
+      "docs": 123,
+      "class_id": {
+        "term_of_payment": 406,
+        "lessor": 376,
+        "lessee": 307,
+        "leased_space": 190,
+        "designated_use": 138,
+        "notice_period": 131,
+        "vat": 124,
+        "signing_date": 112,
+        "end_date": 105,
+        "start_date": 104,
+        "extension_period": 76,
+        "expiration_date_of_lease": 32
+      }
+    },
+    "clauses": {
+      "rows": 32951,
+      "docs": 120,
+      "clause_begin_true": 8426,
+      "clause_type": {
+        "none": 24525,
+        "sub_clause_number": 4006,
+        "clause_title": 2131,
+        "sub_clause_title": 1554,
+        "clause_number": 610,
+        "annex": 125
+      }
+    }
+  },
+  "lexdemod": {
+    "rows": 6389,
+    "unique_sources": 23,
+    "rows_per_source": {
+      "min": 3,
+      "p50": 210,
+      "max": 705
+    },
+    "text": {
+      "rows": 6389,
+      "mean": 360.1,
+      "min": 36,
+      "p50": 287,
+      "p90": 695,
+      "p95": 870,
+      "max": 2889
+    },
+    "truncated_at_limit": 871,
+    "truncated_pct": 13.6,
+    "empty_text": 0,
+    "party": {
+      "tenant": 3418,
+      "landlord": 2971
+    },
+    "split": {
+      "train": 4282,
+      "test": 1777,
+      "eval": 330
+    },
+    "deontic_types": {
+      "obl": 2257,
+      "none": 1688,
+      "ent": 1538,
+      "per": 457,
+      "pro": 387,
+      "oth": 359,
+      "nen": 317
+    },
+    "multi_label_rows": 549,
+    "spans": 7914
+  }
+}
