@@ -1,0 +1,740 @@
+{
+  "n": 28,
+  "parse_rate": 1.0,
+  "field_fidelity": 0.75,
+  "prose_exact_rate": 1.0,
+  "prose_overlap_rate": 1.0,
+  "template_impact_rate": 1.0,
+  "elapsed_s": 164.1,
+  "per_item_s": 5.9,
+  "items": [
+    {
+      "source": "lease_01_office_meridian",
+      "rule_id": "termination.landlord_only",
+      "parse_ok": true,
+      "gold": {
+        "clause_type": "termination",
+        "risk_level": "low",
+        "statute": "MTA 2021 s.7"
+      },
+      "out": {
+        "clause_type": "termination",
+        "risk_level": "low",
+        "statute": "MTA 2021 s.7"
+      },
+      "field_fidelity": [
+        true,
+        true,
+        true
+      ],
+      "prose_exact": true,
+      "prose_overlap": true,
+      "template_impact": true,
+      "plain_explanation": "Termination right appears to be granted to Landlord only. Check for corresponding Tenant termination right.",
+      "tenant_impact": "This is a low-risk clause of type termination.",
+      "elapsed_s": 6.0
+    },
+    {
+      "source": "lease_20_lab_helix_meridiangenomics",
+      "rule_id": "deposit.cap_exceeded",
+      "parse_ok": true,
+      "gold": {
+        "clause_type": "rent",
+        "risk_level": "medium",
+        "statute": "MTA 2021 s.11(1)(a)"
+      },
+      "out": {
+        "clause_type": "rent",
+        "risk_level": "medium",
+        "statute": "MTA 2021 s.11(1)(a)"
+      },
+      "field_fidelity": [
+        true,
+        true,
+        true
+      ],
+      "prose_exact": true,
+      "prose_overlap": true,
+      "template_impact": true,
+      "plain_explanation": "Security deposit clause detected. Verify deposit does not exceed statutory cap (MTA s.11: max 2 months rent). Extracted:",
+      "tenant_impact": "This is a medium-risk clause of type rent.",
+      "elapsed_s": 12.7
+    },
+    {
+      "source": "lease_03_industrial_ferrous",
+      "rule_id": "deposit.guaranty_transfer",
+      "parse_ok": true,
+      "gold": {
+        "clause_type": "unknown",
+        "risk_level": "low",
+        "statute": "general"
+      },
+      "out": {
+        "clause_type": "termination",
+        "risk_level": "low",
+        "statute": "general"
+      },
+      "field_fidelity": [
+        false,
+        true,
+        true
+      ],
+      "prose_exact": true,
+      "prose_overlap": true,
+      "template_impact": true,
+      "plain_explanation": "Guaranty appears transferable to assignees or successors without requiring a new guaranty instrument.",
+      "tenant_impact": "This is a low-risk clause of type termination.",
+      "elapsed_s": 17.6
+    },
+    {
+      "source": "lease_19_restaurant_saltmark_tidewater",
+      "rule_id": "rent.excessive_escalation",
+      "parse_ok": true,
+      "gold": {
+        "clause_type": "rent",
+        "risk_level": "medium",
+        "statute": "MTA 2021 s.9"
+      },
+      "out": {
+        "clause_type": "rent",
+        "risk_level": "medium",
+        "statute": "MTA 2021 s.9"
+      },
+      "field_fidelity": [
+        true,
+        true,
+        true
+      ],
+      "prose_exact": true,
+      "prose_overlap": true,
+      "template_impact": true,
+      "plain_explanation": "Rent escalation clause detected. Verify increase cadence and percentage are within norms. Extracted: 3",
+      "tenant_impact": "This is a medium-risk clause of type rent.",
+      "elapsed_s": 23.2
+    },
+    {
+      "source": "lease_05_smallsuite_thornfield_aug",
+      "rule_id": "rent.no_offset",
+      "parse_ok": true,
+      "gold": {
+        "clause_type": "rent",
+        "risk_level": "medium",
+        "statute": "general"
+      },
+      "out": {
+        "clause_type": "rent",
+        "risk_level": "medium",
+        "statute": "general"
+      },
+      "field_fidelity": [
+        true,
+        true,
+        true
+      ],
+      "prose_exact": true,
+      "prose_overlap": true,
+      "template_impact": true,
+      "plain_explanation": "Tenant waives right to offset or counterclaim against rent, removing a key self-help remedy for landlord non-performance.",
+      "tenant_impact": "This is a medium-risk clause of type rent.",
+      "elapsed_s": 28.3
+    },
+    {
+      "source": "lease_08_warehouse_hazelbrook_ferrovia",
+      "rule_id": "rent.excessive_escalation",
+      "parse_ok": true,
+      "gold": {
+        "clause_type": "rent",
+        "risk_level": "medium",
+        "statute": "MTA 2021 s.9"
+      },
+      "out": {
+        "clause_type": "rent",
+        "risk_level": "medium",
+        "statute": "MTA 2021 s.9"
+      },
+      "field_fidelity": [
+        true,
+        true,
+        true
+      ],
+      "prose_exact": true,
+      "prose_overlap": true,
+      "template_impact": true,
+      "plain_explanation": "Rent escalation clause detected. Verify increase cadence and percentage are within norms. Extracted: 2.5",
+      "tenant_impact": "This is a medium-risk clause of type rent.",
+      "elapsed_s": 34.2
+    },
+    {
+      "source": "lease_05_smallsuite_thornfield_aug",
+      "rule_id": "no_obligation.go_dark",
+      "parse_ok": true,
+      "gold": {
+        "clause_type": "no_obligation",
+        "risk_level": "info",
+        "statute": "general"
+      },
+      "out": {
+        "clause_type": "no_obligation",
+        "risk_level": "info",
+        "statute": "general"
+      },
+      "field_fidelity": [
+        true,
+        true,
+        true
+      ],
+      "prose_exact": true,
+      "prose_overlap": true,
+      "template_impact": true,
+      "plain_explanation": "Tenant may cease operations without breach. Verify this does not conflict with co-tenancy or percentage-rent provisions.",
+      "tenant_impact": "This is a info-risk clause of type no_obligation.",
+      "elapsed_s": 40.0
+    },
+    {
+      "source": "lease_21_parking_apex_downtownvalet",
+      "rule_id": "termination.landlord_only",
+      "parse_ok": true,
+      "gold": {
+        "clause_type": "termination",
+        "risk_level": "low",
+        "statute": "MTA 2021 s.7"
+      },
+      "out": {
+        "clause_type": "termination",
+        "risk_level": "low",
+        "statute": "MTA 2021 s.7"
+      },
+      "field_fidelity": [
+        true,
+        true,
+        true
+      ],
+      "prose_exact": true,
+      "prose_overlap": true,
+      "template_impact": true,
+      "plain_explanation": "Termination right appears to be granted to Landlord only. Check for corresponding Tenant termination right.",
+      "tenant_impact": "This is a low-risk clause of type termination.",
+      "elapsed_s": 45.6
+    },
+    {
+      "source": "lease_16_popup_lumen_giltgrove",
+      "rule_id": "rent.upfront_payment",
+      "parse_ok": true,
+      "gold": {
+        "clause_type": "unknown",
+        "risk_level": "low",
+        "statute": "general"
+      },
+      "out": {
+        "clause_type": "rent",
+        "risk_level": "low",
+        "statute": "general"
+      },
+      "field_fidelity": [
+        false,
+        true,
+        true
+      ],
+      "prose_exact": true,
+      "prose_overlap": true,
+      "template_impact": true,
+      "plain_explanation": "Full rent is payable in advance at signing, an outsized upfront cash commitment for the tenant.",
+      "tenant_impact": "This is a low-risk clause of type rent.",
+      "elapsed_s": 50.4
+    },
+    {
+      "source": "lease_03_industrial_ferrous",
+      "rule_id": "subletting.change_of_control",
+      "parse_ok": true,
+      "gold": {
+        "clause_type": "unknown",
+        "risk_level": "low",
+        "statute": "general"
+      },
+      "out": {
+        "clause_type": "termination",
+        "risk_level": "low",
+        "statute": "general"
+      },
+      "field_fidelity": [
+        false,
+        true,
+        true
+      ],
+      "prose_exact": true,
+      "prose_overlap": true,
+      "template_impact": true,
+      "plain_explanation": "Change-of-control consent provision detected. Verify threshold is reasonable. Extracted threshold:",
+      "tenant_impact": "This is a low-risk clause of type termination.",
+      "elapsed_s": 54.7
+    },
+    {
+      "source": "lease_02_retail_sundial_aug",
+      "rule_id": "no_obligation.go_dark",
+      "parse_ok": true,
+      "gold": {
+        "clause_type": "no_obligation",
+        "risk_level": "info",
+        "statute": "general"
+      },
+      "out": {
+        "clause_type": "no_obligation",
+        "risk_level": "info",
+        "statute": "general"
+      },
+      "field_fidelity": [
+        true,
+        true,
+        true
+      ],
+      "prose_exact": true,
+      "prose_overlap": true,
+      "template_impact": true,
+      "plain_explanation": "Tenant may cease operations without breach. Verify this does not conflict with co-tenancy or percentage-rent provisions.",
+      "tenant_impact": "This is a info-risk clause of type no_obligation.",
+      "elapsed_s": 61.4
+    },
+    {
+      "source": "lease_03_industrial_ferrous",
+      "rule_id": "termination.sole_discretion",
+      "parse_ok": true,
+      "gold": {
+        "clause_type": "termination",
+        "risk_level": "low",
+        "statute": "general"
+      },
+      "out": {
+        "clause_type": "termination",
+        "risk_level": "low",
+        "statute": "general"
+      },
+      "field_fidelity": [
+        true,
+        true,
+        true
+      ],
+      "prose_exact": true,
+      "prose_overlap": true,
+      "template_impact": true,
+      "plain_explanation": "Clause uses 'sole discretion' language, which gives the landlord unilateral control. This may limit tenant remedies.",
+      "tenant_impact": "This is a low-risk clause of type termination.",
+      "elapsed_s": 66.9
+    },
+    {
+      "source": "lease_01_office_meridian_aug",
+      "rule_id": "termination.landlord_only",
+      "parse_ok": true,
+      "gold": {
+        "clause_type": "termination",
+        "risk_level": "low",
+        "statute": "MTA 2021 s.7"
+      },
+      "out": {
+        "clause_type": "termination",
+        "risk_level": "low",
+        "statute": "MTA 2021 s.7"
+      },
+      "field_fidelity": [
+        true,
+        true,
+        true
+      ],
+      "prose_exact": true,
+      "prose_overlap": true,
+      "template_impact": true,
+      "plain_explanation": "Termination right appears to be granted to Landlord only. Check for corresponding Tenant termination right.",
+      "tenant_impact": "This is a low-risk clause of type termination.",
+      "elapsed_s": 73.0
+    },
+    {
+      "source": "lease_16_popup_lumen_giltgrove",
+      "rule_id": "deposit.cap_exceeded",
+      "parse_ok": true,
+      "gold": {
+        "clause_type": "deposit",
+        "risk_level": "medium",
+        "statute": "MTA 2021 s.11(1)(a)"
+      },
+      "out": {
+        "clause_type": "deposit",
+        "risk_level": "medium",
+        "statute": "MTA 2021 s.11(1)(a)"
+      },
+      "field_fidelity": [
+        true,
+        true,
+        true
+      ],
+      "prose_exact": true,
+      "prose_overlap": true,
+      "template_impact": true,
+      "plain_explanation": "Security deposit clause detected. Verify deposit does not exceed statutory cap (MTA s.11: max 2 months rent). Extracted: 1,000",
+      "tenant_impact": "This is a medium-risk clause of type deposit.",
+      "elapsed_s": 81.5
+    },
+    {
+      "source": "lease_16_popup_lumen_giltgrove_aug",
+      "rule_id": "deposit.cap_exceeded",
+      "parse_ok": true,
+      "gold": {
+        "clause_type": "deposit",
+        "risk_level": "medium",
+        "statute": "MTA 2021 s.11(1)(a)"
+      },
+      "out": {
+        "clause_type": "deposit",
+        "risk_level": "medium",
+        "statute": "MTA 2021 s.11(1)(a)"
+      },
+      "field_fidelity": [
+        true,
+        true,
+        true
+      ],
+      "prose_exact": true,
+      "prose_overlap": true,
+      "template_impact": true,
+      "plain_explanation": "Security deposit clause detected. Verify deposit does not exceed statutory cap (MTA s.11: max 2 months rent). Extracted: 1,000",
+      "tenant_impact": "This is a medium-risk clause of type deposit.",
+      "elapsed_s": 89.5
+    },
+    {
+      "source": "lease_12_medoffice_accessiblecare_valleyview",
+      "rule_id": "deposit.cap_exceeded",
+      "parse_ok": true,
+      "gold": {
+        "clause_type": "deposit",
+        "risk_level": "medium",
+        "statute": "MTA 2021 s.11(1)(a)"
+      },
+      "out": {
+        "clause_type": "deposit",
+        "risk_level": "medium",
+        "statute": "MTA 2021 s.11(1)(a)"
+      },
+      "field_fidelity": [
+        true,
+        true,
+        true
+      ],
+      "prose_exact": true,
+      "prose_overlap": true,
+      "template_impact": true,
+      "plain_explanation": "Security deposit clause detected. Verify deposit does not exceed statutory cap (MTA s.11: max 2 months rent). Extracted: 28,500",
+      "tenant_impact": "This is a medium-risk clause of type deposit.",
+      "elapsed_s": 97.2
+    },
+    {
+      "source": "lease_22_bigbox_vantage_greatland_aug",
+      "rule_id": "termination.landlord_only",
+      "parse_ok": true,
+      "gold": {
+        "clause_type": "termination",
+        "risk_level": "low",
+        "statute": "MTA 2021 s.7"
+      },
+      "out": {
+        "clause_type": "termination",
+        "risk_level": "low",
+        "statute": "MTA 2021 s.7"
+      },
+      "field_fidelity": [
+        true,
+        true,
+        true
+      ],
+      "prose_exact": true,
+      "prose_overlap": true,
+      "template_impact": true,
+      "plain_explanation": "Termination right appears to be granted to Landlord only. Check for corresponding Tenant termination right.",
+      "tenant_impact": "This is a low-risk clause of type termination.",
+      "elapsed_s": 102.9
+    },
+    {
+      "source": "lease_11_restaurant_saffronrow_copperpot",
+      "rule_id": "late_fee.excessive",
+      "parse_ok": true,
+      "gold": {
+        "clause_type": "late_fee",
+        "risk_level": "medium",
+        "statute": "general"
+      },
+      "out": {
+        "clause_type": "late_fee",
+        "risk_level": "medium",
+        "statute": "general"
+      },
+      "field_fidelity": [
+        true,
+        true,
+        true
+      ],
+      "prose_exact": true,
+      "prose_overlap": true,
+      "template_impact": true,
+      "plain_explanation": "Late fee clause detected. Verify fee rate is within jurisdictional norms. Extracted: 12",
+      "tenant_impact": "This is a medium-risk clause of type late_fee.",
+      "elapsed_s": 108.1
+    },
+    {
+      "source": "lease_01_office_meridian",
+      "rule_id": "maintenance.incorporation_by_ref",
+      "parse_ok": true,
+      "gold": {
+        "clause_type": "utilities",
+        "risk_level": "info",
+        "statute": "general"
+      },
+      "out": {
+        "clause_type": "utilities",
+        "risk_level": "info",
+        "statute": "general"
+      },
+      "field_fidelity": [
+        true,
+        true,
+        true
+      ],
+      "prose_exact": true,
+      "prose_overlap": true,
+      "template_impact": true,
+      "plain_explanation": "Terms are incorporated by reference without reproduction in the document, creating a blind spot for review.",
+      "tenant_impact": "This is a info-risk clause of type utilities.",
+      "elapsed_s": 112.9
+    },
+    {
+      "source": "lease_01_office_meridian_aug",
+      "rule_id": "subletting.change_of_control",
+      "parse_ok": true,
+      "gold": {
+        "clause_type": "subletting",
+        "risk_level": "low",
+        "statute": "general"
+      },
+      "out": {
+        "clause_type": "termination",
+        "risk_level": "low",
+        "statute": "general"
+      },
+      "field_fidelity": [
+        false,
+        true,
+        true
+      ],
+      "prose_exact": true,
+      "prose_overlap": true,
+      "template_impact": true,
+      "plain_explanation": "Change-of-control consent provision detected. Verify threshold is reasonable. Extracted threshold:",
+      "tenant_impact": "This is a low-risk clause of type termination.",
+      "elapsed_s": 117.9
+    },
+    {
+      "source": "lease_05_smallsuite_thornfield_aug",
+      "rule_id": "termination.sole_discretion",
+      "parse_ok": true,
+      "gold": {
+        "clause_type": "rent",
+        "risk_level": "low",
+        "statute": "general"
+      },
+      "out": {
+        "clause_type": "rent",
+        "risk_level": "low",
+        "statute": "general"
+      },
+      "field_fidelity": [
+        true,
+        true,
+        true
+      ],
+      "prose_exact": true,
+      "prose_overlap": true,
+      "template_impact": true,
+      "plain_explanation": "Clause uses 'sole discretion' language, which gives the landlord unilateral control. This may limit tenant remedies.",
+      "tenant_impact": "This is a low-risk clause of type rent.",
+      "elapsed_s": 123.0
+    },
+    {
+      "source": "lease_19_restaurant_saltmark_tidewater",
+      "rule_id": "dispute_resolution.jury_waiver",
+      "parse_ok": true,
+      "gold": {
+        "clause_type": "dispute_resolution",
+        "risk_level": "info",
+        "statute": "general"
+      },
+      "out": {
+        "clause_type": "dispute_resolution",
+        "risk_level": "info",
+        "statute": "general"
+      },
+      "field_fidelity": [
+        true,
+        true,
+        true
+      ],
+      "prose_exact": true,
+      "prose_overlap": true,
+      "template_impact": true,
+      "plain_explanation": "Tenant waives jury trial right, removing access to jury in lease-related litigation.",
+      "tenant_impact": "This is a info-risk clause of type dispute_resolution.",
+      "elapsed_s": 128.3
+    },
+    {
+      "source": "lease_04_mixeduse_silverline",
+      "rule_id": "subletting.change_of_control",
+      "parse_ok": true,
+      "gold": {
+        "clause_type": "unknown",
+        "risk_level": "low",
+        "statute": "general"
+      },
+      "out": {
+        "clause_type": "termination",
+        "risk_level": "low",
+        "statute": "general"
+      },
+      "field_fidelity": [
+        false,
+        true,
+        true
+      ],
+      "prose_exact": true,
+      "prose_overlap": true,
+      "template_impact": true,
+      "plain_explanation": "Change-of-control consent provision detected. Verify threshold is reasonable. Extracted threshold:",
+      "tenant_impact": "This is a low-risk clause of type termination.",
+      "elapsed_s": 133.3
+    },
+    {
+      "source": "lease_06_table_rentschedule_bellwood",
+      "rule_id": "rent.uncapped_passthrough",
+      "parse_ok": true,
+      "gold": {
+        "clause_type": "utilities",
+        "risk_level": "medium",
+        "statute": "general"
+      },
+      "out": {
+        "clause_type": "utilities",
+        "risk_level": "medium",
+        "statute": "general"
+      },
+      "field_fidelity": [
+        true,
+        true,
+        true
+      ],
+      "prose_exact": true,
+      "prose_overlap": true,
+      "template_impact": true,
+      "plain_explanation": "Operating expense passthrough has no stated annual cap, exposing tenant to uncapped cost growth.",
+      "tenant_impact": "This is a medium-risk clause of type utilities.",
+      "elapsed_s": 139.6
+    },
+    {
+      "source": "lease_20_lab_helix_meridiangenomics_aug",
+      "rule_id": "deposit.cap_exceeded",
+      "parse_ok": true,
+      "gold": {
+        "clause_type": "rent",
+        "risk_level": "medium",
+        "statute": "MTA 2021 s.11(1)(a)"
+      },
+      "out": {
+        "clause_type": "rent",
+        "risk_level": "medium",
+        "statute": "MTA 2021 s.11(1)(a)"
+      },
+      "field_fidelity": [
+        true,
+        true,
+        true
+      ],
+      "prose_exact": true,
+      "prose_overlap": true,
+      "template_impact": true,
+      "plain_explanation": "Security deposit clause detected. Verify deposit does not exceed statutory cap (MTA s.11: max 2 months rent). Extracted:",
+      "tenant_impact": "This is a medium-risk clause of type rent.",
+      "elapsed_s": 147.4
+    },
+    {
+      "source": "lease_06_table_rentschedule_bellwood_aug",
+      "rule_id": "insurance.tenant_pays_all",
+      "parse_ok": true,
+      "gold": {
+        "clause_type": "utilities",
+        "risk_level": "info",
+        "statute": "general"
+      },
+      "out": {
+        "clause_type": "utilities",
+        "risk_level": "info",
+        "statute": "general"
+      },
+      "field_fidelity": [
+        true,
+        true,
+        true
+      ],
+      "prose_exact": true,
+      "prose_overlap": true,
+      "template_impact": true,
+      "plain_explanation": "Tenant bears costs for the Landlord's insurance. Verify the insurance-cost allocation is not one-sided.",
+      "tenant_impact": "This is a info-risk clause of type utilities.",
+      "elapsed_s": 153.7
+    },
+    {
+      "source": "lease_05_smallsuite_thornfield_aug",
+      "rule_id": "dispute_resolution.contra_proferentem",
+      "parse_ok": true,
+      "gold": {
+        "clause_type": "unknown",
+        "risk_level": "info",
+        "statute": "general"
+      },
+      "out": {
+        "clause_type": "termination",
+        "risk_level": "info",
+        "statute": "general"
+      },
+      "field_fidelity": [
+        false,
+        true,
+        true
+      ],
+      "prose_exact": true,
+      "prose_overlap": true,
+      "template_impact": true,
+      "plain_explanation": "Clause waives the contra proferentem interpretation rule, removing a tenant-protective ambiguity resolution principle.",
+      "tenant_impact": "This is a info-risk clause of type termination.",
+      "elapsed_s": 159.4
+    },
+    {
+      "source": "lease_08_warehouse_hazelbrook_ferrovia",
+      "rule_id": "late_fee.excessive",
+      "parse_ok": true,
+      "gold": {
+        "clause_type": "unknown",
+        "risk_level": "medium",
+        "statute": "general"
+      },
+      "out": {
+        "clause_type": "late_fee",
+        "risk_level": "medium",
+        "statute": "general"
+      },
+      "field_fidelity": [
+        false,
+        true,
+        true
+      ],
+      "prose_exact": true,
+      "prose_overlap": true,
+      "template_impact": true,
+      "plain_explanation": "Late fee clause detected. Verify fee rate is within jurisdictional norms. Extracted:",
+      "tenant_impact": "This is a medium-risk clause of type late_fee.",
+      "elapsed_s": 164.1
+    }
+  ]
+}

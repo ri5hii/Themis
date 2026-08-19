@@ -31,3 +31,23 @@ git commit (+ dirty flag), package version, and a SHA-256 of the training
 rows — and `themis analyze` records which classifier/gate versions a run
 consumed under `artifacts` in its JSON output. Retraining never overwrites:
 the previous artifact is moved to `models/backups/<kind>/<stamp>/`.
+
+## SLM retrain → deploy cycle
+
+`themis train slm` writes a LoRA adapter (QLoRA 8-bit needs
+`PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True --max-length 384` on
+~4 GB GPUs). The runtime model is a GGUF quant, so deploy is:
+
+```bash
+python scripts/merge_lora.py                 # adapter -> models/qwen2.5-1.5b-merged/
+python tools/convert_hf_to_gguf.py models/qwen2.5-1.5b-merged \
+    --outfile models/qwen2.5-1.5b/qwen2.5-1.5b-instruct-tuned-q8_0.gguf --outtype q8_0
+python scripts/eval_field_fidelity.py        # held-out fidelity gate
+```
+
+The assistant targets come from curated plain-language golds
+(`data/finetune/gold_prose.jsonl`, keyed by lease × rule) built from the
+Claude `risk_flags`; uncurated findings fall back to the template target.
+`scripts/verify_repo.py` gates on the fidelity eval (parse 1.0, no template,
+no rationale echo). `tools/convert_hf_to_gguf.py` is pinned to llama.cpp
+commit a290ce6 (matches the installed `gguf` 0.19.0).

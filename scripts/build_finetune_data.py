@@ -25,8 +25,81 @@ from legalrag.risk import RULES, analyzeRisk
 from legalrag.slm.grammar import SYSTEM_PROMPT, make_finding_prompt
 
 
-def build_pairs_from_pdf(pdf_path: Path) -> list[dict]:
-    """Extract findings from a single PDF and build training pairs."""
+def load_golds(path: Path) -> dict[tuple[str, str], dict]:
+    """Load curated gold prose keyed by (source stem, rule_id)."""
+    golds: dict[tuple[str, str], dict] = {}
+    if path.exists():
+        with path.open(encoding="utf-8") as fh:
+            for line in fh:
+                g = json.loads(line)
+                golds[(g["source"], g["rule_id"])] = g
+    return golds
+
+
+def _pairs_from_findings(
+    source: str,
+    findings: list[dict],
+    golds: dict[tuple[str, str], dict],
+    stats: dict,
+) -> list[dict]:
+    """Build training pairs from engine findings (canonical analysis output)."""
+    pairs = []
+    for finding in findings:
+        user_msg = make_finding_prompt(
+            finding["clause_text"],
+            finding["rationale"],
+            finding["risk_level"],
+            finding["statute"],
+            finding["grounding"],
+            clause_type=finding["clause_type"],
+        )
+        gold = golds.get((source, finding["rule_id"]))
+        if gold:
+            plain_explanation = gold["plain_explanation"]
+            tenant_impact = gold["tenant_impact"]
+            stats["gold"] += 1
+        else:
+            plain_explanation = finding["rationale"][:300]
+            tenant_impact = f"This is a {finding['risk_level']}-risk clause of type {finding['clause_type']}."
+            stats["fallback"].append((source, finding["rule_id"]))
+        # Engine-authoritative fields stamped over SLM's self-reported values
+        assistant_msg = json.dumps({
+            "clause_type": finding["clause_type"],
+            "risk_level": finding["risk_level"],
+            "statute": finding["statute"],
+            "plain_explanation": plain_explanation,
+            "tenant_impact": tenant_impact,
+        }, ensure_ascii=False)
+
+        pairs.append({
+            "messages": [
+                {"role": "system", "content": SYSTEM_PROMPT},
+                {"role": "user", "content": user_msg},
+                {"role": "assistant", "content": assistant_msg},
+            ],
+            "source": source,
+            "rule_id": finding["rule_id"],
+        })
+    return pairs
+
+
+def build_pairs_from_pdf(
+    pdf_path: Path,
+    golds: dict[tuple[str, str], dict],
+    stats: dict,
+    analysis_dir: Path,
+) -> list[dict]:
+    """Build training pairs for a single PDF.
+
+    Prefers the canonical analysis output in analysis_dir (grounding-
+    verified, consistent with the curated golds); falls back to on-the-fly
+    analysis when the file is missing.
+    """
+    canonical = analysis_dir / f"{pdf_path.stem}.json"
+    if canonical.exists():
+        data = json.loads(canonical.read_text(encoding="utf-8"))
+        return _pairs_from_findings(pdf_path.stem, data["findings"], golds, stats)
+
     extraction = extractText(pdf_path)
     raw_sections = splitParagraphs(extraction.full_text)
 
@@ -43,36 +116,16 @@ def build_pairs_from_pdf(pdf_path: Path) -> list[dict]:
         })
 
     analysis = analyzeRisk(section_dicts, RULES)
-    pairs = []
-
-    for finding in analysis.findings:
-        user_msg = make_finding_prompt(
-            finding.clause_text,
-            finding.rationale,
-            finding.risk_level,
-            finding.statute,
-            finding.grounding,
-        )
-        # Engine-authoritative fields stamped over SLM's self-reported values
-        assistant_msg = json.dumps({
-            "clause_type": finding.clause_type,
-            "risk_level": finding.risk_level,
-            "statute": finding.statute,
-            "plain_explanation": finding.rationale[:300],
-            "tenant_impact": f"This is a {finding.risk_level}-risk clause of type {finding.clause_type}.",
-        }, ensure_ascii=False)
-
-        pairs.append({
-            "messages": [
-                {"role": "system", "content": SYSTEM_PROMPT},
-                {"role": "user", "content": user_msg},
-                {"role": "assistant", "content": assistant_msg},
-            ],
-            "source": pdf_path.stem,
-            "rule_id": finding.rule_id,
-        })
-
-    return pairs
+    findings = [{
+        "clause_text": f.clause_text,
+        "clause_type": f.clause_type,
+        "risk_level": f.risk_level,
+        "statute": f.statute,
+        "rationale": f.rationale,
+        "grounding": f.grounding,
+        "rule_id": f.rule_id,
+    } for f in analysis.findings]
+    return _pairs_from_findings(pdf_path.stem, findings, golds, stats)
 
 
 def augment_pair(pair: dict, rng: random.Random) -> dict:
@@ -101,12 +154,17 @@ def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--augment", action="store_true", help="Include augmented pairs")
     parser.add_argument("--output", "-o", default="data/finetune", help="Output directory")
+    parser.add_argument("--golds", default="data/finetune/gold_prose.jsonl", help="Curated gold prose file")
+    parser.add_argument("--analysis-dir", default="eval/analysis_slm", help="Canonical analysis output dir")
     parser.add_argument("--seed", type=int, default=42)
     parser.add_argument("--eval-split", type=float, default=0.15, help="Fraction for eval")
     args = parser.parse_args()
 
     out_dir = Path(args.output)
     out_dir.mkdir(parents=True, exist_ok=True)
+    golds = load_golds(Path(args.golds))
+    print(f"[golds] {len(golds)} curated entries from {args.golds}")
+    analysis_dir = Path(args.analysis_dir)
 
     # Find all test PDFs
     test_dir = Path("claudeTestDocs")
@@ -117,12 +175,18 @@ def main() -> int:
         return 1
 
     all_pairs = []
+    stats = {"gold": 0, "fallback": []}
     for pdf in pdfs:
-        pairs = build_pairs_from_pdf(pdf)
+        pairs = build_pairs_from_pdf(pdf, golds, stats, analysis_dir)
         all_pairs.extend(pairs)
         print(f"[pair] {pdf.name}: {len(pairs)} findings")
 
     print(f"\n[total] {len(all_pairs)} base pairs")
+    print(f"[gold] {stats['gold']}/{len(all_pairs)} pairs use curated prose")
+    if stats["fallback"]:
+        print(f"[fallback] {len(stats['fallback'])} pairs use template prose:")
+        for src, rule in stats["fallback"]:
+            print(f"  - {src}: {rule}")
 
     # Augment
     if args.augment and all_pairs:

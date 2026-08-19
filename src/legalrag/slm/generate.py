@@ -85,7 +85,9 @@ def simplifyFinding(
         model_path = next((str(c) for c in candidates if c.exists()), str(candidates[0]))
 
     model, grammar = _load_model(model_path, n_ctx, n_threads)
-    user_prompt = make_finding_prompt(clause_text, rationale, risk_level, statute, grounding)
+    user_prompt = make_finding_prompt(
+        clause_text, rationale, risk_level, statute, grounding, clause_type=clause_type
+    )
 
     out = model.create_chat_completion(
         messages=[

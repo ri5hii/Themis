@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "legalrag"
-version = "0.6.5"
+version = "0.6.10"
 description = "RAG-based legal document analysis to narrow the access-to-justice gap"
 requires-python = ">=3.10"
 dependencies = [

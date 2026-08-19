@@ -1,0 +1,688 @@
+{
+  "n": 26,
+  "parse_rate": 1.0,
+  "field_fidelity": 0.769,
+  "prose_exact_rate": 0.0,
+  "prose_overlap_rate": 0.0,
+  "template_impact_rate": 0.0,
+  "elapsed_s": 270.6,
+  "per_item_s": 10.4,
+  "items": [
+    {
+      "source": "lease_03_industrial_ferrous_SCANNED",
+      "rule_id": "termination.sole_discretion",
+      "parse_ok": true,
+      "gold": {
+        "clause_type": "termination",
+        "risk_level": "low",
+        "statute": "general"
+      },
+      "out": {
+        "clause_type": "termination",
+        "risk_level": "low",
+        "statute": "general"
+      },
+      "field_fidelity": [
+        true,
+        true,
+        true
+      ],
+      "prose_exact": false,
+      "prose_overlap": false,
+      "template_impact": false,
+      "plain_explanation": "Reinstatement of the lease after a default and cure is at the landlord's 'sole discretion,' which gives the landlord unilateral control and limits the tenant's remedies.",
+      "tenant_impact": "If you default, the landlord can decide on its own whether and how to reinstate the lease, giving you less protection than a binding obligation.",
+      "elapsed_s": 8.8
+    },
+    {
+      "source": "lease_14_petfriendly_maplecourt_barkavenue",
+      "rule_id": "rent.excessive_escalation",
+      "parse_ok": true,
+      "gold": {
+        "clause_type": "rent",
+        "risk_level": "medium",
+        "statute": "MTA 2021 s.9"
+      },
+      "out": {
+        "clause_type": "rent",
+        "risk_level": "medium",
+        "statute": "MTA 2021 s.9"
+      },
+      "field_fidelity": [
+        true,
+        true,
+        true
+      ],
+      "prose_exact": false,
+      "prose_overlap": false,
+      "template_impact": false,
+      "plain_explanation": "The rent escalation cadence is stated as '3% annual escalations,' so verify that this cadence is within normal market practice.",
+      "tenant_impact": "Rent jumps by 3% each year, which may create a jarring financial shock for the tenant.",
+      "elapsed_s": 16.5
+    },
+    {
+      "source": "lease_02_retail_sundial_aug",
+      "rule_id": "dispute_resolution.mandatory_arbitration",
+      "parse_ok": true,
+      "gold": {
+        "clause_type": "dispute_resolution",
+        "risk_level": "info",
+        "statute": "general"
+      },
+      "out": {
+        "clause_type": "dispute_resolution",
+        "risk_level": "info",
+        "statute": "general"
+      },
+      "field_fidelity": [
+        true,
+        true,
+        true
+      ],
+      "prose_exact": false,
+      "prose_overlap": false,
+      "template_impact": false,
+      "plain_explanation": "Disputes over rent or termination must be resolved by binding arbitration, which waives the tenant's access to court.",
+      "tenant_impact": "You must resolve landlord-tenant disputes in a confidential arbitration, not in court, giving the landlord a preferential forum.",
+      "elapsed_s": 24.1
+    },
+    {
+      "source": "lease_21_parking_apex_downtownvalet_aug",
+      "rule_id": "late_fee.excessive",
+      "parse_ok": true,
+      "gold": {
+        "clause_type": "late_fee",
+        "risk_level": "medium",
+        "statute": "general"
+      },
+      "out": {
+        "clause_type": "late_fee",
+        "risk_level": "medium",
+        "statute": "general"
+      },
+      "field_fidelity": [
+        true,
+        true,
+        true
+      ],
+      "prose_exact": false,
+      "prose_overlap": false,
+      "template_impact": false,
+      "plain_explanation": "Late fee clause detected, so verify the fee rate is within jurisdictional norms.",
+      "tenant_impact": "If the late fee exceeds the jurisdiction's posted rate, this could increase your out-of-pocket costs for late payment.",
+      "elapsed_s": 30.4
+    },
+    {
+      "source": "lease_10_groundlease_meadowline_cascade",
+      "rule_id": "termination.landlord_only",
+      "parse_ok": true,
+      "gold": {
+        "clause_type": "termination",
+        "risk_level": "low",
+        "statute": "delhi_rent_control_1958#s.17"
+      },
+      "out": {
+        "clause_type": "termination",
+        "risk_level": "low",
+        "statute": "delhi_rent_control_1958#s.17"
+      },
+      "field_fidelity": [
+        true,
+        true,
+        true
+      ],
+      "prose_exact": false,
+      "prose_overlap": false,
+      "template_impact": false,
+      "plain_explanation": "The landlord may terminate the lease only for a 'monetary default,' but the statute does not create a corresponding tenant termination right, so the landlord's termination right is more powerful than the tenant's.",
+      "tenant_impact": "If the landlord terminates, you have no right to terminate in return; the landlord can end the tenancy without your consent.",
+      "elapsed_s": 42.0
+    },
+    {
+      "source": "lease_04_mixeduse_silverline_aug",
+      "rule_id": "subletting.change_of_control",
+      "parse_ok": true,
+      "gold": {
+        "clause_type": "subletting",
+        "risk_level": "low",
+        "statute": "general"
+      },
+      "out": {
+        "clause_type": "subletting",
+        "risk_level": "low",
+        "statute": "general"
+      },
+      "field_fidelity": [
+        true,
+        true,
+        true
+      ],
+      "prose_exact": false,
+      "prose_overlap": false,
+      "template_impact": false,
+      "plain_explanation": "Change-of-control consent is triggered at a 50% equity-transfer threshold, which can restrict routine tenant financing or ownership restructuring.",
+      "tenant_impact": "Change-of-control consent may block routine tenant restructuring or financing.",
+      "elapsed_s": 47.9
+    },
+    {
+      "source": "lease_22_bigbox_vantage_greatland",
+      "rule_id": "rent.excessive_escalation",
+      "parse_ok": true,
+      "gold": {
+        "clause_type": "rent",
+        "risk_level": "medium",
+        "statute": "MTA 2021 s.9"
+      },
+      "out": {
+        "clause_type": "rent",
+        "risk_level": "medium",
+        "statute": "MTA 2021 s.9"
+      },
+      "field_fidelity": [
+        true,
+        true,
+        true
+      ],
+      "prose_exact": false,
+      "prose_overlap": false,
+      "template_impact": false,
+      "plain_explanation": "Rent escalation is triggered at a 20% increase every five years, which is a high cadence and should be checked against market norms.",
+      "tenant_impact": "Your tenant-rented space will experience frequent, steep rent increases, affecting your cash flow and tenant deposit.",
+      "elapsed_s": 62.4
+    },
+    {
+      "source": "lease_03_industrial_ferrous_SCANNED_aug",
+      "rule_id": "holdover.punitive_rate",
+      "parse_ok": true,
+      "gold": {
+        "clause_type": "holdover",
+        "risk_level": "medium",
+        "statute": "MTA 2021 s.23"
+      },
+      "out": {
+        "clause_type": "holdover",
+        "risk_level": "medium",
+        "statute": "MTA 2021 s.23"
+      },
+      "field_fidelity": [
+        true,
+        true,
+        true
+      ],
+      "prose_exact": false,
+      "prose_overlap": false,
+      "template_impact": false,
+      "plain_explanation": "Lease uses 'tenants at sufferance' terminology, which may expose the tenant to uncapped holdover liability.",
+      "tenant_impact": "If you remain in possession after the termination date, you could owe rent equal to the full remaining term's rent, with no cap.",
+      "elapsed_s": 73.5
+    },
+    {
+      "source": "lease_17_multitenant_regent_kestrel",
+      "rule_id": "deposit.cap_exceeded",
+      "parse_ok": true,
+      "gold": {
+        "clause_type": "deposit",
+        "risk_level": "medium",
+        "statute": "delhi_rent_control_1958#s.26"
+      },
+      "out": {
+        "clause_type": "deposit",
+        "risk_level": "medium",
+        "statute": "delhi_rent_control_1958#s.11"
+      },
+      "field_fidelity": [
+        true,
+        true,
+        false
+      ],
+      "prose_exact": false,
+      "prose_overlap": false,
+      "template_impact": false,
+      "plain_explanation": "The security deposit clause appears to exceed the statutory maximum of two months' rent (MTA s.11), so the actual deposit amount should be checked.",
+      "tenant_impact": "You should confirm the deposit does not exceed the statutory cap.",
+      "elapsed_s": 87.6
+    },
+    {
+      "source": "lease_14_petfriendly_maplecourt_barkavenue",
+      "rule_id": "deposit.cap_exceeded",
+      "parse_ok": true,
+      "gold": {
+        "clause_type": "deposit",
+        "risk_level": "medium",
+        "statute": "delhi_rent_control_1958#s.26"
+      },
+      "out": {
+        "clause_type": "deposit",
+        "risk_level": "medium",
+        "statute": "delhi_rent_control_1958#s.11"
+      },
+      "field_fidelity": [
+        true,
+        true,
+        false
+      ],
+      "prose_exact": false,
+      "prose_overlap": false,
+      "template_impact": false,
+      "plain_explanation": "The security deposit clause uses plain language, so no translation is needed.",
+      "tenant_impact": "Your deposit of $11,700 exceeds the maximum of two months' rent under s.11 of the Rents Act.",
+      "elapsed_s": 100.1
+    },
+    {
+      "source": "lease_05_smallsuite_thornfield_aug",
+      "rule_id": "dispute_resolution.one_way_indemnity",
+      "parse_ok": true,
+      "gold": {
+        "clause_type": "unknown",
+        "risk_level": "info",
+        "statute": "general"
+      },
+      "out": {
+        "clause_type": "rent",
+        "risk_level": "info",
+        "statute": "general"
+      },
+      "field_fidelity": [
+        false,
+        true,
+        true
+      ],
+      "prose_exact": false,
+      "prose_overlap": false,
+      "template_impact": false,
+      "plain_explanation": "The tenant agrees to indemnify, defend, and hold the landlord harmless from any claims, but there is no corresponding obligation for the landlord to indemnify the tenant in the event of a claim against the premises.",
+      "tenant_impact": "If the premises are damaged, the landlord may have to pay damages, but the tenant may have to reimburse the landlord.",
+      "elapsed_s": 112.2
+    },
+    {
+      "source": "lease_06_table_rentschedule_bellwood_aug",
+      "rule_id": "late_fee.excessive",
+      "parse_ok": true,
+      "gold": {
+        "clause_type": "late_fee",
+        "risk_level": "medium",
+        "statute": "general"
+      },
+      "out": {
+        "clause_type": "late_fee",
+        "risk_level": "medium",
+        "statute": "general"
+      },
+      "field_fidelity": [
+        true,
+        true,
+        true
+      ],
+      "prose_exact": false,
+      "prose_overlap": false,
+      "template_impact": false,
+      "plain_explanation": "The late fee is five percent of any late payment, a relatively high rate that should be checked against jurisdictional norms.",
+      "tenant_impact": "A late fee of five percent could eat into your profit margin.",
+      "elapsed_s": 121.1
+    },
+    {
+      "source": "lease_02_retail_sundial_aug",
+      "rule_id": "rent.uncapped_passthrough",
+      "parse_ok": true,
+      "gold": {
+        "clause_type": "rent",
+        "risk_level": "medium",
+        "statute": "general"
+      },
+      "out": {
+        "clause_type": "rent",
+        "risk_level": "medium",
+        "statute": "general"
+      },
+      "field_fidelity": [
+        true,
+        true,
+        true
+      ],
+      "prose_exact": false,
+      "prose_overlap": false,
+      "template_impact": false,
+      "plain_explanation": "Operating expense passthrough has no stated annual cap, so the tenant bears the full cost of these expenses without a limit.",
+      "tenant_impact": "You may have to absorb additional costs each year beyond what the rent increases cover.",
+      "elapsed_s": 129.1
+    },
+    {
+      "source": "lease_05_smallsuite_thornfield_aug",
+      "rule_id": "dispute_resolution.one_way_indemnity",
+      "parse_ok": true,
+      "gold": {
+        "clause_type": "unknown",
+        "risk_level": "info",
+        "statute": "general"
+      },
+      "out": {
+        "clause_type": "no_obligation",
+        "risk_level": "info",
+        "statute": "general"
+      },
+      "field_fidelity": [
+        false,
+        true,
+        true
+      ],
+      "prose_exact": false,
+      "prose_overlap": false,
+      "template_impact": false,
+      "plain_explanation": "The tenant must indemnify, defend, and hold the landlord harmless from claims arising out of the tenant's use of the premises, but the tenant does not have to indemnify the landlord in return for the tenant's own claims.",
+      "tenant_impact": "If you have a claim against the landlord, you may have to pay the landlord's legal fees, but you do not have to pay your own legal fees if the landlord sues you first.",
+      "elapsed_s": 142.0
+    },
+    {
+      "source": "lease_01_office_meridian",
+      "rule_id": "termination.landlord_only",
+      "parse_ok": true,
+      "gold": {
+        "clause_type": "termination",
+        "risk_level": "low",
+        "statute": "delhi_rent_control_1958#s.17"
+      },
+      "out": {
+        "clause_type": "termination",
+        "risk_level": "low",
+        "statute": "delhi_rent_control_1958#s.17"
+      },
+      "field_fidelity": [
+        true,
+        true,
+        true
+      ],
+      "prose_exact": false,
+      "prose_overlap": false,
+      "template_impact": false,
+      "plain_explanation": "The landlord has a termination right only, with no corresponding tenant termination right.",
+      "tenant_impact": "If the landlord terminates, you have no right to do so in return.",
+      "elapsed_s": 152.8
+    },
+    {
+      "source": "lease_03_industrial_ferrous_SCANNED_aug",
+      "rule_id": "termination.sole_discretion",
+      "parse_ok": true,
+      "gold": {
+        "clause_type": "termination",
+        "risk_level": "low",
+        "statute": "general"
+      },
+      "out": {
+        "clause_type": "termination",
+        "risk_level": "low",
+        "statute": "general"
+      },
+      "field_fidelity": [
+        true,
+        true,
+        true
+      ],
+      "prose_exact": false,
+      "prose_overlap": false,
+      "template_impact": false,
+      "plain_explanation": "The landlord retains 'sole discretion' to reinstate the lease upon terms mutually agreed, which gives the landlord unilateral control and limits the tenant's remedies.",
+      "tenant_impact": "If your business experiences a repeated late payment, the landlord could unilaterally reinstate the lease on different terms than those you agreed to, potentially locking you into unfavorable terms.",
+      "elapsed_s": 163.4
+    },
+    {
+      "source": "lease_04_mixeduse_silverline",
+      "rule_id": "maintenance.liability_disclaim",
+      "parse_ok": true,
+      "gold": {
+        "clause_type": "maintenance",
+        "risk_level": "low",
+        "statute": "mta_2021#s.15"
+      },
+      "out": {
+        "clause_type": "maintenance",
+        "risk_level": "low",
+        "statute": "mta_2021#s.15"
+      },
+      "field_fidelity": [
+        true,
+        true,
+        true
+      ],
+      "prose_exact": false,
+      "prose_overlap": false,
+      "template_impact": false,
+      "plain_explanation": "The landlord disclaims liability for theft or vandalism of tenant property, shifting the security-related loss risk entirely to the tenant.",
+      "tenant_impact": "If your property is stolen or vandalized, you could be responsible for the full replacement cost.",
+      "elapsed_s": 176.5
+    },
+    {
+      "source": "lease_01_office_meridian_aug",
+      "rule_id": "subletting.change_of_control",
+      "parse_ok": true,
+      "gold": {
+        "clause_type": "subletting",
+        "risk_level": "low",
+        "statute": "general"
+      },
+      "out": {
+        "clause_type": "subletting",
+        "risk_level": "low",
+        "statute": "general"
+      },
+      "field_fidelity": [
+        true,
+        true,
+        true
+      ],
+      "prose_exact": false,
+      "prose_overlap": false,
+      "template_impact": false,
+      "plain_explanation": "Change-of-control consent is triggered at a 50% equity-transfer threshold, which is relatively high and may restrict routine tenant financing or ownership restructuring.",
+      "tenant_impact": "Change-of-control consent could block routine tenant financing or ownership restructuring.",
+      "elapsed_s": 185.5
+    },
+    {
+      "source": "lease_06_table_rentschedule_bellwood",
+      "rule_id": "insurance.tenant_pays_all",
+      "parse_ok": true,
+      "gold": {
+        "clause_type": "utilities",
+        "risk_level": "info",
+        "statute": "general"
+      },
+      "out": {
+        "clause_type": "utilities",
+        "risk_level": "info",
+        "statute": "general"
+      },
+      "field_fidelity": [
+        true,
+        true,
+        true
+      ],
+      "prose_exact": false,
+      "prose_overlap": false,
+      "template_impact": false,
+      "plain_explanation": "The landlord's insurance cost is split 9.6% between the tenant and the landlord, which could result in the landlord absorbing a disproportionate share of the insurance cost.",
+      "tenant_impact": "You should ensure the insurance cost split is fair by checking the premium per square foot and comparing it to market rates.",
+      "elapsed_s": 196.8
+    },
+    {
+      "source": "lease_16_popup_lumen_giltgrove",
+      "rule_id": "rent.upfront_payment",
+      "parse_ok": true,
+      "gold": {
+        "clause_type": "rent",
+        "risk_level": "low",
+        "statute": "delhi_rent_control_1958#s.5"
+      },
+      "out": {
+        "clause_type": "rent",
+        "risk_level": "low",
+        "statute": "delhi_rent_control_1958#s.5"
+      },
+      "field_fidelity": [
+        true,
+        true,
+        true
+      ],
+      "prose_exact": false,
+      "prose_overlap": false,
+      "template_impact": false,
+      "plain_explanation": "The full rent is payable in advance at signing, a significant upfront cash commitment for the tenant.",
+      "tenant_impact": "Bringing a deposit or advance payment of rent is a major financing decision for your business.",
+      "elapsed_s": 208.7
+    },
+    {
+      "source": "lease_13_datacenter_quorum_prismworks",
+      "rule_id": "deposit.cap_exceeded",
+      "parse_ok": true,
+      "gold": {
+        "clause_type": "rent",
+        "risk_level": "medium",
+        "statute": "delhi_rent_control_1958#s.26"
+      },
+      "out": {
+        "clause_type": "rent",
+        "risk_level": "medium",
+        "statute": "delhi_rent_control_1958#s.11"
+      },
+      "field_fidelity": [
+        true,
+        true,
+        false
+      ],
+      "prose_exact": false,
+      "prose_overlap": false,
+      "template_impact": false,
+      "plain_explanation": "The deposit clause appears to exceed the maximum statutory deposit cap of two months' rent.",
+      "tenant_impact": "You should check the deposit does not exceed this limit.",
+      "elapsed_s": 219.6
+    },
+    {
+      "source": "lease_20_lab_helix_meridiangenomics",
+      "rule_id": "deposit.cap_exceeded",
+      "parse_ok": true,
+      "gold": {
+        "clause_type": "rent",
+        "risk_level": "medium",
+        "statute": "delhi_rent_control_1958#s.26"
+      },
+      "out": {
+        "clause_type": "rent",
+        "risk_level": "medium",
+        "statute": "delhi_rent_control_1958#s.11"
+      },
+      "field_fidelity": [
+        true,
+        true,
+        false
+      ],
+      "prose_exact": false,
+      "prose_overlap": false,
+      "template_impact": false,
+      "plain_explanation": "The deposit clause is triggered at the end of the term, so the deposit should be calculated based on the remaining term, not the full term as in the plain language.",
+      "tenant_impact": "You should calculate the deposit as a percentage of the remaining term, not as a flat multiple of the full term rent.",
+      "elapsed_s": 232.9
+    },
+    {
+      "source": "lease_19_restaurant_saltmark_tidewater_aug",
+      "rule_id": "rent.excessive_escalation",
+      "parse_ok": true,
+      "gold": {
+        "clause_type": "rent",
+        "risk_level": "medium",
+        "statute": "MTA 2021 s.9"
+      },
+      "out": {
+        "clause_type": "rent",
+        "risk_level": "medium",
+        "statute": "MTA 2021 s.9"
+      },
+      "field_fidelity": [
+        true,
+        true,
+        true
+      ],
+      "prose_exact": false,
+      "prose_overlap": false,
+      "template_impact": false,
+      "plain_explanation": "The rent escalation cadence is set at 3%, which is within norms but should be checked against market practice.",
+      "tenant_impact": "Staying on 3% could result in a subpar return for your investment.",
+      "elapsed_s": 244.6
+    },
+    {
+      "source": "lease_17_multitenant_regent_kestrel_aug",
+      "rule_id": "transaction.registration_costs",
+      "parse_ok": true,
+      "gold": {
+        "clause_type": "registration",
+        "risk_level": "low",
+        "statute": "general"
+      },
+      "out": {
+        "clause_type": "registration",
+        "risk_level": "low",
+        "statute": "general"
+      },
+      "field_fidelity": [
+        true,
+        true,
+        true
+      ],
+      "prose_exact": false,
+      "prose_overlap": false,
+      "template_impact": false,
+      "plain_explanation": "Stamp duty and registration costs are placed on the tenant, so the landlord bears this cost rather than the tenant.",
+      "tenant_impact": "You may have to pay registration fees yourself, increasing your out-of-pocket cost.",
+      "elapsed_s": 252.7
+    },
+    {
+      "source": "lease_17_multitenant_regent_kestrel",
+      "rule_id": "rent.excessive_escalation",
+      "parse_ok": true,
+      "gold": {
+        "clause_type": "rent",
+        "risk_level": "medium",
+        "statute": "MTA 2021 s.9"
+      },
+      "out": {
+        "clause_type": "rent",
+        "risk_level": "medium",
+        "statute": "MTA 2021 s.9"
+      },
+      "field_fidelity": [
+        true,
+        true,
+        true
+      ],
+      "prose_exact": false,
+      "prose_overlap": false,
+      "template_impact": false,
+      "plain_explanation": "The rent escalation clause uses a 15% increase at the end of every three years, so verify the cadence and percentage are within norms.",
+      "tenant_impact": "Rent can go up significantly over the term, so monitor the increase closely.",
+      "elapsed_s": 261.9
+    },
+    {
+      "source": "lease_19_restaurant_saltmark_tidewater",
+      "rule_id": "dispute_resolution.jury_waiver",
+      "parse_ok": true,
+      "gold": {
+        "clause_type": "dispute_resolution",
+        "risk_level": "info",
+        "statute": "general"
+      },
+      "out": {
+        "clause_type": "dispute_resolution",
+        "risk_level": "info",
+        "statute": "general"
+      },
+      "field_fidelity": [
+        true,
+        true,
+        true
+      ],
+      "prose_exact": false,
+      "prose_overlap": false,
+      "template_impact": false,
+      "plain_explanation": "The tenant waives its jury trial right in any lawsuit over the lease, removing access to a jury in lease-related litigation.",
+      "tenant_impact": "If a dispute goes to court, your case will be decided by a judge, not a jury, and your outcome will be less certain.",
+      "elapsed_s": 270.6
+    }
+  ]
+}

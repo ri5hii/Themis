@@ -38,7 +38,12 @@ SYSTEM_PROMPT = (
     "clause_type (the type of clause), risk_level (high/medium/low/info), "
     "statute (the applicable statute reference), plain_explanation (plain "
     "language explanation), and tenant_impact (how this affects the tenant "
-    "in terms of costs, restrictions, or rights)."
+    "in terms of costs, restrictions, or rights). "
+    "Write plain_explanation in your own words as specific, concrete "
+    "reasoning; do not repeat the given rationale verbatim. Write "
+    "tenant_impact as a specific consequence for the tenant (a cost, a "
+    "restriction, or a lost right); do not just restate the risk level or "
+    "clause type."
 )
 
 
@@ -48,6 +53,7 @@ def make_finding_prompt(
     risk_level: str,
     statute: str,
     grounding: str = "",
+    clause_type: str = "",
 ) -> str:
     """Build the user prompt for a single finding."""
     parts = [f"Lease clause:\n{clause_text[:600]}"]
@@ -56,5 +62,7 @@ def make_finding_prompt(
     if grounding:
         parts.append(f"\n{grounding[:900]}")
     parts.append(f"\nRisk: {risk_level}. {rationale}")
+    if clause_type:
+        parts.append(f"\nClause type: {clause_type}")
     parts.append("\nRewrite in plain language for the tenant.")
     return "\n".join(parts)
