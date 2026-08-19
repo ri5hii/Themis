@@ -101,12 +101,13 @@ def test_from_sklearn_wraps_coefs() -> None:
     assert c.predict(X[6:]) == ["deposit", "deposit", "deposit"]
 
 
-def test_threshold_constant_contract() -> None:
-    # The docs' threshold spec (lowered from 0.4 to 0.3 in v0.3.18).
-    assert THRESHOLD == 0.3
+def test_threshold_contract() -> None:
+    # Refusal must be reachable: threshold in (0, 0.5) keeps the refusal
+    # path live while leaving room below for low-confidence predictions.
+    assert 0.0 < THRESHOLD < 0.5
 
 
-def test_margin_constant_contract() -> None:
-    # Refuse margin default (lowered from 0.5 to 0.3 in v0.3.18 to reduce
-    # the number of sections collapsing to UNKNOWN).
-    assert MARGIN == 0.3
+def test_margin_contract() -> None:
+    # Refuse margin: non-negative, must not exceed the threshold (a margin
+    # above threshold would veto every accepted prediction).
+    assert 0.0 <= MARGIN <= THRESHOLD

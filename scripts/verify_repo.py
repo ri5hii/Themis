@@ -12,10 +12,13 @@ from __future__ import annotations
 
 import json
 import subprocess
+import sys
 from pathlib import Path
 
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "src"))
+
 ROOT = Path(__file__).resolve().parent.parent
-PY = str(ROOT / ".venv" / "bin" / "python")
+PY = sys.executable
 REPORT = ROOT / "eval" / "eda_report.json"
 SAMPLE = ROOT / "data" / "samples" / "sample_lease.txt"
 

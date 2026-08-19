@@ -1,6 +1,6 @@
 """LoRA fine-tuning of the plain-language SLM.
 
-PEFT LoRA on an instruct base model (default Llama-3.2-1B-Instruct; Qwen2.5
+PEFT LoRA on an instruct base model (default Qwen2.5-1.5B-Instruct; Llama-3.2
 and other chat-templated models work via --model). Trains on aligned
 finding→explanation pairs with engine-authoritative fields.
 
@@ -18,7 +18,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "src"))
 
-DEFAULT_MODEL = "meta-llama/Llama-3.2-1B-Instruct"
+DEFAULT_MODEL = "Qwen/Qwen2.5-1.5B-Instruct"
 DEFAULT_DATA = "data/finetune/train.jsonl"
 DEFAULT_EVAL = "data/finetune/eval.jsonl"
 DEFAULT_OUT = "models/finetuned/lora"
@@ -55,7 +55,6 @@ def main() -> int:
     parser.add_argument("--load-8bit", action="store_true", help="QLoRA: 8-bit base (needs bitsandbytes, CUDA)")
     parser.add_argument("--batch-size", type=int, default=1)
     parser.add_argument("--grad-accum", type=int, default=8)
-    parser.add_argument("--start-epoch", type=int, default=0, help="Resume from epoch")
     parser.add_argument("--eval-only", action="store_true", help="Skip training, eval only")
     args = parser.parse_args()
 
@@ -137,7 +136,7 @@ def main() -> int:
     optimizer = torch.optim.AdamW(model.parameters(), lr=args.lr)
 
     t0 = time.time()
-    for epoch in range(args.start_epoch, args.epochs):
+    for epoch in range(args.epochs):
         model.train()
         epoch_loss = 0.0
         n_batches = 0

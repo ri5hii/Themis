@@ -23,12 +23,12 @@ def ingest_output(tmp_path: Path) -> Path:
     for src, sections, sentences in [
         (
             "doc_a",
-            ["Section A1 common clause", "Section A2 unique to A"],
+            ["Section shared clause", "Section A2 unique to A"],
             ["common sentence here", "unique sentence A"],
         ),
         (
             "doc_b",
-            ["Section B1 common clause", "Section B2 unique to B"],
+            ["Section shared clause", "Section B2 unique to B"],
             ["common sentence here", "unique sentence B"],
         ),
     ]:
@@ -79,7 +79,7 @@ class TestBuildIndex:
         stats = buildIndex(ingest_output, out)
         assert stats["n_docs"] == 2
         assert stats["n_sections_total"] == 4
-        assert stats["n_sections_unique"] == 4  # all four section texts differ
+        assert stats["n_sections_unique"] == 3  # "Section shared clause" dedups
         assert stats["n_sentences_total"] == 4
         assert stats["n_sentences_unique"] == 3  # "common sentence here" dedups
         assert stats["sentence_duplicates"] == 1
@@ -90,7 +90,7 @@ class TestBuildIndex:
         assert (out / INDEX_JSON).is_file()
         docs, sections, sentences = loadIndex(out)
         assert len(docs) == 2
-        assert len(sections) == 4
+        assert len(sections) == 3  # "Section shared clause" dedups to one
         assert len(sentences) == 3
 
     def test_doc_sha256_stable(self, ingest_output: Path, tmp_path: Path) -> None:

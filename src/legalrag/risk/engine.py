@@ -89,26 +89,42 @@ def _check_exclusions(text: str, exclusions: list[re.Pattern]) -> bool:
 
 
 def _extract_values(text: str, extractors: dict[str, re.Pattern]) -> dict:
-    """Run each extractor pattern against the text, return named captures."""
+    """Run each extractor pattern against the text, return first capture per name.
+
+    Each extractor must have at least one capture group; the first non-empty
+    capture (named or numbered) is stored as a string so values can be
+    interpolated into rationale templates directly.
+    """
     values: dict = {}
     for name, pattern in extractors.items():
         m = pattern.search(text)
         if m:
-            # Try named groups first, then first non-empty numbered group
-            if m.groupdict():
-                values[name] = m.groupdict()
-            else:
-                groups = [g for g in m.groups() if g is not None]
-                if groups:
-                    values[name] = groups[0]
+            captured = [g for g in m.groups() if g is not None]
+            values[name] = captured[0] if captured else ""
     return values
 
 
+class _SafeDict(dict):
+    """format_map mapping that yields '' for missing keys instead of KeyError."""
+
+    def __missing__(self, key: str) -> str:
+        return ""
+
+
 def _format_rationale(template: str, values: dict, clause_text: str) -> str:
-    """Fill the rationale template with extracted values."""
+    """Fill the rationale template with extracted values.
+
+    Placeholders reference extractor names (e.g. {deposit_amount}). Unknown
+    keys render as '' so user-facing output never shows literal placeholders.
+    """
+    if not template:
+        return template
+    mapping = _SafeDict(values)
+    mapping["values"] = values
+    mapping["clause"] = clause_text[:200]
     try:
-        return template.format(values=values, clause=clause_text[:200])
-    except (KeyError, IndexError):
+        return template.format_map(mapping)
+    except (ValueError, IndexError):
         return template
 
 
@@ -122,9 +138,10 @@ def analyzeRisk(
       - "type": clause type string (from classifyClause)
       - "text": section text
       - "id": section identifier (optional)
-      - "confidence": classification confidence (optional)
 
     Returns AnalysisResult with findings sorted by severity (high first).
+    Finding.confidence reflects the match context: 1.0 for a type-matched
+    fire, 0.75 for a fire on an unclassified section.
     """
     findings: list[Finding] = []
     classified = 0
@@ -133,15 +150,15 @@ def analyzeRisk(
         ctype = section.get("type", "unknown")
         text = section.get("text", "")
         section_id = section.get("id", "")
-        confidence = section.get("confidence", 0.0)
+        known_type = ctype != "unknown"
 
-        if ctype != "unknown":
+        if known_type:
             classified += 1
 
         for rule in rules:
             # For classified sections, only fire on matching clause types.
             # For unknown sections, try all rules (trigger patterns filter).
-            if ctype != "unknown" and ctype not in rule.clause_types:
+            if known_type and ctype not in rule.clause_types:
                 continue
             if not _check_triggers(text, rule.triggers):
                 continue
@@ -156,7 +173,7 @@ def analyzeRisk(
                     rule_id=rule.rule_id,
                     clause_type=ctype,
                     risk_level=rule.risk_level,
-                    confidence=confidence,
+                    confidence=1.0 if known_type else 0.75,
                     rationale=rationale,
                     clause_text=text[:600],
                     extracted_values=extracted,

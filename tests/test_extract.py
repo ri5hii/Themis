@@ -124,3 +124,63 @@ def test_pets() -> None:
 def test_utilities() -> None:
     t, _ = fast_lane.classifyClause("tenant shall pay for water, gas and electricity charges")
     assert t == "utilities"
+
+
+def test_maintenance() -> None:
+    t, _ = fast_lane.classifyClause("Tenant is responsible for the maintenance of the premises")
+    assert t == "maintenance"
+
+
+def test_late_fee() -> None:
+    t, _ = fast_lane.classifyClause("A late fee of 5 percent shall apply within 10 days")
+    assert t == "late_fee"
+
+
+def test_registration() -> None:
+    t, _ = fast_lane.classifyClause("This lease shall be registered with the competent authority")
+    assert t == "registration"
+
+
+def test_dispute_resolution() -> None:
+    t, _ = fast_lane.classifyClause("This lease shall be governed by the laws of Delhi")
+    assert t == "dispute_resolution"
+
+
+def test_entire_agreement() -> None:
+    t, _ = fast_lane.classifyClause("This document is the entire agreement between the parties")
+    assert t == "entire_agreement"
+
+
+def test_no_obligation() -> None:
+    t, _ = fast_lane.classifyClause("Landlord shall have no obligation to operate the mall")
+    assert t == "no_obligation"
+
+
+class TestExtractImage:
+    """extractImage OCR dispatch (engine stubbed, audit item 13)."""
+
+    def test_ocr_success(self, monkeypatch, tmp_path) -> None:
+        from legalrag.ingest import extract as ex
+
+        img = tmp_path / "page.png"
+        img.write_bytes(b"fake-png-bytes")
+        monkeypatch.setattr(ex, "_ocr_instance", lambda: object())
+        monkeypatch.setattr(ex, "_ocr_text", lambda data, engine: "Landlord shall repair")
+
+        out = ex.extractImage(img, "page")
+        assert out.methods == {"ocr"}
+        assert out.pages[0].text == "Landlord shall repair"
+        assert out.pages[0].method == "ocr"
+        assert out.n_pages == 1
+
+    def test_ocr_empty_falls_back_to_error(self, monkeypatch, tmp_path) -> None:
+        from legalrag.ingest import extract as ex
+
+        img = tmp_path / "blank.png"
+        img.write_bytes(b"fake-png-bytes")
+        monkeypatch.setattr(ex, "_ocr_instance", lambda: object())
+        monkeypatch.setattr(ex, "_ocr_text", lambda data, engine: "")
+
+        out = ex.extractImage(img, "blank")
+        assert out.methods == {"error"}
+        assert out.pages[0].method == "error"

@@ -1,7 +1,6 @@
 """SLM grammar tests: GBNF must compile and enforce quoted-JSON output."""
 from __future__ import annotations
 
-import json
 import re
 
 from llama_cpp import LlamaGrammar
@@ -29,11 +28,13 @@ def test_grammar_is_single_line_rules() -> None:
         assert re.match(r"^\S+.*::=.*$", line), f"malformed rule line: {line!r}"
 
 
-def test_grammar_output_is_strict_json() -> None:
-    """The JSON schema enforced by the grammar must parse as JSON."""
+def test_grammar_object_rule_orders_keys_exactly() -> None:
+    """The object rule must emit the five keys once, in schema order."""
+    obj_line = next(line for line in GRAMMAR.splitlines() if line.startswith("object"))
     keys = ["clause_type", "risk_level", "statute", "plain_explanation", "tenant_impact"]
-    sample = json.dumps({k: "x" for k in keys})
-    escaped = sample.replace('"', '\\"')
-    assert re.search(escaped.replace("\\", "\\\\").replace('"', '\\"'), GRAMMAR.replace("\\\"", '"')) or True
+    pos = -1
     for key in keys:
-        assert f'"\\"{key}\\""' in GRAMMAR
+        lit = '\\"' + key + '\\"'
+        found = obj_line.find(lit, pos + 1)
+        assert found > pos, f"key {key!r} missing or out of order in object rule"
+        pos = found

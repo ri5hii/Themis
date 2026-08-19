@@ -1,7 +1,7 @@
 """Compare Themis risk findings against Claude/human risk-flag annotations.
 
 Usage:
-    python scripts/eval_risk_flags.py [--findings-dir /tmp/opencode/themis_run]
+    python scripts/eval_risk_flags.py [--findings-dir eval/artifacts/themis_run]
 
 Reports per-document recall (Themis flags / annotated flags) and precision
 (annotated flags / Themis flags) using keyword-concept matching, split into
@@ -13,7 +13,10 @@ from __future__ import annotations
 import argparse
 import json
 import re
+import sys
 from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "src"))
 
 REPO = Path(__file__).resolve().parent.parent
 ANNOT_DIR = REPO / "eval" / "claude_test_docs"
@@ -126,7 +129,7 @@ def load_annotations() -> dict[str, dict]:
 
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--findings-dir", default="/tmp/opencode/themis_run")
+    parser.add_argument("--findings-dir", default=str(REPO / "eval" / "artifacts" / "themis_run"))
     args = parser.parse_args()
 
     findings_dir = Path(args.findings_dir)

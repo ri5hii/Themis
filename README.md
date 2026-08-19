@@ -10,4 +10,4 @@ simplified summary, grounded on relevant statute context.
 - **Extract** — fast lane: regex triggers + LegalBERT prototype classifier over a 15-type lease clause taxonomy
 - **Retrieve** — LegalBERT embeddings + FAISS over a curated statute corpus (Model Tenancy Act 2021 + Delhi Rent Act 1958)
 - **Risk** — rule-based engine with hybrid confidence scoring
-- **Simplify** — grammar-constrained Llama-3.2-3B (GGUF) plain-language output as JSON
+- **Simplify** — grammar-constrained Qwen2.5-1.5B-Instruct (GGUF Q8, LoRA-tuned on aligned pairs) plain-language output as JSON

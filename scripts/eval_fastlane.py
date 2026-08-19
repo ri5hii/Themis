@@ -17,7 +17,12 @@ Usage:
 from __future__ import annotations
 
 import json
+import sys
 from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "src"))
+
+import numpy as np
 
 from legalrag.extract.fast_lane import UNKNOWN, classifyClause
 
@@ -35,6 +40,9 @@ def _per_class(gold: list[str], pred: list[str]) -> dict:
     types = sorted(set(gold))
     out: dict = {}
     tot_tp = tot_p = tot_r = 0
+    ps: list[float] = []
+    rs: list[float] = []
+    f1s: list[float] = []
     for t in types:
         tp = sum(1 for g, p in zip(gold, pred) if g == t and p == t)
         fp = sum(1 for g, p in zip(gold, pred) if g != t and p == t)
@@ -46,13 +54,23 @@ def _per_class(gold: list[str], pred: list[str]) -> dict:
         tot_tp += tp
         tot_p += tp + fp
         tot_r += tp + fn
+        ps.append(prec)
+        rs.append(rec)
+        f1s.append(f1)
+    # Micro: pooled counts across classes (what the old "macro" entry was).
     p = tot_tp / tot_p if tot_p else 0.0
     r = tot_tp / tot_r if tot_r else 0.0
-    out["macro"] = {
+    out["micro"] = {
         "precision": round(p, 3),
         "recall": round(r, 3),
         "f1": round(2 * p * r / (p + r) if p + r else 0.0, 3),
         "tp": tot_tp,
+    }
+    # True macro: unweighted mean of per-class metrics.
+    out["macro"] = {
+        "precision": round(float(np.mean(ps)), 3),
+        "recall": round(float(np.mean(rs)), 3),
+        "f1": round(float(np.mean(f1s)), 3),
     }
     return out
 

@@ -21,6 +21,8 @@ import json
 import sys
 from pathlib import Path
 
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "src"))
+
 from legalrag.eval.metrics import multiclassStats
 from legalrag.extract.analyze import analyzeSections
 
