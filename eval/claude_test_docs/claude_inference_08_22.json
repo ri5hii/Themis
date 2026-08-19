@@ -1,0 +1,328 @@
+{
+  "method": "Claude independent reading of PDFs (uploaded directly), blind to Themis output",
+  "notes": "Second batch of test documents (lease_08 through lease_22). Clause types use the 16-type extract taxonomy. Risk flags are Claude's own judgment of deal risk.",
+  "documents": {
+    "lease_08_warehouse_hazelbrook_ferrovia": {
+      "title": "Industrial warehouse lease, Hazelbrook Logistics Park LLC (Landlord) / Ferrovia Distribution Co. (Tenant), 12-year term with guard-dog and stamp duty provisions",
+      "per_section": {
+        "1.1 Premises and Term": ["premises", "term"],
+        "2.1 Base Rent": ["rent"],
+        "3.1 Stamp Duty and Registration Responsibility": ["registration"],
+        "3.2 Landlord Cooperation on Registration": ["registration"],
+        "4.1 Guard Dog Permission": ["pets"],
+        "4.2 General Pet Prohibition": ["pets"],
+        "5.1 Tenant Dock Equipment Maintenance": ["maintenance"],
+        "5.2 Landlord Structural Maintenance": ["maintenance"],
+        "6.1 Landlord Access for Fire System Inspection": ["access"],
+        "7.1 Late Payment Interest": ["late_fee"],
+        "8.1 Mutual Termination Right": ["termination"],
+        "8.2 Holdover at 175%": ["holdover"],
+        "9.1 Entire Agreement": ["entire_agreement"]
+      },
+      "risk_flags": [
+        "Tenant bears full responsibility for stamp duty/registration costs (3.1) with no cost-sharing from Landlord, unlike some markets where this is split.",
+        "Holdover penalty of 175% (8.2) applies immediately with no grace period, a steep overstay cost.",
+        "Guard dog permission (4.1) requires dogs be absent during Landlord's scheduled inspections, which could create a compliance trap if inspection timing isn't reliably communicated in advance.",
+        "Termination right (8.1) is mutual but only available after Lease Year 6, locking Tenant in for the first half of the term with no early-exit option shown.",
+        "No security deposit or letter-of-credit provision appears in the reviewed sections, worth confirming isn't addressed elsewhere in the full lease."
+      ]
+    },
+    "lease_09_coworking_nimbus_quill": {
+      "title": "Flexible workspace membership agreement, Nimbus Workspace Collective (Operator) / Quill & Co. Consulting (Member), month-to-month dedicated desk",
+      "per_section": {
+        "A. Term": ["term", "termination"],
+        "B. Fees": ["rent"],
+        "C. Deposit": ["deposit"],
+        "D. Premises and Permitted Use": ["premises"],
+        "E. Access": ["access"],
+        "F. Utilities and Services": ["utilities"],
+        "G. Termination": ["termination"],
+        "H. Entire Agreement": ["entire_agreement"]
+      },
+      "risk_flags": [
+        "Operator staff may access the dedicated desk at any time during business hours with no advance notice requirement (Section E) — weaker access protection than a typical commercial lease.",
+        "Operator may terminate immediately for breach of community guidelines (Section G), which are referenced only via the incorporated Member Handbook and not reproduced in this Agreement — Member's actual conduct obligations are not fully visible here.",
+        "No late-fee or grace-period provision is stated for the monthly Membership Fee, so consequences of a late payment are undefined in this document.",
+        "This is structured as a license/membership agreement rather than a traditional lease, which may carry different legal protections (e.g., no exclusive possession) than a standard commercial tenancy — worth flagging for Member's counsel."
+      ]
+    },
+    "lease_10_groundlease_meadowline_cascade": {
+      "title": "50-year ground lease, Meadowline Land Holdings (Landlord) / Cascade Development Partners (Tenant), with two 25-year extension options",
+      "per_section": {
+        "Art1.1 Term and Extension Options": ["term"],
+        "Art2.1 Ground Rent with CPI Adjustment": ["rent"],
+        "Art3.1 Recording Obligation": ["registration"],
+        "Art3.2 Memorandum of Lease": ["registration"],
+        "Art4.1 Permitted Development": ["premises"],
+        "Art5.1 Tenant Construction and Maintenance Obligation": ["maintenance"],
+        "Art6.1 Sublease Right Without Consent": ["subletting"],
+        "Art7.1 CPI Dispute Arbitration": ["rent", "dispute_resolution"],
+        "Art8.1 Landlord Termination Limited to Uncured Monetary Default": ["termination"],
+        "Art9.1 Extension Option Exercise Notice": ["term"],
+        "Art10.1 Entire Agreement": ["entire_agreement"]
+      },
+      "risk_flags": [
+        "Tenant bears full cost and responsibility for constructing, maintaining, and eventually surrendering all Improvements (Art5.1) — standard for ground leases but a significant long-term capital and maintenance obligation not offset by rent credits in the reviewed text.",
+        "Ground Rent CPI adjustments only occur every five years after Year 10 (Art2.1), which could lag actual market/inflation conditions between reset points.",
+        "Landlord's termination right is narrowly limited to uncured monetary default (Art8.1), which is Tenant-favorable, but the reciprocal — what happens on Tenant's non-monetary default — is not addressed in the reviewed sections.",
+        "24-month advance notice is required to exercise each extension option (Art9.1), a long lead time that could be easy to miss without robust lease-tracking on a 50-year instrument.",
+        "No provision addressing Landlord's fee-mortgage or refinancing rights, or subordination/non-disturbance protection for Tenant's leasehold mortgagees, appears in the reviewed sections — important for a development-heavy ground lease."
+      ]
+    },
+    "lease_11_restaurant_saffronrow_copperpot": {
+      "title": "Restaurant lease, Saffron Row Retail LLC (Landlord) / Copperpot Hospitality Group (Tenant), 10-year term with percentage rent",
+      "per_section": {
+        "1.1 Premises and Permitted Use": ["premises"],
+        "2.1 Term and Rent Commencement": ["term"],
+        "3.1 Minimum and Percentage Rent": ["rent"],
+        "3.2 Gross Sales Reporting": ["rent"],
+        "4.1 Late Charge and Interest": ["late_fee"],
+        "5.1 Grease Trap Obligation": ["maintenance", "utilities"],
+        "5.2 Direct Utility Payment": ["utilities"],
+        "6.1 Kitchen Equipment Maintenance": ["maintenance"],
+        "7.1 Assignment/Subletting Discretionary Consent": ["subletting"],
+        "8.1 Percentage Rent Dispute — Independent Accountant": ["dispute_resolution", "rent"],
+        "9.1 Termination for Failure to Open": ["termination"]
+      },
+      "risk_flags": [
+        "Landlord may withhold consent to assignment/subletting 'in its sole discretion' (7.1) due to food-service tenant concentration — a materially weaker standard than a 'not unreasonably withheld' clause.",
+        "Late charge is a flat $500 plus 12% annual interest (4.1) — the percentage rate is on the high end and should be checked against usury/late-fee caps in the applicable jurisdiction.",
+        "Termination right for failure to open within 180 days (9.1) is framed as Landlord's option only; no corresponding Tenant remedy is stated if Landlord fails to deliver the Premises on schedule.",
+        "Percentage Rent Breakpoint ($886,000) combined with monthly Gross Sales reporting creates significant ongoing administrative and audit exposure for Tenant; no cap on Landlord's audit frequency of Tenant's sales records is specified in the reviewed sections."
+      ]
+    },
+    "lease_12_medoffice_accessiblecare_valleyview": {
+      "title": "Medical office lease, Accessible Care Realty Trust (Landlord) / Valleyview Family Medicine PLLC (Tenant), 8-year term, ADA-focused",
+      "per_section": {
+        "Section1.1 Premises": ["premises"],
+        "Section2.1 Term and Security Deposit": ["term", "deposit"],
+        "Section3.1 ADA Compliance Representation": ["access"],
+        "Section3.2 Landlord Access with Emergency-Room Carve-Out": ["access"],
+        "Section4.1 Landlord Medical Infrastructure Maintenance": ["maintenance", "utilities"],
+        "Section4.2 Tenant Equipment Maintenance": ["maintenance"],
+        "Section5.1 Utility Allocation": ["utilities"],
+        "Section6.1 Visiting Physician Use Not a Sublease": ["subletting"],
+        "Section7.1 Rent and Late Charge": ["rent", "late_fee"],
+        "Section8.1 Termination on License Revocation": ["termination"]
+      },
+      "risk_flags": [
+        "ADA compliance representation and ongoing maintenance obligation (3.1) is a strong Tenant protection but is stated as an ongoing covenant — confirm remedy/cure mechanics if Landlord fails to maintain compliance are addressed elsewhere in the full lease.",
+        "Access carve-out for 'mechanical rooms not containing patient records or patient care areas' (3.2) requires clear physical/operational delineation to avoid disputes over what qualifies for no-notice access.",
+        "Termination right on license revocation (8.1) requires the revocation be 'through no fault of Tenant' — a fact-dependent standard that could be contested by Landlord in a dispute.",
+        "Medical-grade HVAC and backup power costs are allocated 'separately' per Exhibit C (5.1), but the actual allocation methodology is not visible in the reviewed text — a common source of billing disputes in medical office leases.",
+        "No dispute-resolution mechanism (arbitration/mediation) is identified anywhere in the reviewed sections of this lease."
+      ]
+    },
+    "lease_13_datacenter_quorum_prismworks": {
+      "title": "Data center colocation lease, Quorum Digital Infrastructure LLC (Landlord) / Prismworks Cloud Services, Inc. (Tenant), 15-year term, 1.2MW critical load",
+      "per_section": {
+        "1.1 Premises and Power Capacity": ["premises", "utilities"],
+        "2.1 Term": ["term"],
+        "3.1 Redundant Power Commitment": ["utilities"],
+        "3.2 Metered Power Billing": ["utilities", "rent"],
+        "3.3 Cooling Infrastructure Maintenance": ["maintenance", "utilities"],
+        "4.1 24x7 Engineering Staff and SLA Remedy Times": ["maintenance"],
+        "5.1 Tenant Biometric Access / Landlord Access Limits": ["access"],
+        "6.1 Base Rent and Letter of Credit": ["rent", "deposit"],
+        "7.1 Sublease/Colocation Restriction": ["subletting"],
+        "8.1 Termination for Repeated SLA Failure": ["termination"],
+        "9.1 SLA Credit Dispute Escalation": ["dispute_resolution"]
+      },
+      "risk_flags": [
+        "Metered power billing (3.2) is at Landlord's 'then-current' per-kilowatt-hour rate with no cap or benchmark to market rates disclosed, creating open-ended utility cost exposure for a highly power-intensive use.",
+        "Termination right for Critical Infrastructure failure (8.1) requires the failure to exceed four consecutive hours AND recur more than twice in twelve months — a fairly high bar before Tenant can exit, given the mission-critical nature of colocation.",
+        "SLA dispute resolution (9.1) requires exhausting an escalation procedure in Exhibit E before litigation, but that procedure's timeline and criteria are not reproduced in the reviewed text.",
+        "Six-month Letter of Credit (6.1) is a substantial security requirement; worth confirming the trigger conditions for Landlord to draw on it are addressed elsewhere in the lease.",
+        "No provision on data security, confidentiality, or Landlord staff background-check requirements appears in the reviewed sections, which is notable for a facility housing Tenant's infrastructure and customer data."
+      ]
+    },
+    "lease_14_petfriendly_maplecourt_barkavenue": {
+      "title": "Retail lease, Maplecourt Shoppes LLC (Landlord) / Bark Avenue Pet Boutique & Grooming, Inc. (Tenant), 6-year term, explicit pet-business accommodation",
+      "per_section": {
+        "1.1 Premises and Permitted Use": ["premises"],
+        "2.1 Pet Access Permission": ["pets"],
+        "2.2 Pet Liability Insurance Requirement": ["pets"],
+        "2.3 Common Area Cleanup Obligation": ["pets", "maintenance"],
+        "3.1 Term and Security Deposit": ["term", "deposit"],
+        "4.1 Base Rent": ["rent"],
+        "5.1 Grooming Drain Maintenance": ["maintenance"],
+        "5.2 Common Area Utility Share": ["utilities"],
+        "6.1 Landlord Sanitation Inspection Access": ["access"],
+        "7.1 Subletting Restricted to Pet-Related Business": ["subletting"],
+        "8.1 Termination for Repeated Violations": ["termination"]
+      },
+      "risk_flags": [
+        "Termination right for 'more than two substantiated animal-welfare or sanitation code violations' (8.1) does not define who makes the 'substantiated' determination, creating potential for dispute over whether the termination threshold has been met.",
+        "$1,000,000 per-occurrence pet liability insurance requirement (2.2) is a meaningful ongoing cost that should be underwritten into Tenant's operating budget.",
+        "Assignment/subletting restricted to pet-related businesses only (7.1), which narrows Tenant's pool of potential assignees/subtenants compared to a general-use restriction.",
+        "Quarterly drain-trap servicing requirement (5.1) is a specific, auditable maintenance obligation — missing this cadence could itself become evidence supporting a Section 8.1 termination."
+      ]
+    },
+    "lease_15_sublease_crestfield_pioneer": {
+      "title": "Sublease agreement, Crestfield Analytics, Inc. (Sublandlord) / Pioneer Grant Consulting LLC (Subtenant), eighth floor of Regency Tower, coterminous with Master Lease",
+      "per_section": {
+        "Recital — Master Lease Reference": ["subletting", "term"],
+        "1.1 Sublease Grant": ["subletting", "premises"],
+        "2.1 Sublease Term Coterminous with Master Lease": ["term", "subletting"],
+        "3.1 Master Landlord Consent Condition": ["subletting"],
+        "3.2 Subordination to Master Lease": ["subletting", "entire_agreement"],
+        "4.1 Subtenant Rent": ["rent"],
+        "5.1 Further Subletting Prohibition": ["subletting"],
+        "6.1 Pass-Through Maintenance, No Independent Obligation": ["maintenance", "subletting"],
+        "6.2 Master Landlord Retained Access Rights": ["access"],
+        "7.1 Automatic Termination on Master Lease Termination": ["termination", "subletting"],
+        "8.1 Entire Agreement": ["entire_agreement"]
+      },
+      "risk_flags": [
+        "Subtenant's entire tenancy is automatically terminated if the Master Lease terminates due to Sublandlord's default (7.1) — Subtenant bears the risk of Sublandlord's own defaults under the Master Lease with no stated cure or attornment right to the Master Landlord.",
+        "Sublandlord has 'no independent maintenance obligation' (6.1) — Subtenant's only recourse for maintenance failures is indirect, through whatever rights Sublandlord chooses to enforce against the Master Landlord.",
+        "This Sublease is expressly conditioned on Master Landlord's consent (3.1) — confirm the attached consent (Exhibit A) does not impose additional restrictions on Subtenant not reflected in this document.",
+        "Subtenant should independently review the full Master Lease (incorporated by reference in 3.2) since Subtenant is bound by its terms without those terms being reproduced here.",
+        "No non-disturbance protection for Subtenant is mentioned in the event Master Landlord and Sublandlord later amend or terminate the Master Lease by mutual agreement (as opposed to default)."
+      ]
+    },
+    "lease_16_popup_lumen_giltgrove": {
+      "title": "Pop-up retail license agreement, Lumen Marketplace Properties (Landlord) / Gilt & Grove Seasonal Goods (Tenant), 45-day term",
+      "per_section": {
+        "Term": ["term", "holdover"],
+        "Rent": ["rent"],
+        "Premises": ["premises"],
+        "Deposit": ["deposit"],
+        "Access and Hours": ["access"],
+        "Termination": ["termination"],
+        "No Renewal": ["holdover", "term"]
+      },
+      "risk_flags": [
+        "License Fee is due in full prior to occupancy with 'no installment payment option' (Rent) — full upfront payment for a 45-day term is a significant cash-flow commitment relative to the term length.",
+        "Landlord may terminate immediately and without refund for a conduct-rule violation (Termination), with no cure period specified — a low-tolerance termination standard for a short-term arrangement.",
+        "'No Renewal' clause explicitly forecloses any holdover tenancy right, meaning Tenant has zero flexibility to extend even briefly if a follow-on opportunity arises.",
+        "No dispute-resolution, late-fee, or maintenance-responsibility provisions appear anywhere in this short document — likely intentional given the term length, but worth confirming there's no incorporated rules document filling these gaps (unlike lease_09's Member Handbook approach)."
+      ]
+    },
+    "lease_17_multitenant_regent_kestrel": {
+      "title": "Deed of Lease (India-style), Regent Commercial Estates Pvt. Ltd. (Lessor) / Kestrel Software Solutions Pvt. Ltd. (Lessee), 9-year term with 3-year lock-in",
+      "per_section": {
+        "Clause1.1 Demised Premises": ["premises"],
+        "Clause2.1 Term and Lock-in Period": ["term"],
+        "Clause3.1 Stamp Duty Cost-Sharing": ["registration"],
+        "Clause3.2 Registration Filing Responsibility": ["registration"],
+        "Clause4.1 Rent with Triennial Escalation": ["rent"],
+        "Clause5.1 Security Deposit": ["deposit"],
+        "Clause6.1 Landlord Common Area Maintenance": ["maintenance"],
+        "Clause6.2 Lessee Metered Utility Payment": ["utilities"],
+        "Clause7.1 Lock-in Termination Restriction": ["termination"],
+        "Clause8.1 Arbitration": ["dispute_resolution"]
+      },
+      "risk_flags": [
+        "Three-year lock-in period (Clause7.1) prevents Lessee from terminating even for convenience during that window, except for uncured material breach — a significant early-exit constraint typical of this market but worth flagging for a Lessee that may need flexibility.",
+        "15% rent escalation every three years (Clause4.1) is a large step-up compared to typical annual 3-5% escalations seen in other leases in this set — Lessee should model total occupancy cost across the full 9-year term.",
+        "Stamp duty and registration costs are split equally (Clause3.1), but Lessee alone bears the administrative responsibility for timely registration within the statutory period (Clause3.2) — a compliance deadline with potential legal/penalty consequences if missed.",
+        "Ten-month interest-free security deposit (Clause5.1) is a large upfront capital commitment relative to monthly rent.",
+        "Sole-arbitrator dispute resolution (Clause8.1) applies to 'any dispute,' a broad scope with no carve-out for injunctive relief or urgent possession matters."
+      ]
+    },
+    "lease_18_storage_boxwood_oyelaran": {
+      "title": "Self-storage rental agreement, Boxwood Self Storage Facility (Owner) / Desmond R. Oyelaran (Occupant), month-to-month, Unit #C-114",
+      "per_section": {
+        "1. Unit and Term": ["term", "premises"],
+        "2. Rent": ["rent"],
+        "3. Late Fee": ["late_fee", "access"],
+        "4. Permitted Use": ["premises"],
+        "5. Access": ["access"],
+        "6. Termination": ["termination"]
+      },
+      "risk_flags": [
+        "Access suspension for accounts more than 15 days past due (Section 3) is a significant self-help remedy — confirm this complies with the applicable state's self-storage lien and access statutes before enforcement.",
+        "Owner's termination for non-payment over 30 days is 'subject to applicable lien-sale procedures under state law' (Section 6), meaning Occupant's property could ultimately be sold to satisfy unpaid rent — this consequence should be clearly disclosed/highlighted to Occupant.",
+        "No security deposit is mentioned in this agreement, which is common for self-storage but worth confirming is intentional.",
+        "Agreement permits Owner emergency access without consent (Section 5), which is standard, but 'emergency' is undefined, leaving some ambiguity about scope."
+      ]
+    },
+    "lease_19_restaurant_saltmark_tidewater": {
+      "title": "Restaurant lease, Saltmark Harbor Properties (Landlord) / Tidewater Oyster Bar LLC (Tenant), 10-year term, waterfront with mandatory arbitration",
+      "per_section": {
+        "Art1.1 Premises and Term": ["premises", "term"],
+        "Art2.1 Base and Percentage Rent": ["rent"],
+        "Art3.1 Mandatory Mediation": ["dispute_resolution"],
+        "Art3.2 Binding Arbitration": ["dispute_resolution"],
+        "Art3.3 Prevailing Party Fees": ["dispute_resolution"],
+        "Art4.1 Jury Trial and Venue Waiver": ["dispute_resolution"],
+        "Art5.1 Patio Maintenance": ["maintenance"],
+        "Art6.1 Utilities Including Tank Aeration": ["utilities"],
+        "Art7.1 Subletting Consent": ["subletting"],
+        "Art8.1 Termination on Permit Revocation": ["termination"]
+      },
+      "risk_flags": [
+        "Mandatory two-step mediation-then-arbitration process (Art3.1–3.2) with a full jury trial and venue waiver (Art4.1) significantly limits Tenant's litigation options and forum choice in any dispute with Landlord.",
+        "Prevailing-party fee-shifting (Art3.3) raises the financial stakes of any arbitration for Tenant, particularly against a better-capitalized Landlord.",
+        "Termination on health permit revocation (Art8.1) has only a 45-day reinstatement window before Landlord can terminate — a tight timeline for resolving a regulatory issue.",
+        "Patio furniture/heating removal obligation during storm events (Art5.1) is triggered 'upon Landlord's notice,' which could create a compliance gap if notice is delayed or not received in time before a fast-moving storm."
+      ]
+    },
+    "lease_20_lab_helix_meridiangenomics": {
+      "title": "Laboratory lease, Helix Science Park LLC (Landlord) / Meridian Genomics Therapeutics, Inc. (Tenant), 12-year term, BSL-2 wet lab",
+      "per_section": {
+        "1.1 Premises": ["premises"],
+        "2.1 Term Tied to Delivery Condition": ["term"],
+        "3.1 Landlord Lab Systems Maintenance": ["maintenance"],
+        "3.2 Tenant Equipment Maintenance and Biosafety Compliance": ["maintenance"],
+        "4.1 Metered Utilities and Specialty Waste": ["utilities"],
+        "4.2 Backup Generator for Critical Circuits": ["utilities", "maintenance"],
+        "5.1 Access with Biosafety Restriction": ["access"],
+        "6.1 Rent and Letter of Credit": ["rent", "deposit"],
+        "7.1 Sublease to Research Collaborator": ["subletting"],
+        "8.1 Termination on Loss of Biosafety Approval": ["termination"]
+      },
+      "risk_flags": [
+        "Twelve-month Letter of Credit (6.1) is one of the largest security requirements in this document set, reflecting the specialized and hard-to-re-tenant nature of wet lab buildout — a significant capital commitment for Tenant.",
+        "Tenant's ability to restrict Landlord's access to active biosafety containment areas (5.1) is a valuable protection, but 'pending completion of appropriate decontamination protocols' is not defined with a specific timeline, which could be used to delay legitimate Landlord inspections.",
+        "Termination right on loss of biosafety committee approval (8.1) requires it be 'through no fault of Tenant,' a fact question that could be disputed, and gives only 180 days' notice rather than an immediate exit.",
+        "Sublease to a 'bona fide research collaborator' without consent (7.1) is undefined — the criteria for what qualifies as bona fide could become a point of disagreement with Landlord.",
+        "No provision addresses responsibility for decommissioning/decontamination costs at lease expiration, which is a materially significant cost in lab space surrender."
+      ]
+    },
+    "lease_21_parking_apex_downtownvalet": {
+      "title": "Parking facility lease, Apex Parking Ventures LLC (Landlord) / Downtown Valet Operators, Inc. (Tenant), 5-year term with one extension option",
+      "per_section": {
+        "1.1 Premises": ["premises"],
+        "2.1 Term and Extension Option": ["term"],
+        "3.1 Base Rent Plus Percentage Revenue": ["rent"],
+        "4.1 Landlord Structural Maintenance": ["maintenance"],
+        "4.2 Tenant Equipment Maintenance": ["maintenance"],
+        "5.1 Tenant Utility Payment": ["utilities"],
+        "6.1 Landlord Unrestricted Structural Access": ["access"],
+        "7.1 Late Payment Interest": ["late_fee"],
+        "8.1 Termination for Redevelopment": ["termination"]
+      },
+      "risk_flags": [
+        "Landlord retains access to any level 'at any time... without advance notice' (6.1) — broader than the notice-based access rights seen in most other leases in this set, which could disrupt Tenant's parking operations unpredictably.",
+        "Redevelopment termination right (8.1) is exercisable at Landlord's election with only 90 days' notice, and while a termination fee (6 months' Base Rent) is provided, this is a meaningful risk to Tenant's revenue-generating operating business with limited relocation options for a parking operation.",
+        "Percentage revenue share (3.1) requires Tenant to report Gross Parking Revenue, creating audit/verification exposure similar to percentage-rent retail leases, but no dispute-resolution mechanism for revenue disputes is stated in the reviewed sections.",
+        "No security deposit provision appears in the reviewed text despite Tenant's revenue-share rent structure introducing payment variability."
+      ]
+    },
+    "lease_22_bigbox_vantage_greatland": {
+      "title": "Anchor tenant lease, Vantage Point Shopping Center LLC (Landlord) / Greatland Home & Hardware, Inc. (Tenant), 20-year term with four 5-year renewal options",
+      "per_section": {
+        "Art1.1 Premises and Term/Renewal Structure": ["premises", "term"],
+        "Art2.1 Co-Tenancy Substitute Rent": ["rent"],
+        "Art2.2 Co-Tenancy Termination Right": ["termination"],
+        "Art3.1 Holdover — Tiered Penalty": ["holdover"],
+        "Art4.1 Fixed Base Rent, No Escalation": ["rent"],
+        "Art5.1 Exclusive Use Protection": ["premises"],
+        "Art6.1 Landlord Common Area/Roof Maintenance": ["maintenance"],
+        "Art6.2 Tenant Interior Maintenance": ["maintenance"],
+        "Art7.1 Broad Sublease/Assignment Right": ["subletting"],
+        "Art8.1 No Deposit, 10-Day Late Grace Period": ["deposit", "late_fee"],
+        "Art9.1 No-Termination-for-Redevelopment Protection": ["termination"]
+      },
+      "risk_flags": [
+        "This lease is unusually Tenant-favorable overall (fixed rent with no escalation over a 20-year term, broad assignment rights, no security deposit, strong co-tenancy protection, and a redevelopment-termination bar) — consistent with typical anchor-tenant leverage, but Landlord's long-term revenue is essentially fixed in nominal dollars while operating costs likely rise, which could strain the Landlord relationship over time.",
+        "Co-tenancy Substitute Rent (Art2.1) at 4% of Gross Sales could be significantly less than fixed Base Rent during a prolonged occupancy shortfall, meaning Landlord bears real downside risk if anchor/co-tenants vacate — worth flagging as a source of potential Landlord pushback or renegotiation pressure over the term.",
+        "Holdover penalty escalates from 125% to 200% after 90 days (Art3.1) — Tenant should ensure any renewal-option lapse is tracked well in advance given the twenty-year-plus horizon and multiple renewal windows.",
+        "Exclusive use protection (Art5.1) is limited to 'home improvement or hardware' retailers — a relatively narrow category that may not prevent a big-box general merchandiser from encroaching on adjacent product lines.",
+        "No dispute-resolution clause is identified in the reviewed sections despite the size, duration, and complexity of this lease, which is somewhat unusual for an anchor-tenant agreement of this scale."
+      ]
+    }
+  }
+}

@@ -1,0 +1,247 @@
+{
+  "method": "Claude independent reading of PDFs (uploaded directly), blind to Themis output",
+  "notes": "Clause types use the 16-type extract taxonomy. Risk flags are Claude's own judgment of deal risk.",
+  "documents": {
+    "lease_01_office_meridian": {
+      "title": "Office lease, Oakmont Realty Trust (Landlord) / Cobalt Industries, Inc. (Tenant), 10-year term, 220 Ridgeline Plaza",
+      "per_section": {
+        "Art1.1 Premises": ["premises"],
+        "Art1.2 Term": ["term"],
+        "Art2.1 Base Rent": ["rent"],
+        "Art2.2 CAM Reimbursement": ["rent", "maintenance"],
+        "Art2.3 Operating Expense Adjustment": ["rent"],
+        "Art3.1 Landlord Structural Repairs": ["maintenance"],
+        "Art3.2 Tenant Interior Maintenance": ["maintenance"],
+        "Art3.3 Tenant Self-Help Repair Right": ["maintenance", "rent"],
+        "Art4.1 Permitted Use": ["premises"],
+        "Art4.2 Illegal Use Prohibition": ["premises"],
+        "Art5.1 Assignment Consent Requirement": ["subletting"],
+        "Art5.2 Permitted M&A Assignment": ["subletting"],
+        "Art5.3 Sublease Right up to 25%": ["subletting"],
+        "Art6.1 Casualty Rent Abatement": ["unknown"],
+        "Art6.2 Landlord Termination on Major Casualty": ["termination"],
+        "Art7.1 Rent Without Offset": ["rent"],
+        "Art7.2 No Duty to Mitigate": ["unknown"],
+        "Art8.1 HVAC Rider": ["maintenance", "unknown"],
+        "Art9.1 Special Stipulation - Radius Restriction": ["premises", "unknown"],
+        "Art10.1 Governing Law": ["dispute_resolution"],
+        "Art10.2 Defined Terms": ["unknown"]
+      },
+      "risk_flags": [
+        "Rent is payable 'without deduction, offset, or counterclaim' except as expressly permitted, limiting Tenant's self-help remedies for Landlord non-performance.",
+        "Landlord has no duty to mitigate damages beyond what applicable law requires, increasing Tenant's exposure on default.",
+        "Casualty termination right in Art6.2 is framed as Landlord's unilateral option, with no corresponding Tenant termination right disclosed in this section.",
+        "HVAC rider is incorporated by reference (Art8.1) but its terms are not reproduced in the body of this document, creating an incorporation-by-reference blind spot.",
+        "No late-payment/interest clause was identified in the reviewed sections, so cost of a late payment default is not quantifiable from this excerpt."
+      ]
+    },
+    "lease_02_retail_sundial": {
+      "title": "Retail lease, Sundial Business Park LLC (Party A/Landlord) / Brightwell Logistics (Party B/Tenant), 7-year term",
+      "per_section": {
+        "Section1.1 Grant and Term": ["term", "premises"],
+        "Section2(a) No Obligation to Operate": ["premises"],
+        "Section2(b) Go-Dark Right": ["premises"],
+        "Section2(c) No Landlord Remedy for Non-Operation": ["premises"],
+        "Section3.1 Expansion Right": ["premises"],
+        "Section3.2 Extension Option": ["term"],
+        "Section3.3 Fair Market Rent Arbitration": ["rent", "dispute_resolution", "term"],
+        "Section4.1 Affiliate Assignment": ["subletting"],
+        "Section4.2 Common-Control Assignment": ["subletting"],
+        "Section5.1 Operating Expense Rent": ["rent", "utilities"],
+        "Section5.2 After-Hours HVAC Billing": ["utilities"],
+        "Section6.1 Title Warranty": ["unknown"],
+        "Section6.2 Code Compliance Warranty": ["unknown"],
+        "Section7.1 Compulsory Reconstruction Obligation": ["premises", "unknown"],
+        "Section8.1 Additional Remarks - Future Expansion": ["unknown"],
+        "Section8.2 Tenant Permits Obligation": ["premises"],
+        "Section8.3 Hazardous Materials Restriction": ["premises"]
+      },
+      "risk_flags": [
+        "No explicit Tenant termination right is stated if compulsory reconstruction (Section7.1) takes an extended period, unlike leases with a reconstruction-duration exit right.",
+        "Extension-period rent is set by good-faith negotiation falling back to arbitration (Section3.3), creating renewal rent uncertainty rather than a fixed formula.",
+        "Landlord's Section6.2 code-compliance warranty is qualified 'to its knowledge,' materially weakening the representation Tenant can rely on.",
+        "Service Charges/CAM obligations (Section5.1) carry no stated annual cap, exposing Tenant to uncapped operating-cost pass-throughs.",
+        "The go-dark right (Section2) is favorable to Tenant but should be cross-checked against any co-tenancy or percentage-rent provisions elsewhere in the full lease not included here."
+      ]
+    },
+    "lease_03_industrial_ferrous": {
+      "title": "Industrial lease, Ferrous Manufacturing Co. (Lessor) / Northgate Ventures (Lessee), 8-year term",
+      "per_section": {
+        "ArtI.1 Demise": ["premises", "term"],
+        "ArtII.1 Base Rent": ["rent"],
+        "ArtII.2 Guaranty Assignment by Guarantor": ["deposit"],
+        "ArtII.3 Guaranty Auto-Transfer to Permitted Transferee": ["deposit", "subletting"],
+        "ArtIII.1 Holdover Rent at 150%": ["holdover"],
+        "ArtIII.2 Holdover Not a Renewal": ["holdover"],
+        "ArtIV.1 Right of First Refusal to Sell": ["unknown"],
+        "ArtIV.2 ROFR Exercise Window": ["unknown"],
+        "ArtV.1 Landlord Building Systems Maintenance": ["maintenance", "utilities"],
+        "ArtV.2 Tenant Cleanliness Obligation": ["maintenance"],
+        "ArtV.3 Occupancy Load Restriction": ["premises"],
+        "ArtVI.1 Change of Control Consent Threshold": ["subletting"],
+        "ArtVI.2 Replacement Guaranty on Guarantor Change of Control": ["deposit", "subletting"],
+        "ArtVII.1 Lease Reinstatement After Default Cure": ["termination", "unknown"],
+        "ArtVIII.1 Governing Law": ["dispute_resolution"],
+        "ArtVIII.2 Tenant Indemnification": ["unknown"]
+      },
+      "risk_flags": [
+        "Reinstatement of the Lease after a default-and-cure (ArtVII.1) is at Lessor's 'sole discretion,' giving Tenant no guaranteed right to reinstate even after curing.",
+        "Holdover rent jumps immediately to 150% of Base Rent with no grace period (ArtIII.1), a materially punitive overstay penalty.",
+        "Change-of-control consent is triggered at a 50% equity-transfer threshold (ArtVI.1), which may restrict routine Tenant financing or ownership restructuring.",
+        "Right of First Refusal to purchase is a valuable Tenant right but is silent on what happens if Lessor's initial notice terms are later amended before closing.",
+        "Indemnification obligation (ArtVIII.2) runs one-way from Lessee to Lessor with no reciprocal Lessor indemnity disclosed in this section."
+      ]
+    },
+    "lease_03_industrial_ferrous_SCANNED": {
+      "title": "Scanned/rasterized counterpart of the Ferrous Manufacturing / Northgate Ventures industrial lease (image-only PDF, no embedded text layer)",
+      "per_section": {
+        "ArtI.1 Demise": ["premises", "term"],
+        "ArtII.1 Base Rent": ["rent"],
+        "ArtII.2 Guaranty Assignment by Guarantor": ["deposit"],
+        "ArtII.3 Guaranty Auto-Transfer to Permitted Transferee": ["deposit", "subletting"],
+        "ArtIII.1 Holdover Rent at 150%": ["holdover"],
+        "ArtIII.2 Holdover Not a Renewal": ["holdover"],
+        "ArtIV.1 Right of First Refusal to Sell": ["unknown"],
+        "ArtIV.2 ROFR Exercise Window": ["unknown"],
+        "ArtV.1 Landlord Building Systems Maintenance": ["maintenance", "utilities"],
+        "ArtV.2 Tenant Cleanliness Obligation": ["maintenance"],
+        "ArtV.3 Occupancy Load Restriction": ["premises"],
+        "ArtVI.1 Change of Control Consent Threshold": ["subletting"],
+        "ArtVI.2 Replacement Guaranty on Guarantor Change of Control": ["deposit", "subletting"],
+        "ArtVII.1 Lease Reinstatement After Default Cure": ["termination", "unknown"],
+        "ArtVIII.1 Governing Law": ["dispute_resolution"],
+        "ArtVIII.2 Tenant Indemnification": ["unknown"]
+      },
+      "risk_flags": [
+        "Document is an image-only scan (no embedded text layer, rasterized with added noise/rotation/blur); clause text was reconstructed from the known source and should be re-verified against actual OCR output before production use.",
+        "Same substantive risks as the clean version apply: sole-discretion reinstatement (ArtVII.1), immediate 150% holdover penalty (ArtIII.1), 50%-threshold change-of-control consent (ArtVI.1), and one-way indemnity (ArtVIII.2).",
+        "Scan artifacts (skew, contrast drift, scan-line banding) increase the risk of OCR misreads on numeric values (e.g., the 150% holdover multiplier or the 50% control threshold) — these figures warrant manual confirmation."
+      ]
+    },
+    "lease_04_mixeduse_silverline": {
+      "title": "Mixed-use lease, Silverline Capital Partners (Landlord) / Aurelia Systems Inc. (Tenant), 700 Meridian Avenue",
+      "per_section": {
+        "Art1.1 Premises Description": ["premises"],
+        "Art1.2 Base Rent": ["rent"],
+        "Art1.3 Security Deposit": ["deposit"],
+        "Art2.1 Rent Payment Obligation": ["rent"],
+        "Art2.2 Insurance Certificate Delivery": ["unknown"],
+        "Art2.3 Structural Alteration Consent": ["maintenance", "unknown"],
+        "Art3.1 Landlord Structural Repair": ["maintenance"],
+        "Art3.2 Condemnation Warranty": ["unknown"],
+        "Art3.3 HVAC Warranty (90 days)": ["maintenance", "unknown"],
+        "Art4.1 Casualty Restoration Timeline": ["unknown"],
+        "Art4.2 Termination on Late-Term Casualty": ["termination"],
+        "Art5.1 Change of Control Definition": ["subletting"],
+        "Art5.2 Landlord Termination on Change of Control": ["subletting", "termination"],
+        "Art6.1 Signage Right": ["premises"],
+        "Art6.2 Trade Fixtures Right": ["premises", "maintenance"],
+        "Art6.3 Landlord Access for Inspection": ["access"],
+        "Art7.1 Jury Trial Waiver": ["dispute_resolution"],
+        "Art7.2 Theft/Vandalism Liability Waiver": ["unknown"],
+        "Art8.1 Lease Composition/Exhibits": ["entire_agreement"],
+        "Art8.2 Governing Law": ["dispute_resolution"],
+        "Art8.3 Broker Commissions": ["unknown"]
+      },
+      "risk_flags": [
+        "Jury trial waiver (Art7.1) removes Tenant's access to a jury in any Lease-related litigation.",
+        "Landlord disclaims liability for theft or vandalism of Tenant's property (Art7.2), shifting security-related loss risk entirely to Tenant.",
+        "HVAC warranty runs only 90 days from Commencement Date (Art3.3); after that, HVAC repair costs likely fall under Tenant's general maintenance obligation.",
+        "Landlord's condemnation and code-related representations are made only 'as of the date of this Lease' (Art3.2), giving no ongoing warranty for later-arising issues.",
+        "Change-of-control provision (Art5) gives Landlord a termination right, not just a consent right, if a Change of Control results in a Competing Business operating the Premises — a stronger-than-usual Landlord remedy."
+      ]
+    },
+    "lease_05_smallsuite_thornfield": {
+      "title": "Small-suite lease, Thornfield Group (Landlord) / Ridgeline Holdings (Tenant), 5-year term, no numbered clause headings",
+      "per_section": {
+        "Premises and Term": ["premises", "term"],
+        "Rent": ["rent", "late_fee"],
+        "Break Option": ["termination"],
+        "Sublease and Assignment": ["subletting"],
+        "No Obligation to Operate": ["premises"],
+        "Services": ["utilities", "maintenance"],
+        "Insurance and Indemnity": ["unknown"],
+        "Riders": ["unknown"],
+        "Miscellaneous": ["entire_agreement", "unknown"]
+      },
+      "risk_flags": [
+        "This lease uses prose headings rather than numbered clauses/articles, which increases the risk of ambiguous cross-referencing in disputes or amendments.",
+        "The 'Riders' section incorporates a Special Stipulations Rider by reference without reproducing its terms — the actual termination-right details it grants are not visible in this document.",
+        "Break option requires notice 9 months before the 36-month mark with a fee of 3 months' rent; a narrow, easy-to-miss exercise window given the lack of numbered clause tracking.",
+        "'Any ambiguity...shall not be construed against the drafting party' (Miscellaneous) waives Tenant's benefit of the contra proferentem interpretation rule.",
+        "Specialized cleaning charges beyond standard janitorial (Services) are billed separately with no stated cap."
+      ]
+    },
+    "lease_05_smallsuite_thornfield_SCANNED": {
+      "title": "Scanned/rasterized counterpart of the Thornfield Group / Ridgeline Holdings small-suite lease (image-only PDF, no embedded text layer)",
+      "per_section": {
+        "Premises and Term": ["premises", "term"],
+        "Rent": ["rent", "late_fee"],
+        "Break Option": ["termination"],
+        "Sublease and Assignment": ["subletting"],
+        "No Obligation to Operate": ["premises"],
+        "Services": ["utilities", "maintenance"],
+        "Insurance and Indemnity": ["unknown"],
+        "Riders": ["unknown"],
+        "Miscellaneous": ["entire_agreement", "unknown"]
+      },
+      "risk_flags": [
+        "Document is an image-only scan (no embedded text layer, rasterized with added noise/rotation/blur); clause text was reconstructed from the known source and should be re-verified against actual OCR output before production use.",
+        "Same substantive risks as the clean version apply: unreproduced Rider terms, narrow break-option exercise window, and waived contra proferentem protection.",
+        "Absence of clause numbering combined with scan noise compounds cross-reference risk — an OCR error on a heading could cause a section to be silently mis-associated in downstream parsing."
+      ]
+    },
+    "lease_06_table_rentschedule_bellwood": {
+      "title": "Lease with embedded rent-schedule and operating-expense tables, Bellwood Enterprises (Landlord) / Meridian Retail LLC (Tenant)",
+      "per_section": {
+        "Art1.1 Premises": ["premises"],
+        "Art2.1 Base Rent Schedule (Table)": ["rent"],
+        "Art2.2 Additional Rent Payment": ["rent"],
+        "Art3.1 Operating Expense Table": ["rent", "utilities"],
+        "Art3.2 Annual Expense Statement": ["rent", "utilities"],
+        "Art3.3 Tenant Audit Right": ["dispute_resolution", "rent"],
+        "Art4.1 Late Fee": ["late_fee"],
+        "Art4.2 Rent Increase Restriction": ["rent"],
+        "Art5.1 Governing Law": ["dispute_resolution"],
+        "Art5.2 Guarantor Reference": ["deposit"]
+      },
+      "risk_flags": [
+        "The Base Rent Schedule table shows compounding annual increases (~3% year-over-year) that cumulate to roughly a 19% increase by Lease Year 7 — Tenant should model total cost of occupancy across the full term, not just Year 1 rent.",
+        "Operating Expense table shows Tenant's Proportionate Share fixed at 9.6% with no stated cap on year-over-year growth in underlying expense categories (CAM, taxes, insurance, utilities, security), exposing Tenant to uncapped pass-through cost growth.",
+        "Tenant's audit right (Art3.3) is limited to once per calendar year, which could delay resolution of a disputed expense reconciliation.",
+        "Late fee is set at 5% of any late installment (Art4.1), a relatively high rate worth confirming against jurisdictional caps on late-fee/interest provisions.",
+        "This document is a strong test of table-extraction robustness — verify the model does not misclassify numeric table rows as free-text deontic clauses."
+      ]
+    },
+    "lease_07_edgecase_stresstest_windmere": {
+      "title": "Edge-case stress-test lease, Windmere Capital (Landlord) / Halcyon Foods Inc. (Tenant) — deliberately dense in ambiguous/compound clauses",
+      "per_section": {
+        "Art1.1 Rent Abatement Waiver": ["rent"],
+        "Art1.2 No Reletting Preference / Claim Waiver": ["unknown"],
+        "Art1.3 Rent Offset Waiver": ["rent"],
+        "Art2.1 Assignment Prohibition with Affiliate Carve-Out": ["subletting"],
+        "Art2.2 Landlord Access with Non-Interference Limit": ["access"],
+        "Art2.3 Sublease Right with Continuing Tenant Liability": ["subletting"],
+        "Art2.4 Conditional Structural Repair Obligation": ["maintenance"],
+        "Art3.1 Trade Fixture Right with Structural Carve-Out": ["premises", "maintenance"],
+        "Art3.2 Landlord Alteration Consent Discretion": ["premises", "maintenance"],
+        "Art3.3 No-Breach for Delayed Opening": ["premises"],
+        "Art4.1 Percentage Rent Above Breakpoint": ["rent"],
+        "Art4.2 TI Allowance with Forfeiture Condition": ["rent", "maintenance"],
+        "Art4.3 Guaranty/Deposit Trigger on Net Worth Decline": ["deposit"],
+        "Art5.1 Rent Abatement with Continuing Rent Carve-Out": ["rent"],
+        "Art6.1 Term Length": ["term"],
+        "Art6.2 Building Age/Renovation (Factual)": ["unknown"],
+        "Art6.3 Exhibit Reference": ["premises", "unknown"]
+      },
+      "risk_flags": [
+        "Art1.3 waives Tenant's right to offset Rent 'regardless of the merits of any such claim' — a broad, unconditional waiver that removes a key tenant self-help remedy even for undisputed Landlord breaches.",
+        "Art1.2 (no duty to relet in preference) combined with Art1.3 (offset waiver) compounds Tenant's exposure: Tenant has limited recourse if Landlord underperforms on reletting or other obligations.",
+        "Art4.2's TI allowance forfeiture is triggered by failing to commence construction within just 90 days — an aggressive, easy-to-miss deadline with a full-forfeiture (not pro-rata) consequence.",
+        "Art4.3 gives Landlord broad discretion ('shall be entitled to require') to demand a replacement guaranty or increased deposit upon a Guarantor net-worth decline, with no defined process, notice period, or Tenant cure right specified.",
+        "Art4.1 percentage rent above the Breakpoint has no stated ceiling, so Tenant's rent exposure scales uncapped with Gross Sales performance.",
+        "Several clauses (Art2.1, Art2.3, Art3.1, Art3.2) combine a restriction and a carve-out permission within a single sentence — this compound structure is a known source of misclassification risk for automated clause-type/deontic classifiers and merits manual double-check regardless of model output."
+      ]
+    }
+  }
+}
