@@ -12,6 +12,40 @@ simplified summary, grounded on relevant statute context.
 - **Risk** — rule-based engine with hybrid confidence scoring
 - **Simplify** — grammar-constrained Qwen2.5-1.5B-Instruct (GGUF Q8, LoRA-tuned on aligned pairs) plain-language output as JSON
 
+## Setup
+
+```bash
+uv sync --all-extras          # venv + base, slm, ocr, gui, dev deps (reproducible via uv.lock)
+uv run themis --help          # run without activating
+```
+
+Or activate the venv first (then `themis` is on PATH):
+
+```bash
+source .venv/bin/activate       # bash/zsh
+source .venv/bin/activate.fish  # fish
+```
+
+The `themis` CLI (and `legalrag-gui`) land on PATH from the venv:
+
+## CLI commands
+
+```bash
+themis analyze <lease.pdf>                         # full pipeline -> console report
+themis analyze <lease.pdf> --slm                   # + plain-language simplification
+themis analyze <lease.pdf> -f json -o out.json     # machine-readable findings
+themis analyze <lease.pdf> -f markdown -o out.md   # report for the client
+themis analyze <lease.pdf> -i                      # interactive review of findings
+themis annotate <lease.pdf> -o gold.jsonl          # interactive section re-annotation (gold labels)
+themis train classify [--data auto|gold]           # clause-classifier fallback
+themis train slm [--epochs 3 --lr 2e-4 --load-8bit]  # plain-language SLM (LoRA)
+themis train ground                                # statute-grounding gate
+legalrag-gui                                       # desktop GUI (Qt shell)
+```
+
+Every subcommand accepts `--help` (e.g. `themis analyze --help`) for the
+full flag list.
+
 ## Training (`themis train`)
 
 Trainable components, with their data sources:

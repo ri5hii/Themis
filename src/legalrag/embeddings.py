@@ -18,13 +18,27 @@ def default_device() -> str:
     return "cuda" if torch.cuda.is_available() else "cpu"
 
 
+def _load_pretrained(cls, model_name: str):
+    """Load a HF model/tokenizer from the local cache; download on first use.
+
+    ``local_files_only=True`` skips the remote HEAD check that HuggingFace
+    performs by default, so an offline run uses the cached copy instead of
+    retrying a dead connection. When the model is not cached at all, the
+    call falls back to a normal (download-capable) load.
+    """
+    try:
+        return cls.from_pretrained(model_name, local_files_only=True)
+    except OSError:
+        return cls.from_pretrained(model_name)
+
+
 @lru_cache(maxsize=4)
 def getEncoder(model_name: str, device: str):
     """Cached (tokenizer, model, device) for a model name."""
     from transformers import AutoModel, AutoTokenizer
 
-    tokenizer = AutoTokenizer.from_pretrained(model_name)
-    model = AutoModel.from_pretrained(model_name)
+    tokenizer = _load_pretrained(AutoTokenizer, model_name)
+    model = _load_pretrained(AutoModel, model_name)
     model.to(device)
     model.eval()
     return tokenizer, model, device

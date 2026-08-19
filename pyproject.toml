@@ -9,26 +9,35 @@ description = "RAG-based legal document analysis to narrow the access-to-justice
 requires-python = ">=3.10"
 dependencies = [
     "numpy",
-    "torch",
-    "transformers",
+    "torch==2.13.0+cu130",
+    "transformers==4.46.3",
     "faiss-cpu",
     "joblib",
+    "scikit-learn",
     "pypdfium2",
     "python-docx",
 ]
 
 [project.optional-dependencies]
 slm = [
-    "llama-cpp-python",
-    "gguf",
+    "llama-cpp-python==0.3.35",
+    "gguf==0.19.0",
     "sentencepiece",
     "peft",
     "bitsandbytes",
 ]
 ocr = ["rapidocr"]
+gui = ["PyQt6"]
+
+[tool.uv]
+extra-index-url = ["https://download.pytorch.org/whl/cu130"]
+
+[dependency-groups]
+dev = ["pytest", "ruff", "reportlab"]
 
 [project.scripts]
 themis = "legalrag.cli:main"
+legalrag-gui = "legalrag.gui.app:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]
